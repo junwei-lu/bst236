@@ -164,7 +164,7 @@ def constant(n: int):
 
 ### Linear Time: $O(n)$
 
-Operations that scale linearly with input size:
+Linear order commonly appears in single-loop structures:
 
 ```python
 def linear(n: int):
@@ -172,17 +172,11 @@ def linear(n: int):
         print(0)
 ```
 
-Common in array and list traversal:
 
-```python
-def array_traversal(n: int):
-    for i in range(n):
-        print(i)
-```
 
 ### Quadratic Time: $O(n^2)$
 
-Operations that scale quadratically with input size:
+Quadratic order typically appears in nested loops, where both the outer and inner loops have a time complexity of $O(n)$, resulting in an overall complexity of $O(n^2)$:
 
 ```python
 def quadratic(n: int):
@@ -194,7 +188,7 @@ def quadratic(n: int):
 
 ### Exponential Time: $O(2^n)$
 
-Operations that scale exponentially with input size:
+Exponential order often appears in recursive functions. For example, in the code below, it recursively splits into two halves, stopping after $n$ divisions:
 
 ```python
 def exp_recur(n: int) -> int:
@@ -206,7 +200,7 @@ def exp_recur(n: int) -> int:
 ![Exponential complexity](time_complexity.assets/time_complexity_exponential.png)
 ### Logarithmic Time: $O(\log n)$
 
-Operations that scale logarithmically with input size:
+Like exponential order, logarithmic order also frequently appears in recursive functions. Given an input data size $n$, since the size is halved each round, the number of iterations is $\log_2 n$, the inverse function of $2^n$.
 
 ```python
 def log_recur(n: int) -> int:
@@ -218,7 +212,8 @@ def log_recur(n: int) -> int:
 ![Log complexity](time_complexity.assets/time_complexity_logarithmic.png)
 ### Linear-Logarithmic Time: $O(n \log n)$
 
-Operations that scale linearly and logarithmically with input size:
+Each level of a binary tree has $O(n)$ operations, and the tree has $\log n$ levels, resulting in a time complexity of $O(n \log n)$.
+
 
 ```python
 def linear_log_recur(n: int) -> int:
@@ -237,7 +232,7 @@ def linear_log_recur(n: int) -> int:
 
 ### Factorial Time: $O(n!)$
 
-Operations that scale factorially with input size:
+Factorials are typically implemented using recursion. As shown in the code, the first level splits into $O(n)$ branches, the second level into $O(n-1)$ branches, and so on, stopping after the $n$-th level:
 
 ```python
 def factorial_recur(n: int) -> int:

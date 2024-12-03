@@ -12,15 +12,10 @@ As shown in the figure below, there are $3$ ways to reach the top of a $3$-step 
 
 ![Number of ways to reach the 3rd step](intro_to_dynamic_programming.assets/climbing_stairs_example.png)
 
-The goal of this problem is to determine the number of ways, **considering using backtracking to exhaust all possibilities**. Specifically, imagine climbing stairs as a multi-round choice process: starting from the ground, choosing to go up $1$ or $2$ steps each round, adding one to the count of ways upon reaching the top of the stairs, and pruning the process when exceeding the top. The code is as follows:
 
-```src
-[file]{climbing_stairs_backtrack}-[class]{}-[func]{climbing_stairs_backtrack}
-```
 
-## Method 1: Brute force search
+## Method 1: Deep first search
 
-Backtracking algorithms do not explicitly decompose the problem but treat solving the problem as a series of decision steps, searching for all possible solutions through exploration and pruning.
 
 We can try to analyze this problem from the perspective of decomposition. Let $dp[i]$ be the number of ways to reach the $i^{th}$ step, then $dp[i]$ is the original problem, and its subproblems include:
 
@@ -42,10 +37,21 @@ This means that in the stair climbing problem, there is a recursive relationship
 
 We can obtain the brute force search solution according to the recursive formula. Starting with $dp[n]$, **recursively decompose a larger problem into the sum of two smaller problems**, until reaching the smallest subproblems $dp[1]$ and $dp[2]$ where the solutions are known, with $dp[1] = 1$ and $dp[2] = 2$, representing $1$ and $2$ ways to climb to the first and second steps, respectively.
 
-Observe the following code, which, like standard backtracking code, belongs to depth-first search but is more concise:
+The following code implements the <u>depth-first search</u>:
 
-```src
-[file]{climbing_stairs_dfs}-[class]{}-[func]{climbing_stairs_dfs}
+```python
+def dfs(i: int) -> int:
+    """Search"""
+    # Known dp[1] and dp[2], return them
+    if i == 1 or i == 2:
+        return i
+    # dp[i] = dp[i-1] + dp[i-2]
+    count = dfs(i - 1) + dfs(i - 2)
+    return count
+
+def climbing_stairs_dfs(n: int) -> int:
+    """Climbing stairs: Search"""
+    return dfs(n)
 ```
 
 The figure below shows the recursive tree formed by brute force search. For the problem $dp[n]$, the depth of its recursive tree is $n$, with a time complexity of $O(2^n)$. Exponential order represents explosive growth, and entering a long wait if a relatively large $n$ is input.

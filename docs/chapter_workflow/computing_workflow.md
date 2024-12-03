@@ -6,8 +6,8 @@ We will simplify the paper to summarize the step by step workflow of a scientifi
 ## Basic principles
 
 * Put everything in one version-controlled directory.
-* Be consistent, but look for ways to improve.
-  * naming conventions, file structure, `make` structure
+* Be consistent, but look for ways to improve:
+      * naming conventions, file structure, `make` structure
 * Raw data are sacred. Keep them separate from everything else. 
 * Separate code and data.
 * Use `make` files and/or READMEs to document dependencies.
@@ -65,33 +65,33 @@ project/
 ```
 
 1. **Create a Project Directory**:
-   - Put each project in its own directory, named after the project.
+      - Put each project in its own directory, named after the project.
 
 2. **Organize Text Documents**:
-   - Place all text documents related to the project in a `doc` directory. This includes manuscripts, documentation, and electronic lab notebooks.
+      - Place all text documents related to the project in a `doc` directory. This includes manuscripts, documentation, and electronic lab notebooks.
 
 3. **Manage Data**:
-   - Store raw data and metadata in a `data` directory.
-   - Place files generated during cleanup and analysis in a `results` directory.
+      - Store raw data and metadata in a `data` directory.
+      - Place files generated during cleanup and analysis in a `results` directory.
 
 4. **Source Code Management**:
-   - Keep all project source code in a `src` directory. This includes scripts and programs written for the project.
+      - Keep all project source code in a `src` directory. This includes scripts and programs written for the project.
 
 5. **Executable Programs**:
-   - If applicable, store compiled programs in a `bin` directory.
+      - If applicable, store compiled programs in a `bin` directory.
 
 6. **File Naming**:
-   - Name all files to reflect their content or function. Avoid using sequential numbers or manuscript location references.
+      - Name all files to reflect their content or function. Avoid using sequential numbers or manuscript location references.
 
 7. **Documentation and Metadata**:
-   - Include a `README` file in the project's root directory to provide an overview of the project.
-   - Add a `Makefile` to define the project's build pipeline.
+      - Include a `README` file in the project's root directory to provide an overview of the project.
+      - Add a `Makefile` to define the project's build pipeline.
 
 8. **Version Control**:
-   - Use a version control system to track changes and manage project versions.
+      - Use a version control system to track changes and manage project versions.
 
 9. **Backup and Synchronization**:
-   - Ensure that the project directory is mirrored off the working machine using a system like Dropbox or a remote version control repository.
+      - Ensure that the project directory is mirrored off the working machine using a system like Dropbox or a remote version control repository.
 
 Here is another example of project template for a paper project:
 
@@ -145,21 +145,21 @@ analysis/
 Here is the guideline for data management:
 
 1. **Save the Raw Data**:
-   - Raw data are sacred... but may be a mess. Always keep the original data as it was first generated. 
-   - Tempting to edit raw data by hand. <u>Don't!</u> Avoid overwriting raw data files with cleaned versions. Consider setting file permissions to read-only to prevent accidental changes.
+      - Raw data are sacred... but may be a mess. Always keep the original data as it was first generated. 
+     - Tempting to edit raw data by hand. <u>Don't!</u> Avoid overwriting raw data files with cleaned versions. Consider setting file permissions to read-only to prevent accidental changes.
 
 2. **Backup Raw Data (3-2-1 Rule)**:
-   - Keep at least 3 copies of your data
-   - Store the copies on 2 different types of storage media
-   - Keep 1 backup copy off-site (e.g., cloud storage, external drive at another location)
+      - Keep at least 3 copies of your data
+     - Store the copies on 2 different types of storage media
+     - Keep 1 backup copy off-site (e.g., cloud storage, external drive at another location)
 
 3. **Create Analysis-Friendly Data**:
-   - Convert data into open, non-proprietary formats (e.g., CSV for tabular data). Use meaningful variable names and ensure filenames reflect their content.
+      - Convert data into open, non-proprietary formats (e.g., CSV for tabular data). Use meaningful variable names and ensure filenames reflect their content.
 
 4. **Everything scripted**:
-   - Document Data Processing Steps. Record all steps used to process data. Write scripts for each stage of data processing to ensure reproducibility and ease of re-running analyses.
+      - Document Data Processing Steps. Record all steps used to process data. Write scripts for each stage of data processing to ensure reproducibility and ease of re-running analyses.
 5. **Document Data**:
-   - Use meta-data files to describe raw and cleaned data (e.g., `.csv` so easy to read)
+      - Use meta-data files to describe raw and cleaned data (e.g., `.csv` so easy to read)
 
 ## Collaboration
 
