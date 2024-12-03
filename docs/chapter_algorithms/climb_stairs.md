@@ -128,7 +128,7 @@ Based on the above content, we can summarize the commonly used terminology in dy
 - The states corresponding to the smallest subproblems (steps $1$and $2$) are called <u>initial states</u>.
 - The recursive formula $dp[i] = dp[i-1] + dp[i-2]$is called the <u>state transition equation</u>.
 
-## Space optimization
+### Space optimization
 
 Observant readers may have noticed that **since $dp[i]$is only related to $dp[i-1]$and $dp[i-2]$, we do not need to use an array `dp` to store the solutions to all subproblems**, but can simply use two variables to progress iteratively. The code is as follows:
 
@@ -335,3 +335,32 @@ Recall the [time complexity anlysis](../chapter_computational_complexity/time_co
 
 
 
+
+
+## Summary 
+
+The Climbing Stairs Problem explores elegant algorithmic ideas for optimization and problem-solving. Here is a concise overview of the methods analyzed:
+
+1. **Depth-First Search (DFS)**  
+      - **Approach**: Recursively solve the problem by breaking it into subproblems.
+      - **Time Complexity**: $O(2^n)$ due to overlapping subproblems.
+      - **Drawback**: Computational inefficiency from redundant calculations.
+
+2. **Memoized Search**  
+      - **Approach**: Uses an array to store previously computed results, avoiding recomputation of overlapping subproblems.
+      - **Time Complexity**: $O(n)$, with significant improvement over DFS.
+      - **Space Complexity**: $O(n)$ for the memoization array.
+
+3. **Dynamic Programming (DP)**  
+      - **Approach**: Computes in a bottom-up manner.
+      - **Time Complexity**: $O(n)$.
+      - **Space Optimization**: By using rolling variables, space complexity is reduced from $O(n)$ to $O(1)$.
+
+4. **Closed Form Solution**  
+      - **Approach**: Derives a mathematical formula for $dp[n]$ using eigenvalues of the transformation matrix.
+      - **Time Complexity**: $O(n)$ for power computation.
+      - **Drawback**: Susceptible to floating-point precision issues for large $n$.
+
+5. **Divide and Conquer (Binary Exponentiation)**  
+      - **Approach**: Efficiently computes matrix powers using recursive halving. 
+      - **Time Complexity**: $O(\log n)$.
