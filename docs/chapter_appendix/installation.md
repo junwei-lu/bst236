@@ -1,11 +1,4 @@
-# Installation Guide for Course
-
-!!! warning "Important"
-    Phil: Please edit the following content.
-
-
-
-
+# Installation Guide for the Course
 
 ## Operating System
 
@@ -15,28 +8,42 @@ Most of the materials in this course are platform-independent. However, most of 
 
 For your local Integrated Development Environment (IDE), we suggest using Visual Studio Code (VS Code) - a lightweight, open-source editor. Head to the [VS Code official website](https://code.visualstudio.com/) to download and install the version that matches your operating system.
 
+## Create a GitHub account
 
 ### Github Copilot
 
-We recommend using the AI assistant Github Copilot or other similar tools.
-If you are a student, you can apply for a free license of Github Copilot [here](https://github.com/features/copilot).
+We recommend using the AI assistant Github Copilot or other similar tools. As Harvard students, GitHub Copilot you may apply for a free license of GitHub Copilot by following the steps [here](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student). Note that you will need to upload proof of enrollment: you can use a picture of your student ID your GSAS enrollment documentation (which can be found in my.harvard). 
 
 To install Github Copilot in VS Code, you can search for `Github Copilot` in the VS Code extension marketplace and install it.
 
 We also strongly recommend you to read the VS Code [tutorial](https://code.visualstudio.com/docs/copilot/overview) for Github Copilot. It introduces many useful features of Github Copilot.
 
-### Cursor
-
-Cursor is a new generation AI-powered IDE that can help you write code faster and more efficiently. All the basic features of Cursor is same as VS Code. 
-You can download Cursor from the [official website](https://www.cursor.sh/) and install it. 
-
 ## Install language environments
 
 ### Python
 
-  We suggest using pyenv to install python for better version management. 
+  We suggest using pyenv to install python for better version management. For the following, identify the name of the shell (usually bash or zsh) by running the following in your terminal:
+
+  ```
+  ps $$
+  ```
+
+Next, ensure that the configuration file is created by running the following in the terminal:
+
+```
+touch ~/.bashrc
+```
+
+or 
+
+```
+touch ~/.zshrc
+```
+
+depending on the name of your shell. Then 
 
 1. Install pyenv:
+   - Ensure that [homebrew](https://brew.sh) is installed.
    - On macOS: `brew install pyenv`
    - On Linux: `curl https://pyenv.run | bash`
    
@@ -70,6 +77,7 @@ You can download Cursor from the [official website](https://www.cursor.sh/) and 
    ```bash
    python --version  # Should show Python 3.10.0
    ```
+   
 #### Jupyter Notebook
 
 To install Jupyter Notebook, follow these steps:
@@ -94,44 +102,7 @@ Check the VS Code tutorial for using Jupyter in VS Code [here](https://code.visu
 
 
 For more information, refer to the [official Jupyter documentation](https://jupyter.org/install).
-
-
-#### Conda
-
-We also suggest installing mini-conda for data analysis projects. To install Miniconda on macOS, follow these steps:
-
-1. **Download the Miniconda Installer:**
-   - Visit the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
-   - Choose the installer that matches your macOS architecture:
-     - For Apple Silicon (M1, M2, etc.): Select the "Miniconda3 macOS Apple M1 64-bit pkg" installer.
-     - For Intel-based Macs: Select the "Miniconda3 macOS Intel x86 64-bit pkg" installer.
-
-2. **Install Miniconda:**
-   - Locate the downloaded `.pkg` file in your `Downloads` folder.
-   - Double-click the installer to launch it.
-   - Follow the on-screen instructions:
-     - Read and agree to the license agreement.
-     - Choose the installation type:
-       - **Install for all users of this computer (Recommended):** Installs Miniconda into `/opt/miniconda3` for all users.
-       - **Install just for me:** Installs Miniconda into your home directory.
-     - Click "Install" to proceed.
-
-3. **Initialize Miniconda:**
-   - After installation, open the Terminal application.
-   - Run the following command to initialize conda:
-     ```bash
-     conda init
-     ```
-   - Close and reopen the Terminal to apply the changes.
-
-4. **Verify the Installation:**
-   - In the Terminal, check the conda version by running:
-     ```bash
-     conda --version
-     ```
-   - A successful installation will display the conda version number.
-
-For more detailed information, refer to the [official Miniconda installation documentation](https://docs.anaconda.com/miniconda/install/). 
+ 
 
 #### VS Code Python
 
@@ -204,6 +175,51 @@ To integrate radian with VS Code:
   - Search for `r.bracketedPaste` and ensure it's checked.
   - Search for `r.plot.useHttpgd` and enable it to use the httpgd plot viewer.
 
+
+## Optional software
+
+### Cursor
+
+Cursor is a new generation AI-powered IDE that can help you write code faster and more efficiently. All the basic features of Cursor is same as VS Code. 
+You can download Cursor from the [official website](https://www.cursor.sh/) and install it. 
+
+### Conda
+
+We also suggest installing mini-conda for data analysis projects. To install Miniconda on macOS, follow these steps:
+
+1. **Download the Miniconda Installer:**
+   - Visit the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
+   - Choose the installer that matches your macOS architecture:
+     - For Apple Silicon (M1, M2, etc.): Select the "Miniconda3 macOS Apple M1 64-bit pkg" installer.
+     - For Intel-based Macs: Select the "Miniconda3 macOS Intel x86 64-bit pkg" installer.
+
+2. **Install Miniconda:**
+   - Locate the downloaded `.pkg` file in your `Downloads` folder.
+   - Double-click the installer to launch it.
+   - Follow the on-screen instructions:
+     - Read and agree to the license agreement.
+     - Choose the installation type:
+       - **Install for all users of this computer (Recommended):** Installs Miniconda into `/opt/miniconda3` for all users.
+       - **Install just for me:** Installs Miniconda into your home directory.
+     - Click "Install" to proceed.
+
+3. **Initialize Miniconda:**
+   - After installation, open the Terminal application.
+   - Run the following command to initialize conda:
+     ```bash
+     conda init
+     ```
+   - Close and reopen the Terminal to apply the changes.
+
+4. **Verify the Installation:**
+   - In the Terminal, check the conda version by running:
+     ```bash
+     conda --version
+     ```
+   - A successful installation will display the conda version number.
+   - Run `conda deactivate` to leave the environment.
+
+For more detailed information, refer to the [official Miniconda installation documentation](https://docs.anaconda.com/miniconda/install/).
 
 
 # Cluster
