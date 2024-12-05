@@ -4,16 +4,16 @@ This chapter covers fundamental data structures in Python, focusing on their imp
 
 ## Lectures
 
-1. **Basic Data Structures**
-   - [Lists](list.md): Python's versatile sequence type
-   - [Stack](stack.md): Last-In-First-Out (LIFO) data structure
-   - [Queue](queue.md): First-In-First-Out (FIFO) data structure
-   - [Hash Map](hash_map.md): Key-value storage with O(1) operations
+**Basic Data Structures**
 
-2. **Advanced Data Processing**
-   - [NumPy Arrays](numpy_array.md): Efficient numerical computing
-   - [Pandas DataFrame](pandas_dataframe.md): Data manipulation and analysis
-   - [Polars](polars.md): Modern, high-performance DataFrame library
+* [Lists](list.md): Python's versatile sequence type
+* [Stack](stack.md): Last-In-First-Out (LIFO) data structure
+* [Queue](queue.md): First-In-First-Out (FIFO) data structure
+* [Hash Map](hash_map.md): Key-value storage with O(1) operations
 
-3. **Parallel Processing**
-   - [Multiprocessing](multiprocess.md): Parallel processing techniques
+**Advanced Data Processing**
+
+* [NumPy Arrays](numpy_array.md): Efficient numerical computing
+* [Pandas DataFrame](pandas_dataframe.md): Data manipulation and analysis
+* [Polars](polars.md): Modern, high-performance DataFrame library
+* [Multiprocessing](multiprocess.md): Parallel processing techniques

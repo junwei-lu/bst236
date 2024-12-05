@@ -32,9 +32,7 @@ Here are some common pitfalls:
 
 However, you cannot guarantee you understand every detail of the code (like how the hardware works behind the code). Everything is about balance. I want to share a quote:
 
-!!! note "Pablo Picasso:"
-  
-  Good artists copy, great artists steal.
+!!! note "Pablo Picasso:" Good artists copy, great artists steal.
 
 
 And please think about what does "steal" meant by Picasso.
@@ -141,9 +139,7 @@ Remember: you don't get bonus points for code that "looks impressive".
 
 However, in this course, we will teach you a lot about how to make your code more efficient. Does that mean we violate the above principle? I want to answer this question by the another quote:
 
-!!! note "Pablo Picasso:"
-  
-  It took me four years to paint like Raphael, but a lifetime to paint like a child.
+!!! note "Pablo Picasso:" It took me four years to paint like Raphael, but a lifetime to paint like a child.
 
 
 
