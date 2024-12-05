@@ -32,9 +32,10 @@ Here are some common pitfalls:
 
 However, you cannot guarantee you understand every detail of the code (like how the hardware works behind the code). Everything is about balance. I want to share a quote:
 
-> Good artists copy, great artists steal.
->
-> -- Pablo Picasso
+!!! note "Pablo Picasso:"
+  
+  Good artists copy, great artists steal.
+
 
 And please think about what does "steal" meant by Picasso.
 ### Don't repeat yourself
@@ -44,31 +45,31 @@ Don't repeat yourself (DRY) is a fundamental concept in programming.
 
 
 - **DRY in Workflow:** Learning how to automate and/or simplify repetitive tasks in your workflow because the time savings will be enormous. We will cover some tools to do this in this course, but you first need to be aware of the existence of these tools. 
-  * Best practice: Optimize your workflow from time to time but not too often.
-  * Shell Script: Process files in batches, customize your commands in the system.
-  * GNU Make: Create a `Makefile` to customize the project-specific build process. It is also a "cheat sheet" for common commands.
-  * Transferable Workflows: Find the best practices making your workflow transferable across different platforms and machines.
-  * Keyboard shortcuts: Use your keyboard more and your mouse less. 
+    * Best practice: Optimize your workflow from time to time but not too often.
+    * Shell Script: Process files in batches, customize your commands in the system.
+    * GNU Make: Create a `Makefile` to customize the project-specific build process. It is also a "cheat sheet" for common commands.
+    * Transferable Workflows: Find the best practices making your workflow transferable across different platforms and machines.
+    * Keyboard shortcuts: Use your keyboard more and your mouse less. 
 - **DRY in Programming:** What if you need to change 1 thing? Needs to be changed in multiple places. Risk getting a wrong answer because we forgot to change one small thing.
 
-  * Write code __a bit more general__ than your data or specific task.
-    - Don't assume particular dimensions.
-    - Don't forget about missing values (even if *your* data have none).
-    - But **don't try to handle every case.** Try to anticipate what you might be asked for, but don't prepare for every possibility.
-  * Use __function arguments__ to handle different cases. 
-    - Don't assume particular file names.
-    - Don't assume particular tuning parameters. 
-    - Don't assume particular regression formulas.
-    - No magic numbers.
+    * Write code __a bit more general__ than your data or specific task.
+      - Don't assume particular dimensions.
+      - Don't forget about missing values (even if *your* data have none).
+      - But **don't try to handle every case.** Try to anticipate what you might be asked for, but don't prepare for every possibility.
+    * Use __function arguments__ to handle different cases. 
+      - Don't assume particular file names.
+      - Don't assume particular tuning parameters. 
+      - Don't assume particular regression formulas.
+      - No magic numbers.
       ``` r
       get_bootstrap_ci <- function(..., nboot = 1e3)
       ```
       ``` python
       def get_bootstrap_ci(..., nboot=1000):
       ```
-  * Here are the tools to help you write more general code:
-    - Python configuration files .
-    - R `Renviron` file (See Workflow chapter).
+    * Here are the tools to help you write more general code:
+      - Python configuration files .
+      - R `Renviron` file (See Workflow chapter).
 
 ### Think and document before you code
 
@@ -140,9 +141,10 @@ Remember: you don't get bonus points for code that "looks impressive".
 
 However, in this course, we will teach you a lot about how to make your code more efficient. Does that mean we violate the above principle? I want to answer this question by the another quote:
 
-> It took me four years to paint like Raphael, but a lifetime to paint like a child.
->
-> -- Pablo Picasso
+!!! note "Pablo Picasso:"
+  
+  It took me four years to paint like Raphael, but a lifetime to paint like a child.
+
 
 
 

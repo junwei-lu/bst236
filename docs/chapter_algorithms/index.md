@@ -4,8 +4,8 @@ This chapter delves into various algorithmic strategies and techniques, providin
 
 # Lectures
 
-1. [Depth-First Search](dfs.md)
+1. [Depth-First Search](climb_stairs.md)
 2. [Divide and Conquer](divide_n_conquer.md)
 3. [Breadth-First Search](bfs.md)
-4. [Dynamic Programming](climb_stairs.md)
+4. [Dynamic Programming](dynamic_programming.md)
 

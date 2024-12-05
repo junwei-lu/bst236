@@ -5,7 +5,7 @@ This course aims to create a beginner-friendly course on statistical computing.
 
 ## Target audience
 
-Whether you're taking your first steps into algorithms and data analysis, or you're looking to strengthen your foundation in statistical computing and establish efficient workflows, this course is designed for you! We'll help you move beyond surface-level understanding to build reproducible analysis pipelines and gain deep insights into how algorithms truly work. If you find yourself wanting to transform your "I think it works" moments into "I know exactly why it works" confidence, while learning best practices for organizing and automating your statistical computing workflows, you're in the right place!
+Whether you're taking your first steps into algorithms and data analysis, or you're looking to strengthen your foundation in statistical computing and establish efficient workflows, this course is designed for you! 
 
 !!! success "Prerequisites"
 
