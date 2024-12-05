@@ -9,9 +9,9 @@ The last two sections introduced the main characteristics of dynamic programming
 
 Generally speaking, if a problem contains overlapping subproblems, optimal substructure, and exhibits no aftereffects, it is usually suitable for dynamic programming solutions. However, it is often difficult to directly extract these characteristics from the problem description. Therefore, we usually relax the conditions and **first observe whether the problem is suitable for resolution using backtracking (exhaustive search)**.
 
-**Problems suitable for backtracking usually fit the "decision tree model"**, which can be described using a tree structure, where each node represents a decision, and each path represents a sequence of decisions.
+**Problems suitable for backtracking usually fit the "decision tree model"**, which can be described using a tree structure, where each node represents an action, and each path represents a sequence of actions.
 
-In other words, if the problem contains explicit decision concepts, and the solution is produced through a series of decisions, then it fits the decision tree model and can usually be solved using backtracking.
+In other words, if the problem contains explicit action concepts, and the solution is produced through a series of actions, then it fits the action tree model and can usually be solved using backtracking.
 
 On this basis, there are some "bonus points" for determining dynamic programming problems.
 
@@ -23,11 +23,16 @@ Correspondingly, there are also some "penalty points".
 - The goal of the problem is to find all possible solutions, not just the optimal solution.
 - The problem description has obvious characteristics of permutations and combinations, requiring the return of specific multiple solutions.
 
-If a problem fits the decision tree model and has relatively obvious "bonus points", we can assume it is a dynamic programming problem and verify it during the solution process.
+If a problem fits the action tree model and has relatively obvious "bonus points", we can assume it is a dynamic programming problem and verify it during the solution process.
 
 ## Problem-solving steps
 
-The dynamic programming problem-solving process varies with the nature and difficulty of the problem but generally follows these steps: describe decisions, define states, establish a $dp$ table, derive state transition equations, and determine boundary conditions, etc.
+The dynamic programming problem-solving process varies with the nature and difficulty of the problem but generally follows these steps: 
+- describe actions, 
+- define states, 
+- establish a $dp$ table, 
+- derive state transition equations, 
+- determine boundary conditions.
 
 To illustrate the problem-solving steps more vividly, we use a classic problem, "Minimum Path Sum", as an example.
 
@@ -39,9 +44,9 @@ The figure below shows an example, where the given grid's minimum path sum is $1
 
 ![Minimum Path Sum Example Data](dp_solution_pipeline.assets/min_path_sum_example.png)
 
-**First step: Think about each round of decisions, define the state, and thereby obtain the $dp$ table**
+**First step: Think about each round of actions, define the state, and thereby obtain the $dp$ table**
 
-Each round of decisions in this problem is to move one step down or right from the current cell. Suppose the row and column indices of the current cell are $[i, j]$, then after moving down or right, the indices become $[i+1, j]$ or $[i, j+1]$. Therefore, the state should include two variables: the row index and the column index, denoted as $[i, j]$.
+Each round of actions in this problem is to move one step down or right from the current cell. Suppose the row and column indices of the current cell are $[i, j]$, then after moving down or right, the indices become $[i+1, j]$ or $[i, j+1]$. Therefore, the state should include two variables: the row index and the column index, denoted as $[i, j]$.
 
 The state $[i, j]$ corresponds to the subproblem: the minimum path sum from the starting point $[0, 0]$ to $[i, j]$, denoted as $dp[i, j]$.
 
@@ -51,7 +56,7 @@ Thus, we obtain the two-dimensional $dp$ matrix shown in the figure below, whose
 
 !!! note
 
-    Dynamic programming and backtracking can be described as a sequence of decisions, while a state consists of all decision variables. It should include all variables that describe the progress of solving the problem, containing enough information to derive the next state.
+    Dynamic programming and backtracking can be described as a sequence of actions, while a state consists of all action variables. It should include all variables that describe the progress of solving the problem, containing enough information to derive the next state.
 
     Each state corresponds to a subproblem, and we define a $dp$ table to store the solutions to all subproblems. Each independent variable of the state is a dimension of the $dp$ table. Essentially, the $dp$ table is a mapping between states and solutions to subproblems.
 
