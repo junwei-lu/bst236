@@ -159,7 +159,7 @@ Here are the visualization of the workflow on the commit status of the remote Gi
 **Initial Repository Setup and Branch Creation**
 
 1. **Clone the Repository**
-      - Use `git clone` to download the remote repository to your local machine
+      - Use `git clone` to download the remote repository to your local machine. (If the Github repository is not from your collaborators, you need to fork the repository to your own account and clone the repository from your account.)
 
 2. **Create a New Working Branch**
       - Every new feature should be developed in a new branch
