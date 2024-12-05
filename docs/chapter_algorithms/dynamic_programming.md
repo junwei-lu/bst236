@@ -1,40 +1,42 @@
 # Dynamic Programming
 
-The last two sections introduced the main characteristics of dynamic programming problems. Next, let's explore two more practical issues together.
+<u>Dynamic programming</u> is a crucial algorithmic approach that breaks down a problem into smaller subproblems, storing their solutions to prevent redundant calculations, thus greatly enhancing time efficiency.
 
-1. How to determine whether a problem is a dynamic programming problem?
-2. What are the complete steps to solve a dynamic programming problem?
+We have encountered dynamic programming in the [climb stairs problem](climb_stairs.md#method-3-dynamic-programming). In this section, we will delve into the general strategy of dynamic programming by addressing these two questions:
+1. How can we identify if a problem is suitable for dynamic programming?
+2. What are the comprehensive steps to solve a dynamic programming problem?
 
-## Problem determination
+## Identifying Dynamic Programming
 
-Generally speaking, if a problem contains overlapping subproblems, optimal substructure, and exhibits no aftereffects, it is usually suitable for dynamic programming solutions. However, it is often difficult to directly extract these characteristics from the problem description. Therefore, we usually relax the conditions and **first observe whether the problem is suitable for resolution using backtracking (exhaustive search)**.
+**Problems apt for dynamic programming typically align with the "decision tree model"**, which can be depicted using a tree structure where each node signifies an action, and each path represents a sequence of actions.
 
-**Problems suitable for backtracking usually fit the "decision tree model"**, which can be described using a tree structure, where each node represents an action, and each path represents a sequence of actions.
+In essence, if a problem involves explicit action concepts and the solution is derived through a series of actions, it fits the action tree model and can generally be tackled using dynamic programming.
 
-In other words, if the problem contains explicit action concepts, and the solution is produced through a series of actions, then it fits the action tree model and can usually be solved using backtracking.
+Additionally, there are some "bonus points" for identifying dynamic programming problems.
 
-On this basis, there are some "bonus points" for determining dynamic programming problems.
+- The problem involves descriptions of maximization (minimization) or finding the most (least) optimal solution.
+- The problem's states can be represented using a list, multi-dimensional matrix, or tree, and a state has a recursive relationship with its neighboring states.
+- Given a certain state, its future development is only related to the current state and unrelated to all past states experienced. This is also known as the "Markovian" property.
 
-- The problem contains descriptions of maximization (minimization) or finding the most (least) optimal solution.
-- The problem's states can be represented using a list, multi-dimensional matrix, or tree, and a state has a recursive relationship with its surrounding states.
+For instance, in the stair climbing problem, given state $i$, it will progress to states $i-1$ and $i-2$, corresponding to jumping 1 step and 2 steps respectively. When making these choices, we do not need to consider the states before state $i$, as they do not influence the future of state $i$.
 
-Correspondingly, there are also some "penalty points".
+Conversely, there are also some "penalty points".
 
-- The goal of the problem is to find all possible solutions, not just the optimal solution.
-- The problem description has obvious characteristics of permutations and combinations, requiring the return of specific multiple solutions.
+- The goal of the problem is to find all possible solutions, not just the optimal solution. Such problems are usually solved by [breadth-first search](bfs.md).
+- The problem description has clear characteristics of permutations and combinations, requiring the return of specific multiple solutions.
 
-If a problem fits the action tree model and has relatively obvious "bonus points", we can assume it is a dynamic programming problem and verify it during the solution process.
+If a problem fits the decision tree model and has evident "bonus points", we can assume it is a dynamic programming problem and verify it during the solution process.
 
-## Problem-solving steps
+## Steps to Solve Dynamic Programming
 
-The dynamic programming problem-solving process varies with the nature and difficulty of the problem but generally follows these steps: 
+The process of solving dynamic programming problems varies with the nature and complexity of the problem but generally follows these steps: 
 - describe actions, 
 - define states, 
 - establish a $dp$ table, 
 - derive state transition equations, 
 - determine boundary conditions.
 
-To illustrate the problem-solving steps more vividly, we use a classic problem, "Minimum Path Sum", as an example.
+To vividly illustrate the problem-solving steps, we use a classic problem, "Minimum Path Sum", as an example.
 
 !!! question
 
@@ -44,7 +46,7 @@ The figure below shows an example, where the given grid's minimum path sum is $1
 
 ![Minimum Path Sum Example Data](dp_solution_pipeline.assets/min_path_sum_example.png)
 
-**First step: Think about each round of actions, define the state, and thereby obtain the $dp$ table**
+**First step: Consider each round of actions, define the state, and thereby obtain the $dp$ table**
 
 Each round of actions in this problem is to move one step down or right from the current cell. Suppose the row and column indices of the current cell are $[i, j]$, then after moving down or right, the indices become $[i+1, j]$ or $[i, j+1]$. Therefore, the state should include two variables: the row index and the column index, denoted as $[i, j]$.
 
@@ -53,12 +55,6 @@ The state $[i, j]$ corresponds to the subproblem: the minimum path sum from the 
 Thus, we obtain the two-dimensional $dp$ matrix shown in the figure below, whose size is the same as the input grid $grid$.
 
 ![State definition and DP table](dp_solution_pipeline.assets/min_path_sum_solution_state_definition.png)
-
-!!! note
-
-    Dynamic programming and backtracking can be described as a sequence of actions, while a state consists of all action variables. It should include all variables that describe the progress of solving the problem, containing enough information to derive the next state.
-
-    Each state corresponds to a subproblem, and we define a $dp$ table to store the solutions to all subproblems. Each independent variable of the state is a dimension of the $dp$ table. Essentially, the $dp$ table is a mapping between states and solutions to subproblems.
 
 **Second step: Identify the optimal substructure, then derive the state transition equation**
 
@@ -92,52 +88,29 @@ As shown in the figure below, since each cell is derived from the cell to its le
     
     The core of the state transition order is to ensure that when calculating the solution to the current problem, all the smaller subproblems it depends on have already been correctly calculated.
 
-Based on the above analysis, we can directly write the dynamic programming code. However, the decomposition of subproblems is a top-down approach, so implementing it in the order of "brute-force search → memoized search → dynamic programming" is more in line with habitual thinking.
+Based on the above analysis, we can directly write the dynamic programming code. 
 
-### Method 1: Brute-force search
-
-Start searching from the state $[i, j]$, constantly decomposing it into smaller states $[i-1, j]$ and $[i, j-1]$. The recursive function includes the following elements.
-
-- **Recursive parameter**: state $[i, j]$.
-- **Return value**: the minimum path sum from $[0, 0]$ to $[i, j]$ $dp[i, j]$.
-- **Termination condition**: when $i = 0$ and $j = 0$, return the cost $grid[0, 0]$.
-- **Pruning**: when $i < 0$ or $j < 0$ index out of bounds, return the cost $+\infty$, representing infeasibility.
-
-Implementation code as follows:
-
-```src
-[file]{min_path_sum}-[class]{}-[func]{min_path_sum_dfs}
+```python
+def min_path_sum_dp(grid: list[list[int]]) -> int:
+    """Minimum path sum: Dynamic programming"""
+    n, m = len(grid), len(grid[0])
+    # Initialize dp table
+    dp = [[0] * m for _ in range(n)]
+    dp[0][0] = grid[0][0]
+    # State transition: first row
+    for j in range(1, m):
+        dp[0][j] = dp[0][j - 1] + grid[0][j]
+    # State transition: first column
+    for i in range(1, n):
+        dp[i][0] = dp[i - 1][0] + grid[i][0]
+    # State transition: the rest of the rows and columns
+    for i in range(1, n):
+        for j in range(1, m):
+            dp[i][j] = min(dp[i][j - 1], dp[i - 1][j]) + grid[i][j]
+    return dp[n - 1][m - 1]
 ```
 
-The figure below shows the recursive tree rooted at $dp[2, 1]$, which includes some overlapping subproblems, the number of which increases sharply as the size of the grid `grid` increases.
-
-Essentially, the reason for overlapping subproblems is: **there are multiple paths to reach a certain cell from the top-left corner**.
-
-![Brute-force search recursive tree](dp_solution_pipeline.assets/min_path_sum_dfs.png)
-
-Each state has two choices, down and right, so the total number of steps from the top-left corner to the bottom-right corner is $m + n - 2$, so the worst-case time complexity is $O(2^{m + n})$. Please note that this calculation method does not consider the situation near the grid edge, where there is only one choice left when reaching the network edge, so the actual number of paths will be less.
-
-### Method 2: Memoized search
-
-We introduce a memo list `mem` of the same size as the grid `grid`, used to record the solutions to various subproblems, and prune overlapping subproblems:
-
-```src
-[file]{min_path_sum}-[class]{}-[func]{min_path_sum_dfs_mem}
-```
-
-As shown in the figure below, after introducing memoization, all subproblem solutions only need to be calculated once, so the time complexity depends on the total number of states, i.e., the grid size $O(nm)$.
-
-![Memoized search recursive tree](dp_solution_pipeline.assets/min_path_sum_dfs_mem.png)
-
-### Method 3: Dynamic programming
-
-Implement the dynamic programming solution iteratively, code as shown below:
-
-```src
-[file]{min_path_sum}-[class]{}-[func]{min_path_sum_dp}
-```
-
-The figure below show the state transition process of the minimum path sum, traversing the entire grid, **thus the time complexity is $O(nm)$**.
+The figure below shows the state transition process of the minimum path sum, traversing the entire grid, **thus the time complexity is $O(nm)$**.
 
 The array `dp` is of size $n \times m$, **therefore the space complexity is $O(nm)$**.
 
@@ -177,12 +150,28 @@ The array `dp` is of size $n \times m$, **therefore the space complexity is $O(n
 === "<12>"
     ![min_path_sum_dp_step12](dp_solution_pipeline.assets/min_path_sum_dp_step12.png)
 
-### Space optimization
+### Space Optimization
 
 Since each cell is only related to the cell to its left and above, we can use a single-row array to implement the $dp$ table.
 
 Please note, since the array `dp` can only represent the state of one row, we cannot initialize the first column state in advance, but update it as we traverse each row:
 
-```src
-[file]{min_path_sum}-[class]{}-[func]{min_path_sum_dp_comp}
+```python
+def min_path_sum_dp_comp(grid: list[list[int]]) -> int:
+    """Minimum path sum: Space-optimized dynamic programming"""
+    n, m = len(grid), len(grid[0])
+    # Initialize dp table
+    dp = [0] * m
+    # State transition: first row
+    dp[0] = grid[0][0]
+    for j in range(1, m):
+        dp[j] = dp[j - 1] + grid[0][j]
+    # State transition: the rest of the rows
+    for i in range(1, n):
+        # State transition: first column
+        dp[0] = dp[0] + grid[i][0]
+        # State transition: the rest of the columns
+        for j in range(1, m):
+            dp[j] = min(dp[j - 1], dp[j]) + grid[i][j]
+    return dp[m - 1]
 ```
