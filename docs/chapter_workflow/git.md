@@ -18,6 +18,8 @@ Version control is essential for:
 
 ## Git Basics
 
+If you are using VS Code, you can check the tutorial [here](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git).
+
 ### Setting Up Git
 
 First time setup:
@@ -26,14 +28,18 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-### Essential Git Commands
-
-1. **Initialize a Repository**
+Initialize a repository only when you create a project
 ```bash
-git init
+git init 
 ```
 
-2. **Check Status**
+
+### Basic Git Workflow
+
+
+
+
+1. **Check Status**
 ```bash
 git status
 ```
@@ -46,6 +52,7 @@ git add .           # Stage all changes
 
 4. **Commit Changes**
 ```bash
+
 git commit -m "Descriptive message about changes"
 ```
 
@@ -58,102 +65,161 @@ git diff            # View unstaged changes
 ### Best Practices for Commits
 
 1. **Commit Often**: Make small, logical commits
-2. **Write Clear Messages**: Use descriptive commit messages
-3. **One Change Per Commit**: Each commit should represent one logical change
-4. **Test Before Committing**: Ensure code works before committing
+2. **Avoid Half-Done Work**: Only commit logically completed tasks. Use `git commit --amend --no-edit` to quickly add forgotten changes to your last commit, but only if you haven't shared that commit with others.
+3. **Commit Related Changes**: Group related changes into one commit
+4. **Write Clear Messages**: Use descriptive commit messages
+      ```bash
+      # Bad commit message
+      git commit -m "Update"
+      # Good commit message
+      git commit -m "Add bootstrap confidence intervals to regression analysis"
+      ```
+5. **One Change Per Commit**: Each commit should represent one logical change
+6. **Test Before Committing**: Ideally the code in `main` branch should always work. Ensure code works before committing
 
-Example of a good commit message:
-```bash
-git commit -m "Add bootstrap confidence intervals to regression analysis"
-```
 
-## Working with GitHub
+## GitHub
+
+You can read the [Github official documentation](https://docs.github.com/en/get-started/using-github/github-flow) for the suggested workflow for using GitHub for collaboration. 
+There are tools like [Github Desktop](https://desktop.github.com/) and [VS Code Github](https://code.visualstudio.com/docs/sourcecontrol/github) that can help you manage your repositories more conveniently. You can also create your own workflows using tools like [GNU Make](make.md) with [GitHub command-line tool `gh`](https://cli.github.com/).
+
+!!! tip "GitHub beyond repository"
+
+    GitHub is not just a place to host your code. It is also a social network for developers. You can follow others, see what they are working on, star their repositories, and collaborate with them.
+
+    GitHub is also your resume, it will help you get a job. Imagine the employer goes to your GitHub and sees all the 1k-star projects you have worked on.
 
 ### Setting Up GitHub
 
 1. Create a GitHub account at [github.com](https://github.com)
 2. Set up SSH keys for secure authentication:
-```bash
-ssh-keygen -t ed25519 -C "your.email@example.com"
-```
+    ```bash
+    ssh-keygen -t ed25519 -C "your.email@example.com"
+    ```
 3. [Add the public key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+4. (Optional) Install [GitHub gh](https://cli.github.com/)
+    ```bash
+    brew install gh # MacOS
+    ```
 
-### Basic GitHub Workflow
+### GitHub Collaboration Workflow
 
-1. **Create a Repository on GitHub**
-   - Click "New repository" on GitHub
-   - Follow the setup instructions
+You can follow the VS Code tutorial [here](https://code.visualstudio.com/docs/sourcecontrol/github) for the Github collaboration workflow on VS Code. We suggest the following workflow for software development on GitHub. You may use [Make](make.md) to automate your workflow instead of memorizing all the commands.
 
-2. **Clone a Repository**
-```bash
-git clone git@github.com:username/repository.git
-```
+Here are the visualization of the workflow on the commit status of the remote Github, local git, and local disk. You can cross reference to the text instructions below for better understanding.
 
-3. **Connect Local to Remote**
-```bash
-git remote add origin git@github.com:username/repository.git
-```
+=== "<1>"
+    ![Clone the repository](workflow.assets/github_workflow_step1.png)
 
-4. **Push Changes**
-```bash
-git push origin main
-```
+=== "<2>"
+    ![Create a new working branch](workflow.assets/github_workflow_step2.png)
 
-5. **Pull Changes**
-```bash
-git pull origin main
-```
+=== "<3>"
+    ![Make changes to local files](workflow.assets/github_workflow_step3.png)
 
-### Branching and Merging
+=== "<4>"
+    ![Review code changes with git diff](workflow.assets/github_workflow_step4.png)
 
-1. **Create and Switch to a Branch**
-```bash
-git checkout -b feature-name
-```
+=== "<5>"
+    ![Commit local changes](workflow.assets/github_workflow_step5.png)
 
-2. **Switch Between Branches**
-```bash
-git checkout main
-```
+=== "<6>"
+    ![Push branch to remote repository](workflow.assets/github_workflow_step6.png)
 
-3. **Merge Branches**
-```bash
-git checkout main
-git merge feature-name
-```
+=== "<7>"
+    ![Switch to main branch](workflow.assets/github_workflow_step7.png)
 
-## Collaborative Workflows
+=== "<8>"
+    ![Pull latest changes from remote](workflow.assets/github_workflow_step8.png)
 
-### Pull Requests
+=== "<9>"
+    ![Return to working branch](workflow.assets/github_workflow_step9.png)
 
-1. Fork the repository on GitHub
-2. Clone your fork locally
-3. Create a feature branch
-4. Make changes and push to your fork
-5. Create a pull request on GitHub
+=== "<10>"
+    ![Rebase working branch on main](workflow.assets/github_workflow_step10.png)
 
-### Best Practices for Collaboration
+=== "<11>"
+    ![Resolve any merge conflicts](workflow.assets/github_workflow_step11.png)
 
-1. **Pull Before Push**: Always pull latest changes before pushing
-2. **Use Branches**: Never work directly on main
-3. **Review Code**: Use pull requests for code review
-4. **Keep Commits Clean**: Use meaningful commit messages
-5. **Document Changes**: Update documentation with code changes
+=== "<12>"
+    ![Force push updated branch](workflow.assets/github_workflow_step12.png)
 
-## Common Issues and Solutions
+=== "<13>"
+    ![Create pull request on GitHub](workflow.assets/github_workflow_step13.png)
+
+=== "<14>"
+    ![Review and discuss changes](workflow.assets/github_workflow_step14.png)
+
+=== "<15>"
+    ![New pull request](workflow.assets/github_workflow_step15.png)
+
+=== "<16>"
+    ![Merge pull request](workflow.assets/github_workflow_step16.png)
+
+**Initial Repository Setup and Branch Creation**
+
+1. **Clone the Repository**
+      - Use `git clone` to download the remote repository to your local machine
+
+2. **Create a New Working Branch**
+      - Every new feature should be developed in a new branch
+      - Execute `git checkout -b my_feature` to create and switch to a new branch named 'my_feature'
+      - This effectively creates a local copy of the repository on a separate branch
+
+**Code Development and Local Changes**
+
+1. **Modify Local Code**
+      - Make necessary changes or additions to source files on your local hard drive
+
+2. **Review Code Changes**
+      - Use `git diff` to inspect modifications made to the codebase
+
+3. **Commit Local Changes**
+      - Use `git commit -a -m "Descriptive message about changes"` to update staged code to the local Git repository
+
+4. **Push Branch to Remote Repository**
+      - Execute `git push origin my_feature` to upload the local `my_feature` branch to GitHub
+
+**Handling Remote Repository Updates**
+
+1. **Switch to Main Branch**
+      - Use `git checkout main` to return to the primary branch
+      - **Warning**: Commit your branch before switching to main branch, or you will lose all your changes.
+
+2. **Pull Latest Changes**
+      - Execute `git pull origin master/main` to update local repository with remote modifications
+
+3. **Return to Working Branch**
+      - Switch back to `my_feature` branch using `git checkout my_feature`
+
+4. **Rebase Working Branch**
+      - Use `git rebase main` to integrate main branch updates into your working branch
+      - Note: Potential merge conflicts may require manual code selection
+      - Understand the difference between `git pull` and `git rebase` [here](https://www.atlassian.com/git/tutorials/merging-vs-rebasing).
+
+5. **Force Push Updated Branch**
+      - Execute `git push -f origin my_feature` to update remote repository with rebased changes
+
+6. **Pull Request**
+      - After finish adding all the new features in the branch, create a pull request on GitHub
+
+7. **Merge Request**
+      - Project owner can use "squash and merge" in Github pull request to consolidate commits
+
+
+!!! tip "Tip: Always rebase"
+
+    - Always rebase your branch on the main branch before creating a pull request.
+    - This will make your pull request history cleaner and easier to review.
+    - You can simply use `git pull origin my_feature --rebase` to rebase your branch on the github main branch.
+
+
+
+## Advanced Git Usage
 
 ### Resolving Merge Conflicts
 
-1. **Identify Conflicts**
-```bash
-git status
-```
-
-2. **Resolve Conflicts**
-   - Open conflicted files
-   - Look for conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)
-   - Edit files to resolve conflicts
-   - Stage and commit resolved files
+We recommend using VS Code to resolve conflicts. Here is the tutorial [here](https://code.visualstudio.com/docs/editor/versioncontrol#_merge-conflicts). You can also watch this [video tutorial](https://www.youtube.com/watch?v=lz5OuKzvadQ).
 
 ### Undoing Changes
 
@@ -198,10 +264,3 @@ results/
 ```
 
 
-
-## Resources
-
-- [Git Documentation](https://git-scm.com/doc)
-- [GitHub Guides](https://guides.github.com/)
-- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-- [Happy Git with R](https://happygitwithr.com/)

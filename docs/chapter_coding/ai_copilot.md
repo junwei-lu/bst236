@@ -9,7 +9,7 @@ We strongly recommend you to read the [official documentation](https://github.co
 
 ### What can AI Copilot do?
 
-Below we list the commands you can use in the Copilot Chat. However, you do not need to remember them. You can always type `/` in the chat to see the options (or even not type `/explain` but just ask the AI to explain the code).
+Below we list the commands you can use in the Copilot Chat. However, you do not need to remember them. You can always type `/` in the chat to see the options (or even not type `/explain` but just ask the AI to explain the code. I guess Github Copilot only optimized the correponding prompt when you use `/`).
 
 What really matters is that the list tells you what you can ask AI to help your coding.
 
