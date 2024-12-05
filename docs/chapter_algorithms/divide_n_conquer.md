@@ -87,18 +87,18 @@ $$
    1 & -\lambda
    \end{bmatrix}
    = (1-\lambda)(-\lambda) - 1 = \lambda^2 - \lambda - 1 = 0
-   $$
+$$
 
    The roots of this equation are the eigenvalues:
 
-   $$
+$$
    \lambda_1 = \frac{1 + \sqrt{5}}{2}, \quad \lambda_2 = \frac{1 - \sqrt{5}}{2}
-   $$
+$$
 
 Whence we have the eigenvalues of $A$, we can express $A$ as $PDP^{-1}$, where $D$ is the diagonal matrix of eigenvalues and $P$ is the matrix of eigenvectors. Actually, we do not really need to compute $P$ but we just write both $P$ and $D$ here:
-   $$
+$$
    P = \begin{bmatrix} \lambda_1 & \lambda_2 \\ 1 & 1 \end{bmatrix}, \quad D = \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}
-   $$
+$$
 It is easy to compute see that $A^{n-1} = PD^{n-1}P^{-1}$ and 
 $$
 \begin{bmatrix}
@@ -115,20 +115,21 @@ $$
 
 Even if we do not compute $P$ and $P^{-1}$, we can see that the closed form for $dp[n]$ is given by:
 
-   $$
+$$
    dp[n] = c_1 \lambda_1^n + c_2 \lambda_2^n
-   $$
+$$
 
-   where $c_1$and $c_2$ are constants determined by the initial conditions. Solving for these constants using the initial conditions $dp[1] = 1$ and $dp[0] = 1$, we find:
+where $c_1$and $c_2$ are constants determined by the initial conditions. Solving for these constants using the initial conditions $dp[1] = 1$ and $dp[0] = 1$, we find:
 
-   $$
-   c_1 = \frac{1}{\sqrt{5}}\left(\frac{1 + \sqrt{5}}{2}\right), \quad c_2 = -\frac{1}{\sqrt{5}}\left(\frac{1 - \sqrt{5}}{2}\right)
-   $$
+$$
+c_1 = \frac{1}{\sqrt{5}}\left(\frac{1 + \sqrt{5}}{2}\right), \quad c_2 = -\frac{1}{\sqrt{5}}\left(\frac{1 - \sqrt{5}}{2}\right)
+$$
 
-   Thus, the closed form of $dp[n]$ is:
-   $$
-   dp[n] = \frac{1}{\sqrt{5}} \left( \left(\frac{1 + \sqrt{5}}{2}\right)^{n+1} - \left(\frac{1 - \sqrt{5}}{2}\right)^{n+1} \right)
-   $$
+Thus, the closed form of $dp[n]$ is:
+
+$$
+dp[n] = \frac{1}{\sqrt{5}} \left( \left(\frac{1 + \sqrt{5}}{2}\right)^{n+1} - \left(\frac{1 - \sqrt{5}}{2}\right)^{n+1} \right)
+$$
 
 Here is the code to compute the closed form:
 
