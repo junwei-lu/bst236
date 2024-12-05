@@ -178,6 +178,13 @@ nav:
     - Iteration and recursion: chapter_computational_complexity/iteration_and_recursion.md
     - Time complexity: chapter_computational_complexity/time_complexity.md
     - Space complexity: chapter_computational_complexity/space_complexity.md
+  - Chapter. Algorithms:
+    - chapter_algorithms/index.md
+    - Depth-first Search: chapter_algorithms/climb_stairs.md
+    - Divide and Conquer: chapter_algorithms/divide_n_conquer.md
+    - Breadth-first Search: chapter_algorithms/bfs.md
+    - Dynamic Programming: chapter_algorithms/dynamic_programming.md
+    - Summary: chapter_algorithms/summary.md
   # - Chapter. Dynamic programming:
   #   - chapter_dynamic_programming/index.md
   #   - Introduction to dynamic programming: chapter_dynamic_programming/intro_to_dynamic_programming.md
