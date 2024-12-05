@@ -53,23 +53,23 @@ Don't repeat yourself (DRY) is a fundamental concept in programming.
 - **DRY in Programming:** What if you need to change 1 thing? Needs to be changed in multiple places. Risk getting a wrong answer because we forgot to change one small thing.
 
     * Write code __a bit more general__ than your data or specific task.
-      - Don't assume particular dimensions.
-      - Don't forget about missing values (even if *your* data have none).
-      - But **don't try to handle every case.** Try to anticipate what you might be asked for, but don't prepare for every possibility.
+        - Don't assume particular dimensions.
+        - Don't forget about missing values (even if *your* data have none).
+        - But **don't try to handle every case.** Try to anticipate what you might be asked for, but don't prepare for every possibility.
     * Use __function arguments__ to handle different cases. 
-      - Don't assume particular file names.
-      - Don't assume particular tuning parameters. 
-      - Don't assume particular regression formulas.
-      - No magic numbers.
-      ``` r
-      get_bootstrap_ci <- function(..., nboot = 1e3)
-      ```
-      ``` python
-      def get_bootstrap_ci(..., nboot=1000):
-      ```
+        - Don't assume particular file names.
+        - Don't assume particular tuning parameters. 
+        - Don't assume particular regression formulas.
+        - No magic numbers.
+        ``` r
+        get_bootstrap_ci <- function(..., nboot = 1e3)
+        ```
+        ``` python
+        def get_bootstrap_ci(..., nboot=1000):
+        ```
     * Here are the tools to help you write more general code:
-      - Python configuration files .
-      - R `Renviron` file (See Workflow chapter).
+        - Python configuration files .
+        - R `Renviron` file (See Workflow chapter).
 
 ### Think and document before you code
 

@@ -1,43 +1,33 @@
 # Coding in style
 
-There are many books and online resources talking about coding style. Here we just want to share some basic principles.
-
-## Naming objects
-
-- Name should be descriptive and self-documenting. 
-
-
-- Use either `snake_case` or `camelCase` but make it consistent.
-
-## Python Coding Style Tutorial
-
-### Indentation
-Use 4 spaces per indentation level. Avoid mixing tabs and spaces. 
-
-### Maximum Line Length
-Limit all lines to a maximum of 79 characters.
-
-### Imports
-Group imports in the following order: standard library, third-party, local application/library specific. 
-### Whitespace
-Avoid extraneous whitespace in expressions and statements. 
-### Comments
-Use comments to explain code. Block comments apply to some or all code that follows them. 
-
-## Python Coding Style Examples
-
+Please check the complete Python style guide [PEP 8](https://peps.python.org/pep-0008/) or [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html). You can also check the detailed [R style guide](https://google.github.io/styleguide/Rguide.html).
+Here we just want to share some basic coding style principles.
 ### Naming objects
 
 Names should be descriptive and self-documenting:
 
 ```python
-# Bad - not descriptive
-def f(x):
-    return x * 2
+# Bad example - not self-documenting
+def func(y):
+    # z is gravitational force
+    z = 9.81
+    # y is time in seconds
+    y = 5
+    # x is displacement
+    x = 1/2 * z * y**2
+    return x
 
-# Good - descriptive and self-documenting
-def double_number(value):
-    return value * 2
+# Good example - self-documenting
+def compute_displacement(time_in_seconds):
+    gravitational_force = 9.81
+    displacement = 1/2 * gravitational_force * time_in_seconds**2
+    return displacement
+
+# Even better - with parameters
+def compute_displacement(time_in_seconds, 
+                       gravitational_force=9.81):
+    displacement = 1/2 * gravitational_force * time_in_seconds**2
+    return displacement
 ```
 
 Use either `snake_case` or `camelCase` but make it consistent:
@@ -50,6 +40,53 @@ def calculate_average(number_list):
 # camelCase (less common in Python)
 def calculateAverage(numberList):
     return sum(numberList) / len(numberList)
+```
+
+Python name conventions: 
+
+- Module names should use `snake_case`.
+- Class names should use `CapWords`.
+- Function and variable names should use `snake_case`.
+- Constant names should use `UPPERCASE`.
+- Private names should use a leading underscore, e.g., `_private_variable`.
+- Protected names should use a double leading underscore, e.g., `__protected_variable`.
+
+### Documentation
+
+Use docstrings to explain what the module, class, or function does.
+
+```python
+# Bad example
+def f(x, y):
+    a = x + y  # What does 'a' represent?
+    return a
+
+# Good example
+def calculate_total_price(item_price, tax_rate):
+    """Calculate final price including tax.
+    
+    Args:
+        item_price (float): Original price of the item
+        tax_rate (float): Tax rate as a decimal (e.g., 0.1 for 10%)
+    
+    Returns:
+        float: Total price including tax
+    """
+    total_price = item_price * (1 + tax_rate)
+    return total_price
+```
+
+### Spacing and Operators
+
+```python
+# Bad spacing
+x=y+z
+if x>0:print(x)
+
+# Good spacing
+x = y + z
+if x > 0:
+    print(x)
 ```
 
 ### Indentation
@@ -111,41 +148,7 @@ from myproject.core import *  # Avoid wildcard imports
 import os
 ```
 
-### Variable Naming and Documentation
 
-```python
-# Bad example
-def f(x, y):
-    a = x + y  # What does 'a' represent?
-    return a
-
-# Good example
-def calculate_total_price(item_price, tax_rate):
-    """Calculate final price including tax.
-    
-    Args:
-        item_price (float): Original price of the item
-        tax_rate (float): Tax rate as a decimal (e.g., 0.1 for 10%)
-    
-    Returns:
-        float: Total price including tax
-    """
-    total_price = item_price * (1 + tax_rate)
-    return total_price
-```
-
-### Spacing and Operators
-
-```python
-# Bad spacing
-x=y+z
-if x>0:print(x)
-
-# Good spacing
-x = y + z
-if x > 0:
-    print(x)
-```
 
 ## Tools for coding styles
 
