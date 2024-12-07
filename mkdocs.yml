@@ -148,8 +148,7 @@ nav:
   - Course Information:
     - chapter_syllabus/index.md
   - Chapter. Introduction:
-    - chapter_preface/about_the_course.md
-    - About this course: chapter_preface/about_the_course.md
+    - chapter_preface/index.md
   - Chapter. Basics of Coding:
     - chapter_coding/index.md
     - Principles: chapter_coding/code_principle.md
