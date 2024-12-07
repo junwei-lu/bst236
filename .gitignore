@@ -10,6 +10,10 @@
  raw_data/*
 # data/*
 
+# System files
+.DS_Store
+Makefile
+.gitattributes
 
 # Generated data and results
 # figs/*
