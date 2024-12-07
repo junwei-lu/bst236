@@ -221,22 +221,7 @@ Here are the visualization of the workflow on the commit status of the remote Gi
 
 We recommend using VS Code to resolve conflicts. Here is the tutorial [here](https://code.visualstudio.com/docs/editor/versioncontrol#_merge-conflicts). You can also watch this [video tutorial](https://www.youtube.com/watch?v=lz5OuKzvadQ).
 
-### Undoing Changes
 
-1. **Discard Unstaged Changes**
-```bash
-git restore filename
-```
-
-2. **Unstage Changes**
-```bash
-git restore --staged filename
-```
-
-3. **Undo Last Commit**
-```bash
-git reset --soft HEAD~1
-```
 
 
 ### .gitignore
