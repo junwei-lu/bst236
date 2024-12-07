@@ -198,6 +198,12 @@ def exp_recur(n: int) -> int:
     return exp_recur(n - 1) + exp_recur(n - 1) + 1
 ```
 ![Exponential complexity](time_complexity.assets/time_complexity_exponential.png)
+
+!!! note "P vs NP"
+
+    A [one-million-dollar](https://www.claymath.org/millennium/p-vs-np/) question in computer science is that whether all problems can be solved in polynomial time, i.e., the P vs NP problem. Most of the computer scientists believe that $P \neq NP$, i.e., there are some problems that cannot be solved in polynomial time. Many combinatorial optimization problems are in this category. These problems are usually graph-related problems, such as the [Hamiltonian cycle problem](https://en.wikipedia.org/wiki/Hamiltonian_path), [Traveling salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem), etc. 
+
+
 ### Logarithmic Time: $O(\log n)$
 
 Like exponential order, logarithmic order also frequently appears in recursive functions. Given an input data size $n$, since the size is halved each round, the number of iterations is $\log_2 n$, the inverse function of $2^n$.

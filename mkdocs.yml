@@ -163,6 +163,11 @@ nav:
     - Virtual Environment: chapter_workflow/venv.md
     - Reproducible R: chapter_workflow/R.md
     - Docker: chapter_workflow/docker.md
+  - Chapter. Complexity analysis:
+    - chapter_computational_complexity/index.md
+    #- Iteration and recursion: chapter_computational_complexity/iteration_and_recursion.md
+    - Time complexity: chapter_computational_complexity/time_complexity.md
+    - Space complexity: chapter_computational_complexity/space_complexity.md
   - Chapter. Data Structures:
     - chapter_data_structures/index.md
     - Lists: chapter_data_structures/list.md
@@ -173,11 +178,6 @@ nav:
     - Pandas DataFrame: chapter_data_structures/pandas_dataframe.md
     - Polars: chapter_data_structures/polars.md
     - Multiprocessing: chapter_data_structures/multiprocess.md
-  - Chapter. Complexity analysis:
-    - chapter_computational_complexity/index.md
-    - Iteration and recursion: chapter_computational_complexity/iteration_and_recursion.md
-    - Time complexity: chapter_computational_complexity/time_complexity.md
-    - Space complexity: chapter_computational_complexity/space_complexity.md
   - Chapter. Algorithms:
     - chapter_algorithms/index.md
     - Depth-first Search: chapter_algorithms/climb_stairs.md
