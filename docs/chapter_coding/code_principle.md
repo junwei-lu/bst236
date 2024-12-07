@@ -20,9 +20,10 @@ Here are the principles that you should pivot your coding mindset towards:
 It's OK to __copy/paste code__ from Google or Stack Overflow. It's OK to ask AI to generate code for you. I myself am doing these all the time. However, make sure you __understand how it works__.  
 
 Here are some ways to understand code:
-* Run line by line and see what each does. 
-* Change the code and see if it behaves as expected.
-* Ask AI to explain the code (and trust it with confidence level of $1-\alpha$, where $\alpha$ is the level you should choose based on your experience).
+
+    - Run line by line and see what each does. 
+    - Change the code and see if it behaves as expected.
+    - Ask AI to explain the code (and trust it with confidence level of $1-\alpha$, where $\alpha$ is the level you should choose based on your experience).
 
 
 
