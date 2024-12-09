@@ -6,7 +6,7 @@ There are many beautiful ideas in algorithms. We plan to use a classic problem t
 
     Given a staircase with $n$steps, where you can climb $1$or $2$steps at a time, how many different ways are there to reach the top?
 
-As shown in the figure below, there are $3$ways to reach the top of a $3$-step staircase.
+As shown in the figure below, there are $3$ ways to reach the top of a $3$-step staircase.
 
 ![Number of ways to reach the 3rd step](intro_to_dynamic_programming.assets/climbing_stairs_example.png)
 
@@ -54,6 +54,8 @@ def backtrack(problem, state, choices, result):
 
 Now we use the climbing stairs problem to demonstrate the backtracking algorithm.
 The goal of this problem is to determine the number of ways. Imagine climbing stairs as a multi-round choice process: starting from the ground, choosing to go up $1$ or $2$ steps at a time.
+
+![Backtracking algorithm for climbing stairs](backtracking.assets/backtracking_stairs.png)
 
 ```python
 def backtrack(n: int, state: int, choices: list[int], path: list[int], result: list[list[int]]) -> None:
