@@ -18,6 +18,12 @@ To install Github Copilot in VS Code, you can search for `Github Copilot` in the
 
 We also strongly recommend you to read the VS Code [tutorial](https://code.visualstudio.com/docs/copilot/overview) for Github Copilot. It introduces many useful features of Github Copilot.
 
+### Other AI-Copilot resources
+
+We also recommend (though not required) to install the following AI-Copilot tools:
+- [Cursor](https://www.cursor.sh/)
+- [Windsurf](https://codeium.com/windsurf)
+
 ## Install language environments
 
 ### Python

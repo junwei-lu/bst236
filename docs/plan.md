@@ -1,9 +1,10 @@
 # To Do
 
-- [ ] Add a checklist for preparing the course
-- [ ] Github classroom setup.
-- [ ] All installation instructions.
+- [X] Add a checklist for preparing the course
+- [x] Github classroom setup.
+- [x] All installation instructions.
 - [ ] Cluster setup.
+- [ ] Find interesting, available datasets for homework.
 
 # Course plan
 
@@ -70,3 +71,34 @@
 - Randomized
 - Homework: Covariance of normal (temperature ？）, Hession of logistic,cupy matrix multiplication; 
 
+## Optimization
+
+### Concepts
+
+- Convexity
+- Convergence: linear convergence, sublinear convergence
+- pytorch autograd
+
+### First Order Methods
+
+- Gradient descent
+- Accelerated gradient descent (Momentum)
+- Proximal gradient descent
+
+### Second Order Methods
+
+- Newton's method
+- Quasi-Newton methods: BFGS
+
+
+### Stochastic Optimization
+
+- SGD
+- Adam 
+- Pytorch optimizer
+
+
+### Miscellaneous
+
+- Nonconvex optimization
+- Combinatorial optimization

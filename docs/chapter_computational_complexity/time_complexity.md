@@ -152,9 +152,9 @@ $$
 
 ![Common types of time complexity](time_complexity.assets/time_complexity_common_types.png)
 
-### Constant Time: $O(1)$
+### Constant Time
 
-Operations that execute in fixed time regardless of input size:
+Constant time $O(1)$ 
 
 ```python
 def constant(n: int):
@@ -162,9 +162,9 @@ def constant(n: int):
     print(size)
 ```
 
-### Linear Time: $O(n)$
+### Linear Time
 
-Linear order commonly appears in single-loop structures:
+Linear order $O(n)$ commonly appears in single-loop structures:
 
 ```python
 def linear(n: int):
@@ -174,9 +174,9 @@ def linear(n: int):
 
 
 
-### Quadratic Time: $O(n^2)$
+### Quadratic Time
 
-Quadratic order typically appears in nested loops, where both the outer and inner loops have a time complexity of $O(n)$, resulting in an overall complexity of $O(n^2)$:
+Quadratic order $O(n^2)$ typically appears in nested loops, where both the outer and inner loops have a time complexity of $O(n)$, resulting in an overall complexity of $O(n^2)$:
 
 ```python
 def quadratic(n: int):
@@ -186,9 +186,9 @@ def quadratic(n: int):
 ```
 ![Quadratic complexity](time_complexity.assets/time_complexity_constant_linear_quadratic.png)
 
-### Exponential Time: $O(2^n)$
+### Exponential Time
 
-Exponential order often appears in recursive functions. For example, in the code below, it recursively splits into two halves, stopping after $n$ divisions:
+Exponential order $O(2^n)$ often appears in recursive functions. For example, in the code below, it recursively splits into two halves, stopping after $n$ divisions:
 
 ```python
 def exp_recur(n: int) -> int:
@@ -201,12 +201,12 @@ def exp_recur(n: int) -> int:
 
 !!! note "P vs NP"
 
-    A [one-million-dollar](https://www.claymath.org/millennium/p-vs-np/) question in computer science is that whether all problems can be solved in polynomial time, i.e., the P vs NP problem. Most of the computer scientists believe that $P \neq NP$, i.e., there are some problems that cannot be solved in polynomial time. Many combinatorial optimization problems are in this category. These problems are usually graph-related problems, such as the [Hamiltonian cycle problem](https://en.wikipedia.org/wiki/Hamiltonian_path), [Traveling salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem), etc. 
+    A [one-million-dollar](https://www.claymath.org/millennium/p-vs-np/) question in computer science is that whether all problems can be solved in polynomial time, i.e., the P vs NP problem. Most of the computer scientists believe that $P \neq NP$. Namely, there are some problems that cannot be solved in polynomial time, formally known as NP-hard problems. Many combinatorial optimization problems are in this category. These problems are usually graph-related problems, such as the [Hamiltonian cycle problem](https://en.wikipedia.org/wiki/Hamiltonian_path), [Traveling salesman problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem), etc. 
 
 
-### Logarithmic Time: $O(\log n)$
+### Logarithmic Time 
 
-Like exponential order, logarithmic order also frequently appears in recursive functions. Given an input data size $n$, since the size is halved each round, the number of iterations is $\log_2 n$, the inverse function of $2^n$.
+Like exponential order, logarithmic order $O(\log n)$ also frequently appears in recursive functions. Given an input data size $n$, since the size is halved each round, the number of iterations is $\log_2 n$, the inverse function of $2^n$.
 
 ```python
 def log_recur(n: int) -> int:
@@ -216,9 +216,9 @@ def log_recur(n: int) -> int:
     return log_recur(n / 2) + 1
 ```
 ![Log complexity](time_complexity.assets/time_complexity_logarithmic.png)
-### Linear-Logarithmic Time: $O(n \log n)$
+### Linear-Logarithmic Time
 
-Each level of a binary tree has $O(n)$ operations, and the tree has $\log n$ levels, resulting in a time complexity of $O(n \log n)$.
+Linear-logarithmic order $O(n \log n)$ often appears in recursive functions. Each level of a binary tree has $O(n)$ operations, and the tree has $\log n$ levels, resulting in a time complexity of $O(n \log n)$.
 
 
 ```python
@@ -236,9 +236,9 @@ def linear_log_recur(n: int) -> int:
 !!! note "Sorting complexity"
     The quick sorting algorithm has a time complexity of $O(n \log n)$. In `python`, you can use `list.sort()` to sort the  `list` in linear logarithmic time.
 
-### Factorial Time: $O(n!)$
+### Factorial Time
 
-Factorials are typically implemented using recursion. As shown in the code, the first level splits into $O(n)$ branches, the second level into $O(n-1)$ branches, and so on, stopping after the $n$-th level:
+Factorial time $O(n!)$ are typically implemented using recursion. As shown in the code, the first level splits into $O(n)$ branches, the second level into $O(n-1)$ branches, and so on, stopping after the $n$-th level:
 
 ```python
 def factorial_recur(n: int) -> int:

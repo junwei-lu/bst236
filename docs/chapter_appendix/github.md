@@ -1,16 +1,5 @@
 # Github Classroom 
 
-## What is Git?
-Git is a powerful tool that helps developers track and manage changes to their code over time. Think of it like a time machine for your code - it keeps track of every version of your files, allowing you to see what changed, when it changed, and who changed it.
-
-The key features that make Git useful are:
-- Version history: Git saves a complete history of all changes, making it easy to go back to previous versions if needed
-- Collaboration: Multiple developers can work on the same code without conflicts
-- Branching: You can create separate branches to work on new features without affecting the main code
-- Distributed: Every developer has a complete copy of the code and its history on their computer
-
-Git was created by Linus Torvalds (who also created Linux) and has become the standard tool for version control in software development. To learn more about using Git, check out [A Guide to Git](https://missing.csail.mit.edu/2020/version-control/).
-
 ## Github 
 
 Each student should create Github account if you don't already have one. Be sure to include your Harvard email as one of the emails associated with the account, as this will give us access to additional features such as GitHub Copilot
@@ -25,9 +14,6 @@ One option to avoid inputting your username and password when pushing to a priva
 5. Copy your public key and enter it into Github under Settings > SSH Keys
 
 
-## Github Classroom
-
-For this course, you'll use Git and Github Classroom as your version control system to manage and submit assignments. These tools will help you track changes to your code and share your work with course staff.
 
 ## Getting Started with Github Classroom
 

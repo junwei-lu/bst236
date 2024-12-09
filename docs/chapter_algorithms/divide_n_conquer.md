@@ -11,7 +11,7 @@ We have learned to solve the problem using [deep-first search with memoization t
 
 
 
-## Method 4: Closed Form Solution
+## Closed Form Solution
 
 Let $dp[i]$be the number of ways to reach the $i^{th}$step. The recurrence relation for the climbing stairs problem is:
 
@@ -141,7 +141,7 @@ def climbing_stairs_closed_form(n: int) -> int:
 ```
 
 
-## Method 5: Divide and Conquer
+## Divide and Conquer
 
 While the closed form solution provides a direct computation of the number of ways to climb the stairs, it involves floating-point arithmetic, which can lead to precision issues for very large values of $n$. Additionally, it requires the computation of powers of irrational numbers, which can be computationally expensive. Last but not least, the "human computation complexity" of computing the matrix eigenvalues and deriving the closed form might be far beyond the worst algorithm.
 
@@ -197,7 +197,7 @@ def climbing_stairs_binpow(n: int) -> int:
 
 Recall the [time complexity anlysis](../chapter_computational_complexity/time_complexity.md#logarithmic-time) for logrithmic complexity, logarithmic order reflects situations where "the size is halved each round." In the case of binary exponentiation, the size of the problem is halved each round, so the time complexity is $O(d^3\log n)$.
 
-## Divide-and-Conquer Search Approach
+## Divide-and-Conquer Search
 
 The divide-and-conquer technique can be effectively applied to search problems, such as binary search:
 
