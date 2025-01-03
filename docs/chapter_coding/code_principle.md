@@ -21,9 +21,9 @@ It's OK to __copy/paste code__ from Google or Stack Overflow. It's OK to ask AI 
 
 Here are some ways to understand code:
 
-    - Run line by line and see what each does. 
-    - Change the code and see if it behaves as expected.
-    - Ask AI to explain the code (and trust it with confidence level of $1-\alpha$, where $\alpha$ is the level you should choose based on your experience).
+- Run line by line and see what each does. 
+- Change the code and see if it behaves as expected.
+- Ask AI to explain the code (and trust it with confidence level of $1-\alpha$, where $\alpha$ is the level you should choose based on your experience).
 
 
 
@@ -64,13 +64,9 @@ Don't repeat yourself (DRY) is a fundamental concept in programming.
         - No magic numbers.
         ``` r
         get_bootstrap_ci <- function(..., nboot = 1e3)
-        ```
-        ``` python
         def get_bootstrap_ci(..., nboot=1000):
         ```
-    * Here are the tools to help you write more general code:
-        - Python configuration files .
-        - R `Renviron` file (See Workflow chapter).
+    * Use configuration files (`.env`, `.yaml`, `.json`, etc.) to store the hyperparameters.
 
 ### Think and document before you code
 
@@ -131,7 +127,7 @@ Here is the famous statement from [Kent Beck](https://en.wikipedia.org/wiki/Kent
 - Make It Right 
 - Make It Fast
 
-So what is the difference between "work" and "right"? Here's one [interpretation](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast): First crank out code that handles one common case. Then fix all of the special cases, error handling, etc. so all tests pass.
+So what is the difference between "work" and "right"? Here's one [interpretation](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast): First crank out code that handles one common case. Then fix all the special cases, error handling, etc. so all tests pass.
 
 Remember: you don't get bonus points for code that "looks impressive".
 

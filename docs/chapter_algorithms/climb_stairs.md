@@ -4,7 +4,7 @@ There are many beautiful ideas in algorithms. We plan to use a classic problem t
 
 !!! question "Climbing stairs"
 
-    Given a staircase with $n$steps, where you can climb $1$or $2$steps at a time, how many different ways are there to reach the top?
+    Given a staircase with $n$steps, where you can climb $1$or $2$ steps at a time, how many different ways are there to reach the top?
 
 As shown in the figure below, there are $3$ ways to reach the top of a $3$-step staircase.
 
@@ -14,7 +14,7 @@ As shown in the figure below, there are $3$ ways to reach the top of a $3$-step 
 
 Let us start with the most straightforward approach: brute force search all the possible ways to climb the stairs. We will introduce the strategy called "backtracking".
 
-<u>Backtracking</u> is a method to solve problems by exhaustive search, where the core idea is to start from an initial state and brute force all possible solutions, recording the correct ones until a solution is found or all possible choices are exhausted without finding a solution.
+<u>Backtracking</u> is a method to solve problems by exhaustive search, where the core idea is to start from an initial state and brute force all possible solutions, recording the correct ones until a solution is found, or all possible choices are exhausted without finding a solution.
 Backtracking typically employs "depth-first search" to traverse the solution space.
 
 ### Backtracking

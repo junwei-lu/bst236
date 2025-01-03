@@ -18,6 +18,7 @@ While virtual environments (venv, conda, renv) handle package dependencies, Dock
 ### When to Use Docker vs. Virtual Environments
 
 Use Docker when you need:
+
 - System-level dependencies (e.g., CUDA, system libraries)
 - Cross-platform compatibility
 - Multiple language environments (e.g., R + Python)
@@ -25,6 +26,7 @@ Use Docker when you need:
 - Continuous Integration/Deployment (CI/CD)
 
 Use virtual environments when:
+
 - Working with single-language projects
 - Need lighter-weight solutions
 - Quick local development

@@ -7,7 +7,6 @@ Computational complexity is a fundamental concept in computer science that helps
 
 ## Lectures
 
-* [Iteration and Recursion](iteration_and_recursion.md)
 * [Time Complexity](time_complexity.md)
 * [Space Complexity](space_complexity.md)
  

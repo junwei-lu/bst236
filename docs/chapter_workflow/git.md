@@ -227,6 +227,7 @@ We recommend using VS Code to resolve conflicts. Here is the tutorial [here](htt
 ### .gitignore
 
 Create a `.gitignore` file to exclude:
+
 - Large data files
 - Sensitive information
 - Generated files

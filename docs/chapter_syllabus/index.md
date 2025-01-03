@@ -26,6 +26,7 @@ icon: material/rocket-launch-outline
 - [Group Work](syllabus.md#group-work)
 - [Generative AI Tools Policy](syllabus.md#generative-ai-tools-policy)
 - [Github Classroom](syllabus.md#github-classroom)
+- [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines)
 
 
 
