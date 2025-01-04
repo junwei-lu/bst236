@@ -16,7 +16,7 @@ We discussed the two important standards for a good algorithm in the [Complexity
 
 Actually, the time complexity of multiplying two $n$ by $n$ matrices can be faster than $O(n^3)$. Let $\omega$ be the exponent of the time complexity $O(n^\omega)$ of multiplying two $n$ by $n$ matrices. The naive range is $2 \le \omega \le 3$. It is still an open problem to find the minimum $\omega$. Till 2024, the best $\omega$ is 2.371339. We refer the readers to the [Wikipedia page](https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication) for more details.
 
-
+![Time Complexity of Matrix Multiplication](./numerical_linear_algebra.assets/MatrixMultComplexity_svg.svg)
 
 However, the real computation time is not only determined by the time complexity. In practice, even two algorithms with the same time complexity can have different running time. 
 To understand why this situation occurs, we first need to understand the storage structure of modern computers. Modern computers use a multi-level storage system: registers, caches, main memory (RAM), disks, and tapes. When a computer directly exchanges information with registers, calculations occur by transferring the required data sequentially from higher-level to lower-level storage, starting from registers. Data at the end of the calculation process is then sequentially stored back into lower-level storage. As the storage level decreases (e.g., from registers to disks or tapes), the access speed to the data slows significantly. Generally, there are quantitative differences between these levels. Registers are extremely fast and efficient, while disks and tapes are relatively slow. Therefore, the capacity of disks and tapes is large, while the capacities of caches and registers are relatively small.
@@ -43,7 +43,7 @@ The following table shows the ratio $q$ for some common matrix operations.
 
 From the **table**, it is evident that the efficiency of matrix-matrix operations is the highest, with an average of computations per data retrieval. Therefore, in the design of matrix-related algorithms, we tend to maximize the use of matrix-matrix operations <u>when the computation complexity is same</u>. 
 
-We want to emphasize again that the above analysis only applies to when the computation complexities are same. When you want to compute $ABx$ for the matrices $A, B$ and vector $x$, the complexity of $(AB)x$ is $O(n^3)$ while the complexity of $A(Bx)$ is $O(n^2)$. Therefore, we should compute $Bx$ first in this case.
+We want to emphasize again that the above analysis only applies to when the computation complexities are same. In practice, we will consider the above suggestions using distributed algorithms. When you want to compute $ABx$ for the matrices $A, B$ and vector $x$, the complexity of $(AB)x$ is $O(n^3)$ while the complexity of $A(Bx)$ is $O(n^2)$. Therefore, we should compute $Bx$ first in this case.
 
 ## Sensitivity and Stability
 
@@ -67,7 +67,8 @@ We can see that when $f(x)$ is differentiable
 $$
 c(x) \approx \frac{|f'(x)||x|}{|f(x)|}.
 $$
-However, for complex problems, it is not easy to compute the condition number. We will discuss the condition number of linear algebra problems in the following section.
+For complex problems, it is not easy to compute the condition number. 
+We will discuss the condition number of linear algebra problems in the following sections.
 
 
 ### Backward Error Analysis
@@ -87,7 +88,7 @@ $$
 $$
 We can get a reliable result when we apply a numerically stable algorithm to a well-conditioned problem.
 
-In this course, we will not discuss the details of backward error analysis as most of the algorithms we will use are numerically stable. Instead, we will just give a simple tip for possible numerical instabilities in practice.
+In this course, we will not discuss the details of backward error analysis as most of the algorithms we will use are numerically stable. Besides, in the data analysis, the random errors will typically dominate the roundoff errors so the backward error analysis is not as important as in other scientific computing problems. Instead, we will just give a simple tip for possible numerical instabilities in practice.
 
 **Tip**: Be careful with operations (especially multiplication and division) involving vastly different magnitudes.
 

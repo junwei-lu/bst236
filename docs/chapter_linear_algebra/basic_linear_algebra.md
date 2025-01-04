@@ -53,6 +53,29 @@ We say $A$ is *symmetric* if $A = A^T$.
 
 The rank of a matrix $A$ is the dimension of $A$'s column space.
 
+### Numpy Matrix Operations
+Numpy has optimized the matrix operations based on the BLAS and LAPACK libraries. So in python, for the most of the time, using Numpy to do matrix operations is faster than writing your own code.
+
+```python
+import numpy as np
+
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+
+# Identity matrix
+I = np.eye(2)
+# Matrix addition
+C = A + B
+# Matrix multiplication
+D = A @ B
+# Matrix entry-wise multiplication
+E = A * B 
+# Matrix transpose
+F = A.T
+# Matrix inverse
+G = np.linalg.inv(A)
+```
+
 ## Eigenvalues and Eigenvectors
 
 Given two vectors $u, v \in \mathbb{R}^d$, the *inner product* is $\langle u, v \rangle := u^T v = \sum_{j=1}^d u_j v_j$. We define the $\ell_2$-norm of $u$ as $\|u\| = \sqrt{|\langle u, u \rangle|}$. The cosine of the angle between $u$ and $v$ is $\cos \alpha = \frac{\langle u, v \rangle}{\|u\|\|v\|}$. We say $u$ is orthogonal to $v$, denoted as $u \perp v$ if $\langle u, v \rangle=0$.
