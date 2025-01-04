@@ -22,7 +22,7 @@ When the class begins, the TA will send out a form asking for your GitHub userna
 
 ### Setting Up Your Repository
 
-When a GitHub classroom assignment is created, a template repository will be cloned into your personal GitHub account. 
+When a GitHub classroom assignment is created, a template repository will be cloned into your personal GitHub account. Note that each team should create **only one** repository for each homework. You should discuss with your team members to decide who will host the repository and how to collaborate with each other.
 
 Follow these steps to get started:
 

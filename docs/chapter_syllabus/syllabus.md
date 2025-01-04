@@ -12,7 +12,7 @@
 
 All assignments are due at 12:00pm on the day listed. Each team gets 7 late days which can be used to turn in homework late without penalty. These 7 late days are for the entire semester. 
 
-One late day is measured as a 24 hour period after the supposed deadline. It is the student's responsibility to submit his/her homework online. If late days are used, please write at the head of your homework in the formate: XX late days used for this homework, and XX days remained. 
+One late day is measured as a 24 hour period after the supposed deadline. It is the student's responsibility to submit his/her homework online. If late days are used, please write at the head of your homework ReadME.md file in the format: XX late days used for this homework, and XX days remained. 
 
 Once you run out of late days, late submissions are penalized 25% per day. (For example, a homework turned in two days late will receive only 50% credit.) More importantly, we will not grant additional late days once you have used up all 7 late days.
 
@@ -65,6 +65,7 @@ Here are the general guidelines for the homework submission. We will specify the
      - Introduction: Briefly describe the purpose of the repository.
      - Installation: How to set up your code. For example, from `git clone` to installing the dependencies. Make sure users can run your code and reproduce the results in the next usage step after they follow your installation instructions.
      - Usage: Provide a sample usage of your code with the expected output. You may need to have test input cases to show the expected output. You can also use images and gifs to illustrate the usage or the output if necessary.
+     - Report: Report other information that is required by the homework.
      - Contributions: How each group member contributes to the project.
 - The repository should have all the necessary code and files to replicate the installation and usage in your README.md file.
 - Each team only needs to submit one repository. We will grade your homework based on the repository and all the team members' will receive the same grade.
