@@ -9,12 +9,14 @@ Recall the symmetric matrix $A$ has the eigenvalue decomposition $A = U\Lambda U
 There are two famous theorems about the sensitivity of eigenvalues and eigenvectors.
 
 **Theorem**(Weyl's inequality): If $A, B \in \mathbb{R}^{n \times n}$ are two symmetric matrices, then for any eigenvalue $\lambda_j$ of $A$ and $\mu_j$ of $B$, we have:
+
 $$
 |\lambda_j - \mu_j| \le \|A - B\|_2.
 $$
 
 **Theorem**(Davis-Kahan Theorem): If $A, B \in \mathbb{R}^{n \times n}$ are two symmetric matrices, with eigenvalues $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n$ and $\mu_1 \ge \mu_2 \ge \cdots \ge \mu_n$, 
  let $u_j, v_j$ be the $j$-th eigenvector of $A$ and $B$ corresponding to $\lambda_j$ and $\mu_j$, we have:
+
 $$
 \|u_j - v_j\| \le \frac{2^{1.5}\|A - B\|}{\min(\lambda_{j-1} - \lambda_j, \lambda_{j} - \lambda_{j+1})}.
 $$
@@ -27,7 +29,8 @@ Be aware that the above theorems are the simplified version. We can refer to the
 
 Here we consider the positive definite matrix $A$ with the eigenvalues $\lambda_1 > \lambda_2 \ge \cdots \ge \lambda_n >0$.
 
-The power method applies the power
+The power method applies the power of the matrix $A$:
+
 $$
 A^k = U \Lambda^k U^T = \sum_{j=1}^n \lambda_j^k u_j u_j^T.
 $$
@@ -63,12 +66,14 @@ $$
 is a very good approximation of an eigenvector of $A$.
 
 This motivates the **power method** to find the largest eigenvalue and its corresponding eigenvector.
+
 $$
 \begin{aligned}
 x_{k+1} &= A x_k \\
 x_{k+1} &= \frac{x_{k+1}}{||x_{k+1}||}
 \end{aligned}
 $$
+
 Notice that we normalize the vector $x_{k+1}$ in each iteration as the eigenvector is only determined by the direction.
 
 ```python
@@ -95,12 +100,14 @@ for _ in range(max_iter):
 **Convergence and Sensitivity**: We can see from the above analysis that the power method convergence speed is determined by $\lambda_2/\lambda_1$. If $\lambda_2$ is close to $\lambda_1$, the convergence is slow. This also tells us that the convergence speed of the power method is determined by **eigengap**.
 
 **Other eigenvectors**: The power method above only finds the largest eigenvalue and its corresponding eigenvector. As $A^{-1}$ has the largest eigenvalues $\lambda_n^{-1}$ with the eigenvector $u_n$, we can use the power method to $A^{-1}$ to get the smallest eigenvalue and its corresponding eigenvector. This is called the **inverse power method**.
+
 $$
 \begin{aligned}
 x_{k+1} &= A^{-1} x_k \\
 x_{k+1} &= \frac{x_{k+1}}{||x_{k+1}||}
 \end{aligned}
 $$
+
 We can see that the inverse power method needs to solve a linear system. You can improve the efficiency by apply the [LU decomposition](linear_equation.md#tips-for-solving-linear-equations) first. Similar to the above analysis, the convergence speed of the inverse power method is determined by $\lambda_n/\lambda_{n-1}$.
 
 We can further apply the inverse power method to $A - \mu I$ with some shift $\mu$ to accelerate the convergence. This is called the **shifted inverse power method**. Without loss of generality, if we want to compute $\lambda_1$, and we assume $0<|\lambda_1 - \mu| < |\lambda_2 - \mu| \le \cdots \le |\lambda_n - \mu|$. The convergence speed is determined by $|\lambda_k - \mu|/|\lambda_{k+1} - \mu|$, the shift $\mu$ should be chosen as close to $\lambda_k$ as possible to accelerate the convergence. You may worry that when $\mu$ is too close to $\lambda_k$, linear equation for $A-\mu I$ is ill-conditioned. Actually, it can be shown that the illness of $A-\mu I$ will not affect the convergence of the inverse power method.
@@ -113,12 +120,15 @@ Though the power method is simple and easy to implement, it depends on the eigen
 **QR Decomposition**: For any matrix $A$, there exists a QR decomposition $A = QR$, where $Q$ is an orthogonal matrix and $R$ is an upper triangular matrix. QR decomposition can be computed by the [Householder transformation](https://en.wikipedia.org/wiki/QR_decomposition) with the complexity $O(n^3)$.
 
 QR decomposition can be applied to any matrix $A$, but the $Q, R$ could be complex if $A$ is not symmetric. So we mainly focus on the symmetric matrices in the following discussion. Also, for rectangular matrix $A \in \mathbb{R}^{m \times n}$ with $m > n$, we can also apply the QR decomposition as 
+
 $$
 A = Q \begin{pmatrix} R \\ 0 \end{pmatrix}
 $$
+
 where $R$ is an upper triangular matrix.
 
 **QR Iteration**: We can use the QR iteration to find the eigenvalues and eigenvectors: Given $A_0 = A$, 
+
 $$
 \begin{aligned}
 A_{k} &= Q_k R_k \\
@@ -131,9 +141,11 @@ $$
 ![QR Iteration](./eigen.assets/QR.gif)
 
 In fact, we can see from the QR iteration that
+
 $$
 A^k = Q_1 Q_2 \cdots Q_k R_k R_{k-1} \cdots R_1.
 $$
+
 Therefore, the QR algorithm can be seen as a more sophisticated variation of the basic "power" eigenvalue algorithm. 
 
 Here's a simple implementation of the QR iteration method:

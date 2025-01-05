@@ -9,15 +9,19 @@ We want to solve the linear equation $Ax = b$ for $x$ given $A \in \mathbb{R}^{n
 **Sensitivity**. The sensitivity of solving a linear equation depends on the condition number of the matrix $A$.
 
 **Definition**(Condition Number of Matrix). The condition number of a matrix $A$ is defined as:
+
 $$
 \kappa(A) = \|A\| \|A^{-1}\| = \frac{\sigma_{\max}(A)}{\sigma_{\min}(A)}.
 $$
 
 **Theorem**(Sensitivity of Linear Equation Solver). Suppose $A \in \mathbb{R}^{n \times n}$ is non-singular, $b \in \mathbb{R}^n$ is non-zero, and $\delta A \in \mathbb{R}^{n \times n}$ satisfies $\|A^{-1}\| \|\delta A\| < 1$. If $x$ and $x + \delta x$ are solutions to the linear systems:
+
 $$
 Ax = b \quad \text{and} \quad (A + \delta A)(x + \delta x) = b + \delta b,
 $$
+
 then the following holds:
+
 $$
 \frac{\|\delta x\|}{\|x\|} \leq \frac{\kappa(A)}{1 - \kappa(A) \frac{\|\delta A\|}{\|A\|}} \left( \frac{\|\delta A\|}{\|A\|} + \frac{\|\delta b\|}{\|b\|} \right).
 $$
@@ -114,6 +118,7 @@ x = solve_triangular(U, y)
 **Tip 3**. When $A$ is low rank plus a diagonal matrix, we can use the Woodbury matrix identity to speed up the computation.
 
 **Woodbury Matrix Identity**. 
+
 $$
 (D+UV)^{-1}=D^{-1}-D^{-1}U(I+VD^{-1}U)^{-1}VD^{-1}
 $$
@@ -121,9 +126,11 @@ $$
 If $A = D + UV \in \mathbb{R}^{n \times n}$ with $D$ is a diagonal matrix and $U, V \in \mathbb{R}^{n \times k}$, then directly computing the inverse of $A$ is $O(n^3)$. However, using the Woodbury matrix identity, we only need to solve the linear equation of the matrix $I + VD^{-1}U$ which is only $k$ by $k$. The overall time complexity using the Woodbury matrix identity reduces to $O(k^3+k^2n)$.
 
 For example, when solving a ridge regression
+
 $$
 \hat{x} = \arg\min_x \|Ax - b\|^2 + \lambda \|x\|^2 = (A^T A + \lambda I)^{-1} A^T b,
 $$
+
 we can use the Woodbury matrix identity to speed up the computation when the dimension is much larger than the sample size.
 
 ## Stability of LU Decomposition
@@ -193,7 +200,9 @@ PA = \begin{bmatrix}
 0 & 1 - \epsilon
 \end{bmatrix}
 $$
-Even if we round off $\epsilon$ to zero in $L$ and $U$, we still have 
+
+Even if we round off $\epsilon$ to zero in $L$ and $U$, we still have
+
 $$
 \begin{bmatrix}
 1 & 0 \\
@@ -206,4 +215,5 @@ $$
 0 & 1 
 \end{bmatrix} \approx PA.
 $$
+
 This idea leads to the algorithm of Gaussian elimination with partial pivoting, which we will not discuss in detail. You can read the textbook on numerical linear algebra for more details.

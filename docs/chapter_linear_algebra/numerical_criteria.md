@@ -1,4 +1,4 @@
-# Introduction to Numerical Linear Algebra
+# Criteria of Numerical Algorithms
 
 There are two major tasks in numerical linear algebra:
 
@@ -77,15 +77,19 @@ We all know that computers using the floating point arithmetic.
 For example, suppose the computer can only store 2 digits after the decimal point. When we compute $\pi + e$, the computer actually computes float$(\pi + e) = 3.14 + 2.72 = 5.86$ with a roundoff error $\epsilon \approx 0.00012$. Therefore, it is important to analyze how the roundoff errors affect the accuracy of algorithms. Even if a numerical problem is well-conditioned, a bad algorithm can still lead to a large error.
 
 **Definition**(Backward Error Analysis). Suppose $\hat{f}$ is the algorithm to compute $f$. Suppose there exists a $\delta x$ such that 
+
 $$
 \hat{f}(x) = f(x + \delta x), \quad |\delta x| \le \epsilon |x|,
 $$ 
+
 where $\epsilon$ relates to the machine precision and the problem. We say the algorithm is **numerically stable** if $\epsilon$ is small.
 
 Combining the sensitivity analysis and the backward error analysis, we can have the overall error bound of the result:
+
 $$
 \frac{|\hat{f}(x) - f(x)|}{|f(x)|} = \frac{|f(x + \delta x) - f(x)|}{|f(x)|} \le c(x) \frac{|\delta x|}{|x|} \le c(x) \epsilon.
 $$
+
 We can get a reliable result when we apply a numerically stable algorithm to a well-conditioned problem.
 
 In this course, we will not discuss the details of backward error analysis as most of the algorithms we will use are numerically stable. Besides, in the data analysis, the random errors will typically dominate the roundoff errors so the backward error analysis is not as important as in other scientific computing problems. Instead, we will just give a simple tip for possible numerical instabilities in practice.
