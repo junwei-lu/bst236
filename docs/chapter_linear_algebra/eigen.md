@@ -4,6 +4,25 @@ We now discuss the numerical algorithms for computing eigenvalues and eigenvecto
 
 Recall the symmetric matrix $A$ has the eigenvalue decomposition $A = U\Lambda U^T$, where $U = (u_1, u_2, \cdots, u_n)$ is an orthogonal matrix with the columns $u_1, u_2, \cdots, u_n$ being the eigenvectors of $A$ and $\Lambda = \text{diag}(\lambda_1, \lambda_2, \cdots, \lambda_n)$ is a diagonal matrix with diagonal entries $\lambda_1\ge \lambda_2\ge \cdots \ge \lambda_n$ being the eigenvalues of $A$.
 
+## Sensitivity of Eigenvalues and Eigenvectors
+
+There are two famous theorems about the sensitivity of eigenvalues and eigenvectors.
+
+**Theorem**(Weyl's inequality): If $A, B \in \mathbb{R}^{n \times n}$ are two symmetric matrices, then for any eigenvalue $\lambda_j$ of $A$ and $\mu_j$ of $B$, we have:
+$$
+|\lambda_j - \mu_j| \le \|A - B\|_2.
+$$
+
+**Theorem**(Davis-Kahan Theorem): If $A, B \in \mathbb{R}^{n \times n}$ are two symmetric matrices, with eigenvalues $\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n$ and $\mu_1 \ge \mu_2 \ge \cdots \ge \mu_n$, 
+ let $u_j, v_j$ be the $j$-th eigenvector of $A$ and $B$ corresponding to $\lambda_j$ and $\mu_j$, we have:
+$$
+\|u_j - v_j\| \le \frac{2^{1.5}\|A - B\|}{\min(\lambda_{j-1} - \lambda_j, \lambda_{j} - \lambda_{j+1})}.
+$$
+
+From the above two theorems, we can see that the eigenvalues are stable but the eigenvectors will be sensitive when the **eigengap** $\Delta_j = \min(\lambda_{j-1} - \lambda_j, \lambda_{j} - \lambda_{j+1})$ is small.
+
+Be aware that the above theorems are the simplified version. We can refer to the [Matrix Perturbation Theory](https://www.amazon.com/Perturbation-Computer-Science-Scientific-Computing/dp/0126702306) for more details.
+
 ## Power Method
 
 Here we consider the positive definite matrix $A$ with the eigenvalues $\lambda_1 > \lambda_2 \ge \cdots \ge \lambda_n >0$.
@@ -73,7 +92,7 @@ for _ in range(max_iter):
         break
 ```
 
-**Convergence and Sensitivity**: We can see from the above analysis that the power method convergence speed is determined by $\lambda_2/\lambda_1$. If $\lambda_2$ is close to $\lambda_1$, the convergence is slow. This also tells us that the sensitivity of eigenvalues is determined by **eigengap** $\Delta_k = |\lambda_k - \lambda_{k+1}|$. If $\Delta_k$ is small, it is more difficult to distinguish $u_k$ from $u_{k+1}$.
+**Convergence and Sensitivity**: We can see from the above analysis that the power method convergence speed is determined by $\lambda_2/\lambda_1$. If $\lambda_2$ is close to $\lambda_1$, the convergence is slow. This also tells us that the convergence speed of the power method is determined by **eigengap**.
 
 **Other eigenvectors**: The power method above only finds the largest eigenvalue and its corresponding eigenvector. As $A^{-1}$ has the largest eigenvalues $\lambda_n^{-1}$ with the eigenvector $u_n$, we can use the power method to $A^{-1}$ to get the smallest eigenvalue and its corresponding eigenvector. This is called the **inverse power method**.
 $$
@@ -152,7 +171,54 @@ for _ in range(max_iter):
 eigenvals = np.diag(A_k)
 ```
 
-The QR iteration method above is just the basic version. It can be further accelerated by applying the shift technique like the power method. In fact, the state-of-the-art [Francis algorithm](https://en.wikipedia.org/wiki/QR_algorithm) applies the famous implicit double-shift with no QR decompositions being explicitly performed. 
+
+### Practical Algorithms
+We will briefly discuss the practical algorithms for computing eigenvalues and eigenvectors below. Please refer to the specialized textbooks, e.g., [Matrix Computations](https://www.amazon.com/Computations-Hopkins-Studies-Mathematical-Sciences/dp/0801854148), for more details.
+
+The QR iteration method above is just the basic version. It can be further accelerated by applying the shift technique like the power method. In fact, the state-of-the-art [Francis algorithm](https://en.wikipedia.org/wiki/QR_algorithm) applies the famous implicit double-shift with no QR decomposition being explicitly performed. In fact, instead of QR decomposition, the Francis algorithm decomposes matrix into $QH$ form, where $Q$ is orthogonal but $H$ is an upper [Hessenberg matrix](https://mathworld.wolfram.com/HessenbergMatrix.html). The complexity of the Francis algorithm is $O(n^3)$.
+
+When $A$ is symmetric, we ususally apply the tridiagonalization to $A = QTQ^T$ first, where $T$ is a [tridiagonal matrix](https://mathworld.wolfram.com/TridiagonalMatrix.html). Then we can apply an implicit QR iteration to $T$ with the Wilkinson shift. This is one of the most remarkable algorithms in the numerical linear algebra. We refer to the [notes](https://www.cs.utexas.edu/~flame/Notes/NotesOnSymQR.pdf) for more details.
+
+For SVD decomposition $A = U\Sigma V^T \in \mathbb{R}^{m \times n}$, $m \ge n$, as $U$ is the eigenvector matrix of $A^TA$ and $V$ is the eigenvector matrix of $A^TA$, we can apply the QR iteration to $A^TA$ to get the eigenvalues and eigenvectors of $A^TA$. However, the practical SVD algorithm will not conduct eigen-decomposition of $A^TA$ and $A^TA$ explicitly. Refer to the [Golub-Reinsch algorithm](https://people.inf.ethz.ch/gander/talks/Vortrag2022.pdf) for more details. The complexity of the Golub-Reinsch algorithm is usually $O(m^2n+n^2m + n^3)$.
+
+## Python Implementation
+
+Like the linear equation, both `numpy` and `scipy` provide the `linalg` module for the eigenvalue and eigenvector problems.
+
+You may need to consider to use different functions based on:
+- Whether $A$ is symmetric
+- Whether you only need the eigen/singular values 
+- Whether you only need the top $k$ or the complete decomposition
+```python
+import numpy as np
+
+A = np.array([[1, 2],
+              [2, 3]])
+
+# Compute eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(A)
+# If you only need eigenvalues
+eigenvalues = np.linalg.eigvals(A)
+# Eigendecomposition for symmetric matrices
+eigenvalues, eigenvectors = np.linalg.eigh(A)
+# If you only need eigenvalues
+eigenvalues = np.linalg.eigvalsh(A)
+# Perform SVD
+U, S, VT = np.linalg.svd(A, full_matrices=False) #If full_matrices = True (default), U and VT are of shape (M, M), (N, N). If False, the shapes are (M, K) and (K, N), where K = min(M, N).
+# If you only need singular values
+singular_values = np.linalg.svdvals(A)
+
+# Compute the largest k eigenvalues and eigenvectors, when k << n
+from scipy.sparse.linalg import eigs, eigsh, svds
+k = 1
+eigenvalues, eigenvectors = eigs(A, k=k, which='LM')  # 'LM' selects largest magnitude eigenvalues
+# For symmetric matrices
+eigenvalues, eigenvectors = eigsh(A, k=k, which='LA')  # 'LA' selects largest algebraic eigenvalues
+# Top k singular values and vectors
+U, S, VT = svds(A, k=k)
+```
+
+The `scipy.sparse.linalg` package provides more efficient implementations for large sparse matrices and it implements the specialized algorithms if you only need top $k$ eigenvalues and eigenvectors. Refer to the [scipy documentation](https://docs.scipy.org/doc/scipy/reference/sparse.linalg.html#module-scipy.sparse.linalg) for more details. You only need to consider to use the `scipy.sparse.linalg` for the top $k$ eigenvalues and eigenvectors when $k \ll n$ and $n$ is super large. We encourage you to test the computational efficiency for the above code to see the difference using different methods.
 
 
 

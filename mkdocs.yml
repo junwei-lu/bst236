@@ -184,15 +184,12 @@ nav:
     - Breadth-first Search: chapter_algorithms/bfs.md
     - Dynamic Programming: chapter_algorithms/dynamic_programming.md
     - Summary: chapter_algorithms/summary.md
-  # - Chapter. Dynamic programming:
-  #   - chapter_dynamic_programming/index.md
-  #   - Introduction to dynamic programming: chapter_dynamic_programming/intro_to_dynamic_programming.md
-  #   - Characteristics of DP problems: chapter_dynamic_programming/dp_problem_features.md
-  #   - DP problem-solving approach: chapter_dynamic_programming/dp_solution_pipeline.md
-  #   - 0-1 Knapsack problem: chapter_dynamic_programming/knapsack_problem.md
-  #   - Unbounded knapsack problem: chapter_dynamic_programming/unbounded_knapsack_problem.md
-  #   - Edit distance problem: chapter_dynamic_programming/edit_distance_problem.md
-  #   - Summary: chapter_dynamic_programming/summary.md
+  - Chapter. Linear Algebra:
+    - chapter_linear_algebra/index.md
+    - Linear Algebra Basics: chapter_linear_algebra/basic_linear_algebra.md
+    - Numerical Criteria: chapter_linear_algebra/numerical_criteria.md
+    - Solving Linear Equation: chapter_linear_algebra/linear_equation.md
+    - Solving Eigen-Decomposition: chapter_linear_algebra/eigen.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md

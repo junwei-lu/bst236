@@ -10,7 +10,7 @@ We want to solve the linear equation $Ax = b$ for $x$ given $A \in \mathbb{R}^{n
 
 **Definition**(Condition Number of Matrix). The condition number of a matrix $A$ is defined as:
 $$
-\kappa(A) = \|A\| \|A^{-1}\|.
+\kappa(A) = \|A\| \|A^{-1}\| = \frac{\sigma_{\max}(A)}{\sigma_{\min}(A)}.
 $$
 
 **Theorem**(Sensitivity of Linear Equation Solver). Suppose $A \in \mathbb{R}^{n \times n}$ is non-singular, $b \in \mathbb{R}^n$ is non-zero, and $\delta A \in \mathbb{R}^{n \times n}$ satisfies $\|A^{-1}\| \|\delta A\| < 1$. If $x$ and $x + \delta x$ are solutions to the linear systems:

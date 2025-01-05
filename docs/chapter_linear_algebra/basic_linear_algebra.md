@@ -143,6 +143,10 @@ We can see that the eigenvalue decomposition is a special SVD. The matrix $A$ as
 
 ![Visualization of SVD](./basic_linear_algebra.assets/svd.png)
 
+
+
+
+
 Given the concepts above, we can define the matrix operator norm.
 
 
@@ -151,3 +155,14 @@ Given the concepts above, we can define the matrix operator norm.
 $$\|A\|_{2} = \max_{\|x\| \le 1} \|Ax\| = \max_{\|x\| \le 1} \sqrt{x^T A^T A x} = \sqrt{\lambda_{\max}(A^T A)} = \sigma_1$$
 
 where $\sigma_1$ is the largest singular value of $A$. The operator norm measures the maximum "stretching factor" of the matrix when applied to any unit vector. Geometrically, it represents the semi-major axis of the ellipse that the unit ball is mapped to under the linear transformation $A$. In the following, we will simply use $\|A\|$ to denote the operator norm of $A$.
+
+**Connection between SVD and Eigenvalue Decomposition**:
+
+- The singular values of $A$ are the square roots of the eigenvalues of $A^T A$.
+   $$
+   \sigma_i(A) = \sqrt{\lambda_i(A^T A)} = \sqrt{\lambda_i(A A^T)}
+   $$
+- The left singular vectors of $A$ are the same as the eigenvectors of $A^T A$.
+- The right singular vectors of $A$ are the same as the eigenvectors of $A A^T$.
+- If $A$ is symmetric, it will have real eigenvalues and eigenvectors. Assume $|\lambda_1| \ge |\lambda_2| \ge \cdots \ge |\lambda_d|$, then $\sigma_i(A) = |\lambda_i|$. Note that we order the eigenvalues by their absolute values.
+- If $A$ is positive semidefinite, it will have non-negative eigenvalues and eigenvectors and the SVD is the same as the eigenvalue decomposition (by ingoring the zero eigenvalues).
