@@ -24,7 +24,7 @@ Based on this hierarchical storage structure of computers, when designing softwa
 
 ![Storage Structure of Modern Computers](./numerical_linear_algebra.assets/storage_pyramid.png)
 
-To summary, in modern computers, <u>computation is much faster than data communication</u>. Usually the bottleneck of your code is determined by the volume of data communication.
+To summarize, in modern computers, <u>computation is much faster than data communication</u>. Usually the bottleneck of your code is determined by the volume of data communication.
 Suppose a particular computational task requires a total of $f$ operations and $m$ data retrievals; we define:
 
 $$q = \frac{f}{m}$$
@@ -41,9 +41,9 @@ The following table shows the ratio $q$ for some common matrix operations.
 
 
 
-From the **table**, it is evident that the efficiency of matrix-matrix operations is the highest, with an average of computations per data retrieval. Therefore, in the design of matrix-related algorithms, we tend to maximize the use of matrix-matrix operations <u>when the computation complexity is same</u>. 
+From the **table**, it is evident that the efficiency of matrix-matrix operations is the highest, with an average of computations per data retrieval. Therefore, in the design of matrix-related algorithms, we tend to maximize the use of matrix-matrix operations <u>when the computation complexity is same</u>.  For example, when multiplying matrices, numpy package (essentially BLAS and LAPACK libraries) has been optimized to conduct [block-wise matrix multiplication](https://www.netlib.org/lapack/lawnspdf/lawn107.pdf) considering a lot of hardware details and hundreds of experts have been working on the code optimization. This is why we should always use built-in functions to do matrix operations. 
 
-We want to emphasize again that the above analysis only applies to when the computation complexities are same. In practice, we will consider the above suggestions using distributed algorithms. When you want to compute $ABx$ for the matrices $A, B$ and vector $x$, the complexity of $(AB)x$ is $O(n^3)$ while the complexity of $A(Bx)$ is $O(n^2)$. Therefore, we should compute $Bx$ first in this case.
+We want to emphasize again that the above analysis only applies to when the computation complexities are same. In practice, we will consider the above suggestions using distributed algorithms. When you want to compute $ABx$ for the matrices $A, B$ and vector $x$, the complexity of $(AB)x$ is $O(n^3)$ while the complexity of $A(Bx)$ is $O(n^2)$. Therefore, we should compute $Bx$ first in this case. 
 
 ## Sensitivity and Stability
 
@@ -90,9 +90,11 @@ We can get a reliable result when we apply a numerically stable algorithm to a w
 
 In this course, we will not discuss the details of backward error analysis as most of the algorithms we will use are numerically stable. Besides, in the data analysis, the random errors will typically dominate the roundoff errors so the backward error analysis is not as important as in other scientific computing problems. Instead, we will just give a simple tip for possible numerical instabilities in practice.
 
-**Tip**: Be careful with operations (especially multiplication and division) involving vastly different magnitudes.
+**Tip**: Be careful with operations (especially multiplication and division) involving vastly different magnitudes. 
 
-Example 1. Suppose we want to compute: $(10^8 \times 1.23456789)/10^8$
+This is also related to the partial pivoting for LU decomposition we will discuss in the next section.
+
+Example. Suppose we want to compute: $(10^8 \times 1.23456789)/10^8$
 
 This can be done in two different orders:
 
@@ -110,5 +112,15 @@ Method 3: Divide numbers with same order of magnitude
 1. Compute $10^8/10^8= 1$
 2. Multiply by $1.23456789$: $1 \times 1.23456789 = 1.23456789$
 
-Example 2. Suppose we want to compute $e^{x} - e^{-x}$ for $x$ around 0. It is better to compute $e^x - e^{-x} = 2x + \frac{2x^3}{3!} + \frac{2x^5}{5!} + \cdots$
+**Tip 2**. Avoid catastrophic cancellation.
+
+```python
+x = 1.000000000000001  # rounded to 1 + 5*2^{-52}
+y = 1.000000000000002  # rounded to 1 + 9*2^{-52}
+z = y - x              # difference is exactly 4*2^{-52}
+```
+
+Example. Compute $x^2-y^2$ as $(x+y)(x-y)$ when $x$ and $y$ are close. 
+
+Example. Suppose we want to compute $e^{x} - e^{-x}$ for $x$ around 0. It is better to compute $e^x - e^{-x} = 2x + \frac{2x^3}{3!} + \frac{2x^5}{5!} + \cdots$
 

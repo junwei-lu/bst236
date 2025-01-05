@@ -54,7 +54,7 @@ We say $A$ is *symmetric* if $A = A^T$.
 The rank of a matrix $A$ is the dimension of $A$'s column space.
 
 ### Numpy Matrix Operations
-Numpy has optimized the matrix operations based on the BLAS and LAPACK libraries. So in python, for the most of the time, using Numpy to do matrix operations is faster than writing your own code.
+Numpy has optimized the matrix operations based on the [BLAS](https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms) and [LAPACK](https://en.wikipedia.org/wiki/LAPACK) libraries. So in python, for the most of the time, using Numpy to do matrix operations is faster than writing your own code.
 
 ```python
 import numpy as np
