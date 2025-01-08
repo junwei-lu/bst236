@@ -9,6 +9,14 @@
 - [Gemini](https://gemini.google.com/): Longer context.
 - [LLaMA](https://www.llama.com/): Open source LLM developed by Meta.
 
+| **Need**                         | **Recommended Models**                        | **Key Features**                                                                 |
+|-----------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------|
+| High-Quality, Nuanced Output      | o1, o1-mini, Claude 3.5 Sonnet | Top-tier quality, well-structured responses, ideal for professional applications |
+| Speed-Sensitive Applications      | Gemini 1.5 Flash       | Fastest output speeds, minimal delay, great for real-time tasks                  |
+| Cost-Conscious Deployments        | Mistral 3B, Llama 3.2 1B                      | Highly affordable per million tokens, cost-effective for large-scale use         |
+| Extensive Context Processing      | Gemini 1.5 Pro                  | 2 million token context window, supports deep contextual analysis                |
+| Low-Latency, Fast Response        | Mistral NeMo                      | Minimal response time, excellent for interactive, real-time applications         |
+
 Explore and choose the best language model for your tasks, e.g., creative writing, coding, math, etc.
 
 If you are Harvard affiliated, you can get access to many language models through [Harvard AI Sandbox](https://huit.harvard.edu/ai-sandbox).
