@@ -153,7 +153,11 @@ nav:
     - chapter_coding/index.md
     - Principles: chapter_coding/code_principle.md
     - Code in Style: chapter_coding/coding_style.md
-    - AI Copilot: chapter_coding/ai_copilot.md
+  - Chapter. Coding with AI:
+    - chapter_ai/index.md
+    - AI Copilot: chapter_ai/ai_copilot.md
+    - Prompt Engineering: chapter_ai/prompt_engineering.md
+    - AI Tools: chapter_ai/ai_tools.md
   - Chapter. Computing Workflow:
     - chapter_workflow/index.md
     - Workflow: chapter_workflow/computing_workflow.md
@@ -184,12 +188,13 @@ nav:
     - Breadth-first Search: chapter_algorithms/bfs.md
     - Dynamic Programming: chapter_algorithms/dynamic_programming.md
     - Summary: chapter_algorithms/summary.md
-  - Chapter. Linear Algebra:
+  - Chapter. Numerical Linear Algebra:
     - chapter_linear_algebra/index.md
     - Linear Algebra Basics: chapter_linear_algebra/basic_linear_algebra.md
     - Numerical Criteria: chapter_linear_algebra/numerical_criteria.md
-    - Solving Linear Equation: chapter_linear_algebra/linear_equation.md
-    - Solving Eigen-Decomposition: chapter_linear_algebra/eigen.md
+    - Linear Equation: chapter_linear_algebra/linear_equation.md
+    - Eigen-Decomposition: chapter_linear_algebra/eigen.md
+    - Sparse Matrix: chapter_linear_algebra/sparse_matrix.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md

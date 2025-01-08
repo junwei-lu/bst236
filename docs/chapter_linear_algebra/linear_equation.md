@@ -1,4 +1,4 @@
-# Linear Equation Solvers
+# Linear Equation Algorithms
 
 We want to solve the linear equation $Ax = b$ for $x$ given $A \in \mathbb{R}^{n \times n}$ and $b \in \mathbb{R}^n$. As we stated in the previous section, we will not discuss the details of the algorithms but focus on the practical issues when solving linear equations.
 

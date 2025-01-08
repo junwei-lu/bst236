@@ -1,4 +1,4 @@
-# Eigenvalues and Eigenvectors
+# Eigenvalues and Eigenvectors Algorithms
 
 We now discuss the numerical algorithms for computing eigenvalues and eigenvectors. We will mainly focus on the symmetric matrices with real eigenvalues and eigenvectors. For the general case, most of the tasks in data science need to conduct the singular value decomposition (SVD). 
 
@@ -44,11 +44,10 @@ $$
 where $\alpha_i \in \mathbb{R}$. Thus, we have:
 
 $$
-A^k x_0 = \sum_{j=1}^n \alpha_j A^k u_j
-$$
-
-$$
-= \lambda_1^k \left[ \alpha_1 u_1 + \sum_{j=2}^n \alpha_j \left( \frac{\lambda_j}{\lambda_1} \right)^k u_j \right].
+\begin{aligned}
+A^k x_0 &= \sum_{j=1}^n \alpha_j A^k u_j \\
+&= \lambda_1^k \left[ \alpha_1 u_1 + \sum_{j=2}^n \alpha_j \left( \frac{\lambda_j}{\lambda_1} \right)^k u_j \right].
+\end{aligned}
 $$
 
 Therefore, it follows that:
@@ -190,6 +189,32 @@ We will briefly discuss the practical algorithms for computing eigenvalues and e
 The QR iteration method above is just the basic version. It can be further accelerated by applying the shift technique like the power method. In fact, the state-of-the-art [Francis algorithm](https://en.wikipedia.org/wiki/QR_algorithm) applies the famous implicit double-shift with no QR decomposition being explicitly performed. In fact, instead of QR decomposition, the Francis algorithm decomposes matrix into $QH$ form, where $Q$ is orthogonal but $H$ is an upper [Hessenberg matrix](https://mathworld.wolfram.com/HessenbergMatrix.html). The complexity of the Francis algorithm is $O(n^3)$.
 
 When $A$ is symmetric, we ususally apply the tridiagonalization to $A = QTQ^T$ first, where $T$ is a [tridiagonal matrix](https://mathworld.wolfram.com/TridiagonalMatrix.html). Then we can apply an implicit QR iteration to $T$ with the Wilkinson shift. This is one of the most remarkable algorithms in the numerical linear algebra. We refer to the [notes](https://www.cs.utexas.edu/~flame/Notes/NotesOnSymQR.pdf) for more details.
+$$
+\begin{array}{ccc}
+\text{Upper Triangular} & \text{Upper Hessenberg} & \text{Tridiagonal} \\
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & 0 & \times & \times \\
+0 & 0 & 0 & 0 & \times
+\end{bmatrix} &
+\begin{bmatrix}
+\times & \times & \times & \times & \times \\
+\times & \times & \times & \times & \times \\
+0 & \times & \times & \times & \times \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & 0 & \times & \times
+\end{bmatrix} &
+\begin{bmatrix}
+\times & \times & 0 & 0 & 0 \\
+\times & \times & \times & 0 & 0 \\
+0 & \times & \times & \times & 0 \\
+0 & 0 & \times & \times & \times \\
+0 & 0 & 0 & \times & \times
+\end{bmatrix}
+\end{array}
+$$
 
 For SVD decomposition $A = U\Sigma V^T \in \mathbb{R}^{m \times n}$, $m \ge n$, as $U$ is the eigenvector matrix of $A^TA$ and $V$ is the eigenvector matrix of $A^TA$, we can apply the QR iteration to $A^TA$ to get the eigenvalues and eigenvectors of $A^TA$. However, the practical SVD algorithm will not conduct eigen-decomposition of $A^TA$ and $A^TA$ explicitly. Refer to the [Golub-Reinsch algorithm](https://people.inf.ethz.ch/gander/talks/Vortrag2022.pdf) for more details. The complexity of the Golub-Reinsch algorithm is usually $O(m^2n+n^2m + n^3)$.
 
@@ -198,9 +223,12 @@ For SVD decomposition $A = U\Sigma V^T \in \mathbb{R}^{m \times n}$, $m \ge n$, 
 Like the linear equation, both `numpy` and `scipy` provide the `linalg` module for the eigenvalue and eigenvector problems.
 
 You may need to consider to use different functions based on:
+
 - Whether $A$ is symmetric
 - Whether you only need the eigen/singular values 
 - Whether you only need the top $k$ or the complete decomposition
+
+
 ```python
 import numpy as np
 
