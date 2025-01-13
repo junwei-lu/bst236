@@ -3,6 +3,7 @@
 
 This course aims to create a beginner-friendly course on statistical computing.
 
+![cover](./about_the_course.assets/matrix2.gif)
 
 ## Target audience
 

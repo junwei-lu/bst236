@@ -2,6 +2,8 @@
 
 This chapter is about how to utilize AI tools to assist in coding tasks.
 
+![cover](./preface.assets/AI.jpeg)
+
 ## Lectures
 
 - [AI Copilot](ai_copilot.md): Learn how to effectively use AI tools like GitHub Copilot to assist in coding tasks.

@@ -23,12 +23,13 @@ If you are Harvard affiliated, you can get access to many language models throug
 
 Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the language models under different tasks.
 
-## Coding tools
+## Assistant Code
 
 - [GitHub Copilot](https://github.com/features/copilot): IDE based, copilot based, offers autocompletion, code generation, and code review.
 - [Cursor](https://www.cursor.com/): IDE based, autocompletion, code generation, and agentic features for automating complex workflows.
 - [Windsurf](https://windsurf.dev/): IDE based, positions itself as an "agentic" IDE, cascade mode for generating entire processes based on prompts.
 - [Tabnine](https://www.tabnine.com/): IDE based
+- [Codeium](https://codeium.com/): Developed by the same team as Windsurf, offers autocompletion, code generation, and code review. It can be extensions to your current IDE like VS Code.
 - [Devin AI](https://devin.ai/): Web based, Operates autonomously, capable of executing entire development tasks without human intervention, effectively acting as an independent software engineer rather than a coding assistant. Operates within a secure, sandboxed environment equipped with common developer tools. $500/month.
 - [Claude](https://www.anthropic.com/): Web based, provides implementation of code after code generation.
 
@@ -70,7 +71,7 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 - [Descript](https://www.descript.com/): An all-in-one editing tool for both audio and video, Descript uses AI to automate tasks like noise reduction and audio leveling. It also offers features like overdubbing, which allows for voice cloning, and the ability to remove filler words from your audio.
 - [Podcastle](https://podcastle.ai/): An all-in-one editing tool for both audio and video, Descript uses AI to automate tasks like noise reduction and audio leveling. It also offers features like overdubbing, which allows for voice cloning, and the ability to remove filler words from your audio
 - [Suno](https://suno.com/): Powerful AI song and music generator.
-- [Eleven Labs](https://elevenlabs.io/): AI-assisted text-to-speech software capable of producing lifelike speech by synthesizing vocal emotion and intonation. It also provides **multilingual speech generation** and long-form content creation with contextually-aware voices.
+- [Eleven Labs](https://elevenlabs.io/): AI-assisted text-to-speech software capable of producing lifelike speech by synthesizing vocal emotion and intonation. It also provides multilingual speech generation and long-form content creation with contextually-aware voices.
 
 ## Prompt Engineering
 
@@ -80,5 +81,6 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 
 ## AI Agent Builder
 
-- [AutoGen by Microsoft](https://microsoft.github.io/autogen/0.2/): An open-source Python framework that simplifies the creation and management of multi-agent AI systems. AutoGen allows developers to define, configure, and compose AI agents that can collaborate to solve complex tasks with minimal user inpu
+- [AutoGen by Microsoft](https://microsoft.github.io/autogen/0.2/): An open-source Python framework that simplifies the creation and management of multi-agent AI systems. AutoGen allows developers to define, configure, and compose AI agents that can collaborate to solve complex tasks with minimal user input
+- [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT): An open-source platform that allows you to create, deploy, and manage continuous AI agents that automate complex workflows.
 - [CrewAI](https://www.crewai.com/): enables AI agents to collaborate effortlessly and execute complicated tasks. 

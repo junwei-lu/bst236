@@ -15,6 +15,8 @@ Virtual environments solve several critical problems:
 3. **Conflict Prevention**: Avoid package version conflicts between projects
 4. **Clean Management**: Easy to create, delete, and recreate environments
 
+![venv](./venv.assets/venv.jpg)
+
 ## Virtual Environment Tools
 
 ### venv (Built-in)

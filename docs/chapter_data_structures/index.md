@@ -2,6 +2,8 @@
 
 This chapter covers fundamental data structures in Python, focusing on their implementation, use cases, and performance characteristics. We explore both built-in Python data structures and specialized libraries for data manipulation and analysis.
 
+![cover](./preface.assets/binary_tree.png)
+
 ## Lectures
 
 **Basic Data Structures**

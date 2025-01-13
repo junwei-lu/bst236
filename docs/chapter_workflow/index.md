@@ -6,6 +6,8 @@ Design the best practices for workflows in scientific computing will make your r
 2. **Automated**: Reduces time spent on repetitive tasks
 3. **Maintainable**: Code remains functional and understandable over time
 
+![cover](./git.assets/github.jpg)
+
 This chapter covers essential tools and practices for reproducible research:
 
 ## Lectures

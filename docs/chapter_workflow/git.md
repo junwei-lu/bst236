@@ -213,6 +213,7 @@ Here are the visualization of the workflow on the commit status of the remote Gi
     - This will make your pull request history cleaner and easier to review.
     - You can simply use `git pull origin my_feature --rebase` to rebase your branch on the github main branch.
 
+![rebase](./git.assets/git_rebase.jpeg)
 
 
 ## Advanced Git Usage

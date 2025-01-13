@@ -1,9 +1,8 @@
 ## Overview
 
-Everyone here already knows how to code. This chapter is about the **best practices** for coding in these aspects:
+Everyone here already knows how to code. This chapter is about the **best practices** for  **Readable coding**: making your code easier to read and maintain.
 
-1. **Readable coding**: Making your code easier to read and maintain.
-2. **AI-Assisted coding**: Leveraging AI tools to enhance productivity and code quality.
+![preface](./assets/code_review.jpg)
 
 ## Lectures
 

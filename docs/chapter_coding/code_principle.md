@@ -134,7 +134,7 @@ Remember: you don't get bonus points for code that "looks impressive".
   In Donald Knuth's paper "Structured Programming With GoTo Statements", he also wrote: "Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%."
 
 
-
+![fix_bug](./assets/debug.gif)
 
 However, in this course, we will teach you a lot about how to make your code more efficient. Does that mean we violate the above principle? I want to answer this question by the another quote:
 
