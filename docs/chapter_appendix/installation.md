@@ -49,25 +49,25 @@ touch ~/.zshrc
 depending on the name of your shell. Then 
 
 1. Install pyenv:
-   - Ensure that [homebrew](https://brew.sh) is installed.
-   - On macOS: `brew install pyenv`
-   - On Linux: `curl https://pyenv.run | bash`
+  - Ensure that [homebrew](https://brew.sh) is installed.
+  - On macOS: `brew install pyenv`
+  - On Linux: `curl https://pyenv.run | bash`
    
 
 2. Add pyenv to your shell configuration:
-   - For bash, add to `~/.bashrc`:
+  - For bash, add to `~/.bashrc`:
      ```bash
      export PYENV_ROOT="$HOME/.pyenv"
      export PATH="$PYENV_ROOT/bin:$PATH"
      eval "$(pyenv init -)"
      ```
-   - For zsh, add to `~/.zshrc`:
+  - For zsh, add to `~/.zshrc`:
      ```bash
      export PYENV_ROOT="$HOME/.pyenv"
      export PATH="$PYENV_ROOT/bin:$PATH"
      eval "$(pyenv init -)"
      ```
-   - Source the file to apply the changes:
+  - Source the file to apply the changes:
      ```bash
      source ~/.bashrc  # For bash
      source ~/.zshrc   # For zsh
@@ -194,36 +194,36 @@ You can download Cursor from the [official website](https://www.cursor.sh/) and 
 We also suggest installing mini-conda for data analysis projects. To install Miniconda on macOS, follow these steps:
 
 1. **Download the Miniconda Installer:**
-   - Visit the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
-   - Choose the installer that matches your macOS architecture:
-     - For Apple Silicon (M1, M2, etc.): Select the "Miniconda3 macOS Apple M1 64-bit pkg" installer.
-     - For Intel-based Macs: Select the "Miniconda3 macOS Intel x86 64-bit pkg" installer.
+  - Visit the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
+  - Choose the installer that matches your macOS architecture:
+    - For Apple Silicon (M1, M2, etc.): Select the "Miniconda3 macOS Apple M1 64-bit pkg" installer.
+    - For Intel-based Macs: Select the "Miniconda3 macOS Intel x86 64-bit pkg" installer.
 
 2. **Install Miniconda:**
-   - Locate the downloaded `.pkg` file in your `Downloads` folder.
-   - Double-click the installer to launch it.
-   - Follow the on-screen instructions:
-     - Read and agree to the license agreement.
-     - Choose the installation type:
-       - **Install for all users of this computer (Recommended):** Installs Miniconda into `/opt/miniconda3` for all users.
-       - **Install just for me:** Installs Miniconda into your home directory.
-     - Click "Install" to proceed.
+  - Locate the downloaded `.pkg` file in your `Downloads` folder.
+  - Double-click the installer to launch it.
+  - Follow the on-screen instructions:
+    - Read and agree to the license agreement.
+    - Choose the installation type:
+      - **Install for all users of this computer (Recommended):** Installs Miniconda into `/opt/miniconda3` for all users.
+      - **Install just for me:** Installs Miniconda into your home directory.
+    - Click "Install" to proceed.
 
 3. **Initialize Miniconda:**
-   - After installation, open the Terminal application.
-   - Run the following command to initialize conda:
+  - After installation, open the Terminal application.
+  - Run the following command to initialize conda:
      ```bash
      conda init
      ```
-   - Close and reopen the Terminal to apply the changes.
+  - Close and reopen the Terminal to apply the changes.
 
 4. **Verify the Installation:**
-   - In the Terminal, check the conda version by running:
+  - In the Terminal, check the conda version by running:
      ```bash
      conda --version
      ```
-   - A successful installation will display the conda version number.
-   - Run `conda deactivate` to leave the environment.
+  - A successful installation will display the conda version number.
+  - Run `conda deactivate` to leave the environment.
 
 For more detailed information, refer to the [official Miniconda installation documentation](https://docs.anaconda.com/miniconda/install/).
 
