@@ -17,7 +17,7 @@ One option to avoid inputting your username and password when pushing to a priva
 
 ## Getting Started with Github Classroom
 
-When the class begins, the TA will send out a form asking for your GitHub username. Be sure to promptly fill this out. 
+Please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSevzi4x0q_jwUyWH6euwSLc-B0qOkIFzZiAh1dVVQCnOO3inQ/viewform?usp=sharing) so that we can add your username to this GitHub classroom. 
 
 
 ### Setting Up Your Repository
