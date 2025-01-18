@@ -49,25 +49,27 @@ touch ~/.zshrc
 depending on the name of your shell. Then 
 
 1. Install pyenv:
-   - Ensure that [homebrew](https://brew.sh) is installed.
-   - On macOS: `brew install pyenv`
-   - On Linux: `curl https://pyenv.run | bash`
+
+    - Ensure that [homebrew](https://brew.sh) is installed.
+    - On macOS: `brew install pyenv`
+    - On Linux: `curl https://pyenv.run | bash`
    
 
 2. Add pyenv to your shell configuration:
-   - For bash, add to `~/.bashrc`:
+
+    - For bash, add to `~/.bashrc`:
      ```bash
      export PYENV_ROOT="$HOME/.pyenv"
      export PATH="$PYENV_ROOT/bin:$PATH"
      eval "$(pyenv init -)"
      ```
-   - For zsh, add to `~/.zshrc`:
+    - For zsh, add to `~/.zshrc`:
      ```bash
      export PYENV_ROOT="$HOME/.pyenv"
      export PATH="$PYENV_ROOT/bin:$PATH"
      eval "$(pyenv init -)"
      ```
-   - Source the file to apply the changes:
+    - Source the file to apply the changes:
      ```bash
      source ~/.bashrc  # For bash
      source ~/.zshrc   # For zsh
@@ -130,14 +132,11 @@ Ensure that R (version 3.4.0 or higher) is installed on your system:
 - **macOS**: Download the installer from [CRAN](https://cran.r-project.org/bin/macosx/) and follow the installation prompts.
 - **Linux**: Use your package manager to install R. For example, on Ubuntu:
 
+
   ```bash
   sudo apt-get update
   sudo apt-get install r-base
   ```
-
-
-
-
 
 **2. Install radian**
 
@@ -173,13 +172,13 @@ In VS Code:
 To integrate radian with VS Code:
 
 - Open VS Code settings:
-  - Click on the gear icon in the lower-left corner and select "Settings," or press `Ctrl+,`.
+    - Click on the gear icon in the lower-left corner and select "Settings," or press `Ctrl+,`.
 - In the search bar, type `r.rterm`.
-- Set the path to radian:
-  - **macOS/Linux**: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian` (e.g., `/usr/local/bin/radian`).
+- Set the path to radian: 
+    - **macOS/Linux**: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian` (e.g., `/usr/local/bin/radian`).
 - Enable bracketed paste mode:
-  - Search for `r.bracketedPaste` and ensure it's checked.
-  - Search for `r.plot.useHttpgd` and enable it to use the httpgd plot viewer.
+- Search for `r.bracketedPaste` and ensure it's checked.
+- Search for `r.plot.useHttpgd` and enable it to use the httpgd plot viewer.
 
 
 ## Optional software
@@ -194,42 +193,89 @@ You can download Cursor from the [official website](https://www.cursor.sh/) and 
 We also suggest installing mini-conda for data analysis projects. To install Miniconda on macOS, follow these steps:
 
 1. **Download the Miniconda Installer:**
-   - Visit the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
-   - Choose the installer that matches your macOS architecture:
-     - For Apple Silicon (M1, M2, etc.): Select the "Miniconda3 macOS Apple M1 64-bit pkg" installer.
-     - For Intel-based Macs: Select the "Miniconda3 macOS Intel x86 64-bit pkg" installer.
+
+
+    - Visit the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
+    - Choose the installer that matches your macOS architecture:
+        - For Apple Silicon (M1, M2, etc.): Select the "Miniconda3 macOS Apple M1 64-bit pkg" installer.
+        - For Intel-based Macs: Select the "Miniconda3 macOS Intel x86 64-bit pkg" installer.
 
 2. **Install Miniconda:**
-   - Locate the downloaded `.pkg` file in your `Downloads` folder.
-   - Double-click the installer to launch it.
-   - Follow the on-screen instructions:
-     - Read and agree to the license agreement.
-     - Choose the installation type:
-       - **Install for all users of this computer (Recommended):** Installs Miniconda into `/opt/miniconda3` for all users.
-       - **Install just for me:** Installs Miniconda into your home directory.
-     - Click "Install" to proceed.
+
+
+    - Locate the downloaded `.pkg` file in your `Downloads` folder.
+    - Double-click the installer to launch it.
+    - Follow the on-screen instructions:
+    - Read and agree to the license agreement.
+    - Choose the installation type: **Install for all users of this computer (Recommended).**
+    - Click "Install" to proceed.
 
 3. **Initialize Miniconda:**
-   - After installation, open the Terminal application.
-   - Run the following command to initialize conda:
+
+    - After installation, open the Terminal application.
+    - Run the following command to initialize conda:
      ```bash
      conda init
      ```
-   - Close and reopen the Terminal to apply the changes.
+    - Close and reopen the Terminal to apply the changes.
 
 4. **Verify the Installation:**
-   - In the Terminal, check the conda version by running:
+
+    - In the Terminal, check the conda version by running:
      ```bash
      conda --version
      ```
-   - A successful installation will display the conda version number.
-   - Run `conda deactivate` to leave the environment.
+    - A successful installation will display the conda version number.
+    - Run `conda deactivate` to leave the environment.
 
 For more detailed information, refer to the [official Miniconda installation documentation](https://docs.anaconda.com/miniconda/install/).
 
 
 # Cluster
 
-The cluster computing of the class is supported by Harvard Academic Technologies Group similar to the [FAS-RC cluster](https://rc.fas.harvard.edu/). Check the Academic Technologies Group [official website](https://atg.fas.harvard.edu/) for more information.
+The cluster computing of the class is supported by Harvard Academic Technologies Group similar to the [FAS-RC cluster](https://rc.fas.harvard.edu/). The cluster can be accessed by logging in with your Harvard credentials [here](https://ood.huit.harvard.edu/). Please read over the [HUIT user guide](https://harvard-atg.github.io/huit-ondemand-user-docs/).
+
+To get started with the cluster, click "Clusters" and then "Academic shell acess". This will open a terminal very similar to the one on your personal computer. Upon opening the terminal, you will be in your personal directory where you can store your files. Type `pwd` to get the path to this directory. 
+
+## Getting started with SLURM
+
+When you want to run code, please use [Slurm](https://slurm.schedmd.com/documentation.html) to submit jobs to a compute node. Avoid running computationally intensive code on the login node. The following is a simple demonstration on how to use Slurm to run a python script. 
+
+- Create a python file called `hello.py`
+    - Run `nano hello.py` to open the text editor
+    - Type `print("Hello world")`. 
+    - Type `^X` to exit the text editor. 
+- Typing `ls` prints a list of files in your current directory. `hello.py` should be included in the list. 
+- Run `nano slurm_test.sh` and paste the following
+
+```
+
+#!/bin/bash
+#SBATCH --job-name=example_job   # Name of the job
+#SBATCH --output=slurm_%j.log    # Log file 
+#SBATCH --error=slurm_%j.err     # Error file 
+#SBATCH --time=24:00:00          # Time limit (24 hours)
+#SBATCH --ntasks=1               # Number of tasks (default is 1)
+#SBATCH --cpus-per-task=1        # Number of CPU cores per task
+#SBATCH --mem=4G                 # Memory per node 
+
+
+echo "Job started"
+# Run your command or script here
+python3 hello.py
+# Print the end time
+echo "Job ended"
+```
+
+- It is important not to overspecify amount of computation required (time limit, memory CPUs) because the cluster is shared with other users. For this class, please do not use a time limit greater than 24 hours. 
+
+- To submit the job, run `sbatch slurm_test.sh`. You should see `Submitted batch job X` where `X` is the job number. 
+
+- To check the status of your job, type `sacct`. You will see a list of all your submitted jobs and their status. 
+
+- Once the job is `COMPLETED`, you can see the output by typing `slurm_X.log`, where `X` is the job number. 
+
+- This workflow can be used as a template when submitting more complicated jobs, but feel free to modify it as needed. 
+
 
 
