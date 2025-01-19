@@ -33,7 +33,8 @@ The main content of the book is shown in the figure below.
 
 ## Set up your computer
 
-You can follow the [installation instructions](../chapter_appendix/installation.md) to set up necessary tools needed for this course. You should also follow the [Github Classroom instructions](../chapter_appendix/github.md) to get access to the course materials, submit your homework, and discuss with your classmates. 
+
+You can follow the [installation instructions](../chapter_appendix/installation.md) to set up necessary tools needed for this course. You should also follow the [Github Classroom instructions](../chapter_appendix/github.md) to get access to the course materials, submit your homework, and discuss with your classmates. We also offer a cluster computing service for this course. You can follow the [Class Cluster Instructions](../chapter_appendix/cluster.md) to get access to the cluster.
 
 ## Tips to learn this course
 

@@ -52,6 +52,7 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 - [Grammarly](https://www.grammarly.com/): A widely used AI-powered writing assistant that provides real-time grammar and spelling corrections, style suggestions, and clarity improvements. 
 - [Quillbot](https://quillbot.com/): It offers a suite of tools tailored to assist users in various aspects of writing, including paraphrasing, grammar checking, summarizing, and more.
 - [GPT Zero](https://www.gptzero.com/): Detect AI generated text.
+- [Gamma](https://gamma.app/): AI generated slides.
 
 ## Transcription and meeting assistants
 
@@ -64,14 +65,16 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 - [Midjourney](https://www.midjourney.com/): Renowned for producing high-quality, artistic images, Midjourney is popular among creators for its unique aesthetic outputs. It operates via a Discord-based interface, facilitating community engagement and prompt sharing.
 - [Dalle-E](https://labs.openai.com/a/dalle-e): generating detailed and realistic images from textual descriptions. It integrates seamlessly with ChatGPT, allowing users to refine prompts for enhanced outputs.
 - [Stable Diffusion](https://huggingface.co/stabilityai): An open-source model by Stability AI, Stable Diffusion allows users to generate images on local machines, offering flexibility and control. Its open-source nature encourages community-driven enhancements and customizations
+- [HeyGen](https://www.heygen.com/): Generate realistic videos with AI.
 
 ## Voice and music generation
 
+- [Eleven Labs](https://elevenlabs.io/): AI-assisted text-to-speech software capable of producing lifelike speech by synthesizing vocal emotion and intonation. It also provides multilingual speech generation and long-form content creation with contextually-aware voices.
 - [Wondercraft](https://www.wondercraft.ai/): generates scripts and offers a vast library of hyper-realistic AI voices to host your show. 
 - [Descript](https://www.descript.com/): An all-in-one editing tool for both audio and video, Descript uses AI to automate tasks like noise reduction and audio leveling. It also offers features like overdubbing, which allows for voice cloning, and the ability to remove filler words from your audio.
 - [Podcastle](https://podcastle.ai/): An all-in-one editing tool for both audio and video, Descript uses AI to automate tasks like noise reduction and audio leveling. It also offers features like overdubbing, which allows for voice cloning, and the ability to remove filler words from your audio
 - [Suno](https://suno.com/): Powerful AI song and music generator.
-- [Eleven Labs](https://elevenlabs.io/): AI-assisted text-to-speech software capable of producing lifelike speech by synthesizing vocal emotion and intonation. It also provides multilingual speech generation and long-form content creation with contextually-aware voices.
+
 
 ## Prompt Engineering
 

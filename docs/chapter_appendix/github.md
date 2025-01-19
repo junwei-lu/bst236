@@ -19,10 +19,12 @@ One option to avoid inputting your username and password when pushing to a priva
 
 Please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSevzi4x0q_jwUyWH6euwSLc-B0qOkIFzZiAh1dVVQCnOO3inQ/viewform?usp=sharing) so that we can add your username to this GitHub classroom. 
 
+Please read the [Homework Submission Instructions](../chapter_syllabus/syllabus.md#homework-submission-guidelines) for the required format of the homework submission.
+
 
 ### Setting Up Your Repository
 
-When a GitHub classroom assignment is created, a template repository will be cloned into your personal GitHub account. Note that each team should create **only one** repository for each homework. You should discuss with your team members to decide who will host the repository and how to collaborate with each other.
+When a GitHub classroom assignment is created, we will share a link with you. Click the link and select "Accept this assignment". This will create a forked repository in your personal GitHub account. Note that each team should create **only one** repository for each homework. You should discuss with your team members to decide who will host the repository and how to collaborate with each other.
 
 Follow these steps to get started:
 
@@ -32,17 +34,9 @@ Follow these steps to get started:
 4. Find the repository URL by clicking the green "Code" button
 5. In your terminal:
    ```bash
-   # Create and enter directory
-   mkdir ~/course
-   cd ~/course
-   
-   # Configure git identity
-   git config --global user.name "FIRST_NAME LAST_NAME"
-   git config --global user.email "YOUR_EMAIL"
-   
-   # Clone the repo
    git clone REPO_URL
    ```
+6. Follow the [Git tutorial](../chapter_workflow/git.md) to learn how to use Git and GitHub for your homework projects.
 
 ### Submitting Assignments
 
