@@ -199,6 +199,7 @@ nav:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
     - Github Classroom: chapter_appendix/github.md
+    - Class Cluster: chapter_appendix/cluster.md
     - Contributing: chapter_appendix/contribution.md
     # - Terminology: chapter_appendix/terminology.md
   - References:
