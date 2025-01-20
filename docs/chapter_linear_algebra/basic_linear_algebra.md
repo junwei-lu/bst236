@@ -162,9 +162,9 @@ where $\sigma_1$ is the largest singular value of $A$. The operator norm measure
 
 - The singular values of $A$ are the square roots of the eigenvalues of $A^T A$.
 
-   $$
-   \sigma_i(A) = \sqrt{\lambda_i(A^T A)} = \sqrt{\lambda_i(A A^T)}
-   $$
+      $$
+      \sigma_i(A) = \sqrt{\lambda_i(A^T A)} = \sqrt{\lambda_i(A A^T)}
+      $$
 
 - The left singular vectors of $A$ are the same as the eigenvectors of $A^T A$.
 - The right singular vectors of $A$ are the same as the eigenvectors of $A A^T$.
