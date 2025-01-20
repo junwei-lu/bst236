@@ -1,6 +1,7 @@
 # Sparse Matrix
 
 Sparse matrices are matrices where most elements are zero. They are common in many applications like:
+
 - Social networks (adjacency matrices)
 - Genome-wide association studies (SNP-by-gene matrices)
 - Language models (word-by-word matrices)
@@ -9,6 +10,7 @@ Sparse matrices are matrices where most elements are zero. They are common in ma
 ## Basic Operations
 
 The `scipy.sparse` module provides several sparse matrix formats. Refer to the [scipy documentation](https://docs.scipy.org/doc/scipy/reference/sparse.html) for more details. The most commonly used are:
+
 - CSR (Compressed Sparse Row): efficient for row operations and matrix-vector products (thus this is most used)
 - CSC (Compressed Sparse Column): efficient for column operations
 - COO (Coordinate): good for constructing matrices
@@ -134,10 +136,10 @@ U, S, VT = svds(A, k=k)
 
 1. **Choose the right format**:
    
-   - CSR: best for row slicing, matrix-vector products
-   - CSC: best for column slicing
-   - COO: best for constructing matrices
-   - LIL: best for incremental construction
+      - CSR: best for row slicing, matrix-vector products
+      - CSC: best for column slicing
+      - COO: best for constructing matrices
+      - LIL: best for incremental construction
 
 2. **Avoid operations that create dense intermediates**:
    
@@ -154,11 +156,11 @@ U, S, VT = svds(A, k=k)
 
 4. **Preconditioning for iterative solvers**:
    
-   - Use appropriate preconditioners for faster convergence
-   - Common choices: diagonal, incomplete LU, incomplete Cholesky
+      - Use appropriate preconditioners for faster convergence
+      - Common choices: diagonal, incomplete LU, incomplete Cholesky
 
 5. **Memory efficiency**:
-   - Monitor memory usage with large matrices
-   - Consider using `float32` instead of `float64` if precision allows
+      - Monitor memory usage with large matrices
+      - Consider using `float32` instead of `float64` if precision allows
 
 Remember that sparse matrices are most beneficial when the number of non-zero elements is much smaller than the total size of the matrix (typically < 10% non-zero).
