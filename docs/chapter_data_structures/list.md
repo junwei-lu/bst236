@@ -148,10 +148,10 @@ for index, letter in enumerate(list2):
 ## Key Performance Insights
 
 1. **List Comprehensions**
-   - Generally faster than traditional loops
-   - More readable and concise
-   - Can include conditional filtering
+      - Generally faster than traditional loops
+      - More readable and concise
+      - Can include conditional filtering
 
 2. **Functional Methods**
-   - Functional methods are not always faster than explicit loops
-   - Sometimes readability trumps minor performance gains
+      - Functional methods are not always faster than explicit loops
+      - Sometimes readability trumps minor performance gains

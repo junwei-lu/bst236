@@ -76,6 +76,10 @@ echo "Job ended"
 **If you are using VS Code**
 
 - Create the `slurm_test.sh` file like above in VS Code.
-- Press `Ctrl + ~` to open the terminal.
+- Press `Ctrl + ~` to open the terminal in VS Code.
 - Type `sbatch slurm_test.sh` to submit the job.
+
+!!! note "Tips"
+
+   VS Code on the cluster cannot directly use Github Copilot. We suggest you code locally and use Github to synchronize your local and cluster code. 
 

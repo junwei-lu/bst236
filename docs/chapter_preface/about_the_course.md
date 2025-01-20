@@ -37,8 +37,9 @@ The main content of the book is shown in the figure below.
 - **Seek help**: The open-source community is always here to help. You can always seek help from the community. And you should also try to help others.
 - **Always explore**: We cannot cover all the details in the course. As we mentioned above, the course emphasizes the width more than the depth. You should explore deeper to the directions you are interested in. As this course is a computing-oriented course, we will not cover too much math, especially the theory. You should also explore the theory behind the algorithms and methods you are interested in.
 - **Adaptively skip**: The course materials are designed to be a beginner-friendly course. You can skip some materials that you are already familiar with (or not interested in).
+- **Abstract blackboxes**: When we talk about skipping, one of most important philosophy in coding is "modular programming". It is more important to know how to decompose your problems into smaller, self-contained modules that encapsulate their implementation details realized yourself or by existing  Application Programming Interface (API). You do not always need to open the blackbox.
 
-!!! tip "What is the real coding skill?"
+!!! tip "Tip: What is the real coding skill?"
 
     The computing is such a broad field. You will never get prepared for everything. The most important coding skill is to decompose your problems into smaller problems, to be able to identify the potential toolboxes to solve your problems, and to be able to digest them efficiently. This is also the scope of this course to offer you the "menu" more than the "recipe" and the meta-learning more than the specific learning.
 

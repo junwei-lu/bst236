@@ -32,6 +32,7 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 - [Codeium](https://codeium.com/): Developed by the same team as Windsurf, offers autocompletion, code generation, and code review. It can be extensions to your current IDE like VS Code.
 - [Devin AI](https://devin.ai/): Web based, Operates autonomously, capable of executing entire development tasks without human intervention, effectively acting as an independent software engineer rather than a coding assistant. Operates within a secure, sandboxed environment equipped with common developer tools. $500/month.
 - [Claude](https://www.anthropic.com/): Web based, provides implementation of code after code generation.
+- [Cline](https://github.com/cline/cline): Open sourced tool to code as IDE extension.
 
 ## Search tools
 

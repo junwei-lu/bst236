@@ -189,6 +189,7 @@ We will briefly discuss the practical algorithms for computing eigenvalues and e
 The QR iteration method above is just the basic version. It can be further accelerated by applying the shift technique like the power method. In fact, the state-of-the-art [Francis algorithm](https://en.wikipedia.org/wiki/QR_algorithm) applies the famous implicit double-shift with no QR decomposition being explicitly performed. In fact, instead of QR decomposition, the Francis algorithm decomposes matrix into $QH$ form, where $Q$ is orthogonal but $H$ is an upper [Hessenberg matrix](https://mathworld.wolfram.com/HessenbergMatrix.html). The complexity of the Francis algorithm is $O(n^3)$.
 
 When $A$ is symmetric, we ususally apply the tridiagonalization to $A = QTQ^T$ first, where $T$ is a [tridiagonal matrix](https://mathworld.wolfram.com/TridiagonalMatrix.html). Then we can apply an implicit QR iteration to $T$ with the Wilkinson shift. This is one of the most remarkable algorithms in the numerical linear algebra. We refer to the [notes](https://www.cs.utexas.edu/~flame/Notes/NotesOnSymQR.pdf) for more details.
+
 $$
 \begin{array}{ccc}
 \text{Upper Triangular} & \text{Upper Hessenberg} & \text{Tridiagonal} \\
