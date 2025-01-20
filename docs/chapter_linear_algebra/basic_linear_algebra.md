@@ -160,12 +160,7 @@ where $\sigma_1$ is the largest singular value of $A$. The operator norm measure
 
 **Connection between SVD and Eigenvalue Decomposition**:
 
-- The singular values of $A$ are the square roots of the eigenvalues of $A^T A$.
-
-      $$
-      \sigma_i(A) = \sqrt{\lambda_i(A^T A)} = \sqrt{\lambda_i(A A^T)}
-      $$
-
+- The singular values of $A$ are the square roots of the eigenvalues of $A^T A$: $\sigma_i(A) = \sqrt{\lambda_i(A^T A)} = \sqrt{\lambda_i(A A^T)}$.
 - The left singular vectors of $A$ are the same as the eigenvectors of $A^T A$.
 - The right singular vectors of $A$ are the same as the eigenvectors of $A A^T$.
 - If $A$ is symmetric, it will have real eigenvalues and eigenvectors. Assume $|\lambda_1| \ge |\lambda_2| \ge \cdots \ge |\lambda_d|$, then $\sigma_i(A) = |\lambda_i|$. Note that we order the eigenvalues by their absolute values.

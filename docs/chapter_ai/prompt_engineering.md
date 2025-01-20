@@ -56,8 +56,8 @@ Technical Requirements:
 
 3. **Decompose Tasks into Steps**
 
-- Break down your task into simple, specific steps after communicating the main goal
-- Ask the AI to use "Chain of Thought" to think step by step
+      - Break down your task into simple, specific steps after communicating the main goal
+      - Ask the AI to use "Chain of Thought" to think step by step
 
 **Example:**
 ```markdown
