@@ -200,6 +200,7 @@ nav:
     - Installation: chapter_appendix/installation.md
     - Github Classroom: chapter_appendix/github.md
     - Class Cluster: chapter_appendix/cluster.md
+    - Python 101: chapter_appendix/python_intro.md
     - Contributing: chapter_appendix/contribution.md
     # - Terminology: chapter_appendix/terminology.md
   - References:

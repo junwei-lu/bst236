@@ -65,18 +65,15 @@ git diff            # View unstaged changes
 ### Best Practices for Commits
 
 1. **Commit Often**: Make small, logical commits
-2. **Avoid Half-Done Work**: Only commit logically completed tasks. Use `git commit --amend --no-edit` to quickly add forgotten changes to your last commit, but only if you haven't shared that commit with others.
-3. **Commit Related Changes**: Group related changes into one commit
-4. **Write Clear Messages**: Use descriptive commit messages
+2. **Write Clear Messages**: Use descriptive commit messages
       ```bash
       # Bad commit message
       git commit -m "Update"
       # Good commit message
       git commit -m "Add bootstrap confidence intervals to regression analysis"
       ```
-5. **One Change Per Commit**: Each commit should represent one logical change
-6. **Test Before Committing**: Ideally the code in `main` branch should always work. Ensure code works before committing
 
+Different tasks have different best practice for the git. For example, software engineering tasks may prefer to group related changes into one commit and want to test before committing. To avoid half-done work, you can use `git commit --amend --no-edit` to quickly add forgotten changes to your last commit, but only if you haven't shared that commit with others. As a git beginner, we suggest that you focus on the two points above and gradually explore the best git practice for you.
 
 ## GitHub
 

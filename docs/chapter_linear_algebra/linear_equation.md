@@ -39,6 +39,7 @@ Therefore, we aims to decompose the matrix $A$ into a product of triangular matr
 
 The LU decomposition needs approximately $2n^3/3$ operations, while the Cholesky decomposition needs approximately $n^3/3$ operations. Therefore, if $A$ is positive definite, we should use the Cholesky decomposition. Also note that the time complexity of solving a triangular linear equation is $O(n^2)$. So for linear equations, matrix decompositions are bottlenecks of the performance.
 
+
 However, you do not need to implement the Cholesky decomposition by yourself. The `linalg.solve` function 
 has a built-in `assume_a` parameter:
 - `assume_a = 'gen'` - General matrix (default)
