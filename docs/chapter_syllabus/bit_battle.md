@@ -18,6 +18,7 @@ A Bit Battle is a thrilling competition where code squads compete to write the m
 
 ### Battle Rewards
 For each Bit Battle challenge, squads will be rewarded based on their rank:
+
 1. 🥇 1st Place: 30 $bytes
 2. 🥈 2nd Place: 20 $bytes
 3. 🥉 3rd Place: 15 $bytes
@@ -66,5 +67,5 @@ Remember: The real treasure was the algorithms we optimized along the way!
 
 May the bytes be ever in your favor! 🎮✨
 
-As this is the first time we do this, we will be very lenient on the rules. If you have any questions or suggestions, please let us know on the issue board of the [course_currency](https://github.com/hsph-bst236/course_currency) repo.
+As this is the first time we do this, we may adjust the rules based on the feedback. If you have any questions or suggestions, please let us know on the issue board of the [course_currency](https://github.com/hsph-bst236/course_currency) repo. 
 
