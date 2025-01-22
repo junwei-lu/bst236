@@ -22,7 +22,7 @@ We will simplify the paper to summarize the step by step workflow of a scientifi
 Here are the tools you could use to implement the principles above:
 
 - **Version Control**: Git 
-- **Workflow Automation**: Make and Docker
+- **Workflow Automation**: Make, Docker, [Github Actions](https://docs.github.com/en/actions), [snakemake](https://snakemake.readthedocs.io/en/stable/)
 - **Dependency Management**: Python virtual environment, R `renv` package
 
 
