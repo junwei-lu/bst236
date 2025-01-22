@@ -10,22 +10,21 @@ A Bit Battle is a thrilling competition where code squads compete to write the m
 
 ## The $byte Economy 101
 
-### Initial Setup
-- Every student starts with a shiny deposit of $100 bytes 💰
+- Every student starts with a shiny deposit of ₿100 bytes 💰
 - Read the [Readme](https://github.com/hsph-bst236/course_currency) for how to know your balance and how to make transactions.
 - This virtual currency can be used for... well, bragging rights mostly! But it counts for 5% of your final grade
-- Your final bit battle grade = 5 * Quantile of your final $byte balance among all of your classmates
+- Your final bit battle grade = 5 $\times$ Quantile of your final $byte balance among all of your classmates
 
 ### Battle Rewards
 For each Bit Battle challenge, squads will be rewarded based on their rank:
 
-- 🥇 1st Place: 102 $bytes
-- 🥈 2nd Place: 81 $bytes
-- 🥉 3rd Place: 60 $bytes
-- 4th Place: 42 $bytes
-- 5th Place: 21 $bytes
-- 6th Place: 12 $bytes
-- 7th Place: 6 $bytes
+- 🥇 1st Place: ₿102 bytes
+- 🥈 2nd Place: ₿81 bytes
+- 🥉 3rd Place: ₿60 bytes
+- 4th Place: ₿42 bytes
+- 5th Place: ₿21 bytes
+- 6th Place: ₿12 bytes
+- 7th Place: ₿6 bytes
 
 
 
