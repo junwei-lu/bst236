@@ -2,6 +2,11 @@
 
 Welcome to the Bit Battle! 🎮 Where coding meets competition and bytes mean business! 
 
+<div class="audio-player">
+  <button onclick="document.getElementById('battleTheme').play()">🔊 Play Bit Battle Anthem</button>
+  <audio id="battleTheme" src="./syllabus.assets/BitBattle.mp3"></audio>
+</div>
+
 ![bit_battle](./syllabus.assets/bitbattle.png)
 
 ## What's a Bit Battle? 
