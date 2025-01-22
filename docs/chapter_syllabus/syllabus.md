@@ -27,7 +27,7 @@ It is your own responsibility to keep track of how many late days you used. But 
 
 ## Class Participation
 
-Class participation will be graded based on three parts:
+Class participation will be graded based on following parts:
 
 - Classroom discussions and questions asked in the courses.
 - The approved pull requests in the course website repository. 
