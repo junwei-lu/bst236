@@ -23,10 +23,11 @@ icon: material/rocket-launch-outline
 - [Evaluation](syllabus.md#evaluation)
 - [Late Assignment Policy](syllabus.md#late-assignment-policy)
 - [Class Participation](syllabus.md#class-participation)
-- [Group Work](syllabus.md#group-work)
+- [Code Squad](syllabus.md#code-squad)
 - [Generative AI Tools Policy](syllabus.md#generative-ai-tools-policy)
 - [Github Classroom](syllabus.md#github-classroom)
 - [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines)
+- [Bit Battle Rules](syllabus.md#bit-battle)
 
 
 

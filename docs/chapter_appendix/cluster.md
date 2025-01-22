@@ -81,5 +81,5 @@ echo "Job ended"
 
 !!! note "Tips"
 
-   VS Code on the cluster cannot directly use Github Copilot. We suggest you code locally and use Github to synchronize your local and cluster code. 
+   	VS Code on the cluster cannot directly use Github Copilot. We suggest you code locally and use Github to synchronize your local and cluster code. 
 

@@ -58,15 +58,19 @@ Notice that the sensitivity is fully determined by the problem itself and indepe
 ### Sensitivity Analysis
 
 **Definition**(Sensitivity). We want to compute $f(x)$ for a given $x$. If $x$ is perturbed by $\delta x$, the output is $f(x + \delta x)$. Whyen $|\delta x|/|x|$ is small, we want to find a constant $c(x)$ as small as possible such that
+
 $$
 |f(x + \delta x) - f(x)| \le c(x) \frac{|\delta x|}{|x|}.
 $$
+
 We call $c(x)$ the **condition number** of the problem. We say the problem is **well-conditioned** if $c(x)$ is bounded, and **ill-conditioned** if $c(x)$ is large. 
 
 We can see that when $f(x)$ is differentiable
+
 $$
 c(x) \approx \frac{|f'(x)||x|}{|f(x)|}.
 $$
+
 For complex problems, it is not easy to compute the condition number. 
 We will discuss the condition number of linear algebra problems in the following sections.
 

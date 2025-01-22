@@ -9,7 +9,7 @@ Whether you're taking your first steps into algorithms and data analysis, or you
 
 !!! success "Prerequisites"
 
-    You should know how to write and read simple code in [python](https://www.python.org/) and [R](https://www.r-project.org/). You should also have basic knowledge of [probability](https://www.coursicle.com/harvard/courses/BIOSTAT/230/), [statistics](https://www.coursicle.com/harvard/courses/BIOSTAT/232/), and [linear algebra](https://qrd.college.harvard.edu/classes/math-22a-vector-calculus-and-linear-algebra-i).
+    You should know how to write and read simple code in [python](https://www.python.org/) and [R](https://www.r-project.org/). You should also have basic knowledge of [probability](https://www.coursicle.com/harvard/courses/BIOSTAT/230/), [statistics](https://www.coursicle.com/harvard/courses/BIOSTAT/232/), and [linear algebra](https://web.mit.edu/18.06/www/). You can refer to the [Python 101](../chapter_appendix/python_intro.md) for the basic Python and R we expect you to know.
 
     To finish the homework, you may need to know some [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) and [LaTeX](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes) syntax but it is not required if you are only interested in learning the course materials.
 
@@ -39,7 +39,7 @@ The main content of the book is shown in the figure below.
 - **Adaptively skip**: The course materials are designed to be a beginner-friendly course. You can skip some materials that you are already familiar with (or not interested in).
 - **Abstract blackboxes**: When we talk about skipping, one of most important philosophy in coding is "modular programming". It is more important to know how to decompose your problems into smaller, self-contained modules that encapsulate their implementation details realized yourself or by existing  Application Programming Interface (API). You do not always need to open the blackbox.
 
-!!! tip "Tip: What is the real coding skill?"
+!!! note "Tip: What is the real coding skill?"
 
     The computing is such a broad field. You will never get prepared for everything. The most important coding skill is to decompose your problems into smaller problems, to be able to identify the potential toolboxes to solve your problems, and to be able to digest them efficiently. This is also the scope of this course to offer you the "menu" more than the "recipe" and the meta-learning more than the specific learning.
 

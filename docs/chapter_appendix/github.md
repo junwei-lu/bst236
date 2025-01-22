@@ -24,7 +24,7 @@ Please read the [Homework Submission Instructions](../chapter_syllabus/syllabus.
 
 ### Setting Up Your Repository
 
-When a GitHub classroom assignment is created, we will share a link with you. Click the link and select "Accept this assignment". This will create a forked repository in your personal GitHub account. Note that each team should create **only one** repository for each homework. You should discuss with your team members to decide who will host the repository and how to collaborate with each other.
+When a GitHub classroom assignment is created, we will share a link with you. Click the link and select "Accept this assignment". This will create a forked repository accessible by your personal GitHub account. Note that each team should create **only one** repository for each homework. You should discuss with your team members to decide who will host the repository and how to collaborate with each other.
 
 Follow these steps to get started:
 

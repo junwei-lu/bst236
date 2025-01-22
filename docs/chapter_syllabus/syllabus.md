@@ -4,7 +4,8 @@
 ## Evaluation
 
 - Participation:  20%  
-- Assignments: 40%  
+- Assignments: 35%  
+- Bit Battle: 5%
 - Midterm Project:  20%  
 - Final Project:  20%  
 
@@ -37,13 +38,19 @@ Students are expected to behave professionally at all times, with courtesy towar
 
 ![Participation](./syllabus.assets/syllabus_participation.jpg)
 
-## Group Work
+## Code Squad
 
-During class, we will have __breakout groups__ for homework and project through the semester. In principle, each group should have 3-4 students. The group work is designed to:
+During class, we will have **code squad** for homework and projects through the semester (expect first two homework before students can drop). In principle, each squad should have 3 students. We enforce the squad work because
 
 - Learning to code alone is frustrating.
-- Learn from each other.
-- Learn how to work in a team.
+- Learning from each other is more efficient.
+- Learning how to work in a team is important.
+
+
+Each squad should discuss their own rules on how to work together. Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
+
+We will have **bit battles** for some homework. The bit battle is a competition to see which squad can write the best code (measured by the running time, precision, and etc, which will be specified in each homework.)
+We will have a leaderboard to track the performance of each squad. The best squads will be rewarded with the course currency $byte. The $byte will be counted towards the 5% of bit battle in the final grade. See [Bit Battle Rules](syllabus.md#bit-battle) for more details.
 
 ## Generative AI Tools Policy
 We allow and encourage you to use ChatGPT and other generative AI tools for the homework and project. In fact, this course is designed to help you understand how these tools work. You can try to use [GPTZero Detector](https://gptzero.me/) to check if the current technology can detect the use of AI. However, do not worry, we will not use this tool to check your homework and project. 
