@@ -15,8 +15,9 @@ icon: material/rocket-launch-outline
 
 ## Teaching Assistant: Phillip Nicol
 - **Email**: phillipnicol@g.harvard.edu 
-- **Office Hours**: TBD
-- **Lab**: TBD
+- **Office Hours**: Building 2 Room 434, Thursday 2:00 PM - 3:00 PM
+- **Lab**: FXB G03, Friday 9:45 AM - 11:15 AM
+
 
 ## Syllabus
 

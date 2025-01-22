@@ -4,16 +4,19 @@
 ## Evaluation
 
 - Participation:  20%  
-- Assignments: 35%  
-- Bit Battle: 5%
+- Assignments: 40%  
 - Midterm Project:  20%  
 - Final Project:  20%  
 
 ## Late Assignment Policy
 
-All assignments are due at 12:00pm on the day listed. Each team gets 7 late days which can be used to turn in homework late without penalty. These 7 late days are for the entire semester. 
+All assignments are due at 12:00pm on the day listed. Each squad gets 3 late days which can be used to turn in homework late without penalty. These 3 late days are for the entire semester. 
 
-One late day is measured as a 24 hour period after the supposed deadline. It is the student's responsibility to submit his/her homework online. If late days are used, please write at the head of your homework ReadME.md file in the format: XX late days used for this homework, and XX days remained. 
+The late day is measured up to hour precision after the supposed deadline. For example, if you submit your homework at 12:01pm, you used 1 hour of late days. It is the student's responsibility to submit his/her homework online. If late days are used, please write at the head of your homework ReadME.md file in the format: XX late days used for this homework, and XX days remained. Check the [Bit Battle Rules](bit_battle.md) if you are buying late days.
+
+We will average the late days used by each squad member for the first two assignments and take the closest integer to the average as the late days used for the squad for the first two assignments.
+
+Squad can buy additional late days using the course currency $byte. Please see [Bit Battle Rules](bit_battle.md) for more details.
 
 Once you run out of late days, late submissions are penalized 25% per day. (For example, a homework turned in two days late will receive only 50% credit.) More importantly, we will not grant additional late days once you have used up all 7 late days.
 
@@ -51,7 +54,7 @@ The squad homework will start from the **third homework**. Please assemble your 
 Each squad should discuss their own rules on how to work together. Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
 
 We will have **bit battles** for some homework. The bit battle is a competition to see which squad can write the best code (measured by the running time, precision, and etc, which will be specified in each homework.)
-We will have a leaderboard to track the performance of each squad. The best squads will be rewarded with the course currency $byte. The $byte will be counted towards the 5% of bit battle in the final grade. See [Bit Battle Rules](bit_battle.md) for more details.
+We will have a leaderboard to track the performance of each squad. The best squads will be rewarded with the course currency $byte to buy more late days. See [Bit Battle Rules](bit_battle.md) for more details.
 
 ## Generative AI Tools Policy
 We allow and encourage you to use ChatGPT and other generative AI tools for the homework and project. In fact, this course is designed to help you understand how these tools work. You can try to use [GPTZero Detector](https://gptzero.me/) to check if the current technology can detect the use of AI. However, do not worry, we will not use this tool to check your homework and project. 
