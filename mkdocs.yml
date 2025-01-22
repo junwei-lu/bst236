@@ -147,6 +147,7 @@ extra_css:
 nav:
   - Course Information:
     - chapter_syllabus/index.md
+    - chapter_syllabus/bit_battle.md
   - Chapter. Introduction:
     - chapter_preface/index.md
   - Chapter. Basics of Coding:

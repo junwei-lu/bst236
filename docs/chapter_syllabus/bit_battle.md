@@ -1,12 +1,12 @@
-# Bit Battle Rules
+# Bit Battle
 
-Welcome to the Bit Battles! 🎮 Where coding meets competition and bytes mean business! 
+Welcome to the Bit Battle! 🎮 Where coding meets competition and bytes mean business! 
 
 ![bit_battle](./syllabus.assets/bitbattle.png)
 
 ## What's a Bit Battle? 
 
-A Bit Battle is a thrilling competition where code squads compete to write the most efficient, precise, and elegant solutions to challenging problems. Think of it as the Olympics of coding, but with more caffeine and fewer physical injuries! 🏃‍♂️💻
+A Bit Battle is a thrilling competition where code squads compete to write the most efficient, precise, and elegant solutions to challenging problems. It will be specified in some homework. Think of it as the Olympics of coding, but with more caffeine and fewer physical injuries! 🏃‍♂️💻
 
 ## The $byte Economy 101
 

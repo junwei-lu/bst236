@@ -50,7 +50,7 @@ During class, we will have **code squad** for homework and projects through the 
 Each squad should discuss their own rules on how to work together. Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
 
 We will have **bit battles** for some homework. The bit battle is a competition to see which squad can write the best code (measured by the running time, precision, and etc, which will be specified in each homework.)
-We will have a leaderboard to track the performance of each squad. The best squads will be rewarded with the course currency $byte. The $byte will be counted towards the 5% of bit battle in the final grade. See [Bit Battle Rules](syllabus.md#bit-battle) for more details.
+We will have a leaderboard to track the performance of each squad. The best squads will be rewarded with the course currency $byte. The $byte will be counted towards the 5% of bit battle in the final grade. See [Bit Battle Rules](bit_battle.md) for more details.
 
 ## Generative AI Tools Policy
 We allow and encourage you to use ChatGPT and other generative AI tools for the homework and project. In fact, this course is designed to help you understand how these tools work. You can try to use [GPTZero Detector](https://gptzero.me/) to check if the current technology can detect the use of AI. However, do not worry, we will not use this tool to check your homework and project. 

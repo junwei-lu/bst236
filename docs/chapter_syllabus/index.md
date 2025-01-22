@@ -27,7 +27,7 @@ icon: material/rocket-launch-outline
 - [Generative AI Tools Policy](syllabus.md#generative-ai-tools-policy)
 - [Github Classroom](syllabus.md#github-classroom)
 - [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines)
-- [Bit Battle Rules](syllabus.md#bit-battle)
+- [Bit Battle Rules](bit_battle.md)
 
 
 
