@@ -19,13 +19,13 @@ A Bit Battle is a thrilling competition where code squads compete to write the m
 ### Battle Rewards
 For each Bit Battle challenge, squads will be rewarded based on their rank:
 
-1. 🥇 1st Place: 30 $bytes
-2. 🥈 2nd Place: 20 $bytes
-3. 🥉 3rd Place: 15 $bytes
-4. 4th Place: 10 $bytes
-5. 5th Place: 8 $bytes
-6. 6th Place: 6 $bytes
-7. 7th Place: 4 $bytes
+- 🥇 1st Place: 102 $bytes
+- 🥈 2nd Place: 81 $bytes
+- 🥉 3rd Place: 60 $bytes
+- 4th Place: 42 $bytes
+- 5th Place: 21 $bytes
+- 6th Place: 12 $bytes
+- 7th Place: 6 $bytes
 
 
 
