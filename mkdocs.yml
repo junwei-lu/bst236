@@ -63,6 +63,8 @@ theme:
     logo: logo
     repo: fontawesome/brands/github
     edit: fontawesome/regular/pen-to-square
+  static_templates:
+    - 404.html
 
 extra:
   #alternate:
@@ -135,6 +137,7 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
+  - javascripts/extra.js
   # - javascripts/katex.js 
   # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
   # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
@@ -205,3 +208,10 @@ nav:
     # - Terminology: chapter_appendix/terminology.md
   - References:
     - chapter_reference/index.md
+
+# Add this to ensure media files are included
+use_directory_urls: true
+
+# Add this to ensure non-markdown files are copied
+extra_files:
+  - 'docs/chapter_syllabus/syllabus.assets/*.mp3'

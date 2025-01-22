@@ -3,7 +3,7 @@
 Welcome to the Bit Battle! 🎮 Where coding meets competition and bytes mean business! 
 
 <audio controls>
-  <source src="./syllabus.assets/BitBattle.mp3" type="audio/mpeg">
+  <source src="/chapter_syllabus/syllabus.assets/BitBattle.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
