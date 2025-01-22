@@ -46,7 +46,7 @@ During class, we will have **code squad** for homework and projects through the 
 - Learning from each other is more efficient.
 - Learning how to work in a team is important.
 
-The squad homework will start from the **third homework**. Please assemble your squad by then. You should let us know your squad members. Each squad should have a squad name, [squad logo](https://openai.com/index/dall-e-3/), and [squad anthem](suno.com).
+The squad homework will start from the **third homework**. Please assemble your squad by then. You should let us know your squad members. Each squad should have a squad name, [squad logo](https://openai.com/index/dall-e-3/), and [squad anthem](https://suno.com/).
 
 Each squad should discuss their own rules on how to work together. Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
 
@@ -77,4 +77,34 @@ Here are the general guidelines for the homework submission. We will specify the
      - Contributions: How each group member contributes to the project.
 - The repository should have all the necessary code and files to replicate the installation and usage in your README.md file.
 - Each squad only needs to submit one repository. We will grade your homework based on the repository and all the squad members' will receive the same grade.
+
+## Harvard Chan Policies and Expectations
+
+### Inclusivity Statement
+Diversity and inclusiveness are fundamental to public health education and practice. It is a requirement that you have an open mind and respect differences of all kinds. We share responsibility with you for creating a learning climate that is hospitable to all perspectives and cultures; please contact us if you have any concerns or suggestions. 
+
+### Bias Related Incident Reporting
+
+The Harvard Chan School believes all members of our community should be able to study and work in an environment where they feel safe and respected. As a mechanism to promote an inclusive community, we have created an anonymous bias-related incident reporting system. If you have experienced bias, please submit a report here so that the administration can track and address concerns as they arise and to better support members of the Harvard Chan community. 
+
+### Title IX
+For information on Harvard University policies and procedures and Title IX Resource Coordinators at Harvard Chan, please see: 
+
+- Harvard University Title IX Sexual Harassment and Other Sexual Misconduct policies and procedures
+- Title IX Resource Coordinators
+- Title IX Sexual Harassment and Other Sexual Misconduct resource guide
+
+### Academic Integrity
+You are expected to abide by the Harvard University and the Harvard T.H. Chan School of Public Health School’s Standards of Conduct and Academic Integrity in conjunction with the expectations outlined in the Course Structure and Assessment of Learning section of this syllabus. All work submitted to meet course requirements is expected to be your own work, except if permission is otherwise granted by this course’s Generative AI policy. In the preparation of work submitted to meet course requirements, you should always take great care to distinguish your own ideas and knowledge from information derived from sources.  
+You must assume that collaboration in the completion of assignments is prohibited unless explicitly specified. You must acknowledge any collaboration and its extent in all submitted work. This requirement applies to collaboration on editing as well as collaboration on substance. 
+Should academic misconduct occur, you may be subject to disciplinary action as outlined in the Student Handbook. 
+
+### Accommodations for Students with Disabilities
+The Harvard T.H. Chan School of Public Health values inclusive excellence and providing equal educational opportunities for all students. Our goal is to remove barriers for disabled students related to inaccessible elements of instruction or design in this course. If reasonable accommodations are necessary to provide access, please contact studentsupport@hsph.harvard.edu. Accommodations do not alter fundamental requirements of the course and are not retroactive. Students should request accommodations as early as possible, since they may take time to implement. Students should notify studentsupport@hsph.harvard.edu at any time during the semester if adjustments to their communicated accommodation plan are needed.
+Accommodations may include the use of assistive technology which allows recording in courses. Students who are eligible to utilize these technologies are required to only use them for personal academic purposes and cannot share or distribute the recordings to protect the privacy of all individuals in the course. Students are expected to comply with institutional policies and applicable privacy laws when utilizing recording devices for their learning. 
+
+### Religious Holidays, Absence Due to
+According to Chapter 151c, Section 2B, of the General Laws of Massachusetts, any student in an educational or vocational training institution, other than a religious or denominational training institution, who is unable, because of his or her religious beliefs, to attend classes or to participate in any examination, study, or work requirement on a particular day shall be excused from any such examination or requirement which he or she may have missed because of such absence on any particular day, provided that such makeup examination or work shall not create an unreasonable burden upon the School. See the Student Handbook for more information.
+
+
 

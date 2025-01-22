@@ -9,7 +9,7 @@ Whether you're taking your first steps into algorithms and data analysis, or you
 
 !!! success "Prerequisites"
 
-    You should know how to write and read simple code in [python](https://www.python.org/) and [R](https://www.r-project.org/). You should also have basic knowledge of [probability](https://www.coursicle.com/harvard/courses/BIOSTAT/230/), [statistics](https://www.coursicle.com/harvard/courses/BIOSTAT/232/), and [linear algebra](https://web.mit.edu/18.06/www/). You can refer to the [Python 101](../chapter_appendix/python_intro.md) for the basic Python and R we expect you to know.
+    You should know how to write and read simple code in [python](https://www.python.org/) and [R](https://www.r-project.org/). You should also have basic knowledge of [probability](https://www.coursicle.com/harvard/courses/BIOSTAT/230/), [statistics](https://www.coursicle.com/harvard/courses/BIOSTAT/232/), and [linear algebra](https://web.mit.edu/18.06/www/). You can refer to the [Python 101](../chapter_appendix/python_intro.md) for the basic Python we expect you to know.
 
     To finish the homework, you may need to know some [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) and [LaTeX](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes) syntax but it is not required if you are only interested in learning the course materials.
 

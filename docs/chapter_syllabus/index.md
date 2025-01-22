@@ -28,6 +28,7 @@ icon: material/rocket-launch-outline
 - [Github Classroom](syllabus.md#github-classroom)
 - [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines)
 - [Bit Battle Rules](bit_battle.md)
+- [Harvard Chan Policies and Expectations](syllabus.md#harvard-chan-policies-and-expectations)
 
 
 
