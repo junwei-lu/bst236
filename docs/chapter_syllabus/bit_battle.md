@@ -2,10 +2,7 @@
 
 Welcome to the Bit Battle! 🎮 Where coding meets competition and bytes mean business! 
 
-<audio controls>
-  <source src="/chapter_syllabus/syllabus.assets/BitBattle.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+🎵 [Click here to play the Bit Battle Anthem](https://www.dropbox.com/scl/fi/949wt25ywgx5790z16ipn/BitBattle.mp3?rlkey=dvdcjbpf55lqtlrj26duc0yuh&dl=0)
 
 ![bit_battle](./syllabus.assets/bitbattle.png)
 
