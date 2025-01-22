@@ -46,7 +46,7 @@ During class, we will have **code squad** for homework and projects through the 
 - Learning from each other is more efficient.
 - Learning how to work in a team is important.
 
-The squad homework will start from the **third homework**. Please assemble your squad by then. You should let us know your squad members, squad name, [squad logo](https://openai.com/index/dall-e-3/), and [squad anthem](suno.com).
+The squad homework will start from the **third homework**. Please assemble your squad by then. You should let us know your squad members. Each squad should have a squad name, [squad logo](https://openai.com/index/dall-e-3/), and [squad anthem](suno.com).
 
 Each squad should discuss their own rules on how to work together. Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
 
@@ -76,5 +76,5 @@ Here are the general guidelines for the homework submission. We will specify the
      - Report: Report other information that is required by the homework.
      - Contributions: How each group member contributes to the project.
 - The repository should have all the necessary code and files to replicate the installation and usage in your README.md file.
-- Each team only needs to submit one repository. We will grade your homework based on the repository and all the team members' will receive the same grade.
+- Each squad only needs to submit one repository. We will grade your homework based on the repository and all the squad members' will receive the same grade.
 
