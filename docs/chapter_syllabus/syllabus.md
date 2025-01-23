@@ -35,8 +35,8 @@ Class participation will be graded based on following parts:
 - Classroom discussions and questions asked in the courses.
 - The approved pull requests in the course website repository. 
 - Discussions and questions asked in the Github Classroom.
-- One-minute summary on the Github Discussion. You need to summarize the content and confusions in each class, which is submitted via the Github Discussion. The summary just goes in the textbox once you begin the assignment. 
-
+- **One-minute summary** on the Canvas Assignment. You need to summarize the content and confusions in each class, which is submitted via the Canvas assignment. The summary just goes in the textbox once you begin the assignment. You only need to spend 1 minute to write it and it is due at the midnight of each class day.
+  
 Students are expected to behave professionally at all times, with courtesy towards other students, the TAs, and the instructor.  
 
 ![Participation](./syllabus.assets/syllabus_participation.jpg)
@@ -71,7 +71,7 @@ All the course materials are hosted on Github Classroom. The course canvas site 
 
 Here are the general guidelines for the homework submission. We will specify the specific requirements for each homework in the homework repository in Github Classroom.
 
-- Each homework should be submitted as a single repository. See [Appendix](../chapter_appendix/github.md) for instructions.
+- Each homework should be submitted as a single repository. We will post the homework link in the Canvas assignment. See [Appendix](../chapter_appendix/github.md) for instructions.
 - In the repository, you should have a README.md file to present your code as a tutorial of how to reproducibly use your code. The README.md file should at least include the following sections:
      - Introduction: Briefly describe the purpose of the repository.
      - Installation: How to set up your code. For example, from `git clone` to installing the dependencies. Make sure users can run your code and reproduce the results in the next usage step after they follow your installation instructions.
