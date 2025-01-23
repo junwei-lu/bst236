@@ -65,7 +65,7 @@ We allow and encourage you to use ChatGPT and other generative AI tools for the 
 ## Github Classroom 
 The homework and project will be assigned through Github Classroom. Refer to the [Appendix](../chapter_appendix/github.md) for more details.
 
-All the course materials are hosted on Github Classroom. The course canvas site is only for  posting the grades.
+All the course materials are hosted on Github Classroom. The course canvas site is only for one-minute summary, posting the grades, and zoom recordings.
 
 ## Homework Submission Guidelines
 
