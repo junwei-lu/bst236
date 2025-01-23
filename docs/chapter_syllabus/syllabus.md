@@ -35,7 +35,7 @@ Class participation will be graded based on following parts:
 - Classroom discussions and questions asked in the courses.
 - The approved pull requests in the [course website repository](https://github.com/junwei-lu/bst236). 
 - Discussions and questions asked in the [Github Discussions](https://github.com/orgs/hsph-bst236/discussions), especially when you help with your classmates questions.
-- **One-minute summary** on the Canvas Assignment. You need to summarize the content and confusions in each class, which is submitted via the Canvas assignment. The summary just goes in the textbox once you begin the assignment. You only need to spend 1 minute to write it and it is due at the midnight of each class day.
+- **One-minute summary** on the Canvas Assignment. You need to summarize the content and confusions in each class, which is submitted via the Canvas assignment. The summary just goes in the textbox once you begin the assignment. You only need to spend 1 minute to write it and stop whereever you are when time is up. It is due at the midnight of each class day.
   
 Students are expected to behave professionally at all times, with courtesy towards other students, the TAs, and the instructor.  
 
