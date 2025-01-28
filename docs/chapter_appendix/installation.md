@@ -2,7 +2,15 @@
 
 ## Operating System
 
-Most of the materials in this course are platform-independent. However, most of the instructions are based on Linux or macOS. If you are using Windows, you can either find the corresponding Windows instructions online or use WSL2 to set up a Linux virtual machine. See a tutorial [here](https://learn.microsoft.com/en-us/windows/wsl/install).
+Most of the materials in this course are platform-independent. However, most of the instructions are based on Linux or macOS. If you are using Windows, you can
+
+- Install [VS Code for windows](https://code.visualstudio.com/download)
+- Install [Python for windows](https://www.geeksforgeeks.org/how-to-install-python-on-windows/)
+- Install [R for windows](https://cran.r-project.org/bin/windows/base/)
+- Install [Jupyter Notebook for windows](https://www.geeksforgeeks.org/install-jupyter-notebook-in-windows/)
+- Most of the following setup instructions should be OS independent. For those shell commands, you may need to run it on Windows terminal. If the command does not work, ask ChatGPT what is the right windows commands.
+
+You can also use WSL2 to set up a Linux virtual machine and install everything under virtual machine. See a tutorial [here](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ## Install IDE
 

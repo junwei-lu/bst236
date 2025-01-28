@@ -8,6 +8,7 @@
 - [Claude](https://www.anthropic.com/): excels in coding, has a smaller ecosystem with fewer third-party integrations and plugins.
 - [Gemini](https://gemini.google.com/): Longer context.
 - [LLaMA](https://www.llama.com/): Open source LLM developed by Meta.
+- [DeepSeek](https://www.deepseek.com/): The recent DeepSeek R1 + Search is comparable to GPT o1.
 
 | **Need**                         | **Recommended Models**                        | **Key Features**                                                                 |
 |-----------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------|
