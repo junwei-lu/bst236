@@ -2,15 +2,7 @@
 
 ## Operating System
 
-Most of the materials in this course are platform-independent. However, most of the instructions are based on Linux or macOS. If you are using Windows, you can
-
-- Install [VS Code for windows](https://code.visualstudio.com/download)
-- Install [Python for windows](https://www.geeksforgeeks.org/how-to-install-python-on-windows/)
-- Install [R for windows](https://cran.r-project.org/bin/windows/base/)
-- Install [Jupyter Notebook for windows](https://www.geeksforgeeks.org/install-jupyter-notebook-in-windows/)
-- Most of the following setup instructions should be OS independent. For those shell commands, you may need to run it on Windows terminal. If the command does not work, ask ChatGPT what is the right windows commands.
-
-You can also use WSL2 to set up a Linux virtual machine and install everything under virtual machine. See a tutorial [here](https://learn.microsoft.com/en-us/windows/wsl/install).
+Most of the materials in this course are platform-independent. The instructions below include steps for all major operating systems: Linux, macOS, and Windows.
 
 ## Install IDE
 
@@ -20,7 +12,7 @@ For your local Integrated Development Environment (IDE), we suggest using Visual
 
 ### Github Copilot
 
-We recommend using the AI assistant Github Copilot or other similar tools. As Harvard students, GitHub Copilot you may apply for a free license of GitHub Copilot by following the steps [here](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student). Note that you will need to upload proof of enrollment: you can use a picture of your student ID your GSAS enrollment documentation (which can be found in my.harvard). 
+We recommend using the AI assistant Github Copilot or other similar tools. As Harvard students, you may apply for a free license of GitHub Copilot by following the steps [here](https://docs.github.com/en/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student). Note that you will need to upload proof of enrollment: you can use a picture of your student ID your GSAS enrollment documentation (which can be found in my.harvard). 
 
 To install Github Copilot in VS Code, you can search for `Github Copilot` in the VS Code extension marketplace and install it.
 
@@ -36,67 +28,92 @@ We also recommend (though not required) to install the following AI-Copilot tool
 
 ### Python
 
-  We suggest using pyenv to install python for better version management. For the following, identify the name of the shell (usually bash or zsh) by running the following in your terminal:
+We suggest using pyenv to install python for better version management. The installation process varies by operating system:
 
-  ```
-  ps $$
-  ```
-
-Next, ensure that the configuration file is created by running the following in the terminal:
-
-```
-touch ~/.bashrc
-```
-
-or 
-
-```
-touch ~/.zshrc
-```
-
-depending on the name of your shell. Then 
+#### For macOS:
 
 1. Install pyenv:
-
-    - Ensure that [homebrew](https://brew.sh) is installed.
-    - On macOS: `brew install pyenv`
-    - On Linux: `curl https://pyenv.run | bash`
-   
+    ```bash
+    brew install pyenv
+    ```
 
 2. Add pyenv to your shell configuration:
-
     - For bash, add to `~/.bashrc`:
-     ```bash
-     export PYENV_ROOT="$HOME/.pyenv"
-     export PATH="$PYENV_ROOT/bin:$PATH"
-     eval "$(pyenv init -)"
-     ```
     - For zsh, add to `~/.zshrc`:
-     ```bash
-     export PYENV_ROOT="$HOME/.pyenv"
-     export PATH="$PYENV_ROOT/bin:$PATH"
-     eval "$(pyenv init -)"
-     ```
-    - Source the file to apply the changes:
-     ```bash
-     source ~/.bashrc  # For bash
-     source ~/.zshrc   # For zsh
-     ```
+    ```bash
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    ```
 
-3. Install Python using pyenv:
+#### For Linux:
+
+1. Install pyenv:
+    ```bash
+    curl https://pyenv.run | bash
+    ```
+
+2. Add the same configuration as macOS to your `~/.bashrc` or `~/.zshrc`
+
+#### For Windows:
+
+1. Install pyenv-win using PowerShell (run as Administrator):
+    ```powershell
+    Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+    ```
+
+2. Add System Environment Variables:
+    - Open System Properties > Advanced > Environment Variables
+    - Add to System Variables:
+        - PYENV: `%USERPROFILE%\.pyenv\pyenv-win`
+        - PYENV_HOME: `%USERPROFILE%\.pyenv\pyenv-win`
+    - Add to Path:
+        - `%USERPROFILE%\.pyenv\pyenv-win\bin`
+        - `%USERPROFILE%\.pyenv\pyenv-win\shims`
+
+For all operating systems, after installation:
+
+1. Install Python:
    ```bash
-   pyenv install 3.10.0  # Install Python 3.10.0
-   pyenv global 3.10.0   # Set as default Python version
+   pyenv install 3.10.0
+   pyenv global 3.10.0
    ```
 
-4. Verify the installation:
+2. Verify the installation:
    ```bash
    python --version  # Should show Python 3.10.0
    ```
-   
+
+#### Check pip installation
+
+Pip is Python's package installer. It usually comes with Python, but it's good to verify the installation:
+
+1. Check if pip is installed:
+```bash
+pip --version
+```
+
+If pip is not installed or you need to upgrade it:
+
+#### For macOS/Linux:
+```bash
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py
+```
+
+#### For Windows:
+```powershell
+python -m ensurepip --upgrade
+```
+
+After installation, verify pip is working:
+```bash
+pip --version
+```
+
 #### Jupyter Notebook
 
-To install Jupyter Notebook, follow these steps:
+The installation process is the same for all operating systems:
 
 1. Install Jupyter using pip:
    ```bash
@@ -112,129 +129,85 @@ To install Jupyter Notebook, follow these steps:
    ```bash
    jupyter notebook
    ```
-   This will open Jupyter Notebook in your default web browser.
-
-Check the VS Code tutorial for using Jupyter in VS Code [here](https://code.visualstudio.com/docs/python/jupyter-support-py).
-
-
-For more information, refer to the [official Jupyter documentation](https://jupyter.org/install).
- 
 
 #### VS Code Python
 
-
-We suggest you to read the [official tutorial](https://code.visualstudio.com/docs/python/python-tutorial) for using the Python extension in VS Code. Besides [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) and [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter) extensions, we also suggest installing the following python related extensions:
-
-- [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance): it has the ability to supercharge your Python IntelliSense experience with rich type information, helping you write better code faster.
-- [Pylint](https://marketplace.visualstudio.com/items?itemName=ms-python.pylint): it is a static type checker and linting tool for Python.
+Install the following extensions from VS Code marketplace (same for all operating systems):
+- Python
+- Jupyter
+- Pylance
+- Pylint
 
 ### R 
 
-You can use other R IDEs like RStudio, but we suggest using VS Code with the R extension to better integrate with AI copilot. You can find the tutorial of VS Code R extension [here](https://code.visualstudio.com/docs/languages/r).
-To set up R in Visual Studio Code, follow these steps:
+#### For macOS:
+- Download and install R from [CRAN](https://cran.r-project.org/bin/macosx/)
 
-**1. Install R**
+#### For Linux:
+```bash
+sudo apt-get update
+sudo apt-get install r-base
+```
 
-Ensure that R (version 3.4.0 or higher) is installed on your system:
+#### For Windows:
+- Download and install R from [CRAN](https://cran.r-project.org/bin/windows/base/)
+- Download and install Rtools from [CRAN](https://cran.r-project.org/bin/windows/Rtools/)
 
-- **macOS**: Download the installer from [CRAN](https://cran.r-project.org/bin/macosx/) and follow the installation prompts.
-- **Linux**: Use your package manager to install R. For example, on Ubuntu:
+For all operating systems:
 
-
-  ```bash
-  sudo apt-get update
-  sudo apt-get install r-base
-  ```
-
-**2. Install radian**
-
-With Python installed, install radian using pip:
-
+1. Install radian:
 ```bash
 pip install -U radian
 ```
 
-This command installs radian globally.
-
-**3. Install Required R Packages**
-
-Open your R console and install the following packages:
-
+2. Install required R packages from R console:
 ```r
 install.packages("languageserver")
 install.packages("httpgd")
 ```
 
-- `languageserver`: Provides language support for R in VS Code.
-- `httpgd`: Enables an interactive plot viewer in VS Code.
-
-**4. Install the R Extension in VS Code**
-
-In VS Code:
-
-- Click on the Extensions view icon on the Sidebar or press `Ctrl+Shift+X`.
-- Search for "R" and install the extension by Yuki Ueda.
-
-**5. Configure VS Code Settings**
-
-To integrate radian with VS Code:
-
-- Open VS Code settings:
-    - Click on the gear icon in the lower-left corner and select "Settings," or press `Ctrl+,`.
-- In the search bar, type `r.rterm`.
-- Set the path to radian: 
-    - **macOS/Linux**: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian` (e.g., `/usr/local/bin/radian`).
-- Enable bracketed paste mode:
-- Search for `r.bracketedPaste` and ensure it's checked.
-- Search for `r.plot.useHttpgd` and enable it to use the httpgd plot viewer.
-
+3. Configure VS Code:
+- Install the R extension
+- Set radian path in VS Code settings:
+  - For Windows: Set `r.rterm.windows` to the path of radian (typically `%USERPROFILE%\AppData\Local\Programs\Python\Python3x\Scripts\radian.exe`)
+  - For macOS/Linux: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian`
 
 ## Optional software
 
 ### Cursor
 
-Cursor is a new generation AI-powered IDE that can help you write code faster and more efficiently. All the basic features of Cursor is same as VS Code. 
-You can download Cursor from the [official website](https://www.cursor.sh/) and install it. 
+Cursor is available for all operating systems. Download from the [official website](https://www.cursor.sh/).
 
 ### Conda
 
-We also suggest installing mini-conda for data analysis projects. To install Miniconda on macOS, follow these steps:
+#### For macOS:
+- Download the appropriate installer (Apple Silicon or Intel) from [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html)
+- Install using the .pkg installer
 
-1. **Download the Miniconda Installer:**
+#### For Linux:
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+```
 
+#### For Windows:
+- Download the Windows installer from [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html)
+- Run the .exe installer
+- During installation, check "Add Miniconda3 to my PATH environment variable"
 
-    - Visit the [Miniconda download page](https://docs.conda.io/en/latest/miniconda.html).
-    - Choose the installer that matches your macOS architecture:
-        - For Apple Silicon (M1, M2, etc.): Select the "Miniconda3 macOS Apple M1 64-bit pkg" installer.
-        - For Intel-based Macs: Select the "Miniconda3 macOS Intel x86 64-bit pkg" installer.
+For all operating systems, after installation:
 
-2. **Install Miniconda:**
+1. Initialize conda:
+```bash
+conda init
+```
 
+2. Verify installation:
+```bash
+conda --version
+```
 
-    - Locate the downloaded `.pkg` file in your `Downloads` folder.
-    - Double-click the installer to launch it.
-    - Follow the on-screen instructions:
-    - Read and agree to the license agreement.
-    - Choose the installation type: **Install for all users of this computer (Recommended).**
-    - Click "Install" to proceed.
-
-3. **Initialize Miniconda:**
-
-    - After installation, open the Terminal application.
-    - Run the following command to initialize conda:
-     ```bash
-     conda init
-     ```
-    - Close and reopen the Terminal to apply the changes.
-
-4. **Verify the Installation:**
-
-    - In the Terminal, check the conda version by running:
-     ```bash
-     conda --version
-     ```
-    - A successful installation will display the conda version number.
-    - Run `conda deactivate` to leave the environment.
+3. Run `conda deactivate` to leave the environment.
 
 For more detailed information, refer to the [official Miniconda installation documentation](https://docs.anaconda.com/miniconda/install/).
 
