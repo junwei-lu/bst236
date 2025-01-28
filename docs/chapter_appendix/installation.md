@@ -166,11 +166,11 @@ install.packages("languageserver")
 install.packages("httpgd")
 ```
 
-3. Configure VS Code:
-- Install the R extension
-- Set radian path in VS Code settings:
-  - For Windows: Set `r.rterm.windows` to the path of radian (typically `%USERPROFILE%\AppData\Local\Programs\Python\Python3x\Scripts\radian.exe`)
-  - For macOS/Linux: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian`
+1. Configure VS Code. Please refer to the [VS Code R Tutorial](https://code.visualstudio.com/docs/languages/r) for all the steps. We just list the key steps here:
+      - Install the R extension
+      - Set radian path in VS Code settings:
+             - For Windows: Set `r.rterm.windows` to the path of radian (typically `%USERPROFILE%\AppData\Local\Programs\Python\Python3x\Scripts\radian.exe`)
+             - For macOS/Linux: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian`
 
 ## Optional software
 
