@@ -40,17 +40,11 @@ Follow these steps to get started:
 
 ### Submitting Assignments
 
-When starting and submitting assignments:
+When submitting assignments:
 
-1. Tag the start:
-   ```bash
-   git tag assignment1-start
-   ```
-
-2. When ready to submit:
    ```bash 
-   git tag assignment1-submit
+   git tag -a hw-ready-for-grade -m "Homework Submission"
    git push origin master --tags
    ```
 
-Make sure to commit all changes before tagging and pushing.
+Make sure to commit all changes before tagging and pushing. We will only grade the commit with the tag `hw-ready-for-grade`. The late days will be counted based on the date of the commit with this tag. Do not make other commits after this tag.

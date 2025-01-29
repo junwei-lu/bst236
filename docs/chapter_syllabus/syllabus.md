@@ -79,6 +79,8 @@ Here are the general guidelines for the homework submission. We will specify the
      - Report: Report how you solve the problem and other information that is required by the homework.
      - Contributions: How each group member contributes to the project.
 - The repository should have all the necessary code and files to replicate the installation and usage in your README.md file.
+- Tag the commit which you want us to grade with  `hw-for-grade` using the command `git tag -a hw-ready-for-grade -m "Homework Submission"`. The late days will be counted based on the date of the commit with this tag.  
+- Do not make other commits after this tag.
 - Each squad only needs to submit one repository. We will grade your homework based on the repository and all the squad members' will receive the same grade.
 
 ## Harvard Chan Policies and Expectations
