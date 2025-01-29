@@ -33,7 +33,7 @@ It is your own responsibility to keep track of how many late days you used. But 
 Class participation will be graded based on following parts:
 
 - Classroom discussions and questions asked in the courses.
-- The approved pull requests in the [course website repository](https://github.com/junwei-lu/bst236). Follow the [contribution guidelines](../chapter_appendix/contribution.md) to contribute to the course website.
+- The approved pull requests in the [course website repository](https://github.com/junwei-lu/bst236). Follow the [contribution guidelines](../chapter_appendix/contribution.**md**) to contribute to the course website.
 - Discussions and questions asked in the [Github Discussions](https://github.com/orgs/hsph-bst236/discussions), especially when you help with your classmates questions.
 - **One-minute summary** on the Canvas Assignment. You need to summarize the content and confusions in each class, which is submitted via the Canvas assignment. The summary just goes in the textbox once you begin the assignment. You only need to spend 1 minute to write it and stop whereever you are when time is up. It is due at the midnight of each class day.
   
@@ -76,7 +76,7 @@ Here are the general guidelines for the homework submission. We will specify the
      - Introduction: Briefly describe the purpose of the repository.
      - Installation: How to set up your code. For example, from `git clone` to installing the dependencies. Make sure users can run your code and reproduce the results in the next usage step after they follow your installation instructions.
      - Usage: Provide a sample usage of your code with the expected output. You may need to have test input cases to show the expected output. You can also use images and gifs to illustrate the usage or the output if necessary.
-     - Report: Report other information that is required by the homework.
+     - Report: Report how you solve the problem and other information that is required by the homework.
      - Contributions: How each group member contributes to the project.
 - The repository should have all the necessary code and files to replicate the installation and usage in your README.md file.
 - Each squad only needs to submit one repository. We will grade your homework based on the repository and all the squad members' will receive the same grade.
