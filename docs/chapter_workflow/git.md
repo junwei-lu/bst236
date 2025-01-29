@@ -224,6 +224,7 @@ Here are the visualization of the workflow on the commit status of the remote Gi
 
 2. **Merge Request**
       - Project owner can use "squash and merge" in Github pull request to consolidate commits
+      - Checkout how "squash and merge" works [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges)
 
 
 !!! tip "Tip: Always rebase"
