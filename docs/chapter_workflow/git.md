@@ -101,19 +101,15 @@ There are tools like [Github Desktop](https://desktop.github.com/) and [VS Code 
 
 ### GitHub Collaboration Workflow
 
-You can follow the VS Code tutorial [here](https://code.visualstudio.com/docs/sourcecontrol/github) for the Github collaboration workflow on VS Code. We suggest the following workflow for software development on GitHub. You may use [Make](make.md) to automate your workflow instead of memorizing all the commands.
+You can follow the VS Code tutorial [here](https://code.visualstudio.com/docs/sourcecontrol/github) for the Github collaboration workflow on VS Code. We suggest the following workflow for contributing to public repositories. You may use [Make](make.md) to automate your workflow instead of memorizing all the commands.
 
-Here are the visualization of the workflow on the commit status of the remote Github, local git, and local disk. You can cross reference to the text instructions below for better understanding.
-
+Here are the visualization of the workflow on the commit status of the remote Github, local git, and local disk. You can cross reference to the text instructions below for better understanding. Note that we add a fork step if you want to contribute to a public repository, which you do not have the permission to push to. You can follow the simplified instructions in the figures below if you can access the original repository.
 === "<1>"
     ![Clone the repository](workflow.assets/github_workflow_step1.png)
-
 === "<2>"
     ![Create a new working branch](workflow.assets/github_workflow_step2.png)
-
 === "<3>"
     ![Make changes to local files](workflow.assets/github_workflow_step3.png)
-
 === "<4>"
     ![Review code changes with git diff](workflow.assets/github_workflow_step4.png)
 
@@ -155,27 +151,47 @@ Here are the visualization of the workflow on the commit status of the remote Gi
 
 **Initial Repository Setup and Branch Creation**
 
-1. **Clone the Repository**
-      - Use `git clone` to download the remote repository to your local machine. (If the Github repository is not from your collaborators, you need to fork the repository to your own account and clone the repository from your account.)
+1. **Fork the Repository**
+      - Go to the original repository on GitHub
+      - Click the "Fork" button in the top-right corner to create your own copy
+      - This creates a copy of the repository under your GitHub account
 
-2. **Create a New Working Branch**
+2. **Clone Your Forked Repository**
+      - Clone your fork (not the original repository)
+      ```bash
+      git clone git@github.com:YOUR_USERNAME/REPOSITORY_NAME.git
+      cd REPOSITORY_NAME
+      ```
+
+3. **Add Original Repository as Remote**
+      - Add the original repository as a remote called "upstream"
+      ```bash
+      git remote add upstream https://github.com/ORIGINAL_OWNER/REPOSITORY_NAME.git
+      ```
+      - You now have two remotes:
+        - `origin`: your fork
+        - `upstream`: original repository
+
+4. **Create a New Working Branch**
       - Every new feature should be developed in a new branch
-      - Execute `git checkout -b my_feature` to create and switch to a new branch named 'my_feature'
-      - This effectively creates a local copy of the repository on a separate branch
+      - Execute `git checkout -b my_feature` to create and switch to a new branch
+      - This effectively creates a local copy on a separate branch
 
 **Code Development and Local Changes**
 
-1. **Modify Local Code**
-      - Make necessary changes or additions to source files on your local hard drive
 
-2. **Review Code Changes**
-      - Use `git diff` to inspect modifications made to the codebase
 
-3. **Commit Local Changes**
-      - Use `git commit -a -m "Descriptive message about changes"` to update staged code to the local Git repository
+3. **Modify Local Code**
+      - Make necessary changes to source files
 
-4. **Push Branch to Remote Repository**
-      - Execute `git push origin my_feature` to upload the local `my_feature` branch to GitHub
+4. **Review Code Changes**
+      - Use `git diff` to inspect modifications
+
+5. **Commit Local Changes**
+      - Use `git commit -a -m "Descriptive message about changes"`
+
+6. **Push Branch to Your Fork**
+      - Execute `git push origin my_feature`
 
 **Handling Remote Repository Updates**
 
@@ -184,34 +200,38 @@ Here are the visualization of the workflow on the commit status of the remote Gi
       - **Warning**: Commit your branch before switching to main branch, or you will lose all your changes.
 
 2. **Pull Latest Changes**
-      - Execute `git pull origin master/main` to update local repository with remote modifications
+      - Execute `git pull upstream main` to update local repository with remote modifications
 
 3. **Return to Working Branch**
-      - Switch back to `my_feature` branch using `git checkout my_feature`
+      - Switch back to my_feature branch using `git checkout my_feature`
 
 4. **Rebase Working Branch**
       - Use `git rebase main` to integrate main branch updates into your working branch
       - Note: Potential merge conflicts may require manual code selection
-      - Understand the difference between `git pull` and `git rebase` [here](https://www.atlassian.com/git/tutorials/merging-vs-rebasing).
+      - Understand the difference between git pull and git rebase [here](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
 
 5. **Force Push Updated Branch**
       - Execute `git push -f origin my_feature` to update remote repository with rebased changes
 
-6. **Pull Request**
-      - After finish adding all the new features in the branch, create a pull request on GitHub
+**Creating Pull Request**
 
-7. **Merge Request**
+1. **Create Pull Request**
+      - Go to the original repository on GitHub, click "Pull Requests"
+      - Click "New Pull Request"
+      - Choose "compare across forks"
+      - Select your fork and feature branch
+      - Fill in the PR description and submit
+
+2. **Merge Request**
       - Project owner can use "squash and merge" in Github pull request to consolidate commits
 
 
 !!! tip "Tip: Always rebase"
-
     - Always rebase your branch on the main branch before creating a pull request.
     - This will make your pull request history cleaner and easier to review.
     - You can simply use `git pull origin my_feature --rebase` to rebase your branch on the github main branch.
 
-![rebase](./git.assets/git_rebase.jpeg)
-
+![Rebase](./git.assets/git_rebase.jpeg)
 
 ## Advanced Git Usage
 
