@@ -44,7 +44,7 @@ When submitting assignments:
 
    ```bash 
    git tag -a hw-ready-for-grade -m "Homework Submission"
-   git push origin master --tags
+   git push origin main --tags
    ```
 
 Make sure to commit all changes before tagging and pushing. We will only grade the commit with the tag `hw-ready-for-grade`. The late days will be counted based on the date of the commit with this tag. Do not make other commits after this tag.
