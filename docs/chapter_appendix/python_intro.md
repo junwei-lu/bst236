@@ -1,6 +1,6 @@
 # Python 101
 
-This is a basic tutorial for Python. We expect you to know the following materials for understanding the materials in the class. It covers the fundamentals of Python programming. For more topics, you can refer to the [official Python tutorial](https://wiki.python.org/moin/BeginnersGuide).
+This is a basic tutorial for Python. We expect you to know the following materials for understanding the materials in the class. It covers the fundamentals of Python programming. For more topics, you can refer to the [official Python tutorial](https://wiki.python.org/moin/BeginnersGuide). We also recommend you to read  [VS Code Python Tutorial](https://code.visualstudio.com/docs/python/python-quick-start) for how to use VS Code for Python programming.
 
 ## Table of Contents
 - [Python 101](#python-101)

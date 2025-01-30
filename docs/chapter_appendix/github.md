@@ -47,4 +47,4 @@ When submitting assignments:
    git push origin main --tags
    ```
 
-Make sure to commit all changes before tagging and pushing. We will only grade the commit with the tag `hw-ready-for-grade`. The late days will be counted based on the date of the commit with this tag. Do not make other commits after this tag.
+Make sure to commit all changes before tagging and pushing. We will **only** grade the commit with the tag `hw-ready-for-grade`. The late days will be counted based on the date of the commit with this tag. Do not make other commits after this tag.
