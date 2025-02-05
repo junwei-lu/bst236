@@ -32,9 +32,12 @@ For each Bit Battle challenge, squads will be rewarded based on their rank:
 
 As the student number is not always divisible by 3, we will use an auction to determine which individual students can join a squad as the 4th member. 
 
-**Eligibility**: We will announce the auction time, which will be in class. Any individual student who wishes to bid has to be in class physically at the time of the auction.
+**Eligibility**: 
+
+      - We will announce the auction time, which will be in class. Any individual student who wishes to bid has to be in class physically at the time of the auction.
 
 **Bidding Process**:
+
       - The auction will be conducted in a live auction format.
       - Bids will be publicly announced, and students can increase their bids in real-time.
       - Instructor will be the auctioneer deciding the winner following the [English auction rule](https://en.wikipedia.org/wiki/English_auction).
@@ -42,6 +45,7 @@ As the student number is not always divisible by 3, we will use an auction to de
       - Each interested student submits a bid indicating the number of bytes they are willing to spend to join a squad as the 4th member.
 
 **Winning the Auction**:
+
       - The student with the highest bid wins.
       - If `NUM_of_Registered_Students % 3 == 2`, the second-highest bid will be the second winner.
       - The winning student(s) has the right to join a squad as the 4th member.
