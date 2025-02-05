@@ -41,7 +41,7 @@ As the student number is not always divisible by 3, we will use an auction to de
 - The auction will be conducted in a live auction format.
 - Bids will be publicly announced, and students can increase their bids in real-time.
 - Instructor will be the auctioneer deciding the winner following the [English auction rule](https://en.wikipedia.org/wiki/English_auction).
-- The starting price is - ₿100, and the minimum increment is ₿10.
+- The starting price is - ₿100 (yes, it starts with negative), and the minimum increment is ₿10.
 - Each interested student submits a bid indicating the number of bytes they are willing to spend to join a squad as the 4th member.
 
 **Winning the Auction**:
