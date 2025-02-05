@@ -34,29 +34,30 @@ As the student number is not always divisible by 3, we will use an auction to de
 
 **Eligibility**: 
 
-      - We will announce the auction time, which will be in class. Any individual student who wishes to bid has to be in class physically at the time of the auction.
+- We will announce the auction time, which will be in class. Any individual student who wishes to bid has to be in class physically at the time of the auction.
 
 **Bidding Process**:
 
-      - The auction will be conducted in a live auction format.
-      - Bids will be publicly announced, and students can increase their bids in real-time.
-      - Instructor will be the auctioneer deciding the winner following the [English auction rule](https://en.wikipedia.org/wiki/English_auction).
-      - The starting price is - ₿500, and the minimum increment is ₿1.
-      - Each interested student submits a bid indicating the number of bytes they are willing to spend to join a squad as the 4th member.
+- The auction will be conducted in a live auction format.
+- Bids will be publicly announced, and students can increase their bids in real-time.
+- Instructor will be the auctioneer deciding the winner following the [English auction rule](https://en.wikipedia.org/wiki/English_auction).
+- The starting price is - ₿500, and the minimum increment is ₿1.
+- Each interested student submits a bid indicating the number of bytes they are willing to spend to join a squad as the 4th member.
 
 **Winning the Auction**:
 
-      - The student with the highest bid wins.
-      - If `NUM_of_Registered_Students % 3 == 2`, the second-highest bid will be the second winner.
-      - The winning student(s) has the right to join a squad as the 4th member.
-      - The winning student's bid amount will be deducted from the chosen squad's byte balance. Namely, the squad with the winner will have the initial byte balance = ₿100 - `Winner_Bid_Amount`.
-      - Notice that as the starting price is negative, `Winner_Bid_Amount` could be negative, which means the squad has to earn more bytes in the later bit battle to buy late days.
-      -  The `Winner_Bid_Amount` can be more than ₿100, which means squad initial balance can be negative, then the squad has to earn more bytes in the later bit battle to buy late days.
+- The student with the highest bid wins.
+- If `NUM_of_Registered_Students % 3 == 2`, the second-highest bid will be the second winner.
+- The winning student(s) has the right to join a squad as the 4th member.
+- The winning student's bid amount will be deducted from the chosen squad's byte balance. Namely, the squad with the winner will have the initial byte balance = ₿100 - `Winner_Bid_Amount`.
+- Notice that as the starting price is negative, `Winner_Bid_Amount` could be negative, which means the squad has to earn more bytes in the later bit battle to buy late days.
+-  The `Winner_Bid_Amount` can be more than ₿100, which means squad initial balance can be negative, then the squad has to earn more bytes in the later bit battle to buy late days.
 
 **Exception Rules**:
-  - If no bidder accepts the starting price, the auctioneer will further decrease the starting price until the end of the auction time.
-  - If still no bidder accepts the starting price, we will let students naturally form squads with members of 3 or 4.
-  - If there are still students who are not in any squad, we will randomly assign them to a squad.
+
+- If no bidder accepts the starting price, the auctioneer will further decrease the starting price until the end of the auction time.
+- If still no bidder accepts the starting price, we will let students naturally form squads with members of 3 or 4.
+- If there are still students who are not in any squad, we will randomly assign them to a squad.
 
 
 ## Bit Battle Events
