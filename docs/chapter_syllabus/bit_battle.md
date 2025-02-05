@@ -50,7 +50,7 @@ As the student number is not always divisible by 3, we will use an auction to de
 - If `NUM_of_Registered_Students % 3 == 2`, the second-highest bid will be the second winner.
 - The winning student(s) has the right to join a squad as the 4th member.
 - The winning student's bid amount will be deducted from the chosen squad's byte balance. Namely, the squad with the winner will have the initial byte balance = ₿100 - `Winner_Bid_Amount`.
-- Notice that as the starting price is negative, `Winner_Bid_Amount` could be negative, which means the squad has to earn more bytes in the later bit battle to buy late days.
+- Notice that as the starting price is negative. `Winner_Bid_Amount` could be negative, which means the squad with the winner who got the bid with negative bytes will earn the squad more later days than other squads.
 -  The `Winner_Bid_Amount` can be more than ₿100, which means squad initial balance can be negative, then the squad has to earn more bytes in the later bit battle to buy late days.
 
 **Exception Rules**:
