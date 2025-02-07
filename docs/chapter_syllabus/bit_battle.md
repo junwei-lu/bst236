@@ -56,7 +56,7 @@ As the student number is not always divisible by 3, we will use an auction to de
 **Exception Rules**:
 
 - If no bidder accepts the starting price, the auctioneer will further decrease the starting price until the end of the auction time.
-- If still no bidder accepts the starting price, we will let students naturally form squads with members of 3 or 4.
+- If still no bidder accepts the starting price, we will let students naturally form squads with members of 3.
 - If there are still students who are not in any squad, we will randomly assign them to a squad.
 
 
