@@ -18,7 +18,7 @@ We will average the late days used by each squad member for the first two assign
 
 Squad can buy additional late days using the course currency $byte. Please see [Bit Battle Rules](bit_battle.md) for more details.
 
-Once you run out of late days, late submissions are penalized 25% per day. (For example, a homework turned in two days late will receive only 50% credit.) More importantly, we will not grant additional late days once you have used up all 7 late days.
+Once you run out of late days, late submissions are penalized 25% per day. (For example, a homework turned in two days late will receive only 50% credit.) More importantly, we will not grant additional late days once you have used up all late days.
 
 No matter the late days are run out or not, submission more than five days late receive a grade of 0, but they must still be completed and turned in regardless. If a student ends the semester not having handed in a homework assignment, he/she is in risk of receiving a final grade of D or F for the semester regardless of their performance on other components of the course. 
 
