@@ -191,7 +191,7 @@ Here are the visualization of the workflow on the commit status of the remote Gi
       - Use `git commit -a -m "Descriptive message about changes"`
 
 6. **Push Branch to Your Fork**
-      - Execute `git push origin my_feature`
+      - Execute `git push -f origin my_feature`
 
 **Handling Remote Repository Updates**
 

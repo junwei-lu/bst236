@@ -51,7 +51,9 @@ During class, we will have **code squad** for homework and projects through the 
 
 The squad homework will start from the **third homework**. Please assemble your squad by then. You should let us know your squad members. Each squad should have a squad name, [squad logo](https://openai.com/index/dall-e-3/), and [squad anthem](https://suno.com/).
 
-Each squad should discuss their own rules on how to work together. Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
+Each squad should discuss their own rules on how to work together. **Squad members shall conduct themselves professionally and respectfully toward one another and shall, in good faith, contribute to squad tasks in a manner that is fair and proportionate to their roles and responsibilities. Each squad shall establish internal rules for resolving disagreements, and if disputes persist despite these mechanisms, squad members may seek guidance from the instructor.** Each squad only needs to submit one repository for each homework/project. 
+
+We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
 
 We will have **bit battles** for some homework. The bit battle is a competition to see which squad can write the best code (measured by the running time, precision, and etc, which will be specified in each homework.)
 We will have a leaderboard to track the performance of each squad. The best squads will be rewarded with the course currency $byte to buy more late days. See [Bit Battle Rules](bit_battle.md) for more details.
