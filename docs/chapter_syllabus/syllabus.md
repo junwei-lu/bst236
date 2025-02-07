@@ -10,9 +10,9 @@
 
 ## Late Assignment Policy
 
-All assignments are due at 12:00pm on the day listed. Each squad gets 3 late days which can be used to turn in homework late without penalty. These 3 late days are for the entire semester. 
+All assignments are due at midnight on the day listed. Each squad gets 3 late days which can be used to turn in homework late without penalty. These 3 late days are for the entire semester. 
 
-The late day is measured up to hour precision after the supposed deadline. For example, if you submit your homework at 12:01pm, you used 1 hour of late days. It is the student's responsibility to submit his/her homework online. If late days are used, please write at the head of your homework ReadME.md file in the format: XX late days used for this homework, and XX days remained. Check the [Bit Battle Rules](bit_battle.md) if you are buying late days. No matter how many late days you have earned, you have to submit all your homework before the last day of the semester.
+The late day is measured up to hour precision after the supposed deadline. For example, if you submit your homework one minute after midnight, you have used 1 hour of late days. It is the student's responsibility to submit his/her homework online. If late days are used, please write at the head of your homework ReadME.md file in the format: XX late days used for this homework, and XX days remained. Check the [Bit Battle Rules](bit_battle.md) if you are buying late days. No matter how many late days you have earned, you have to submit all your homework before the last day of the semester.
 
 We will average the late days used by each squad member for the first two assignments and take the closest integer to the average as the late days used for the squad for the first two assignments.
 
