@@ -43,6 +43,7 @@ Students are expected to behave professionally at all times, with courtesy towar
 
 ## Code Squad
 
+
 During class, we will have **code squad** for homework and projects through the semester (expect first two homework before students can drop). In principle, each squad should have 3 students. We enforce the squad work because
 
 - Learning to code alone is frustrating.
@@ -53,10 +54,42 @@ The squad homework will start from the **third homework**. Please assemble your 
 
 Each squad should discuss their own rules on how to work together. **Squad members shall conduct themselves professionally and respectfully toward one another and shall, in good faith, contribute to squad tasks in a manner that is fair and proportionate to their roles and responsibilities. Each squad shall establish internal rules for resolving disagreements, and if disputes persist despite these mechanisms, squad members may seek guidance from the instructor.** 
 
-Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details.
+Each squad only needs to submit one repository for each homework/project. We will grade your homework based on the repository and all the squad members' will receive the same grade by default. Read the [Code Squad Amendment Rules](syllabus.md#code-squad-amendment-rules) for more the exceptional cases.
+
+The instructor may reassign the squad members if the instructor thinks it is necessary.
+
+See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for submission guidelines.
 
 We will have **bit battles** for some homework. The bit battle is a competition to see which squad can write the best code (measured by the running time, precision, and etc, which will be specified in each homework.)
 We will have a leaderboard to track the performance of each squad. The best squads will be rewarded with the course currency $byte to buy more late days. See [Bit Battle Rules](bit_battle.md) for more details.
+
+### Code Squad Amendment Rules
+
+- Each squad must discuss and document their own internal rules for collaboration, ensuring professional and respectful conduct.
+- All squad members must contribute proportionally to assigned tasks.
+- Each squad must establish written internal procedures for resolving disputes.
+- If a squad cannot resolve an issue internally, members may escalate the concern to the instructor.
+- To ensure transparency, each squad member is strongly encouraged to:
+        - Individually document their own contributions in the README file.
+        - Use GitHub commits under their own account to track progress and contributions.
+- If a squad member cannot complete their assigned work by the agreed-upon deadline, they must:
+  
+        - Notify both their squadmates and the instructor in writing within 24 hours before the homework deadline specified in the homework repository.
+        - In the notification, the student should clearly specify which portion of the work was designated as their contribution and will be delayed.
+        - If a squad member requires an extension, other squad members may submit the assignment without the delayed portion and document contributions in the README file.  Their grade will be based solely on their completed contributions.
+        - The delayed squad member will submit their work by further adding commits to the homework repository for the delayed portion, and their grade will be based solely on their contributions.
+- If a squad submits the assignment on time, but a member requires an individual extension, the available late days for that member will be recalculated separately.
+- The new late day count will be determined by:
+  
+        - Averaging the remaining squad late days evenly and applying that the late days to each squad member's work submission time.
+        - The byte balance will also be split evenly among the squad members. Future bit battle rewards will distribute based on the contribution of each squad member.
+        - Example: If a squad has 6 remaining late days before that homework and has 3 members, each member's available late days after separation will be 2 late days each.
+- If a disagreement arises regarding workload distribution, contributions, or fairness, squad members should:
+        
+        - Attempt to resolve the dispute internally using their squad's documented collaboration rules. If the dispute remains unresolved, escalate the issue to the instructor for resolution.
+        - The instructor will evaluate the dispute based on the squad's documented workload distribution in the README file and GitHub commit history, which will serve as an objective measure of individual contributions. If the dispute persists,  we will grade each squad member's work based on their contributions from the GitHub commit history.
+
+
 
 ## Generative AI Tools Policy
 We allow and encourage you to use ChatGPT and other generative AI tools for the homework and project. In fact, this course is designed to help you understand how these tools work. You can try to use [GPTZero Detector](https://gptzero.me/) to check if the current technology can detect the use of AI. However, do not worry, we will not use this tool to check your homework and project. 
