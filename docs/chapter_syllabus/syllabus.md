@@ -69,11 +69,12 @@ We will have a leaderboard to track the performance of each squad. The best squa
 - All squad members must contribute proportionally to assigned tasks.
 - Each squad must establish written internal procedures for resolving disputes.
 - If a squad cannot resolve an issue internally, members may escalate the concern to the instructor.
-- To ensure transparency, each squad member is strongly encouraged to:
+- To ensure transparency, each squad member is required to:
+        
         - Individually document their own contributions in the README file.
         - Use GitHub commits under their own account to track progress and contributions.
 - If a squad member cannot complete their assigned work by the agreed-upon deadline, they must:
-  
+        
         - Notify both their squadmates and the instructor in writing within 24 hours before the homework deadline specified in the homework repository.
         - In the notification, the student should clearly specify which portion of the work was designated as their contribution and will be delayed.
         - If a squad member requires an extension, other squad members may submit the assignment without the delayed portion and document contributions in the README file.  Their grade will be based solely on their completed contributions.
