@@ -22,8 +22,10 @@ Once you run out of late days, late submissions are penalized 25% per day. (For 
 
 No matter the late days are run out or not, submission more than five days late receive a grade of 0, but they must still be completed and turned in regardless. If a student ends the semester not having handed in a homework assignment, he/she is in risk of receiving a final grade of D or F for the semester regardless of their performance on other components of the course. 
 
-If you commit multiple versions, we will only grade the last commit on Github within the 5 days maximum extension and take your late days based the time stamp of the last submission as well.
-It is your own responsibility to keep track of how many late days you used. But we will follow the time stamp on Github  as the criteria. 
+We will only grade the commit with the tag `hw-ready-for-grade` on Github. See [Homework Submission Guidelines](syllabus.md#homework-submission-guidelines) for more details. We will count the late days based on the time stamp of the tag.
+
+If you commit multiple versions without the `hw-ready-for-grade` tag, we will only grade the last commit on Github within the 5 days maximum extension and take your late days based the time stamp of the last commit.
+It is your own responsibility to keep track of how many late days you used. But we will follow the time stamp on Github as the criterion. 
 
 ![Late Policy](./syllabus.assets/syllabus_late.png)
 
