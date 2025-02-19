@@ -96,10 +96,13 @@ $$
 $$
 
 Whence we have the eigenvalues of $A$, we can express $A$ as $PDP^{-1}$, where $D$ is the diagonal matrix of eigenvalues and $P$ is the matrix of eigenvectors. Actually, we do not really need to compute $P$ but we just write both $P$ and $D$ here:
+
 $$
    P = \begin{bmatrix} \lambda_1 & \lambda_2 \\ 1 & 1 \end{bmatrix}, \quad D = \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}
 $$
+
 It is easy to compute see that $A^{n-1} = PD^{n-1}P^{-1}$ and 
+
 $$
 \begin{bmatrix}
 dp[n] \\
@@ -146,6 +149,7 @@ def climbing_stairs_closed_form(n: int) -> int:
 While the closed form solution provides a direct computation of the number of ways to climb the stairs, it involves floating-point arithmetic, which can lead to precision issues for very large values of $n$. Additionally, it requires the computation of powers of irrational numbers, which can be computationally expensive. Last but not least, the "human computation complexity" of computing the matrix eigenvalues and deriving the closed form might be far beyond the worst algorithm.
 
 To address the limitations of the closed form method, we want to get one step back to the matrix multiplication:
+
 $$
 \begin{bmatrix}
 dp[n] \\
@@ -158,6 +162,7 @@ dp[1] \\
 dp[0]
 \end{bmatrix}
 $$
+
 As $A$ is an integer matrix, this will not involve any floating-point arithmetic. However, the computation complexity of computing the $n$th power of a $d$-by-$d$ matrix $A$ is $O(d^3n)$. 
 
 !!! note "A trick of matrix multiplication"
