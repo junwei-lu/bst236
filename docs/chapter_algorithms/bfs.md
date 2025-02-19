@@ -45,6 +45,8 @@ def bfs_template(start_state, is_goal_state: callable, get_next_states: callable
     return None # No goal state found
 ```
 
+![Breadth-first search visualization](bfs.assets/Animated_BFS.gif)
+
 We now apply this template to solve the minimum moves to climb stairs problem.
 
 ```python
