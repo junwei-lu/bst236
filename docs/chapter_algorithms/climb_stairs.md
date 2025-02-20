@@ -55,8 +55,9 @@ def backtrack(problem, state, choices, result):
 Now we use the climbing stairs problem to demonstrate the backtracking algorithm.
 The goal of this problem is to determine the number of ways. Imagine climbing stairs as a multi-round choice process: starting from the ground, choosing to go up $1$ or $2$ steps at a time.
 
-![Backtracking algorithm for climbing stairs](backtracking.assets/backtracking_stairs.png)
 
+![Backtracking algorithm for climbing stairs](backtracking.assets/backtracking_stairs.png)
+![Backtracking animation](backtracking.assets/timestone-dr-strange.gif)
 ```python
 def backtrack(n: int, state: int, choices: list[int], path: list[int], result: list[list[int]]) -> None:
     """Backtracking to find all possible paths"""
