@@ -30,6 +30,7 @@ If a problem fits the decision tree model and has evident "bonus points", we can
 ## Steps to Solve Dynamic Programming
 
 The process of solving dynamic programming problems varies with the nature and complexity of the problem but generally follows these steps: 
+
 - describe actions, 
 - define states, 
 - establish a $dp$ table, 
