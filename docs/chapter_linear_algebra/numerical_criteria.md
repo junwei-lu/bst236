@@ -18,7 +18,7 @@ Actually, the time complexity of multiplying two $n$ by $n$ matrices can be fast
 
 ![Time Complexity of Matrix Multiplication](./numerical_linear_algebra.assets/MatrixMultComplexity_svg.svg)
 
-However, the real computation time is not only determined by the time complexity. In practice, even two algorithms with the same time complexity can have different running time. 
+<!-- However, the real computation time is not only determined by the time complexity. In practice, even two algorithms with the same time complexity can have different running time. 
 To understand why this situation occurs, we first need to understand the storage structure of modern computers. Modern computers use a multi-level storage system: registers, caches, main memory (RAM), disks, and tapes. When a computer directly exchanges information with registers, calculations occur by transferring the required data sequentially from higher-level to lower-level storage, starting from registers. Data at the end of the calculation process is then sequentially stored back into lower-level storage. As the storage level decreases (e.g., from registers to disks or tapes), the access speed to the data slows significantly. Generally, there are quantitative differences between these levels. Registers are extremely fast and efficient, while disks and tapes are relatively slow. Therefore, the capacity of disks and tapes is large, while the capacities of caches and registers are relatively small.
 Based on this hierarchical storage structure of computers, when designing software, we should aim to minimize data transfers between external storage, registers, and main memory. 
 
@@ -43,7 +43,7 @@ The following table shows the ratio $q$ for some common matrix operations.
 
 From the **table**, it is evident that the efficiency of matrix-matrix operations is the highest, with an average of computations per data retrieval. Therefore, in the design of matrix-related algorithms, we tend to maximize the use of matrix-matrix operations <u>when the computation complexity is same</u>.  For example, when multiplying matrices, numpy package (essentially BLAS and LAPACK libraries) has been optimized to conduct [block-wise matrix multiplication](https://www.netlib.org/lapack/lawnspdf/lawn107.pdf) considering a lot of hardware details and hundreds of experts have been working on the code optimization. This is why we should always use built-in functions to do matrix operations. 
 
-We want to emphasize again that the above analysis only applies to when the computation complexities are same. In practice, we will consider the above suggestions using distributed algorithms. When you want to compute $ABx$ for the matrices $A, B$ and vector $x$, the complexity of $(AB)x$ is $O(n^3)$ while the complexity of $A(Bx)$ is $O(n^2)$. Therefore, we should compute $Bx$ first in this case. 
+We want to emphasize again that the above analysis only applies to when the computation complexities are same. In practice, we will consider the above suggestions using distributed algorithms. When you want to compute $ABx$ for the matrices $A, B$ and vector $x$, the complexity of $(AB)x$ is $O(n^3)$ while the complexity of $A(Bx)$ is $O(n^2)$. Therefore, we should compute $Bx$ first in this case. -->
 
 ## Sensitivity and Stability
 
@@ -96,39 +96,64 @@ $$
 
 We can get a reliable result when we apply a numerically stable algorithm to a well-conditioned problem.
 
-In this course, we will not discuss the details of backward error analysis as most of the algorithms we will use are numerically stable. Besides, in the data analysis, the random errors will typically dominate the roundoff errors so the backward error analysis is not as important as in other scientific computing problems. Instead, we will just give a simple tip for possible numerical instabilities in practice.
+Here is a more concrete example of stable and unstable algorithms.
 
-**Tip**: Be careful with operations (especially multiplication and division) involving vastly different magnitudes. 
+**Example.**(Stability of square root) 
+Many algorithms compute $\sqrt{2}$ by starting with an initial approximation $x_0$ to $\sqrt{2}$, for instance $x_0 = 1.4$, and then computing improved guesses $x_1, x_2$, etc. 
 
-This is also related to the partial pivoting for LU decomposition we will discuss in the next section.
+One such method is the famous **Newton-Raphson method**. To solve $f(x) = 0$, we start with an initial guess $x_0$ and update it by:
 
-Example. Suppose we want to compute: $(10^8 \times 1.23456789)/10^8$
+$$ x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}. $$
 
-This can be done in two different orders:
+For $f(x) = x^2 - 2$, we have 
 
-Method 1: Multiply then divide
-1. Compute $10^8 \times 1.23456789 = 123456789.0$ 
-2. Divide by $10^8$: $123456789.0/10^8 = 1.23456789$
-This may have overflow error in the first step.
+$$ x_{k+1} = \frac{x_k + \frac{2}{x_k}}{2} $$
 
-Method 2: Divide then multiply
-1. Compute $1.23456789/10^8= 0.00000001$
-2. Multiply by $10^8$: $0.00000001 \times 10^8 = 1.00000000$
-The roundoff error makes the result not accurate.
+Another method, called **"method X"**, is given by:
 
-Method 3: Divide numbers with same order of magnitude
-1. Compute $10^8/10^8= 1$
-2. Multiply by $1.23456789$: $1 \times 1.23456789 = 1.23456789$
+$$ x_{k+1} = (x_k^2 - 2)^2 + x_k, $$
+where $\sqrt{2}$ is the fixed point.
 
-**Tip 2**. Avoid catastrophic cancellation.
 
-```python
-x = 1.000000000000001  # rounded to 1 + 5*2^{-52}
-y = 1.000000000000002  # rounded to 1 + 9*2^{-52}
-z = y - x              # difference is exactly 4*2^{-52}
-```
+A few iterations of each method are calculated in plots below, with initial guesses $x_0 = 1.4$ and $x_0 = 1.42$.
 
-Example. Compute $x^2-y^2$ as $(x+y)(x-y)$ when $x$ and $y$ are close. 
+| Iteration | Newton (x₀=1.4) | Newton(x₀=1.42) | Method X (x₀=1.4) | Method X (x₀=1.42) |
+|-----------|---------------------|---------------------|------------------|-------------------|
+| x₀ | 1.4 | 1.42 | 1.4 | 1.42 |
+| x₁ | 1.4142857... | 1.41422535... | 1.4016 | 1.42026896 |
+| x₂ | 1.414213564... | 1.41421356242... | 1.4028614... | 1.42056... |
+| ... | ... | ... | ... | ... |
+| Final | x₁,₀₀₀,₀₀₀ = 1.41421... | - | x₂₇ = 7280.2284... | - |
 
-Example. Suppose we want to compute $e^{x} - e^{-x}$ for $x$ around 0. It is better to compute $e^x - e^{-x} = 2x + \frac{2x^3}{3!} + \frac{2x^5}{5!} + \cdots$
+You can see why the stability of two methods are different by the plot below.
+
+![Stability of square root](./numerical_linear_algebra.assets/sqrt_root.png)
+
+
+**Tip**: Be careful with multiplication and division involving vastly different magnitudes. Be careful with subtraction of two nearly identical numbers (this is called catastrophic cancellation).
+
+**Example.**(Catastrophic cancellation) The loss of significance can be demonstrated using the following two mathematically equivalent functions:
+
+$$
+f(x) = x\left(\sqrt{x+1} - \sqrt{x} \right), \quad
+g(x) = \frac{x}{\sqrt{x+1} + \sqrt{x}}.
+$$
+
+
+
+Now, evaluating these functions at $x = 500$: The true value, computed with infinite precision, is $11.174755\ldots$. If a system is limited to storing only the four most significant decimal digits, we have
+
+
+$$
+f(500) = 500\left(\sqrt{501} - \sqrt{500}\right) = 500\left(22.38 - 22.36\right) = 500(0.02) = 10
+$$
+
+$$
+g(500) = \frac{500}{\sqrt{501} + \sqrt{500}} = \frac{500}{22.38 + 22.36} = \frac{500}{44.74} = 11.17.
+$$
+
+Comparing the computed values, it is evident that loss of significance occurs. This is due to catastrophic cancellation when subtracting approximations of two nearly identical values, $\sqrt{501}$ and $\sqrt{500}$, even though the subtraction is performed exactly. 
+
+
+
 
