@@ -18,7 +18,7 @@ Additionally, there are some "bonus points" for identifying dynamic programming 
 - The problem's states can be represented using a list, multi-dimensional matrix, or tree, and a state has a recursive relationship with its neighboring states.
 - Given a certain state, its future development is only related to the current state and unrelated to all past states experienced. This is also known as the "Markovian" property.
 
-For instance, in the stair climbing problem, given state $i$, it will progress to states $i-1$ and $i-2$, corresponding to jumping 1 step and 2 steps respectively. When making these choices, we do not need to consider the states before state $i$, as they do not influence the future of state $i$.
+For instance, in the stair climbing problem, given state $i$, it will progress to states $i+1$ and $i+2$, corresponding to jumping 1 step and 2 steps respectively. When making these choices, we do not need to consider the states before state $i$, as they do not influence the future of state $i$.
 
 Conversely, there are also some "penalty points".
 
