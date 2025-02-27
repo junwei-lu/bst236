@@ -112,6 +112,7 @@ $$ x_{k+1} = \frac{x_k + \frac{2}{x_k}}{2} $$
 Another method, called **"method X"**, is given by:
 
 $$ x_{k+1} = (x_k^2 - 2)^2 + x_k, $$
+
 where $\sqrt{2}$ is the fixed point.
 
 
