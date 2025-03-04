@@ -88,17 +88,10 @@ For sparse linear systems $Ax = b$, scipy provides specialized solvers in the `s
 3. **For very large non-symmetric matrices:**
    ```python
    # Always use preconditioner for large systems
-   from scipy.sparse.linalg import spilu
-   
-   # ILU preconditioner
-   P = spilu(A)
-   M = lambda x: P.solve(x)
-   
-   x, info = linalg.gmres(A, b, M=M, tol=1e-10)
-      
+   x, info = linalg.gmres(A, b, rtol=1e-10)
    # If memory is an issue, switch to BiCG
    if memory_error:
-       x, info = linalg.bicg(A, b, tol=1e-10)
+       x, info = linalg.bicg(A, b, rtol=1e-10)
    ```
 
    The GMRES is the most robust iterative method for large non-symmetric matrices. However, it requires more memory than the conjugate gradient. If the memory is an issue, we can switch to BiCG.

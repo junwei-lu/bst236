@@ -192,9 +192,11 @@ nav:
     - chapter_linear_algebra/index.md
     - Linear Algebra Basics: chapter_linear_algebra/basic_linear_algebra.md
     - Numerical Criteria: chapter_linear_algebra/numerical_criteria.md
-    - Linear Equation: chapter_linear_algebra/linear_equation.md
+    - Linear Equations: chapter_linear_algebra/linear_equation.md
     - Eigen-Decomposition: chapter_linear_algebra/eigen.md
-    - Sparse Matrix: chapter_linear_algebra/sparse_matrix.md
+    - Sparse Matrices: chapter_linear_algebra/sparse_matrix.md
+    - Randomized Methods: chapter_linear_algebra/stochastic_matrix.md
+    - GPU for Matrices: chapter_linear_algebra/gpu_matrix.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
