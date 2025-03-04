@@ -5,6 +5,8 @@ Matrix computations are highly parallelizable operations that can greatly benefi
 
 ## Set up GPU core in the Class Cluster
 
+For the class cluster, you can use the following command to allocate a GPU core and start a bash session. You can also directly write an sbatch file to submit a GPU job. 
+
 ```bash
 [jul924@ip-10-37-33-243 ~]$ salloc --partition=gpu --cpus-per-task=1 --mem=30G --time=01:00:00 srun --pty bash
 salloc: Granted job allocation 38087
@@ -44,7 +46,7 @@ For installation of CuPy, you can run the following command:
 
 ```bash
 # Check if CuPy is installed
-pip show cupy
+pip3 show cupy
 # For CUDA 12.x
 pip3 install cupy-cuda12x
 ```
