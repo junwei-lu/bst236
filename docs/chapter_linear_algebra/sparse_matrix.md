@@ -75,7 +75,7 @@ For sparse linear systems $Ax = b$, scipy provides specialized solvers in the `s
    ```python
    # Try conjugate gradient first with a preconditioner
    M = sparse.diags([A.diagonal()])  # Diagonal preconditioner
-   x, info = linalg.cg(A, b, M=M, tol=1e-10)
+   x, info = linalg.cg(A, b, M=M, rtol=1e-10)
    
    # If CG fails or is slow, try direct solver
    if info != 0:
