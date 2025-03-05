@@ -147,18 +147,18 @@ extra_css:
 nav:
   - Course Information:
     - chapter_syllabus/index.md
-  - Chapter. Introduction:
+  - Chapter 0. Introduction:
     - chapter_preface/index.md
-  - Chapter. Basics of Coding:
+  - Chapter 1. Basics of Coding:
     - chapter_coding/index.md
     - Principles: chapter_coding/code_principle.md
     - Code in Style: chapter_coding/coding_style.md
-  - Chapter. Coding with AI:
+  - Chapter 2. Coding with AI:
     - chapter_ai/index.md
     - AI Copilot: chapter_ai/ai_copilot.md
     - Prompt Engineering: chapter_ai/prompt_engineering.md
     - AI Tools: chapter_ai/ai_tools.md
-  - Chapter. Computing Workflow:
+  - Chapter 3. Computing Workflow:
     - chapter_workflow/index.md
     - Workflow: chapter_workflow/computing_workflow.md
     - Git and GitHub: chapter_workflow/git.md
@@ -166,12 +166,12 @@ nav:
     - Virtual Environment: chapter_workflow/venv.md
     - Reproducible R: chapter_workflow/R.md
     - Docker: chapter_workflow/docker.md
-  - Chapter. Complexity analysis:
+  - Chapter 4. Complexity analysis:
     - chapter_computational_complexity/index.md
     #- Iteration and recursion: chapter_computational_complexity/iteration_and_recursion.md
     - Time complexity: chapter_computational_complexity/time_complexity.md
     - Space complexity: chapter_computational_complexity/space_complexity.md
-  - Chapter. Data Structures:
+  - Chapter 5. Data Structures:
     - chapter_data_structures/index.md
     - Lists: chapter_data_structures/list.md
     - Stack: chapter_data_structures/stack.md
@@ -181,14 +181,14 @@ nav:
     - Pandas DataFrame: chapter_data_structures/pandas_dataframe.md
     - Polars: chapter_data_structures/polars.md
     - Multiprocessing: chapter_data_structures/multiprocess.md
-  - Chapter. Discrete Algorithms:
+  - Chapter 6. Discrete Algorithms:
     - chapter_algorithms/index.md
     - Depth-first Search: chapter_algorithms/climb_stairs.md
     - Divide and Conquer: chapter_algorithms/divide_n_conquer.md
     - Breadth-first Search: chapter_algorithms/bfs.md
     - Dynamic Programming: chapter_algorithms/dynamic_programming.md
     - Summary: chapter_algorithms/summary.md
-  - Chapter. Numerical Linear Algebra:
+  - Chapter 7. Numerical Linear Algebra:
     - chapter_linear_algebra/index.md
     - Linear Algebra Basics: chapter_linear_algebra/basic_linear_algebra.md
     - Numerical Criteria: chapter_linear_algebra/numerical_criteria.md
@@ -197,7 +197,7 @@ nav:
     - Sparse Matrices: chapter_linear_algebra/sparse_matrix.md
     - Randomized Methods: chapter_linear_algebra/stochastic_matrix.md
     - GPU for Matrices: chapter_linear_algebra/gpu_matrix.md
-  - Chapter. Optimization:
+  - Chapter 8. Optimization:
     - chapter_optimization/index.md
     - Convexity: chapter_optimization/convexity.md
     - Rate of Convergence: chapter_optimization/rate_of_convergence.md
