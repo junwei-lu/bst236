@@ -181,7 +181,7 @@ nav:
     - Pandas DataFrame: chapter_data_structures/pandas_dataframe.md
     - Polars: chapter_data_structures/polars.md
     - Multiprocessing: chapter_data_structures/multiprocess.md
-  - Chapter. Algorithms:
+  - Chapter. Discrete Algorithms:
     - chapter_algorithms/index.md
     - Depth-first Search: chapter_algorithms/climb_stairs.md
     - Divide and Conquer: chapter_algorithms/divide_n_conquer.md
@@ -197,6 +197,17 @@ nav:
     - Sparse Matrices: chapter_linear_algebra/sparse_matrix.md
     - Randomized Methods: chapter_linear_algebra/stochastic_matrix.md
     - GPU for Matrices: chapter_linear_algebra/gpu_matrix.md
+  - Chapter. Optimization:
+    - chapter_optimization/index.md
+    - Convexity: chapter_optimization/convexity.md
+    - Rate of Convergence: chapter_optimization/rate_of_convergence.md
+    - Gradient Descent: chapter_optimization/gradient_descent.md
+    - Accelerated Gradient Descent: chapter_optimization/agd.md
+    - Proximal Gradient Descent: chapter_optimization/proximal_gradient_descent.md
+    - Mirror Descent: chapter_optimization/mirror_descent.md
+    - Nesterov's Smooth Method: chapter_optimization/nesterov_smooth.md
+    - Duality and ADMM: chapter_optimization/duality_and_admm.md
+    - Stochastic Gradient Descent: chapter_optimization/sgd.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md

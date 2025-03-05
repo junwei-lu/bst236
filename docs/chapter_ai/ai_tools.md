@@ -3,16 +3,18 @@
 ## Language models
 
 - [OpenAI](https://chatgpt.com/)
-    - GPT o1: Chain of thought for advanced reasoning, slower (change to o1-mini for faster reasoning)
+    - GPT o3: Chain of thought for advanced reasoning
     - GPT 4o: General purpose use, can search the web, can add context to the conversation.
 - [Claude](https://www.anthropic.com/): excels in coding, has a smaller ecosystem with fewer third-party integrations and plugins.
 - [Gemini](https://gemini.google.com/): Longer context.
 - [LLaMA](https://www.llama.com/): Open source LLM developed by Meta.
 - [DeepSeek](https://www.deepseek.com/): The recent DeepSeek R1 + Search is comparable to GPT o1.
+- [Grok](https://grok.com/): xAI's LLM with thinking mode as well.
 
+The table below may be out-of-date. Please check the latest models from the official websites.
 | **Need**                         | **Recommended Models**                        | **Key Features**                                                                 |
 |-----------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------|
-| High-Quality, Nuanced Output      | o1, o1-mini, Claude 3.5 Sonnet | Top-tier quality, well-structured responses, ideal for professional applications |
+| High-Quality, Nuanced Output      | o3, DeepSeek R1, Claude 3.7 Sonnet, Grok | Top-tier quality, well-structured responses, ideal for professional applications |
 | Speed-Sensitive Applications      | Gemini 1.5 Flash       | Fastest output speeds, minimal delay, great for real-time tasks                  |
 | Cost-Conscious Deployments        | Mistral 3B, Llama 3.2 1B                      | Highly affordable per million tokens, cost-effective for large-scale use         |
 | Extensive Context Processing      | Gemini 1.5 Pro                  | 2 million token context window, supports deep contextual analysis                |
