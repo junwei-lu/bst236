@@ -58,28 +58,12 @@ Adam (Adaptive Moment Estimation) combines the ideas of momentum and RMSprop, ma
 
 **Adam Algorithm**:
 
-Compute the biased first moment estimate:
+Compute the biased first moment estimate: $m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla f(x_t)$
 
-   $$
-   m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla f(x_t)
-   $$
+Compute the biased second raw moment estimate: $v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla f(x_t))^2$
 
-Compute the biased second raw moment estimate:
+Correct the bias in the first and second moments: $\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}$
 
-   $$
-   v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla f(x_t))^2
-   $$
-
-Correct the bias in the first and second moments:
-
-   $$
-   \hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}
-   $$
-
-Update the parameters:
-
-   $$
-   x_{t+1} = x_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t
-   $$
+Update the parameters: $x_{t+1} = x_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t$
 
 Adam is widely used due to its robustness and efficiency in training deep neural networks.
