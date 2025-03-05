@@ -99,13 +99,9 @@ Choosing the optimal step size $\eta_t = 1$ yields $x_{t+1} = \frac{Ax_t}{\|Ax_t
 The following two constrained Lasso formulations are equivalent:
 
 $$
-\begin{align}
 \min_{\beta} \|Y - X\beta\|_2^2 \text{ s.t. } \|\beta\|_1 \leq \lambda
-\end{align}
 \Longleftrightarrow
-\begin{align}
 \min_{\beta} \|Y/\lambda - X\beta\|_2^2 \text{ s.t. } \|\beta\|_1 \leq 1
-\end{align}
 $$
 
 So without loss of generality, we can assume $\lambda = 1$. Applying the Frank-Wolfe algorithm, we need to solve:
