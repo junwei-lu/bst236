@@ -203,6 +203,7 @@ nav:
     - Rate of Convergence: chapter_optimization/rate_of_convergence.md
     - Gradient Descent: chapter_optimization/gradient_descent.md
     - Accelerated Gradient Descent: chapter_optimization/agd.md
+    - PyTorch Basics: chapter_optimization/pytorch_basics.md
     - Proximal Gradient Descent: chapter_optimization/proximal_gradient_descent.md
     - Mirror Descent: chapter_optimization/mirror_descent.md
     - Nesterov's Smooth Method: chapter_optimization/nesterov_smooth.md
