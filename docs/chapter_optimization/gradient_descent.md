@@ -70,6 +70,8 @@ One popular choice is the Armijo rule: Given initial step size $\eta_0$, reducti
 
 The algorithm starts with a large step size and gradually reduces it until finding an $\eta$ that gives sufficient decrease. Common choices are $\beta = 0.5$ and $c = 0.1$.
 
+Backtracking line search requires multiple evaluations of $f(x+\eta p)$ which can be expensive. For large-scale problems like deep learning, it is not practical.
+
 
 
 ## Frank-Wolfe Algorithm

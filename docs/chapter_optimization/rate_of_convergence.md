@@ -24,7 +24,7 @@ $$
 \lim_{k \to \infty} \frac{\|x_{k+1} - x^*\|}{\|x_k - x^*\|} = 1
 $$
 
-For example, $\|x_{k+1} - x^*\| = O(1/k^q)$ for $q < 0$.
+For example, $\|x_{k+1} - x^*\| = O(k^q)$ for $q < 0$.
 
 Sublinear convergence is common in the first order optimization methods without strong convexity, such as gradient descent with diminishing step sizes.
 
