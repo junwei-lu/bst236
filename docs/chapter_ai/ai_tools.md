@@ -12,6 +12,7 @@
 - [Grok](https://grok.com/): xAI's LLM with thinking mode as well.
 
 The table below may be out-of-date. Please check the latest models from the official websites.
+
 | **Need**                         | **Recommended Models**                        | **Key Features**                                                                 |
 |-----------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------|
 | High-Quality, Nuanced Output      | o3, DeepSeek R1, Claude 3.7 Sonnet, Grok | Top-tier quality, well-structured responses, ideal for professional applications |
