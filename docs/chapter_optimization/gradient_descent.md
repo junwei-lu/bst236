@@ -41,6 +41,35 @@ $$
 This means gradient descent has a convergence rate of $O(1/t)$, or equivalently, it can achieve $\epsilon$-accuracy ($f(x_t) - f(x^*) \leq \epsilon$) within $O(1/\epsilon)$ steps.
 
 
+### Learning Rate
+
+Choosing the learning rate $\eta_t$ is vital for the convergence of optimization algorithms. The theorem above suggests that we can choose $\eta_t = 1/L$ for all iterations. However, this is not practical because it requires knowing the smoothness parameter $L$ in advance. Also different algorithms may have different strategies for choosing $\eta_t$.
+
+In practice, we have different strategies for choosing $\eta_t$. The tricky part is to choose $\eta_t$ to be small enough to ensure convergence, but not too small to slow down the convergence.
+
+**Dynamic learning rate**. One common strategy is make the learning rate decreasing over time. The common choices are:
+
+$$
+\begin{align*}
+\eta_t &= \eta_i, \text{ for } t_i \leq t < t_{i+1} & \text{Piecewise constant}\\
+\eta_t &= \eta_0 e^{-\lambda t} & \text{Exponentially decay}\\
+\eta_t &= \eta_0 (1+\beta t)^{-\alpha} & \text{Polynomial decay}\\
+\end{align*}
+$$
+
+A popular choice is the polynomial decay with $\alpha = 0.5$. We refer to the paper [Izmailov et al., 2018](https://arxiv.org/pdf/1803.05407) for more sophisticated strategies for choosing $\eta_t$.
+
+**Backtracking Line search**. Another strategy is to choose $\eta_t$ by a line search. We aim to find the learning rate $\eta$ along the direction of $p$ such that $f(x+\eta p)$ is sufficiently smaller than $f(x)$.
+
+One popular choice is the Armijo rule: Given initial step size $\eta_0$, reduction factor $\beta \in (0,1)$, and constant $c \in (0,1)$:
+
+1. Set $\eta = \eta_0$
+2. While $f(x+\eta p) > f(x) + c\eta \nabla f(x)^\top p$:
+    Reduce step size: $\eta = \beta\eta$
+3. Return $\eta$
+
+The algorithm starts with a large step size and gradually reduces it until finding an $\eta$ that gives sufficient decrease. Common choices are $\beta = 0.5$ and $c = 0.1$.
+
 
 
 ## Frank-Wolfe Algorithm

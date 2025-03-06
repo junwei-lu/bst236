@@ -16,7 +16,7 @@ $$
 
 where $f(x)$ is the loss function, typically convex and smooth, and $h(x)$ is the penalty term, convex but usually non-differentiable. Directly applying (sub)-gradient descent to these problems deteriorates the convergence rate due to the non-smooth part.
 
-In this lecture, we focus on algorithms for solving this type of composite loss, aiming for convergence rates similar to gradient descent for smooth functions. Before introducing the new algorithm, let's gain insight into gradient descent:
+We focus on algorithms for solving this type of composite loss, aiming for convergence rates similar to gradient descent for smooth functions. Before introducing the new algorithm, let's gain insight into gradient descent:
 
 $$
 x_{t+1} = x_t - \eta_t \nabla f(x_t)

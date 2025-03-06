@@ -2,7 +2,7 @@
 
 ## Composite Objective Function
 
-In previous lectures, we introduced proximal gradient descent to solve optimization problems of the form $\min_x f(x) + g(x)$, where $f$ is smooth but $g$ is not differentiable. A key step in proximal gradient descent is solving the proximal operator:
+We have introduced proximal gradient descent to solve optimization problems of the form $\min_x f(x) + g(x)$, where $f$ is smooth but $g$ is not differentiable. A key step in proximal gradient descent is solving the proximal operator:
 
 $$
 {\rm prox}_g(x) = \arg\min_{z\in\mathbb{R}^d}\left\{\frac{1}{2} \|z-x\|_2^2 + g(z)\right\}
@@ -14,7 +14,7 @@ $$
 \min_{\beta} \|Y - X\beta\|_2^2 + \lambda \|D\beta\|_1
 $$
 
-where $D$ is the differential map, applying proximal gradient descent requires solving:
+where $D$ is some matrix representing the differential map, applying proximal gradient descent requires solving:
 
 $$
 \arg\min_{z\in\mathbb{R}^d}\left\{\frac{1}{2} \|z-x\|_2^2 + \lambda \|Dz\|_1\right\}
@@ -22,7 +22,7 @@ $$
 
 Unlike the $\ell_1$-norm, this problem lacks a closed-form solution, making proximal gradient descent inefficient for fused Lasso.
 
-In this lecture, we discuss solving composite objective functions. Generally, we are interested in the following composite optimization problem:
+We discuss solving composite objective functions. Generally, we are interested in the following composite optimization problem:
 
 $$
 \min_{x,y} f(x) + g(y), \text{ s.t. } Ax + By = c
