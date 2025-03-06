@@ -34,12 +34,14 @@ Optimization algorithms that only use gradients are called **first-order methods
 ### Convex Sets and Functions
 
 **Definition** (Convex set and function):
-1. A set $\mathcal{X}$ is convex if 
+A set $\mathcal{X}$ is convex if 
+   
    $$
    (1-\gamma)x + \gamma y \in \mathcal{X}, \text{ for any } x, y \in \mathcal{X}, \gamma \in [0,1]
    $$ 
 
-2. A function $f: \mathcal{X} \rightarrow \mathbb{R}$ is convex if 
+A function $f: \mathcal{X} \rightarrow \mathbb{R}$ is convex if 
+
    $$
    f((1-\gamma)x + \gamma y) \leq (1-\gamma)f(x) + \gamma f(y), \text{ for any } x,y \in \mathcal{X}, \gamma \in [0,1]
    $$
