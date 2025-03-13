@@ -204,11 +204,11 @@ nav:
     - PyTorch Basics: chapter_optimization/pytorch_basics.md
     - Gradient Descent: chapter_optimization/gradient_descent.md
     - Accelerated Gradient Descent: chapter_optimization/agd.md
+    - Stochastic Gradient Descent: chapter_optimization/sgd.md
     - Proximal Gradient Descent: chapter_optimization/proximal_gradient_descent.md
     - Mirror Descent: chapter_optimization/mirror_descent.md
     - Nesterov's Smooth Method: chapter_optimization/nesterov_smooth.md
     - Duality and ADMM: chapter_optimization/duality_and_admm.md
-    - Stochastic Gradient Descent: chapter_optimization/sgd.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
