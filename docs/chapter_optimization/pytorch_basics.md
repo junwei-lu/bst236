@@ -4,19 +4,18 @@
 
 ## Basic Operations
 
-
-
 **Create and manipulate**:
 
 ```python
 import torch
+import numpy as np
+import pandas as pd
 
 # Creating a basic PyTorch tensor
 tensor = torch.tensor([1, 2, 3, 4, 5])
 
 # Tensor Operations
 squared_tensor = tensor ** 2     # Element-wise squaring
-mean_value = tensor.mean()       # Calculate mean
 sum_value = tensor.sum()         # Calculate sum
 
 # Creating tensors with specific properties
@@ -33,6 +32,8 @@ range_tensor = torch.arange(0, 10, 2)     # Range with step size
 original = torch.arange(6)
 reshaped = original.reshape(2, 3)
 flattened = reshaped.flatten()
+reshaped.shape      # torch.Size([2, 3])
+flattened.shape     # torch.Size([6])
 
 # Concatenation
 tensor1 = torch.tensor([1, 2, 3])
@@ -59,9 +60,6 @@ indices = torch.where(values % 2 == 0)
 **Converting Between NumPy, Pandas, and PyTorch**:
 
 ```python
-import numpy as np
-import pandas as pd
-
 # NumPy array to PyTorch tensor
 np_array = np.array([1, 2, 3])
 tensor_from_np = torch.from_numpy(np_array)
@@ -86,34 +84,34 @@ PyTorch's automatic differentiation system (autograd) enables gradient-based opt
 ```python
 # Basic autograd example
 x = torch.tensor([2.0, 3.0], requires_grad=True)  # Enable gradient tracking
-y = x * x  # y = x^2
-z = y.sum()  # z = sum(y)
+y = torch.sum(x * x)  # y = x^2
 
 # Compute gradient of z with respect to x
-z.backward()
+y.backward()
 
 # Access gradients
-print(x.grad)  # Should be 2*x: tensor([4., 6.])
+x.grad == 2 * x  # Should be 2*x: tensor([4., 6.])
 ```
 
-**Gradient for non-scalar outputs**:
+You need to zero the gradients by `x.grad.zero_()` before computing the gradient at a new point or for a new function. Otherwise, PyTorch will accumulate the gradients.
 
-```python
-# For non-scalar outputs, specify gradient argument
-x = torch.tensor([[1.0, 2.0], [3.0, 4.0]], requires_grad=True)
-y = x * x
-y.backward(torch.ones_like(y))  # Equivalent to sum() then backward()
-print(x.grad)  # Should be 2*x
+```python 
+# Zeroing gradients before computing new ones
+x.grad.zero_()
+y = torch.sum(x**3)
+y.backward()
+x.grad == 3*x**2
 ```
 
-**Detaching computation**:
+**Partial Derivatives**:
 
 ```python
-# Stop gradient tracking
+# Computing partial derivatives
 x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
-y = x * x
-z = y.detach()  # Detach from computation graph
-z.backward(torch.ones_like(z))  # Has no effect on x.grad
+y = torch.tensor([4.0, 5.0, 6.0], requires_grad=True)
+z = x + y
+z.backward()
+print(x.grad)  # Should be tensor([1., 1., 1.])
 ```
 
 **Gradients with control flow**:
@@ -130,3 +128,41 @@ y = f(x)
 y.backward()
 print(x.grad)  # Gradient depends on control flow path taken
 ```
+
+### Gradient Update
+
+When implementing parameter updates like gradient descent in PyTorch, it's crucial to use `torch.no_grad()` to prevent autograd from tracking operations. Here is an example of what happens if we update the parameter without `torch.no_grad()`.
+
+```python
+# BAD: Update without torch.no_grad()
+x = torch.tensor([2.0], requires_grad=True)
+y = x**2
+y.backward()
+x = x - 0.1 * x.grad  # Creates a new tensor, loses gradient connection
+print(x.grad)  # None - gradient information is lost!
+
+# GOOD: Update with torch.no_grad()
+x = torch.tensor([2.0], requires_grad=True)
+y = x**2
+y.backward()
+with torch.no_grad():
+    x -= 0.1 * x.grad  # Updates in-place without building computational graph
+```
+
+Notice that we need to disable the gradient tracking for parameter updates by `with torch.no_grad()`. Otherwise, the parameter will be part of the computation graph and the gradient will be disconnected from the original gradient.
+
+!!! note
+    Always use `torch.no_grad()` when manually updating parameters in optimization algorithms in PyTorch.
+
+
+Also, you should not write `x -= 0.1 * x.grad` as `x = x - 0.1 * x.grad` because it will
+
+- Creates a brand new tensor and assigns it to variable `x`, which is inefficient for memory usage.
+- The new tensor `x` loses the connection to the computational graph
+- The right-hand side is an expression involving `x.grad` which has `requires_grad=True`. PyTorch will start tracking gradients for the parameter update itself
+
+
+
+
+
+

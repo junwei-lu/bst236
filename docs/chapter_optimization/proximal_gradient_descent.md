@@ -123,6 +123,42 @@ x_{t+1} &= \text{Soft-Threshold}(y_t, \lambda\eta_t)
 \end{align*}
 $$
 
+Here is the implementation of ISTA by PyTorch:
+
+```python
+import torch
+
+# Define function f(x) = 0.5 * ||Ax - b||^2 (L2 loss)
+torch.manual_seed(42)
+dim = 5
+A = torch.randn(dim, dim)  # Random matrix A
+b = torch.randn(dim)  # Random vector b
+def f(x):
+    return 0.5 * torch.norm(A @ x - b)**2  # Quadratic loss function
+
+# Soft-thresholding function
+def soft_thresholding(y, threshold):
+    return torch.sign(y) * torch.clamp(torch.abs(y) - threshold, min=0)
+
+x = torch.zeros(dim, requires_grad=True)  # Initialize x
+
+# ISTA Parameters
+lr = 0.1  # Learning rate (eta_t)
+lambda_ = 0.1  # Regularization parameter
+num_iters = 100  # Number of iterations
+
+for t in range(num_iters):
+    loss = f(x, A, b)
+    loss.backward()
+    with torch.no_grad():
+        # Gradient descent step
+        y_t = x - lr * x.grad
+        # Soft-thresholding step
+        x[:] = soft_thresholding(y_t, lambda_ * lr)  
+
+    x.grad.zero_()
+```
+
 Even if the objective function $F(x) = f(x) + h(x)$ has a non-smooth $h(x)$, the following theorem shows that proximal gradient descent has the same convergence rate $O(1/t)$ as gradient descent.
 
 **Theorem** (Convergence rate of proximal gradient descent): Suppose $f$ is convex and $L$-smooth and $h$ is convex. If $\eta_t = 1/{L}$, the proximal gradient descent achieves:
@@ -131,15 +167,6 @@ $$
 F(x_t) - F(x^*)\leq \frac{L\|x_0 - x^*\|_2^2}{2t}
 $$
 
-Before proving the theorem, we establish a fundamental inequality in the following lemma.
-
-**Lemma**: Suppose $f$ is convex and $L$-smooth and $h$ is convex. For any $x, y \in \mathbb{R}^d$, let $y^{+}= {\rm prox}_{\frac{1}{L}h}\big(y-\frac{1}{L}\nabla f(y)\big)$, then:
-
-$$
-F(y^{+}) - F(x) \leq \frac{L}{2}\|x-y\|_2^2 - \frac{L}{2}\|x-y^{+}\|_2^2
-$$
-
-This lemma provides a useful inequality bounding the objective function by the distance of points.
 
 ## Accelerated Proximal Gradient Descent
 
@@ -174,5 +201,33 @@ y_{t+1} &= x_{t+1} + \frac{\lambda_{t}-1}{\lambda_{t+1}}(x_{t+1}- x_t)
 $$
 
 where $\lambda_0 = 1, \lambda_t = \frac{1 + \sqrt{1+4\lambda_{t-1}^2}}{2}$ and $x_0=y_0$.
+
+Here is the implementation of FISTA:
+
+```python
+# FISTA parameters
+lr = 0.1  # Learning rate 
+lambda_ = 0.1 # l1 regularization parameter
+# Momentum term
+lambda_t = 1.0
+
+for t in range(100):
+    # Compute function value at y_t
+    loss = f(y)
+    # Compute gradient using autograd
+    loss.backward()
+    with torch.no_grad():
+        # Gradient descent step + soft-thresholding
+        x_new = soft_thresholding(y - lr * y.grad, lambda_ * lr)
+        # Update momentum parameter
+        lambda_new = (1 + torch.sqrt(1 + 4 * lambda_t ** 2)) / 2
+        # Compute y_{t+1} using acceleration
+        y = x_new + ((lambda_t - 1) / lambda_new) * (x_new - x)
+        # Update variables for the next iteration
+        x.copy_(x_new)  # In-place update to keep autograd tracking
+        lambda_t = lambda_new
+
+    y.grad.zero_()
+```
 
 The convergence rate of accelerated proximal gradient descent is $O(1/t^2)$. 
