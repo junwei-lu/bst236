@@ -77,6 +77,40 @@ tensor_2d = torch.tensor([[1, 2, 3], [4, 5, 6]])
 df_from_tensor = pd.DataFrame(tensor_2d.numpy())
 ```
 
+## Linear Algebra
+
+PyTorch provides a comprehensive linear algebra library in `torch.linalg`. You can find the official documentation [here](https://pytorch.org/docs/stable/linalg.html). The functions basically have the same names as the ones in NumPy and SciPy.
+
+Below we list some of the most commonly used functions for matrix operations, solving linear equations, and eigenvalue problems.
+
+```python
+# Matrix multiplication
+A = torch.tensor([[1, 2], [3, 4]])
+B = torch.tensor([[5, 6], [7, 8]])
+C = A @ B
+
+# Solving linear equations
+b = torch.tensor([5, 6])
+x = torch.linalg.solve(A, b)
+
+# Eigenvalues and eigenvectors
+eigenvalues, eigenvectors = torch.linalg.eig(A)
+
+# Use torch.linalg.eigh for symmetric/Hermitian matrices
+
+# Singular value decomposition
+U, S, Vh = torch.linalg.svd(A, full_matrices=False)
+```
+
+Notice that `torch.linalg.solve` does not provide the option to use a specific solver. It will use the LU decomposition by default. If your matrix is symmetric positive definite, you can use `torch.linalg.cholesky` to solve the linear equations.
+
+```python
+A = torch.tensor([[1, 2], [2, 5]])
+L = torch.linalg.cholesky(A)
+y = torch.linalg.triangular_solve(L, b, upper=False)
+x = torch.linalg.triangular_solve(L.T, y, upper=True)
+```
+
 ## Automatic Differentiation
 
 PyTorch's automatic differentiation system (autograd) enables gradient-based optimization for training neural networks.
