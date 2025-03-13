@@ -25,6 +25,24 @@ $$
 
 where $\eta_t$ is the step size (also called learning rate).
 
+Here is the implementation of gradient descent in PyTorch:
+
+```python
+import torch
+def f(x): # objective function
+    return x**2
+
+# Initialize x
+x = torch.tensor([2.0], requires_grad=True)
+lr = 0.1 # learning rate
+for t in range(100):
+    y = f(x)
+    y.backward()
+    with torch.no_grad():
+        x -= lr * x.grad
+    x.grad.zero_()
+```
+
 
 
 
@@ -99,6 +117,21 @@ $$
 
 where $\eta_t$ is the step size.
 
+We will use the Frank-Wolfe algorithm when the first sub-optimization problem is easy to solve. We have the following two examples.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Example: Power Iteration
 
 The leading eigenvector of a positive semi-definite matrix $A$ is the solution to:
@@ -135,7 +168,14 @@ $$
 \min_{\beta} \|Y/\lambda - X\beta\|_2^2 \text{ s.t. } \|\beta\|_1 \leq 1
 $$
 
-So without loss of generality, we can assume $\lambda = 1$. Applying the Frank-Wolfe algorithm, we need to solve:
+So without loss of generality, we can assume $\lambda = 1$. Therefore, we aim to solve a more general constrained least squares problem:
+
+$$
+\min_{\beta} f(\beta) \text{ s.t. } \|\beta\|_1 \leq 1,
+$$
+
+where $f$ is any convex function.
+Applying the Frank-Wolfe algorithm, we need to solve:
 
 $$
 y_t = \arg\min_{\|\beta\|_1 \leq 1} \langle\nabla f(\beta_t), \beta \rangle
@@ -159,18 +199,52 @@ The visualization of the variational form of the $\ell_1$-norm is shown below.
 This gives us:
 
 $$
-(y_{t})_j = 
+\begin{align*}
+(y_{t})_j &= 
 \begin{cases}
 -\text{sign}(\nabla_j f(\beta_t)), & \text{if } j = \arg\max_k |\nabla_k f(\beta_t)|\\
 0, & \text{otherwise}
-\end{cases}
-$$
-
-$$
-\beta_{t+1} = (1-\eta_t)\beta_t + \eta_ty_t
+\end{cases}\\
+\beta_{t+1} &= (1-\eta_t)\beta_t + \eta_ty_t
+\end{align*}
 $$
 
 Since only one entry of $y_t$ is nonzero, each iteration adds at most one nonzero entry to $\beta_{t+1}$. Starting with $\beta_0 = 0$, we have $\|\beta_t\|_0 \leq t$, making the algorithm efficient and providing insight into why the $\ell_1$ constraint promotes sparsity.
+
+Here is the implementation of the Frank-Wolfe algorithm for the constrained Lasso problem:
+
+```python
+import torch
+# Define the function f(x) = ||x||^2 (sum of squares)
+def f(x):
+    return torch.sum(x**2)
+
+# Initialize multi-dimensional x
+x = torch.tensor([2.0, -3.0, 1.5], requires_grad=True)  # Example 3D vector
+# Learning rate
+lr = 0.1
+for t in range(100):
+    # Compute function value
+    y = f(x)
+    # Compute gradient
+    y.backward()
+    with torch.no_grad():
+        # Compute the coordinate with the largest absolute gradient
+        max_idx = torch.argmax(torch.abs(x.grad))  
+        
+        # Construct y_t based on Frank-Wolfe rule
+        y_t = torch.zeros_like(x)
+        y_t[max_idx] = -torch.sign(x.grad[max_idx])  # Only update the max index
+        
+        # Update using convex combination step
+        x = (1 - lr) * x + lr * y_t
+
+    x.grad.zero_()  
+```
+
+
+
+
 
 ### Convergence of Frank-Wolfe
 
