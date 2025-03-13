@@ -183,6 +183,9 @@ $$
 
 If $f$ and $g$ are closed convex functions, the ADMM algorithm converges.
 
+!!! note "ADMM not first-order method"
+    ADMM is not a first-order method. The sub-problem in the primal step use the functions $f$ and $g$ instead of just their gradients like the proximal gradient descent. So ADMM may converge faster than first-order methods in terms of the number of iterations, but the computational cost per iteration might be higher.
+
 ### Example: Fused Lasso
 
 Applying ADMM to the fused Lasso:
@@ -204,6 +207,62 @@ $$
 $$
 
 When $D = I$, the algorithm reduces to ADMM for Lasso. Unlike FISTA, ADMM involves matrix inversion, which may be time-consuming when $d$ is large.
+
+Here is the implementation of ADMM for fused Lasso in PyTorch. Notice we can implement the tips in [Linear Algebra](../chapter_linear_algebra/linear_equation.md#tips-for-solving-linear-equations) to pre-compute the Cholesky decomposition of the matrix $(X^\top X + \rho D^\top D)$ to make it more efficient.
+
+```python
+import torch
+
+# Soft-thresholding function
+def soft_thresholding(y, threshold):
+    return torch.sign(y) * torch.clamp(torch.abs(y) - threshold, min=0)
+
+# Define problem parameters
+torch.manual_seed(42)
+n, d = 10, 5  # Number of samples (n) and features (d)
+X = torch.randn(n, d)  # Design matrix
+Y = torch.randn(n)  # Response vector
+
+# Define difference matrix D (for fused lasso)
+D = torch.eye(d) - torch.eye(d, k=1)  # First-order difference matrix
+
+# Initialize variables
+beta = torch.zeros(d)  # Coefficients
+z = torch.zeros(d - 1)  # Auxiliary variable
+lam = torch.zeros(d - 1)  # Lagrange multiplier
+
+# ADMM parameters
+lambda_ = 0.1  # Regularization parameter
+rho = 1.0  # ADMM penalty parameter
+num_iters = 100  # Number of iterations
+
+# Compute Cholesky decomposition of (X^T X + rho D^T D)
+XtX = X.T @ X
+DtD = D.T @ D
+A = XtX + rho * DtD  # Regularized system matrix
+
+# Cholesky decomposition (more stable than direct inversion)
+L = torch.linalg.cholesky(A)  # Compute Cholesky factor L
+
+for t in range(num_iters):
+    # Solve for beta using Cholesky decomposition
+    b_rhs = X.T @ Y + rho * D.T @ z - D.T @ lam  # Right-hand side
+    y = torch.linalg.solve_triangular(L, b_rhs, upper=False)  # Forward substitution
+    beta = torch.linalg.solve_triangular(L.T, y, upper=True)  # Backward substitution
+
+    # Update z using soft-thresholding
+    z = soft_thresholding(D @ beta + lam / rho, lambda_ / rho)
+
+    # Update lambda (dual variable)
+    lam += rho * (D @ beta - z)
+```
+
+When $d$ is large, we can further improve the efficiency by using the [Woodbury matrix identity](../chapter_linear_algebra/linear_equation.md#tips-for-solving-linear-equations) to solve the linear system 
+$$
+(X^TX + ρD^TD)^{-1} = (ρD^TD)^{-1} - (ρD^TD)^{-1}X^T(I_n + X(ρD^TD)^{-1}X^T)^{-1}X(ρD^TD)^{-1}
+$$
+The computation will be much more efficient, especially when for the Lasso case $D = I$.
+
 
 ### Example: Graphical Lasso
 
