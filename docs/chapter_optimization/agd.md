@@ -26,6 +26,41 @@ $$
 
 Nesterov's AGD is a “lookahead” version of the momentum method by looking ahead for the gradient at $y_{t+1}  = x_t + \beta_t m_t = x_{t+1} + \beta_t (x_{t+1} - x_t)$.
 
+Here is the implementation of Nesterov's AGD in PyTorch:
+
+```python
+def f(x):
+    ... # define the objective function
+
+# Initialize parameters
+x = torch.zeros(dim, requires_grad=True)  # Initialize x
+m = torch.zeros(dim)  # Initialize momentum m
+
+# AGD parameters
+lr = 0.1  # Learning rate (η_t)
+num_iters = 100  # Number of iterations
+for t in range(num_iters):
+    beta_t = t / (t + 3)  # Compute β_t
+
+    # Compute the gradient at x_t + β_t * m_t
+    y = x + beta_t * m  # Look-ahead step
+    loss = f(y)
+    loss.backward()
+
+    with torch.no_grad():
+        # Update momentum
+        m_new = beta_t * m + lr * y.grad
+        # Update x
+        x -= m_new
+        # Update variables for the next iteration
+        m.copy_(m_new)  # In-place update of m
+        x.grad.zero_()  # Reset gradient
+```
+
+Notice you need to use in-place operations for momentum like `m.copy_(m_new)` to maintain the connection to the computational graph. The momentum term `m` is used in the look-ahead step `y = x + beta_t * m`, and this relationship must be maintained correctly.
+
+
+
 ![AGD trajectory and comparison with GD](opt.assets/agd-1.png)
 
 **General momentum update**: The momentum method has the following update:

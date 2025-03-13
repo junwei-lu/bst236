@@ -112,6 +112,52 @@ $$
 
 This is also known as $D_{\rm KL}(x\|z)$. The maximum log-likelihood estimator is essentially finding a distribution $P_{\theta}$ closest under the KL-divergence to the true distribution $P_{\theta^*}$.
 
+Therefore, for the constrained optimization problem 
+
+$$
+\min_{x\in \Delta} f(x)
+$$
+
+the mirror descent algorithm with the KL-divergence is:
+
+$$
+x_{t+1} = \arg\min_{x\in\Delta}\left\{ \langle \nabla f(x_t), x\rangle + \frac{1}{\eta_t}D_{\rm KL}(x\|x_t) \right\}
+$$
+And it has a closed-form solution:
+
+$$
+x_{t+1}  = \text{softmax}\left(\frac{1}{\eta_t}\nabla f(x_t)\right) = \frac{\exp\left(\frac{1}{\eta_t}\nabla f(x_t)\right)}{\sum_{i=1}^d \exp\left(\frac{1}{\eta_t}\nabla f(x_t)_i\right)}
+$$
+
+The algorithm can be implemented as:
+
+```python
+def f(x): # define the objective function
+    ...
+
+x = torch.ones(dim, requires_grad=True) / dim  # Initialize x in the probability simplex
+
+# Mirror Descent Parameters
+lr = 0.1  # Learning rate (η_t)
+num_iters = 100  # Number of iterations
+for t in range(num_iters):
+    # Compute function value at x_t
+    loss = f(x)
+    # Compute gradient using autograd
+    loss.backward()
+    with torch.no_grad():
+        # Compute softmax mirror descent update
+        x_new = torch.softmax((1 / lr) * x.grad, dim=0)
+        # Update variables
+        x.copy_(x_new)  # In-place update to maintain tracking
+        # Zero out gradients for the next iteration
+        x.grad.zero_()
+
+
+```
+
+
+
 
 ### Summary for Constrained Optimization
 

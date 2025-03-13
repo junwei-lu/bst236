@@ -237,9 +237,9 @@ for t in range(100):
         y_t[max_idx] = -torch.sign(x.grad[max_idx])  # Only update the max index
         
         # Update using convex combination step
-        x = (1 - lr) * x + lr * y_t
-
-    x.grad.zero_()  
+        x_new = (1 - lr) * x + lr * y_t
+        x.copy_(x_new)
+        x.grad.zero_()  
 ```
 
 
