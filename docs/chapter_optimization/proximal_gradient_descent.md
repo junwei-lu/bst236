@@ -154,9 +154,11 @@ for t in range(num_iters):
         # Gradient descent step
         y_t = x - lr * x.grad
         # Soft-thresholding step
-        x[:] = soft_thresholding(y_t, lambda_ * lr)  
-
-    x.grad.zero_()
+        x_new = soft_thresholding(y_t, lambda_ * lr) 
+        # Update variables
+        x.copy_(x_new)  # In-place update to maintain tracking
+        # Zero out gradients for the next iteration
+        x.grad.zero_()
 ```
 
 Even if the objective function $F(x) = f(x) + h(x)$ has a non-smooth $h(x)$, the following theorem shows that proximal gradient descent has the same convergence rate $O(1/t)$ as gradient descent.

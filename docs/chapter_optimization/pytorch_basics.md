@@ -1,4 +1,4 @@
-# PyTorch Tensor
+# Introduction to PyTorch
 
 [PyTorch](https://pytorch.org/) is a popular deep learning library that provides tensor computation with GPU acceleration and automatic differentiation capabilities.
 
@@ -87,7 +87,7 @@ Below we list some of the most commonly used functions for matrix operations, so
 # Matrix multiplication
 A = torch.tensor([[1, 2], [3, 4]])
 B = torch.tensor([[5, 6], [7, 8]])
-C = A @ B
+C = A @ B  # or torch.matmul(A, B)
 
 # Solving linear equations
 b = torch.tensor([5, 6])
@@ -143,9 +143,9 @@ x.grad == 3*x**2
 # Computing partial derivatives
 x = torch.tensor([1.0, 2.0, 3.0], requires_grad=True)
 y = torch.tensor([4.0, 5.0, 6.0], requires_grad=True)
-z = x + y
+z = torch.sum(x * y)
 z.backward()
-print(x.grad)  # Should be tensor([1., 1., 1.])
+print(x.grad)  # Should be tensor([4., 5., 6.])
 ```
 
 **Gradients with control flow**:
@@ -185,8 +185,8 @@ with torch.no_grad():
 
 Notice that we need to disable the gradient tracking for parameter updates by `with torch.no_grad()`. Otherwise, the parameter will be part of the computation graph and the gradient will be disconnected from the original gradient.
 
-!!! note
-    Always use `torch.no_grad()` when manually updating parameters in optimization algorithms in PyTorch.
+!!! warning "Pitfall of Parameter Updates in PyTorch"
+    Always use `torch.no_grad()` when manually updating parameters in optimization algorithms in PyTorch. And use `x.grad.zero_()` to zero out the gradients before computing the new ones.
 
 
 Also, you should not write `x -= 0.1 * x.grad` as `x = x - 0.1 * x.grad` because it will
@@ -195,6 +195,21 @@ Also, you should not write `x -= 0.1 * x.grad` as `x = x - 0.1 * x.grad` because
 - The new tensor `x` loses the connection to the computational graph
 - The right-hand side is an expression involving `x.grad` which has `requires_grad=True`. PyTorch will start tracking gradients for the parameter update itself
 
+In general, you should update the parameters by **in-place operations**. For simple gradient update, you can use `x -= 0.1 * x.grad`. For general parameter updates, you can first compute the value by a new variable `x_new = update_rule(x,x.grad)` and then use `x.copy_(x_new)` or `x[:] = x_new` to copy the value back to `x`. When you use `x = g(x,x.grad)`, you're creating a completely new tensor and assigning it to the variable `x`. This breaks the computational graph connection to the original tensor.
+
+
+We still use the gradient descent update as an example below. You can refer to the [Frank-Wolfe Algorithm](./gradient_descent.md#example-constrained-lasso) or [Proximal Gradient Descent](./proximal_gradient_descent.md) for more realistic examples.
+
+```python
+x = torch.tensor([2.0], requires_grad=True)
+y = x**2
+y.backward()
+x_new = x - 0.1 * x.grad # Update x using x_new to avoid recreating x
+x.copy_(x_new) # or x[:] = x_new
+```
+
+!!! warning "Pitfall of In-place Operations in PyTorch"
+    If the algorithm has updating rule like $x_{t+1} = g(x_t,\nabla f(x_t))$ for some function $g$, avoid using `x = g(x,x.grad)` in the updating step. You should use in-place operations like `x.copy_(g(x,x.grad))` or `x[:] = g(x,x.grad)` instead. 
 
 
 
