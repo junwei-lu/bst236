@@ -123,6 +123,7 @@ the mirror descent algorithm with the KL-divergence is:
 $$
 x_{t+1} = \arg\min_{x\in\Delta}\left\{ \langle \nabla f(x_t), x\rangle + \frac{1}{\eta_t}D_{\rm KL}(x\|x_t) \right\}
 $$
+
 And it has a closed-form solution:
 
 $$
