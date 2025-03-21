@@ -36,15 +36,15 @@ Optimization algorithms that only use gradients are called **first-order methods
 **Definition** (Convex set and function):
 A set $\mathcal{X}$ is convex if 
    
-   $$
+$$
    (1-\gamma)x + \gamma y \in \mathcal{X}, \text{ for any } x, y \in \mathcal{X}, \gamma \in [0,1]
-   $$ 
+$$ 
 
 A function $f: \mathcal{X} \rightarrow \mathbb{R}$ is convex if 
 
-   $$
+$$
    f((1-\gamma)x + \gamma y) \leq (1-\gamma)f(x) + \gamma f(y), \text{ for any } x,y \in \mathcal{X}, \gamma \in [0,1]
-   $$
+$$
 
 Geometrically, a set is convex if it contains all line segments between any two points in the set. A function is convex if its graph lies below or on any chord connecting two points on the graph.
 
@@ -200,7 +200,6 @@ $$
 
 Geometrically, this means that the angle between the gradient $\nabla f(x^*)$ and any feasible direction $(y - x^*)$ is non-acute.
 
-![First-order optimality condition](opt.assets/subgr-1.png)
 
 The optimality conditions for convex optimization can be summarized as follows:
 
