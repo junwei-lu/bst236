@@ -62,9 +62,10 @@ $$
 
 The proximal gradient descent can be written as:
 
-$$
-x_{t+1} = {\rm prox}_{\eta_t h}\big(x_t - \eta_t\nabla f(x_t)\big)
-$$
+!!! abstract "Proximal Gradient Descent"
+    $$
+    x_{t+1} = {\rm prox}_{\eta_t h}\big(x_t - \eta_t\nabla f(x_t)\big)
+    $$
 
 ### Examples of Proximal Gradient Descent
 
@@ -112,16 +113,17 @@ for all $j = 1, \ldots, d$.
 ![Soft-thresholding](opt.assets/sft2-1.png)
 
 The above two figures show the soft-thresholding operator.
-**Iterative Shrinkage-Thresholding Algorithm (ISTA)**:
+
 
 Solves the Lasso problem $\min_{x \in \mathbb{R}^d} f(x)+\lambda \|x\|_1$ as:
 
-$$
-\begin{align*}
-y_{t} &= x_t-\eta_t\nabla f(x_t); \\
-x_{t+1} &= \text{Soft-Threshold}(y_t, \lambda\eta_t)
-\end{align*}
-$$
+!!! abstract "Iterative Shrinkage-Thresholding Algorithm (ISTA)"
+    $$
+    \begin{align*}
+    y_{t} &= x_t-\eta_t\nabla f(x_t); \\
+    x_{t+1} &= \text{Soft-Threshold}(y_t, \lambda\eta_t)
+    \end{align*}
+    $$
 
 Here is the implementation of ISTA by PyTorch:
 
@@ -175,33 +177,35 @@ Theorem shows that proximal gradient descent has a convergence rate $O(1/t)$, si
 
 We can apply Nesterov's idea to proximal gradient descent, resulting in the following algorithm.
 
-**Accelerated Proximal Gradient Descent**:
+!!! abstract "Accelerated Proximal Gradient Descent"
 
-Initialize $x_0 = y_0$:
+    Initialize $x_0 = y_0$:
 
-$$
-\begin{align*}
-x_{t+1} &= {\rm prox}_{\eta_t h}\big(y_t - \eta_t \nabla f(y_t)\big); \\
-y_{t+1} &= x_{t+1} + \frac{\lambda_{t}-1}{\lambda_{t+1}}(x_{t+1}- x_t)
-\end{align*}
-$$
+    $$
+    \begin{align*}
+    x_{t+1} &= {\rm prox}_{\eta_t h}\big(y_t - \eta_t \nabla f(y_t)\big); \\
+    y_{t+1} &= x_{t+1} + \frac{\lambda_{t}-1}{\lambda_{t+1}}(x_{t+1}- x_t)
+    \end{align*}
+    $$
 
-where $\lambda_0 = 1, \lambda_t = \frac{1 + \sqrt{1+4\lambda_{t-1}^2}}{2}$.
+    where $\lambda_0 = 1, \lambda_t = \frac{1 + \sqrt{1+4\lambda_{t-1}^2}}{2}$.
 
 For example, we can accelerate ISTA for Lasso $\min_{x} f(x)+ \lambda \|x\|_1$ using the following algorithm.
 
-**Fast Iterative Shrinkage-Thresholding Algorithm (FISTA)**:
+
 
 Solves the Lasso problem $\min_{x \in \mathbb{R}^d} f(x)+\lambda \|x\|_1$ as:
 
-$$
-\begin{align*}
-x_{t+1} &= \text{Soft-Threshold}(y_t -\eta_t\nabla f(y_t), \lambda\eta_t); \\
-y_{t+1} &= x_{t+1} + \frac{\lambda_{t}-1}{\lambda_{t+1}}(x_{t+1}- x_t)
-\end{align*}
-$$
+!!! abstract "Fast Iterative Shrinkage-Thresholding Algorithm (FISTA)"
 
-where $\lambda_0 = 1, \lambda_t = \frac{1 + \sqrt{1+4\lambda_{t-1}^2}}{2}$ and $x_0=y_0$.
+    $$
+    \begin{align*}
+    x_{t+1} &= \text{Soft-Threshold}(y_t -\eta_t\nabla f(y_t), \lambda\eta_t); \\
+    y_{t+1} &= x_{t+1} + \frac{\lambda_{t}-1}{\lambda_{t+1}}(x_{t+1}- x_t)
+    \end{align*}
+    $$
+    
+    where $\lambda_0 = 1, \lambda_t = \frac{1 + \sqrt{1+4\lambda_{t-1}^2}}{2}$ and $x_0=y_0$.
 
 Here is the implementation of FISTA:
 

@@ -28,11 +28,13 @@ $$
 
 Mini-batch gradient descent is a variant of SGD that uses a small batch of data points to compute the gradient, balancing the efficiency of SGD with the stability of full-batch gradient descent.
 
-**Mini-Batch Gradient Descent Algorithm**: For a mini-batch $\mathcal{B}_t \subset \{1, 2, \cdots, n\}$, update the parameters as follows:
+!!! abstract "Mini-Batch Gradient Descent Algorithm"
 
-$$
-x_{t+1} = x_t - \eta_t \frac{1}{|\mathcal{B}_t|} \sum_{i\in\mathcal{B}_t} \nabla f_i(x_t)
-$$
+    For a mini-batch $\mathcal{B}_t \subset \{1, 2, \cdots, n\}$, update the parameters as follows:
+
+    $$
+    x_{t+1} = x_t - \eta_t \frac{1}{|\mathcal{B}_t|} \sum_{i\in\mathcal{B}_t} \nabla f_i(x_t)
+    $$
 
 Mini-batch gradient descent reduces the variance of parameter updates, leading to more stable convergence.
 
@@ -176,18 +178,17 @@ optimizer = torch.optim.RMSprop(model.parameters(), lr=0.01)
 
 Adam (Adaptive Moment Estimation) combines the ideas of momentum and RMSprop, maintaining an exponentially decaying average of past gradients and squared gradients.
 
-**Adam Algorithm**:
+!!! abstract "Adam Algorithm"
 
-
-$$
-\begin{align*}
-m_t &= \beta_1 m_{t-1} + (1 - \beta_1) g_t\\
-v_t &= \beta_2 v_{t-1} + (1 - \beta_2) g_t^2\\
-\hat{m}_t &= \frac{m_t}{1 - \beta_1^t}\\
-\hat{v}_t &= \frac{v_t}{1 - \beta_2^t}\\
-x_{t+1} &= x_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t
-\end{align*}
-$$
+    $$
+    \begin{align*}
+        m_t &= \beta_1 m_{t-1} + (1 - \beta_1) g_t\\
+        v_t &= \beta_2 v_{t-1} + (1 - \beta_2) g_t^2\\
+        \hat{m}_t &= \frac{m_t}{1 - \beta_1^t}\\
+        \hat{v}_t &= \frac{v_t}{1 - \beta_2^t}\\
+        x_{t+1} &= x_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t
+    \end{align*}
+    $$
 
 Adam is widely used due to its robustness and efficiency in training deep neural networks. It can be implemented by the following code:
 

@@ -126,9 +126,10 @@ $$
 
 And it has a closed-form solution:
 
-$$
-x_{t+1}  = \text{softmax}\left(\frac{1}{\eta_t}\nabla f(x_t)\right) = \frac{\exp\left(\frac{1}{\eta_t}\nabla f(x_t)\right)}{\sum_{i=1}^d \exp\left(\frac{1}{\eta_t}\nabla f(x_t)_i\right)}
-$$
+!!! abstract "Mirror Descent for Probability Simplex"
+    $$
+    x_{t+1}  = \text{softmax}\left(\frac{1}{\eta_t}\nabla f(x_t)\right) = \frac{\exp\left(\frac{1}{\eta_t}\nabla f(x_t)\right)}{\sum_{i=1}^d \exp\left(\frac{1}{\eta_t}\nabla f(x_t)_i\right)}
+    $$
 
 The algorithm can be implemented as:
 
