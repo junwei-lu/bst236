@@ -129,7 +129,6 @@ Here is the implementation of ISTA by PyTorch:
 import torch
 
 # Define function f(x) = 0.5 * ||Ax - b||^2 (L2 loss)
-torch.manual_seed(42)
 dim = 5
 A = torch.randn(dim, dim)  # Random matrix A
 b = torch.randn(dim)  # Random vector b
@@ -148,7 +147,7 @@ lambda_ = 0.1  # Regularization parameter
 num_iters = 100  # Number of iterations
 
 for t in range(num_iters):
-    loss = f(x, A, b)
+    loss = f(x)
     loss.backward()
     with torch.no_grad():
         # Gradient descent step
@@ -228,8 +227,7 @@ for t in range(100):
         # Update variables for the next iteration
         x.copy_(x_new)  # In-place update to keep autograd tracking
         lambda_t = lambda_new
-
-    y.grad.zero_()
+        y.grad.zero_()
 ```
 
 The convergence rate of accelerated proximal gradient descent is $O(1/t^2)$. 

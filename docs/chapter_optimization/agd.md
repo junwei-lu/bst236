@@ -15,14 +15,25 @@ Instead of only using the local gradient at $x_t$, we can combine $-\nabla f(x_t
 ![GD vs AGD](opt.assets/gdvsagd2-1.png)
 
 
-**Nesterov's Accelerated Gradient Descent (AGD)**: Initialize $x_0$，$m_0 = 0$, and choose $\beta_t = \frac{t}{t+3}$, then:
+<!-- **Nesterov's Accelerated Gradient Descent (AGD)**: Initialize $x_0$，$m_0 = 0$, and choose $\beta_t = \frac{t}{t+3}$, then:
 
 $$
 \begin{align*}
 m_{t+1} &= \beta_t m_t + \eta_t \nabla f(x_{t}+\beta_t m_t)\\
 x_{t+1} &= x_t - m_{t+1}
 \end{align*}
-$$
+$$ -->
+
+!!!abstract "Nesterov's Accelerated Gradient Descent (AGD)"
+
+    Initialize $x_0$，$m_0 = 0$, and choose $\beta_t = \frac{t}{t+3}$, then:
+
+    $$
+    \begin{align*}
+    m_{t+1} &= \beta_t m_t + \eta_t \nabla f(x_{t}+\beta_t m_t)\\
+    x_{t+1} &= x_t - m_{t+1}
+    \end{align*}
+    $$
 
 Nesterov's AGD is a “lookahead” version of the momentum method by looking ahead for the gradient at $y_{t+1}  = x_t + \beta_t m_t = x_{t+1} + \beta_t (x_{t+1} - x_t)$.
 
