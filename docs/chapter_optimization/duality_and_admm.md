@@ -175,11 +175,11 @@ We add a proximal term in the dual step because the augmented Lagrangian $L_{\rh
 
 Plugging the augmented Lagrangian into the primal and dual steps, we have the following algorithm.
 
-**ADMM Algorithm**:
+!!!abstract "Alternating Direction Method of Multipliers (ADMM)"
 
-$$
-\begin{align*}x_{t+1} &= \arg\min_x f(x) + \frac{\rho}{2} \|Ax + By_t - c + \lambda_t/\rho\|_2^2\\y_{t+1} &= \arg\min_y g(x) + \frac{\rho}{2} \|Ax_{t+1} + By - c + \lambda_t/\rho\|_2^2\\\lambda_{t+1} &= \lambda_t + \rho(Ax_{t+1} + By_{t+1} - c)\end{align*}
-$$
+    $$
+    \begin{align*}x_{t+1} &= \arg\min_x f(x) + \frac{\rho}{2} \|Ax + By_t - c + \lambda_t/\rho\|_2^2\\y_{t+1} &= \arg\min_y g(x) + \frac{\rho}{2} \|Ax_{t+1} + By - c + \lambda_t/\rho\|_2^2\\\lambda_{t+1} &= \lambda_t + \rho(Ax_{t+1} + By_{t+1} - c)\end{align*}
+    $$
 
 If $f$ and $g$ are closed convex functions, the ADMM algorithm converges.
 
@@ -302,22 +302,17 @@ $$
 
 Applying ADMM, we get:
 
-**Divide**:
 
-$$
-x_i^{t+1}= \arg\min_{x_i} f_i(x_i) + \frac{\rho}{2}\|x_i - z^t + \lambda_i^t/{\rho}\|_2^2, \forall i = 1, \ldots, n
-$$
 
-**Gather**:
+!!! abstract "ADMM for Consensus Optimization"
 
-$$
-z^{t+1} =\frac{1}{n}\sum_{i=1}^n (x_i^{t+1}+ \lambda_i^t/{\rho})
-$$
+    $$
+    \begin{align*}
+    \text{Divide: } x_i^{t+1}&= \arg\min_{x_i} f_i(x_i) + \frac{\rho}{2}\|x_i - z^t + \lambda_i^t/{\rho}\|_2^2, \forall i = 1, \ldots, n\\
+    \text{Gather: } z^{t+1} &=\frac{1}{n}\sum_{i=1}^n (x_i^{t+1}+ \lambda_i^t/{\rho})\\
+    \text{Broadcast: } \lambda_i^{t+1} & = \lambda_i^t + \rho(x_i^{t+1}- z^{t+1} ), \forall i = 1, \ldots, n
+    \end{align*}
+    $$
 
-**Broadcast**:
-
-$$
-\lambda_i^{t+1}= \lambda_i^t + \rho(x_i^{t+1}- z^{t+1} ), \forall i = 1, \ldots, n
-$$
 
 In the first step, we update each $x_i^{t+1}$ in parallel, then gather all local iterates, and finally broadcast the updated dual variables back to each core. 

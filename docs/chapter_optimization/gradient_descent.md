@@ -17,13 +17,15 @@ $$
 
 To maximize this decrease, we should choose $d = -\nabla f(x_0)$. This means the negative gradient $-\nabla f(x_0)$ provides the steepest descent direction when we only have local information about $f(x)$ at point $x_0$. This insight leads to the gradient descent algorithm.
 
-**Gradient Descent Algorithm**: Starting at point $x_0 \in \mathbb{R}^d$, iterate as follows:
+!!! abstract "Gradient Descent Algorithm"
 
-$$
-x_{t+1} = x_t -\eta_t\nabla f(x_t)
-$$
+    Starting at point $x_0 \in \mathbb{R}^d$, iterate as follows:
 
-where $\eta_t$ is the step size (also called learning rate).
+    $$
+    x_{t+1} = x_t -\eta_t\nabla f(x_t)
+    $$
+    
+    where $\eta_t$ is the step size (also called learning rate).
 
 Here is the implementation of gradient descent in PyTorch:
 
@@ -106,14 +108,14 @@ $$
 
 This leads to the Frank-Wolfe algorithm:
 
-**Frank-Wolfe Algorithm**: Perform the updates:
+!!! abstract "Frank-Wolfe Algorithm"
 
-$$
-\begin{align}
-y_t &= \arg\min_{x \in \mathcal{X}} \langle\nabla f(x_t), x \rangle\\
-x_{t+1} &= x_t + \eta_t (y_t - x_t)
-\end{align}
-$$
+    $$
+    \begin{align*}
+    y_t &= \arg\min_{x \in \mathcal{X}} \langle\nabla f(x_t), x \rangle\\
+    x_{t+1} &= x_t + \eta_t (y_t - x_t)
+    \end{align*}
+    $$
 
 where $\eta_t$ is the step size.
 
