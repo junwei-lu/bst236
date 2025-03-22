@@ -1,0 +1,232 @@
+# Neural Networks
+
+## Linear Classifier
+
+Given the input $\bm{X} = (X_1, X_2, \ldots, X_d)$, a linear model with multiple outcomes $\bm{O} = (O_1, O_2, \ldots, O_m)$ is given by:
+
+$$
+\bm{O} = \bm{W} \bm{X} + \bm{b}
+$$
+
+where $\bm{W} = (w_{ij})$ is a $m \times d$ matrix of weights, and $\bm{b} = (b_1, b_2, \ldots, b_m)$ is a vector of biases.
+
+If the goal is to classify the input $\bm{X}$ into one of $m$ classes, we can use the softmax function to convert the outputs to probabilities to have the linear classifier model
+
+$$
+\bm{Y} = \text{softmax}(\bm{O}) = \text{softmax}(\bm{\bm{W} \bm{X} + \bm{b}}), 
+$$
+
+$$
+\text{where } Y_i = \frac{\exp(O_i)}{\sum_{j=1}^m \exp(O_j)} \text{ is the probability} P(Y=i|\bm{X})
+$$
+
+### Cross-entropy loss
+
+We have the data $(\bm{X}_1, \bm{Y}_1), (\bm{X}_2, \bm{Y}_2), \ldots, (\bm{X}_n, \bm{Y}_n)$, where $\bm{Y}_i$ is the one-hot encoded target vector for the $i$-th training example, i.e., $Y_{ij} = 1$ if the $i$-th training example belongs to class $j$, and $0$ otherwise. The linear classifier model predicts the probability $\hat{\bm{Y}} = \text{softmax}(\bm{\bm{W} \bm{X} + \bm{b}})$. So the negative log-likelihood of the linear classifier is given by:
+
+$$
+-\log P(\bm{Y}|\bm{X}, \bm{W}, \bm{b}) = -  \sum_{i=1}^n \log \prod_{j=1}^m P(Y_{ij} = 1|\bm{X}_i, \bm{W}, \bm{b})^{Y_{ij}} = - \sum_{i=1}^n \sum_{j=1}^m Y_{ij} \log \hat{Y}_{ij}
+$$
+
+
+Therefore, for any predicted probability vector $\hat{\bm{Y}}$, the cross-entropy loss is given by:
+
+$$
+L(\bm{Y}, \hat{\bm{Y}}) = -  \sum_{j=1}^m Y_{j} \log \hat{Y}_{j}
+$$
+
+In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-entropy loss.
+
+```python
+criterion = nn.CrossEntropyLoss()
+loss = criterion(y_pred, y_true)
+```
+
+ 
+## Neural Network Architectures
+
+### One-hidden-layer Neural Network
+
+ We consider the one-hidden-layer neural network:
+
+ $$
+ \begin{align*}
+ \bm{H} &= \sigma(\bm{W}^{(1)} \bm{X} + \bm{b}^{(1)}) \\
+ \bm{O} &= \bm{W}^{(2)} \bm{H} + \bm{b}^{(2)}
+ \end{align*}
+ $$
+
+ where $\sigma$ is a non-linear activation function. 
+
+ ![One-hidden-layer Neural Network](./nn.assets/one_hidden_nn.jpeg)
+
+ ### Activation functions
+
+ The activation functions introduce non-linearity into neural networks, allowing them to learn and model complex non-linear relationships in the data that would be impossible with just linear transformations.
+
+ Here are popular activation functions:
+
+ - Sigmoid: $\sigma(x) = \frac{1}{1 + \exp(-x)}$
+ - ReLU: $\sigma(x) = \max(0, x)$
+ - Tanh: $\sigma(x) = \frac{\exp(x) - \exp(-x)}{\exp(x) + \exp(-x)}$
+ - Leaky ReLU: $\sigma(x) = \max(0.01x, x)$
+
+![Activation functions](./nn.assets/activation_grad.png)
+
+ Among these, ReLU is the most popular activation function in deep neural networks as it is computationally efficient and leads to sparse activations. From the figure above, we can see that the sigmoid and tanh activation functions has vanishing gradient problem when the input is far away from the origin, which makes the training of deep neural networks less efficient. On the other hand, the ReLU always has non-vanishing gradient when the input is positive. The leaky ReLU further adds a small gradient when the input is negative, which can prevent the dying ReLU problem.
+
+ ## Multi-layer Neural Network
+
+ We can stack multiple one-hidden-layer neural networks to form a multi-layer neural network:
+
+ $$
+ \bm{O} = W^{(L)} \sigma(W^{(L-1)} \cdots \sigma(W^{(2)} \sigma(W^{(1)} \bm{X} + \bm{b}^{(1)}) + \bm{b}^{(2)}) \cdots + \bm{b}^{(L-1)}) + \bm{b}^{(L)}
+ $$
+
+ Multiple hidden layers allow neural networks to learn hierarchical representations of the data. The early layers typically learn low-level features (like edges and textures in images), while deeper layers combine these to detect higher-level patterns and more abstract concepts. This hierarchical feature extraction enables the network to build increasingly complex and meaningful representations of the input data. For example, in image recognition, the first layer might detect edges, the second layer might combine edges into simple shapes, and deeper layers might recognize complex objects by combining these simpler patterns.
+
+ ![Multi-layer Neural Network](./nn.assets/mlp.png)
+
+ ## Pytorch for Neural Networks
+
+ Pytorch provides a convenient API for building neural networks using the `torch.nn` module.  The basic building block of the `torch.nn` module includes
+
+ - `nn.Linear(in_features, out_features)`: a linear layer.
+ - `nn.ReLU()`: a ReLU activation function.
+ - `nn.Sigmoid()`: a sigmoid activation function.
+ - `nn.Tanh()`: a tanh activation function.
+
+ In Pytorch, we can simply use the `nn.Sequential` function to stack multiple layers together:
+
+ ```python
+ input_size, hidden_size, output_size = 784, 256, 10
+net = nn.Sequential(nn.Linear(input_size, hidden_size),
+                    nn.ReLU(),
+                    nn.Linear(hidden_size, output_size))
+ ```
+
+You can even build a multi-layer neural network by adding layers to the model:
+
+```python
+net = nn.Sequential()
+net.append(nn.Linear(input_size, hidden_size))
+net.append(nn.ReLU())
+net.append(nn.Linear(hidden_size, output_size))
+
+# You can even use for loop to add layers
+depth = 3
+net = nn.Sequential()
+for _ in range(depth):
+    net.append(nn.ReLU())
+    net.append(nn.Linear(10, 10))
+```
+
+ However, we suggest to use the `nn.Module` class to define a custom neural network class, as it is more flexible for you to generate multiple instances of the same neural network with different parameters. You need to define a model class that inherits from `nn.Module` and at least define two functions:
+
+ - `__init__`: to define and initialize the network parameters.
+ - `forward`: to define the forward pass of the network.
+
+ ```python
+ import torch
+ import torch.nn as nn
+ import torch.nn.functional as F
+
+ class TwoLayerNet(nn.Module):
+     def __init__(self, input_size, hidden_size, output_size): # Define and initialize the network parameters
+         super().__init__()
+         self.net = nn.Sequential(
+             nn.Linear(input_size, hidden_size),
+             nn.ReLU(),
+             nn.Linear(hidden_size, output_size)
+         )
+
+     def forward(self, x): # Define the forward pass of the network
+         return self.net(x)
+
+ # Initialize the model
+ input_size, hidden_size, output_size = 784, 256, 10
+ net = TwoLayerNet(input_size, hidden_size, output_size)
+
+ # Print the model
+for name, param in net.named_parameters():
+    if param.requires_grad:
+        print(f"{name}: {param.shape}")
+
+# net.0.weight: torch.Size([256, 784])
+# net.0.bias: torch.Size([256])
+# net.2.weight: torch.Size([10, 256])
+# net.2.bias: torch.Size([10])
+ ```
+
+You can even define in the `forward` function on how the model should be executed. Pytorch provide the API `torch.nn.functional` for common functions. The following way to define the model is equivalent to the previous one but it is more flexible to design your own model. For example, we need to consider a special activation function in the second hidden layer
+$$
+\sigma(x;\alpha) = \begin{cases}
+    \frac{1}{1 + \alpha \exp(- x)} & \text{if } x \leq 0 \\
+    x & \text{if } x > 0
+\end{cases}
+$$
+where $\alpha$ is a parameter also can be learned.
+
+Notice that you need to use functions in `torch` to define your own activation function, otherwise the autograd will not work.
+
+```python
+ import torch
+ import torch.nn as nn
+ import torch.nn.functional as F
+
+ class TwoLayerNet(nn.Module):
+     def __init__(self, input_size, hidden_size, output_size):
+         super().__init__()
+         self.linear1 = nn.Linear(input_size, hidden_size)
+         self.linear2 = nn.Linear(hidden_size, hidden_size)
+         self.linear3 = nn.Linear(hidden_size, output_size)
+         self.alpha = nn.Parameter(torch.ones(1))
+
+     def my_activation(self, x):
+         return torch.where(x <= 0, 1 / (1 + self.alpha * torch.exp(-x)), x)
+
+     def forward(self, x):
+         x = self.linear1(x)
+         x = F.relu(x)
+         x = self.linear2(x)
+         x = self.my_activation(x)
+         x = self.linear3(x)
+         return x
+```
+
+**Stack multiple networks**
+
+We can also define a building block of the neural network, and repeat it multiple times to form a multi-layer neural network.
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+# First define a building block of one-hidden-layer neural network
+class Block(nn.Module):
+    def __init__(self, input_size, hidden_size):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_size, hidden_size),
+            nn.ReLU()
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
+# Then define a multi-layer neural network by repeating the building block
+class MultiLayerNet(nn.Module):
+    def __init__(self, input_size, hidden_size, depth, output_size):
+        super().__init__()
+        self.input_linear = nn.Linear(input_size, hidden_size)
+        self.blocks = nn.Sequential(*[Block(hidden_size, hidden_size) for _ in range(depth)]) # repeat the building block depth times
+        self.output_linear = nn.Linear(hidden_size, output_size)
+
+    def forward(self, x):
+        x = self.input_linear(x)
+        x = F.relu(x)
+        x = self.blocks(x)
+        x = self.output_linear(x)
+        return x
+```
+Notice that we use `*` to unpack the list of blocks in `nn.Sequential(*[Block(hidden_size, hidden_size) for _ in range(depth)])` as `nn.Sequential`
