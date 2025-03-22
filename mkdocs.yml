@@ -209,6 +209,10 @@ nav:
     - Mirror Descent: chapter_optimization/mirror_descent.md
     - Nesterov's Smooth Method: chapter_optimization/nesterov_smooth.md
     - Duality and ADMM: chapter_optimization/duality_and_admm.md
+  - Chapter 9. Neural Networks:
+    - chapter_neural_networks/index.md
+    - Neural Networks: chapter_neural_networks/nn.md
+    - Regularization: chapter_neural_networks/regularization.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
