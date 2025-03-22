@@ -2,37 +2,37 @@
 
 ## Linear Classifier
 
-Given the input $\bm{X} = (X_1, X_2, \ldots, X_d)$, a linear model with multiple outcomes $\bm{O} = (O_1, O_2, \ldots, O_m)$ is given by:
+Given the input $\mathbf{X} = (X_1, X_2, \ldots, X_d)$, a linear model with multiple outcomes $\mathbf{O} = (O_1, O_2, \ldots, O_m)$ is given by:
 
 $$
-\bm{O} = \bm{W} \bm{X} + \bm{b}
+\mathbf{O} = \mathbf{W} \mathbf{X} + \mathbf{b}
 $$
 
-where $\bm{W} = (w_{ij})$ is a $m \times d$ matrix of weights, and $\bm{b} = (b_1, b_2, \ldots, b_m)$ is a vector of biases.
+where $\mathbf{W} = (w_{ij})$ is a $m \times d$ matrix of weights, and $\mathbf{b} = (b_1, b_2, \ldots, b_m)$ is a vector of biases.
 
-If the goal is to classify the input $\bm{X}$ into one of $m$ classes, we can use the softmax function to convert the outputs to probabilities to have the linear classifier model
-
-$$
-\bm{Y} = \text{softmax}(\bm{O}) = \text{softmax}(\bm{\bm{W} \bm{X} + \bm{b}}), 
-$$
+If the goal is to classify the input $\mathbf{X}$ into one of $m$ classes, we can use the softmax function to convert the outputs to probabilities to have the linear classifier model
 
 $$
-\text{where } Y_i = \frac{\exp(O_i)}{\sum_{j=1}^m \exp(O_j)} \text{ is the probability} P(Y=i|\bm{X})
+\mathbf{Y} = \text{softmax}(\mathbf{O}) = \text{softmax}(\mathbf{\mathbf{W} \mathbf{X} + \mathbf{b}}), 
+$$
+
+$$
+\text{where } Y_i = \frac{\exp(O_i)}{\sum_{j=1}^m \exp(O_j)} \text{ is the probability} P(Y=i|\mathbf{X})
 $$
 
 ### Cross-entropy loss
 
-We have the data $(\bm{X}_1, \bm{Y}_1), (\bm{X}_2, \bm{Y}_2), \ldots, (\bm{X}_n, \bm{Y}_n)$, where $\bm{Y}_i$ is the one-hot encoded target vector for the $i$-th training example, i.e., $Y_{ij} = 1$ if the $i$-th training example belongs to class $j$, and $0$ otherwise. The linear classifier model predicts the probability $\hat{\bm{Y}} = \text{softmax}(\bm{\bm{W} \bm{X} + \bm{b}})$. So the negative log-likelihood of the linear classifier is given by:
+We have the data $(\mathbf{X}_1, \mathbf{Y}_1), (\mathbf{X}_2, \mathbf{Y}_2), \ldots, (\mathbf{X}_n, \mathbf{Y}_n)$, where $\mathbf{Y}_i$ is the one-hot encoded target vector for the $i$-th training example, i.e., $Y_{ij} = 1$ if the $i$-th training example belongs to class $j$, and $0$ otherwise. The linear classifier model predicts the probability $\hat{\mathbf{Y}} = \text{softmax}(\mathbf{\mathbf{W} \mathbf{X} + \mathbf{b}})$. So the negative log-likelihood of the linear classifier is given by:
 
 $$
--\log P(\bm{Y}|\bm{X}, \bm{W}, \bm{b}) = -  \sum_{i=1}^n \log \prod_{j=1}^m P(Y_{ij} = 1|\bm{X}_i, \bm{W}, \bm{b})^{Y_{ij}} = - \sum_{i=1}^n \sum_{j=1}^m Y_{ij} \log \hat{Y}_{ij}
+-\log P(\mathbf{Y}|\mathbf{X}, \mathbf{W}, \mathbf{b}) = -  \sum_{i=1}^n \log \prod_{j=1}^m P(Y_{ij} = 1|\mathbf{X}_i, \mathbf{W}, \mathbf{b})^{Y_{ij}} = - \sum_{i=1}^n \sum_{j=1}^m Y_{ij} \log \hat{Y}_{ij}
 $$
 
 
-Therefore, for any predicted probability vector $\hat{\bm{Y}}$, the cross-entropy loss is given by:
+Therefore, for any predicted probability vector $\hat{\mathbf{Y}}$, the cross-entropy loss is given by:
 
 $$
-L(\bm{Y}, \hat{\bm{Y}}) = -  \sum_{j=1}^m Y_{j} \log \hat{Y}_{j}
+L(\mathbf{Y}, \hat{\mathbf{Y}}) = -  \sum_{j=1}^m Y_{j} \log \hat{Y}_{j}
 $$
 
 In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-entropy loss.
@@ -50,10 +50,10 @@ loss = criterion(y_pred, y_true)
  We consider the one-hidden-layer neural network:
 
  $$
- \begin{align*}
- \bm{H} &= \sigma(\bm{W}^{(1)} \bm{X} + \bm{b}^{(1)}) \\
- \bm{O} &= \bm{W}^{(2)} \bm{H} + \bm{b}^{(2)}
- \end{align*}
+ \begin{aligned}
+ \mathbf{H} &= \sigma(\mathbf{W}^{(1)} \mathbf{X} + \mathbf{b}^{(1)}) \\
+ \mathbf{O} &= \mathbf{W}^{(2)} \mathbf{H} + \mathbf{b}^{(2)}
+ \end{aligned}
  $$
 
  where $\sigma$ is a non-linear activation function. 
@@ -80,7 +80,7 @@ loss = criterion(y_pred, y_true)
  We can stack multiple one-hidden-layer neural networks to form a multi-layer neural network:
 
  $$
- \bm{O} = W^{(L)} \sigma(W^{(L-1)} \cdots \sigma(W^{(2)} \sigma(W^{(1)} \bm{X} + \bm{b}^{(1)}) + \bm{b}^{(2)}) \cdots + \bm{b}^{(L-1)}) + \bm{b}^{(L)}
+ \mathbf{O} = W^{(L)} \sigma(W^{(L-1)} \cdots \sigma(W^{(2)} \sigma(W^{(1)} \mathbf{X} + \mathbf{b}^{(1)}) + \mathbf{b}^{(2)}) \cdots + \mathbf{b}^{(L-1)}) + \mathbf{b}^{(L)}
  $$
 
  Multiple hidden layers allow neural networks to learn hierarchical representations of the data. The early layers typically learn low-level features (like edges and textures in images), while deeper layers combine these to detect higher-level patterns and more abstract concepts. This hierarchical feature extraction enables the network to build increasingly complex and meaningful representations of the input data. For example, in image recognition, the first layer might detect edges, the second layer might combine edges into simple shapes, and deeper layers might recognize complex objects by combining these simpler patterns.
