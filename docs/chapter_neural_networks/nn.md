@@ -126,7 +126,8 @@ for _ in range(depth):
  - `__init__`: to define and initialize the network parameters.
  - `forward`: to define the forward pass of the network.
 
- ```python
+```python
+
  import torch
  import torch.nn as nn
  import torch.nn.functional as F
@@ -156,7 +157,8 @@ for name, param in net.named_parameters():
 # net.0.bias: torch.Size([256])
 # net.2.weight: torch.Size([10, 256])
 # net.2.bias: torch.Size([10])
- ```
+ 
+```
 
 You can even define in the `forward` function on how the model should be executed. Pytorch provide the API `torch.nn.functional` for common functions. The following way to define the model is equivalent to the previous one but it is more flexible to design your own model. For example, we need to consider a special activation function in the second hidden layer
 $$
