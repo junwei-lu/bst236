@@ -213,6 +213,8 @@ nav:
     - chapter_neural_networks/index.md
     - Neural Networks: chapter_neural_networks/nn.md
     - Regularization: chapter_neural_networks/regularization.md
+    - Convolutional Neural Networks: chapter_neural_networks/cnn.md
+    - Residual Networks: chapter_neural_networks/resnet.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
