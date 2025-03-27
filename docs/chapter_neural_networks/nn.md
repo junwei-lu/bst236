@@ -50,10 +50,10 @@ loss = criterion(y_pred, y_true)
  We consider the one-hidden-layer neural network:
 
  $$
- \begin{aligned}
+ \begin{align}
  \mathbf{H} &= \sigma(\mathbf{W}^{(1)} \mathbf{X} + \mathbf{b}^{(1)}) \\
  \mathbf{O} &= \mathbf{W}^{(2)} \mathbf{H} + \mathbf{b}^{(2)}
- \end{aligned}
+ \end{align}
  $$
 
  where $\sigma$ is a non-linear activation function. 
@@ -80,7 +80,7 @@ loss = criterion(y_pred, y_true)
  We can stack multiple one-hidden-layer neural networks to form a multi-layer neural network:
 
  $$
- \mathbf{O} = W^{(L)} \sigma(W^{(L-1)} \cdots \sigma(W^{(2)} \sigma(W^{(1)} \mathbf{X} + \mathbf{b}^{(1)}) + \mathbf{b}^{(2)}) \cdots + \mathbf{b}^{(L-1)}) + \mathbf{b}^{(L)}
+ O = W^{(L)} \sigma(W^{(L-1)} ... \sigma(W^{(2)} \sigma(W^{(1)} X + b^{(1)}) + b^{(2)}) ... + b^{(L-1)}) + b^{(L)}
  $$
 
  Multiple hidden layers allow neural networks to learn hierarchical representations of the data. The early layers typically learn low-level features (like edges and textures in images), while deeper layers combine these to detect higher-level patterns and more abstract concepts. This hierarchical feature extraction enables the network to build increasingly complex and meaningful representations of the input data. For example, in image recognition, the first layer might detect edges, the second layer might combine edges into simple shapes, and deeper layers might recognize complex objects by combining these simpler patterns.
