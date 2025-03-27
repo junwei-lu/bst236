@@ -149,14 +149,14 @@ for _ in range(depth):
  net = TwoLayerNet(input_size, hidden_size, output_size)
 
  # Print the model
-for name, param in net.named_parameters():
+ for name, param in net.named_parameters():
     if param.requires_grad:
         print(f"{name}: {param.shape}")
 
-# net.0.weight: torch.Size([256, 784])
-# net.0.bias: torch.Size([256])
-# net.2.weight: torch.Size([10, 256])
-# net.2.bias: torch.Size([10])
+ # net.0.weight: torch.Size([256, 784])
+ # net.0.bias: torch.Size([256])
+ # net.2.weight: torch.Size([10, 256])
+ # net.2.bias: torch.Size([10])
  
 ```
 
