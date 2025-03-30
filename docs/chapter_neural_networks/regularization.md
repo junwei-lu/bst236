@@ -53,9 +53,7 @@ where $\mathbf{a}$ is the pre-dropout activation, $\odot$ is element-wise multip
 $$
 m_i \sim \text{Bernoulli}(p)
 $$
-!!! warning "Dropout is disabled during inference"
 
-    The dropout is only active during training. When the model is in evaluation mode, the dropout is disabled.
 
 
 ![Dropout](./nn.assets/dropout.jpg)

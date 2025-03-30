@@ -64,8 +64,8 @@ In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-e
 
  
 ## Neural Network Architectures
-
-### One-hidden-layer Neural Network
+<!-- 
+## One-hidden-layer Neural Network
 
  We consider the one-hidden-layer neural network:
 
@@ -95,7 +95,7 @@ In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-e
 
 ![Activation functions](./nn.assets/activation_fcn.png)
 
- Among these, ReLU is the most popular activation function in deep neural networks as it is computationally efficient and leads to sparse activations. From the figure above, we can see that the sigmoid and tanh activation functions has vanishing gradient problem when the input is far away from the origin, which makes the training of deep neural networks less efficient. On the other hand, the ReLU always has non-vanishing gradient when the input is positive. The leaky ReLU further adds a small gradient when the input is negative, which can prevent the dying ReLU problem.
+ Among these, ReLU is the most popular activation function in deep neural networks as it is computationally efficient and leads to sparse activations. From the figure above, we can see that the sigmoid and tanh activation functions has vanishing gradient problem when the input is far away from the origin, which makes the training of deep neural networks less efficient. On the other hand, the ReLU always has non-vanishing gradient when the input is positive. The leaky ReLU further adds a small gradient when the input is negative, which can prevent the dying ReLU problem. -->
 
  ## Multi-layer Neural Network
 

@@ -32,6 +32,8 @@ In PyTorch, we can use the `nn.Conv2d` layer to perform the 2D convolution opera
 conv = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
 ```
 
+Below is an example of a 2D convolution operation with `kernel_size=3`, `stride=1`, and `padding=1`.
+
 ![CNN](./nn.assets/cnn.gif)
 
 ## Pooling Operations
@@ -41,17 +43,13 @@ Pooling layers reduce the spatial dimensions of the feature maps, providing:
 2. Some degree of translation invariance
 3. Control over overfitting
 
-### Max Pooling
+There are two types of pooling operations:
 
-Max pooling takes the maximum value within a local region:
+- Max pooling: takes the maximum value within a local region
+- Average pooling: takes the average value within a local region
 
-$$
-\text{MaxPool}(i,j) = \max_{0 \leq m < k, 0 \leq n < k} \mathbf{I}(i \cdot s + m, j \cdot s + n)
-$$
 
-where $k$ is the pooling window size and $s$ is the stride.
-
-In PyTorch, we can use the `nn.MaxPool2d` layer to perform the max pooling operation.
+In PyTorch, we can use the `nn.MaxPool2d` layer to perform the max pooling operation. Below is an example of a max pooling operation with `kernel_size=2`, `stride=2`.
 
 ```python
 pool = nn.MaxPool2d(kernel_size, stride)
@@ -59,7 +57,7 @@ pool = nn.MaxPool2d(kernel_size, stride)
 
 ![Max Pooling](./nn.assets/maxpool.gif)
 
-
+Similarly, we can use the `nn.AvgPool2d` layer to perform the average pooling operation.
 
 ## CNN Architectures
 
