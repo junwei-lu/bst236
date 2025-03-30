@@ -81,7 +81,11 @@ class TwoLayerNet(nn.Module):
         return self.net(x)
 ```
 
-PyTorch automatically handles the scaling factor and disables dropout during evaluation when `model.eval()` is called.
+
+!!! warning "Dropout only during training"
+
+    The dropout is only active during training. You need to call `model.train()` before training and `model.eval()` during evaluation.
+
 
 ## Batch Normalization
 
