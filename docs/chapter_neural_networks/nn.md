@@ -36,7 +36,6 @@ $$
 
 In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-entropy loss.
 
-## Neural Network Architectures
 
 
 
@@ -62,7 +61,9 @@ In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-e
 
 
     
+## Neural Network Architectures
 
+### One-hidden-layer Neural Network
     
 
  
