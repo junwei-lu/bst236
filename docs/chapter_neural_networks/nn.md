@@ -70,16 +70,17 @@ In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-e
  We consider the one-hidden-layer neural network:
 
  $$
- \begin{align*}
- \mathbf{H} &= \sigma(\mathbf{W}^{(1)} \mathbf{X} + \mathbf{b}^{(1)}) \\
- \mathbf{O} &= \mathbf{W}^{(2)} \mathbf{H} + \mathbf{b}^{(2)}
- \end{align*}
+ \mathbf{H} = \sigma(\mathbf{W}^{(1)} \mathbf{X} + \mathbf{b}^{(1)}) 
+ $$
+
+ $$
+ \mathbf{O} = \mathbf{W}^{(2)} \mathbf{H} + \mathbf{b}^{(2)}
  $$
 
  where $\sigma$ is a non-linear activation function. 
 
  ![One-hidden-layer Neural Network](./nn.assets/one_hidden_nn.jpeg)
- 
+
 
  ### Activation functions
 
