@@ -28,8 +28,6 @@ $$
 -\log P(\mathbf{Y}|\mathbf{X}, \mathbf{W}, \mathbf{b}) = -  \sum_{i=1}^n \log \prod_{j=1}^m P(Y_{ij} = 1|\mathbf{X}_i, \mathbf{W}, \mathbf{b})^{Y_{ij}} = - \sum_{i=1}^n \sum_{j=1}^m Y_{ij} \log \hat{Y}_{ij}
 $$
 
-## Neural Network Architectures
-
 Therefore, for any predicted probability vector $\hat{\mathbf{Y}}$, the cross-entropy loss is given by:
 
 $$
@@ -37,6 +35,10 @@ L(\mathbf{Y}, \hat{\mathbf{Y}}) = -  \sum_{j=1}^m Y_{j} \log \hat{Y}_{j}
 $$
 
 In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-entropy loss.
+
+## Neural Network Architectures
+
+
 
 
 !!! warning "Cross-entropy loss in Pytorch"
