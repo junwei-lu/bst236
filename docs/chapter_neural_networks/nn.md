@@ -37,10 +37,30 @@ $$
 
 In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-entropy loss.
 
-```python
-criterion = nn.CrossEntropyLoss()
-loss = criterion(y_pred, y_true)
-```
+
+!!! warning "Cross-entropy loss in Pytorch"
+
+    The `nn.CrossEntropyLoss` function expects raw logits, not softmaxed outputs.
+
+    That means for linear classifier $O = Wx + b$, we predict $\hat{y} = \text{softmax}(O)$, but we should pass the raw logits $O$ to the loss function, not the softmaxed outputs $\hat{y}$.
+
+    ```python
+    num_classes, num_features = 10, 100
+    x = torch.randn(num_features)
+    y_true = torch.randint(0, num_classes, (1,))
+    model = nn.Linear(num_features, num_classes)
+    O = model(x) # raw logits
+    y_pred = torch.softmax(O, dim=1) # softmaxed outputs
+    criterion = nn.CrossEntropyLoss()
+    loss = criterion(O, y_true) 
+    ```
+
+    Instead, we should pass the raw logits $O$ to the loss function:
+
+
+    
+
+    
 
  
 ## Neural Network Architectures
@@ -50,15 +70,16 @@ loss = criterion(y_pred, y_true)
  We consider the one-hidden-layer neural network:
 
  $$
- \begin{align}
+ \begin{align*}
  \mathbf{H} &= \sigma(\mathbf{W}^{(1)} \mathbf{X} + \mathbf{b}^{(1)}) \\
  \mathbf{O} &= \mathbf{W}^{(2)} \mathbf{H} + \mathbf{b}^{(2)}
- \end{align}
+ \end{align*}
  $$
 
  where $\sigma$ is a non-linear activation function. 
 
  ![One-hidden-layer Neural Network](./nn.assets/one_hidden_nn.jpeg)
+ 
 
  ### Activation functions
 
@@ -71,7 +92,7 @@ loss = criterion(y_pred, y_true)
  - Tanh: $\sigma(x) = \frac{\exp(x) - \exp(-x)}{\exp(x) + \exp(-x)}$
  - Leaky ReLU: $\sigma(x) = \max(0.01x, x)$
 
-![Activation functions](./nn.assets/activation_grad.png)
+![Activation functions](./nn.assets/activation_fcn.png)
 
  Among these, ReLU is the most popular activation function in deep neural networks as it is computationally efficient and leads to sparse activations. From the figure above, we can see that the sigmoid and tanh activation functions has vanishing gradient problem when the input is far away from the origin, which makes the training of deep neural networks less efficient. On the other hand, the ReLU always has non-vanishing gradient when the input is positive. The leaky ReLU further adds a small gradient when the input is negative, which can prevent the dying ReLU problem.
 
@@ -127,7 +148,6 @@ for _ in range(depth):
  - `forward`: to define the forward pass of the network.
 
 ```python
-
  import torch
  import torch.nn as nn
  import torch.nn.functional as F
@@ -157,7 +177,6 @@ for _ in range(depth):
  # net.0.bias: torch.Size([256])
  # net.2.weight: torch.Size([10, 256])
  # net.2.bias: torch.Size([10])
- 
 ```
 
 You can even define in the `forward` function on how the model should be executed. Pytorch provide the API `torch.nn.functional` for common functions. The following way to define the model is equivalent to the previous one but it is more flexible to design your own model. For example, we need to consider a special activation function in the second hidden layer
