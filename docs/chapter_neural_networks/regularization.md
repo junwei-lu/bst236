@@ -18,7 +18,7 @@ The classical **bias-variance trade-off** suggests that as model complexity incr
 ![Bias-Variance Trade-off](./nn.assets/bias-variance-tradeoff.png)
 
 
-Howeever, in deep learning, researchers have revealed a more complex phenomenon called **double descent**, which challenges the classical bias-variance trade-off. In double descent:
+Howeever, in deep learning, researchers have revealed a more complex phenomenon called **double descent** which was first proposed by [Belkin et al. (2019)](https://arxiv.org/pdf/1812.11118), which challenges the classical bias-variance trade-off. In double descent:
 
 1. The test error initially follows the classical U-shaped curve as model complexity increases
 2. However, at a critical threshold (often when the model has just enough capacity to fit the training data perfectly (**overparameterized**)), test error spikes dramatically
@@ -93,7 +93,7 @@ $$
 
 ![Dropout](./nn.assets/dropout.jpg)
 
-### PyTorch Implementation
+**PyTorch Implementation**
 
 In PyTorch, dropout is implemented using the `nn.Dropout` module:
 
@@ -117,7 +117,9 @@ class TwoLayerNet(nn.Module):
 
 !!! warning "Dropout only during training"
 
-    The dropout is only active during training. You need to call `model.train()` before training and `model.eval()` during evaluation. We also do  suggest using `torch.nn.Dropout`  instead of `torch.nn.functional.dropout` when defining your model with dropout. If you use `torch.nn.functional.dropout`, the dropout will be applied even during evaluation.
+    The dropout is only active during training. You need to call `model.train()` before training to activate dropout and `model.eval()` during evaluation to deactivate dropout. 
+    
+    You should use `torch.nn.Dropout`  instead of `torch.nn.functional.dropout` when defining your model with dropout. If you use `torch.nn.functional.dropout`, the dropout will be applied even during evaluation.
 
 
 ## Batch Normalization

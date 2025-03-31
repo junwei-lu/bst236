@@ -215,6 +215,8 @@ nav:
     - Regularization: chapter_neural_networks/regularization.md
     - Convolutional Neural Networks: chapter_neural_networks/cnn.md
     - Residual Networks: chapter_neural_networks/resnet.md
+    - Fine-tuning: chapter_neural_networks/fine_tuning.md
+    - Computer Vision: chapter_neural_networks/computer_vision.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md

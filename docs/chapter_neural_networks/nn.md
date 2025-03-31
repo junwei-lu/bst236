@@ -119,6 +119,11 @@ Multiple hidden layers allow neural networks to learn hierarchical representatio
 ![Multi-layer Neural Network](./nn.assets/mlp.png)
 
 
+We suggest you to explore the [Neural Network Playground](https://playground.tensorflow.org/) to understand how the depth of the neural network and other training hyperparameters affect the performance of the model. You can see the how different layers of the neural network can learn different features of the data and how different activation functions can affect the performance of the model.
+
+![Neural Network Playground](./nn.assets/nn_playground.png)
+
+
 ### Gradient Vanishing 
 
 A significant challenge when training deep neural networks (DNNs) is the vanishing gradient issue. This phenomenon occurs when gradients flowing back to the initial layers become extremely small during backpropagation. Consequently, parameters in these early layers barely update, causing training to progress very slowly or completely stall. This problem primarily stems from specific activation function choices and the optimization techniques employed in deep architectures.
@@ -127,11 +132,11 @@ The non-linear activation functions like sigmoid and tanh, while essential for m
 
 ![Gradient Vanishing](./nn.assets/Vanishing-Gradient.png)
 
-**How to avoid gradient vanishing?**
+!!! note "How to avoid gradient vanishing?"
 
-- Use the ReLU  or Leaky ReLU activation function, which has a non-vanishing gradient when the input is positive. 
-- Monitor the gradient norm, especially for the early layers, during training to check if it is vanishing.
-- We will also discuss the other approaches like [Batch Normalization](regularization.md#batch-normalization) and [Residual Network](resnet.md) to avoid gradient vanishing.
+    - Use the ReLU  or Leaky ReLU activation function, which has a non-vanishing gradient when the input is positive. 
+    - Monitor the gradient norm, especially for the early layers, during training to check if it is vanishing.
+    - We will also discuss the other approaches like [Batch Normalization](regularization.md#batch-normalization) and [Residual Network](resnet.md) to avoid gradient vanishing.
 
 
 
