@@ -1,6 +1,41 @@
 # Regularization of Neural Networks
 
-Regularization techniques help prevent overfitting in neural networks by constraining the model's complexity, enabling better generalization to unseen data. This chapter examines several key regularization methods used in modern neural networks.
+Regularization techniques help prevent overfitting in neural networks by constraining the model's complexity, enabling better generalization to unseen data. This lecture examines several key regularization methods used in modern neural networks.
+
+## Overfitting
+
+Overfitting is a problem that arises when the model fits the training data too well, making it unable to predict well using new data. 
+
+![Overfitting](./nn.assets/overfitting.png)
+
+Modern neep neural network models have a large number of parameters, which makes them prone to overfitting. Therefore, we need to use regularization techniques to prevent overfitting.
+
+### Double Descent
+
+
+The classical **bias-variance trade-off** suggests that as model complexity increases, bias decreases (the model can fit the training data better) but variance increases (the model becomes more sensitive to fluctuations in the training data). You will see a typical U-shaped curve of the test error as we increase the model complexity.
+
+![Bias-Variance Trade-off](./nn.assets/bias-variance-tradeoff.png)
+
+
+Howeever, in deep learning, researchers have revealed a more complex phenomenon called **double descent**, which challenges the classical bias-variance trade-off. In double descent:
+
+1. The test error initially follows the classical U-shaped curve as model complexity increases
+2. However, at a critical threshold (often when the model has just enough capacity to fit the training data perfectly (**overparameterized**)), test error spikes dramatically
+3. Surprisingly, as model complexity continues to increase beyond this threshold, test error begins to decrease again
+
+This creates a "double descent" curve where test error decreases, then increases, then decreases again. This phenomenon suggests that in many deep learning scenarios, larger models can actually generalize better, contrary to traditional statistical wisdom.
+
+![Double Descent](nn.assets/double_descent.png)
+
+Double descent has been observed across various neural network architectures and helps explain why modern overparameterized networks can generalize well despite having far more parameters than training examples. However, this does not mean double descent is always the case for deeper neural networks. In practice, we still need to implement regularization techniques if the model is hard to generalize.
+
+
+
+
+
+
+
 
 ## L2 Regularization
 
@@ -82,7 +117,7 @@ class TwoLayerNet(nn.Module):
 
 !!! warning "Dropout only during training"
 
-    The dropout is only active during training. You need to call `model.train()` before training and `model.eval()` during evaluation.
+    The dropout is only active during training. You need to call `model.train()` before training and `model.eval()` during evaluation. We also do  suggest using `torch.nn.Dropout`  instead of `torch.nn.functional.dropout` when defining your model with dropout. If you use `torch.nn.functional.dropout`, the dropout will be applied even during evaluation.
 
 
 ## Batch Normalization
@@ -96,7 +131,7 @@ $$
    \text{BN}(\mathbf{x}) = \gamma \odot \frac{\mathbf{x} - \mu_{\mathcal{B}}}{\sqrt{\sigma_{\mathcal{B}}^2 + \epsilon}} + \beta
 $$
 
-where $\mu_{\mathcal{B}}$ and $\sigma_{\mathcal{B}}$ are the batch mean and variance, $\epsilon$ is a small constant for numerical stability, $\gamma$ and $\beta$ are learnable parameters that allow the network to undo the normalization if needed.
+where $\mu_{\mathcal{B}}$ and $\sigma_{\mathcal{B}}$ are the batch mean and variance of $\mathbf{x}$, $\epsilon$ is a small constant for numerical stability, $\gamma$ and $\beta$ are learnable parameters that allow the network to undo the normalization if needed.
 
 
 **PyTorch Implementation**
