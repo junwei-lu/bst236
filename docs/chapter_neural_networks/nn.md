@@ -76,8 +76,24 @@ $$
 
 where $\sigma$ is a non-linear activation function. 
 
+ ![One-hidden-layer Neural Network](./nn.assets/one_hidden_nn.jpeg)
+
+
 ### Activation functions
 
+
+ The activation functions introduce non-linearity into neural networks, allowing them to learn and model complex non-linear relationships in the data that would be impossible with just linear transformations.
+
+ Here are popular activation functions:
+
+ - Sigmoid: $\sigma(x) = \frac{1}{1 + \exp(-x)}$
+ - ReLU: $\sigma(x) = \max(0, x)$
+ - Tanh: $\sigma(x) = \frac{\exp(x) - \exp(-x)}{\exp(x) + \exp(-x)}$
+ - Leaky ReLU: $\sigma(x) = \max(0.01x, x)$
+
+![Activation functions](./nn.assets/activation_fcn.png)
+
+ Among these, ReLU is the most popular activation function in deep neural networks as it is computationally efficient and leads to sparse activations. From the figure above, we can see that the sigmoid and tanh activation functions has vanishing gradient problem when the input is far away from the origin, which makes the training of deep neural networks less efficient. On the other hand, the ReLU always has non-vanishing gradient when the input is positive. The leaky ReLU further adds a small gradient when the input is negative, which can prevent the dying ReLU problem.
 
 <!-- 
 ## Neural Network Architectures
