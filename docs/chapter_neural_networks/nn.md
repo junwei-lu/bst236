@@ -34,13 +34,13 @@ $$
 L(\mathbf{Y}, \hat{\mathbf{Y}}) = -  \sum_{j=1}^m Y_{j} \log \hat{Y}_{j}
 $$
 
-In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-entropy loss.
+In PyTorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-entropy loss.
 
 
 
 
 
-!!! warning "Cross-entropy loss in Pytorch"
+!!! warning "Cross-entropy loss in PyTorch"
 
     The `nn.CrossEntropyLoss` function expects raw logits, not softmaxed outputs.
 
@@ -95,10 +95,12 @@ where $\sigma$ is a non-linear activation function.
  - Tanh: $\sigma(x) = \frac{\exp(x) - \exp(-x)}{\exp(x) + \exp(-x)}$
  - Leaky ReLU: $\sigma(x) = \max(0.01x, x)$
 
-![Activation functions](./nn.assets/activation_fcn.png)
+![Activation functions](./nn.assets/activation_new.png)
 
- Among these, ReLU is the most popular activation function in deep neural networks as it is computationally efficient and leads to sparse activations. From the figure above, we can see that the sigmoid and tanh activation functions has vanishing gradient problem when the input is far away from the origin, which makes the training of deep neural networks less efficient. On the other hand, the ReLU always has non-vanishing gradient when the input is positive. The leaky ReLU further adds a small gradient when the input is negative, which can prevent the dying ReLU problem.
+Among these, ReLU is the most popular activation function in deep neural networks as it is computationally efficient and has non-vanishing gradient.  In comparison, the sigmoid and tanh activation functions have the problem of vanishing gradient when the input is far away from the origin, which makes the training of deep neural networks less efficient. We will discuss the gradient vanishing problem in the [next section](#gradient-vanishing).
 
+
+![Gradient Vanishing](./nn.assets/sigmoid_grad.png)
 
 
 
@@ -116,6 +118,24 @@ Multiple hidden layers allow neural networks to learn hierarchical representatio
 
 ![Multi-layer Neural Network](./nn.assets/mlp.png)
 
+
+### Gradient Vanishing 
+
+A significant challenge when training deep neural networks (DNNs) is the vanishing gradient issue. This phenomenon occurs when gradients flowing back to the initial layers become extremely small during backpropagation. Consequently, parameters in these early layers barely update, causing training to progress very slowly or completely stall. This problem primarily stems from specific activation function choices and the optimization techniques employed in deep architectures.
+
+The non-linear activation functions like sigmoid and tanh, while essential for modeling complex relationships, can actually hinder training. These functions tend to saturate—producing near-zero gradients when inputs are either very large or very small. This saturation effect contributes substantially to gradient vanishing. The situation worsens during backpropagation because the chain rule multiplies these tiny gradient values together, further diminishing the signal that reaches the network's earlier layers.
+
+![Gradient Vanishing](./nn.assets/Vanishing-Gradient.png)
+
+**How to avoid gradient vanishing?**
+
+- Use the ReLU  or Leaky ReLU activation function, which has a non-vanishing gradient when the input is positive. 
+- Monitor the gradient norm, especially for the early layers, during training to check if it is vanishing.
+- We will also discuss the other approaches like [Batch Normalization](regularization.md#batch-normalization) and [Residual Network](resnet.md) to avoid gradient vanishing.
+
+
+
+
 ## PyTorch for Neural Networks
 
 PyTorch provides a convenient API for building neural networks using the `torch.nn` module.  The basic building block of the `torch.nn` module includes
@@ -125,10 +145,9 @@ PyTorch provides a convenient API for building neural networks using the `torch.
 - `nn.Sigmoid()`: a sigmoid activation function.
 - `nn.Tanh()`: a tanh activation function.
 
-In Pytorch, we can simply use the `nn.Sequential` function to stack multiple layers together:
+In PyTorch, we can simply use the `nn.Sequential` function to stack multiple layers together:
 
 ```python
-
 input_size, hidden_size, output_size = 784, 256, 10
 net = nn.Sequential(nn.Linear(input_size, hidden_size),
                     nn.ReLU(),
@@ -188,7 +207,10 @@ for name, param in net.named_parameters():
 # net.2.bias: torch.Size([10])
 ```
 
-You can even define in the `forward` function on how the model should be executed. Pytorch provide the API `torch.nn.functional` for common functions. The following way to define the model is equivalent to the previous one but it is more flexible to design your own model. For example, we need to consider a special activation function in the second hidden layer
+**Custom the neural network**
+
+
+You can even define in the `forward` function on how the model should be executed. PyTorch provide the API `torch.nn.functional` for common functions. The following way to define the model is equivalent to the previous one but it is more flexible to design your own model. For example, we need to consider a special activation function in the second hidden layer
 
 $$
 \sigma(x;\alpha) = \begin{cases}
