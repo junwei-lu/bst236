@@ -70,11 +70,13 @@ We consider the one-hidden-layer neural network:
 $$
 \begin{align*}
 \mathbf{H} &= \sigma(\mathbf{W}^{(1)} \mathbf{X} + \mathbf{b}^{(1)})\\
-\mathbf{O} &= \sigma(\mathbf{W}^{(2)} \mathbf{H} + \mathbf{b}^{(1)})
+\mathbf{O} &= \sigma(\mathbf{W}^{(2)} \mathbf{H} + \mathbf{b}^{(2)})
 \end{align*}
 $$
 
+where $\sigma$ is a non-linear activation function. 
 
+### Activation functions
 
 
 <!-- 
