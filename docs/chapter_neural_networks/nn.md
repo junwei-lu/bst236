@@ -54,10 +54,10 @@ In Pytorch, we can use the `nn.CrossEntropyLoss` function to compute the cross-e
     O = model(x) # raw logits
     y_pred = torch.softmax(O, dim=1) # softmaxed outputs
     criterion = nn.CrossEntropyLoss()
+    # You should pass the raw logits $O$ to the loss function, not the softmaxed outputs $y_pred$
     loss = criterion(O, y_true) 
     ```
 
-    Instead, we should pass the raw logits $O$ to the loss function:
 
 
     
