@@ -10,3 +10,7 @@ Neural networks are a type of machine learning model that are inspired by the st
 
 * [Neural Networks](nn.md)
 * [Regularization](regularization.md)
+* [Convolutional Neural Networks](cnn.md)
+* [Residual Networks](resnet.md)
+* [Fine-tuning](fine_tuning.md)
+* [Computer Vision](computer_vision.md)
