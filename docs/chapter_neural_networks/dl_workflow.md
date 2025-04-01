@@ -170,6 +170,14 @@ You can initialize a TensorBoard writer:
 logger = tensorboard.SummaryWriter(log_dir="results/logs")
 ```
 
+You can then start the TensorBoard server:
+
+```bash
+tensorboard --logdir=results/logs
+```
+
+and then open the TensorBoard in your browser at http://localhost:6006/
+
 You can add different types of training results to the TensorBoard including:
 
 - Scalar: Add scalar values by `logger.add_scalar`. You typically use it to log the training loss, accuracy, etc, e.g.,
@@ -179,11 +187,15 @@ logger.add_scalar("train_loss", train_loss, global_step=epoch)
 logger.add_scalar("val_loss", val_loss, global_step=epoch)
 ```
 
+![tb_scalar](./nn.assets/tb_scalars.png)
+
 - Image: Add images by `logger.add_image`. You can visualize the input images, model features, the confusion matrix, etc.
 
 ```python
 logger.add_image(tag="input_image", figure=input_image, global_step=epoch)
 ```
+
+![tb_image](./nn.assets/tb_image.png)
 
 - Graph: Add graph by `logger.add_graph`. This is super useful for visualizing the model architecture via the computational graph. The following code is an example to add the computational graph of the model to the TensorBoard.
 
@@ -192,6 +204,8 @@ dataiter = iter(train_loader)
 data, _ = next(dataiter)
 logger.add_graph(model, data)
 ```
+
+![tb_graph](./nn.assets/tb_graphs.png)
 
 - Hyperparameters: Add hyperparameters by `logger.add_hparams`.
 
@@ -210,4 +224,9 @@ logger.add_hparams(hparam_dict, metric_dict)
 
 This is super useful for comparing different configurations and you can use it to tune the hyperparameters for the best performance logged in `metric_dict`.
 
+![tb_hparams](./nn.assets/tb_hparam.png)
+
 There are other logging tools including [Weights & Biases](https://wandb.ai) and [Comet](https://www.comet.com) which is commercialized but free for basic usage.
+
+
+

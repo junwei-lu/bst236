@@ -217,6 +217,7 @@ nav:
     - Residual Networks: chapter_neural_networks/resnet.md
     - Fine-tuning: chapter_neural_networks/fine_tuning.md
     - Computer Vision: chapter_neural_networks/computer_vision.md
+    - Training Workflow: chapter_neural_networks/dl_workflow.md
     - PyTorch Pitfalls: chapter_neural_networks/pitfall.md
   - Appendix:
     - chapter_appendix/index.md
