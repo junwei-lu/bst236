@@ -98,7 +98,7 @@ The typical CNN architecture consists of:
 
 We illustrate the [VGG16 architecture](https://pytorch.org/vision/main/models/vgg.html) with the following diagram:
 
-![VGG](./nn.assets/vgg.png)
+![VGG](./nn.assets/VGG.png)
 
 
 
