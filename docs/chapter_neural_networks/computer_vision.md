@@ -7,9 +7,9 @@ Computer vision applications such as medical imaging, autonomous vehicles, surve
 
 ## Dataset: CIFAR-10
 
-PyTorch provides a convenient package called `torchvision` that includes common datasets, model architectures, and image transformations for computer vision. The `torchvision.datasets` module contains many popular datasets that can be downloaded with just a few lines of code.
+PyTorch provides a convenient package called `torchvision` that includes common datasets, model architectures, and image transformations for computer vision. The `torchvision.datasets` module contains many popular [datasets](https://pytorch.org/vision/stable/datasets.html) that can be downloaded with just a few lines of code.
 
-One of the most widely used datasets for learning computer vision is CIFAR-10. This dataset consists of 60,000 32x32 color images divided into 10 classes, with 6,000 images per class. The classes include common objects like airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks. The dataset is split into 50,000 training images and 10,000 test images.
+One of the most widely used datasets for learning computer vision is [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html). This dataset consists of 60,000 32x32 color images divided into 10 classes, with 6,000 images per class. The classes include common objects like airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks. The dataset is split into 50,000 training images and 10,000 test images.
 
 ![CIFAR-10](./nn.assets/cifar10.png)
 
@@ -134,9 +134,9 @@ trainloader = DataLoader(trainset_aug, batch_size=128, shuffle=True)
 
 Every batch the `trainloader` will apply different augmentations to the images to augment the training dataset.
 
-## Feature Extraction
+<!-- ## Feature Extraction
 
-We will use TinyVGG model to illustrate how to output the features from the middle layers of the model.
+We will use TinyVGG model to illustrate how to output the features from the middle layers of the model. -->
 
 
 

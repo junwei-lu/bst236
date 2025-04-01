@@ -115,6 +115,8 @@ PyTorch provides a convenient API for building CNNs using the `torch.nn` module.
 - `nn.MaxPool2d(kernel_size, stride)`: Max pooling layer
 - `nn.AvgPool2d(kernel_size, stride)`: Average pooling layer
 - `nn.ReLU()`: ReLU activation function
+- `nn.Flatten()`: Flatten layer to convert the output of the last convolutional block to a 1D vector
+- `nn.Linear(in_features, out_features)`: Linear layer to perform the final classification/regression
 
 **Simple CNN with Sequential API**
 
