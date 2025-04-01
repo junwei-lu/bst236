@@ -54,12 +54,12 @@ print(resnet18)
 # )
 ```
 
-Once you print the model architecture, you can see the final fully connected layer is a linear layer with 512 output features. 
+Once you print the model architecture, you can see the final fully connected layer is a linear layer with 1000 output features. 
 
 
 ## Fine-tuning last layer
 
-To fine-tune the pre-trained ResNet on a new task, with new number of classes, we need to replace the final fully connected layer with a new linear layer with the number of output features equal to the number of classes in the new task. Then we need to unfreeze the last layer using `param.requires_grad = True` and freeze all other layers using `param.requires_grad = False`.
+To fine-tune the pre-trained ResNet on a new task, with new number of classes (say you want to classify 10 classes of dog types instead of 1000 general categories), we need to replace the final fully connected layer with a new linear layer with the number of output features equal to the number of classes in the new task. Then we need to unfreeze the last layer using `param.requires_grad = True` and freeze all other layers using `param.requires_grad = False`.
     
 ```python
 # For fine-tuning on a new task

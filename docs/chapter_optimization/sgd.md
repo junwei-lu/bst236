@@ -38,22 +38,54 @@ Mini-batch gradient descent is a variant of SGD that uses a small batch of data 
 
 Mini-batch gradient descent reduces the variance of parameter updates, leading to more stable convergence.
 
-## PyTorch DataLoader and Optimizer
+## PyTorch Optimizer Pipeline
 
 Mini-batch gradient descent can be implemented in PyTorch by the `DataLoader` class. The `DataLoader` is a PyTorch class that provides a way to load data from a dataset into a batch. Then the stochastic gradient descent can be implemented by the `torch.optim.SGD` function.
 
+### PyTorch Dataset and DataLoader
+
+In order to use the `DataLoader` class, you first need to create a dataset class that is a subclass of `torch.utils.data.Dataset`. For this purpose, you need to implement the following methods in your dataset class:
+
+- `__len__`: Return the length of the dataset.
+- `__getitem__`: Return the item at the given index.
+
+Here is an example to generate a dataset from linear model $y = 3x + 2 + \epsilon$ with Gaussian noise $\epsilon \sim \mathcal{N}(0, 2)$.
+
+
 ```python
 import torch
+from torch.utils.data import Dataset
+
+class LinearModelDataset(Dataset):
+    def __init__(self, num_samples=100):
+        self.x = torch.randn(num_samples, 1)
+        self.y = 3 * self.x + 2 + torch.randn(self.x.size()) * 2
+    def __len__(self): # Return the length of the dataset
+        return len(self.x)
+
+    def __getitem__(self, idx): # Return the item at the given index
+        # Add any preprocessing here if needed
+        return self.x[idx], self.y[idx]
+```
+
+Then you can use `torch.utils.data.DataLoader` to load the dataset for mini-batch gradient descent by setting the `batch_size` and `shuffle` parameters.
+
+```python
 from torch.utils.data import DataLoader
 
 # Define the dataset
-dataset = ... # PyTorch requires a dataset to be a subclass of torch.utils.data.Dataset
+dataset = LinearModelDataset(128)
 
 # Define the DataLoader
-dataloader = DataLoader(dataset, batch_size=128, shuffle=True)
+dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
 ```
 
-The mini-batch gradient descent can be implemented by the following training code.
+### PyTorch Model Class
+
+Then you can define the model class as a subclass of `torch.nn.Module`. You need to implement the following methods in your model class:
+
+- `__init__`: Define and initialize the parameters of the model. In this method, you need to add `super().__init__()` to call the constructor of the parent class.
+- `forward(self, x)`: Define the output of the model with respect to the input `x`.
 
 ```python
 # Define the model class. Here we use a simple linear regression model as an example.
@@ -75,13 +107,28 @@ class LinearRegressionModel(nn.Module):
         This is used to define the mathematics of the model.
         """
         return x @ self.weight.T + self.bias
+```
 
-# Below is the training code:
+### PyTorch Optimizer
+
+PyTorch provides a lot of [optimizers](https://pytorch.org/docs/stable/optim.html) in `torch.optim`. For the mini-batch gradient descent, you can use `torch.optim.SGD` with the following parameters:
+
+- `params`: Pass all the trainable parameters from your model to the optimizer.
+- `lr`: Set the learning rate (step size).
+
+You can then set the optimizer to the model by the following code:
+```python
+model = LinearRegressionModel(1, 1) # Define the 1d linear regression model
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
+```
+
+Here `model.parameters()` will return all the trainable parameters from the model.
+
+Now we are ready to assemble all the components to implement the mini-batch gradient descent:
+
+```python
 # Define the loss function, e.g., MSELoss
 loss_fn = nn.MSELoss()
-# Define the optimizer 
-optimizer = torch.optim.SGD(model.parameters(), lr=0.01) # PyTorch uses SGD as the mini-batch gradient descent optimizer
-
 # Define the training loop
 for epoch in range(num_epochs):
     for batch in dataloader:
@@ -94,11 +141,14 @@ for epoch in range(num_epochs):
         optimizer.step() # Update the model parameters: x_{t+1} = x_t - lr * g_t
 ```
 
-Here the mini-batch gradient descent can be implemented by PyTorch function `torch.optim.SGD` with the following parameters:
+The core code above are the three steps of the mini-batch gradient descent:
 
-- `params=model.parameters()` passes all the trainable parameters from your model to the optimizer
-- `lr=0.01` sets the learning rate (step size) to 0.01
-- `momentum=0.9` You can even revise the mini-batch gradient descent by setting adding momentum to the optimizer with the momentum parameter.
+- `optimizer.zero_grad()`: Zero the gradients of the model parameters.
+- `loss.backward()`: Compute the gradient of the loss with respect to the model parameters.
+- `optimizer.step()`: Update the model parameters
+
+Most of the time, you can just simply use these three lines for implementing any optimizer from `torch.optim`.
+
 
 
 We can write our own mini-batch gradient descent optimizer by the following code:

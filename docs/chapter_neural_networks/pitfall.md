@@ -9,7 +9,7 @@ The cross entropy loss function `nn.CrossEntropyLoss()`  in PyTorch expects raw 
 
 That means for linear classifier $O = Wx + b$, we predict $\hat{y} = \text{softmax}(O)$, but we should pass the raw logits $O$ to the loss function, not the softmaxed outputs $\hat{y}$.
 
-### Common Pitfalls
+#### Common Pitfalls
 
 - You passed softmaxed outputs to a loss that expects raw logits
 
@@ -39,7 +39,7 @@ loss = nn.CrossEntropyLoss()(predictions, targets)
 
 Dropout is only applied during training. When evaluating the model on the validation set or test set, you should turn it off.
 
-## Common Pitfalls
+### Common Pitfalls
 
 - You should not use `F.dropout()` in the `forward` method, otherwise the model will implement dropout in evaluation mode as well. Instead, use `nn.Dropout()` in the model definition.
 
@@ -63,7 +63,7 @@ class MyModel(nn.Module):
         x = self.dropout(x)
 ```
 
-## Best Practices
+### Best Practices
 
 - Use `nn.Dropout()` in the model definition and never use `F.dropout()`.
 - Always use `model.train()` before the training and use `model.eval()` in evaluation.
@@ -73,7 +73,7 @@ class MyModel(nn.Module):
 
 When accumulating gradients across multiple batches, remember to zero the gradients before each backward pass to avoid incorrect gradient accumulation.
 
-### Common Pitfalls
+#### Common Pitfalls
 
 - You forgot to `.zero_grad()`  before `.backward()`
 
@@ -117,7 +117,7 @@ Second, `loss += current_loss` is an in-place operation, and it can break the co
 
 
 
-### Best Practices
+#### Best Practices
 
 - Zero gradients between backward passes. By default, always use this code snippet:
 
@@ -163,7 +163,7 @@ In PyTorch,
  - `x += 1` is an in-place operation that modifies the tensor directly, equivalent to calling `x.add_(1)`. The underscore suffix in PyTorch methods indicates in-place operations.
  - `x = x + 1` creates a new tensor with the result and assigns it to the variable `x`. The original tensor is not modified.
 
-## Common Pitfalls
+### Common Pitfalls
 
 - Breaking the computational graph
 
@@ -178,7 +178,7 @@ z.backward()  # RuntimeError: leaf variable has been modified by an inplace oper
 ```
 When you modify `x` in-place, the relationship between `x` and `y` is invalidated because `y` was computed using the original value of `x`.
 
-## Best Practices
+### Best Practices
 
 - Avoid in-place operations on tensors that require gradients
 - Use `x.clone()` or `x.copy_()` to create a new tensor with the same value as `x`, but not part of the computational graph:
@@ -259,7 +259,7 @@ flattened = x.view(32, -1)  # Efficiently reshape without copying
 4. **Is the tensor definitely contiguous and performance critical?**
     - If yes → Use `view()` for maximum performance
 
-### Best Practices
+#### Best Practices
 
 - Be Explicit About Your Model's Output Shape
 ```python
@@ -283,7 +283,7 @@ def forward(self, x):
 
 
 
-### Common Pitfalls
+#### Common Pitfalls
 
 Here are some common pitfalls when manipulating tensor shapes in PyTorch:
 

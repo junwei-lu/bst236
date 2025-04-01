@@ -40,8 +40,7 @@ project_root/
 - `main.py`: Entry point for training.
 
 
-You should maintain a template code for your future projects with the above structure.
-
+You should maintain a template code for your future projects with the above structure. We have discussed how to define the dataloader, model, and optimizer in the previous [lecture](../chapter_optimization/sgd.md#pytorch-optimizer-pipeline). Here we will mention some parts of them again under the context of the deep learning training workflow.
 
 ### Dataset Class
 
@@ -55,6 +54,9 @@ You need to implement the following methods:
 Here is an example to generate a dataset from linear model $y = 3x + 2 + \epsilon$ with Gaussian noise $\epsilon \sim \mathcal{N}(0, 2)$.
 
 ```python
+import torch
+from torch.utils.data import Dataset
+
 class LinearModelDataset(Dataset):
     def __init__(self, num_samples=100):
         self.x = torch.randn(num_samples, 1)
@@ -66,6 +68,21 @@ class LinearModelDataset(Dataset):
         # Add any preprocessing here if needed
         return self.x[idx], self.y[idx]
 ```
+
+Then you can use `torch.utils.data.DataLoader` to load the dataset for [mini-batch training](../chapter_optimization/sgd.md#mini-batch-gradient-descent) by setting the `batch_size` and `shuffle` parameters.
+
+```python
+from torch.utils.data import DataLoader
+dataset = LinearModelDataset(128)
+dataloader = DataLoader(dataset, batch_size=16, shuffle=True) 
+num_epochs = 10
+for epoch in range(num_epochs):
+    for data, target in dataloader:
+        # data is a batch of input data x
+        # target is a batch of target data y
+        # Write your training process per batch here
+```
+
 
 ### Trainer Class
 
@@ -156,7 +173,7 @@ People may use different ways to store the configuration parameters. Some people
 
 ## Logging
 
-TensorBoard is a powerful visualization toolkit for TensorFlow that also works seamlessly with PyTorch. It allows you to track and visualize various aspects of your training process, making it easier to understand, debug, and optimize your models.
+[TensorBoard](https://www.tensorflow.org/tensorboard) is a powerful visualization toolkit for TensorFlow that also works seamlessly with PyTorch. It allows you to track and visualize various aspects of your training process, making it easier to understand, debug, and optimize your models.
 
 If you're using PyTorch, you'll need the torch.utils.tensorboard module which provides a PyTorch interface to TensorBoard:
 
