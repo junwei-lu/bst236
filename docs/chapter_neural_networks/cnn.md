@@ -216,7 +216,7 @@ print(output.shape)  # torch.Size([32, 10])
 
 ```
 
-** Deeper CNN Architecture**
+**Deeper CNN Architecture**
 
 You can define a deeper CNN architecture by first define a convolutional block and then repeating the convolutional block and the classifier.
 
