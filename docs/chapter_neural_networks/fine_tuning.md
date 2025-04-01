@@ -70,4 +70,6 @@ for param in resnet18.parameters():
 
 for param in resnet18.fc.parameters():
     param.requires_grad = True  # Unfreeze only the last layer
+
+# Use resnet18 for the training ...
 ```

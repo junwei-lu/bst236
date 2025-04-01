@@ -14,3 +14,4 @@ Neural networks are a type of machine learning model that are inspired by the st
 * [Residual Networks](resnet.md)
 * [Fine-tuning](fine_tuning.md)
 * [Computer Vision](computer_vision.md)
+* [PyTorch Pitfalls](pitfall.md)

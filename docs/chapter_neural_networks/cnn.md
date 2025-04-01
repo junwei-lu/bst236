@@ -25,16 +25,41 @@ The convolution operation has two important hyperparameters:
 
 - **Stride**: The step size for moving the kernel. With a stride of $s$, the output size becomes:
   - $\lfloor (n + 2p - k) / s + 1 \rfloor \times \lfloor (n + 2p - k) / s + 1 \rfloor$
+
+You can compute the output size with the following formula:
+
+$$
+\text{Output Size} =  \frac{\text{Input Size} - \text{Kernel Size} + 2 \times \text{padding}}{\text{stride}} + 1 
+$$
+
+
+
+Below is an example of a 2D convolution operation with `kernel_size=3`, `stride=1`, and `padding=1`.
+![CNN](./nn.assets/cnn.gif)
+
   
 In PyTorch, we can use the `nn.Conv2d` layer to perform the 2D convolution operation.
 
 ```python
 conv = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
 ```
+![cnn_layer](./nn.assets/convolution-with-multiple-filters.png)
 
-Below is an example of a 2D convolution operation with `kernel_size=3`, `stride=1`, and `padding=1`.
 
-![CNN](./nn.assets/cnn.gif)
+
+
+
+
+
+Here are the tips for choosing the hyperparameters of the convolution operation:
+
+
+
+- **Kernel size**: Choose odd numbers like 3, 5, 7, ... because they have a center pixel and we can pad the same amount on both sides.
+- **Stride**: Set stride to 1 to preserve the spatial dimensions of the input. If you want to reduce the spatial dimensions of the input by $1/N$ times, you can set stride to $N$.
+- **Padding**: Choose $(\text{kernel size} - 1) / 2$ as the padding amount with `stride=1` will keep the spatial dimensions of the input unchanged.
+
+
 
 ## Pooling Operations
 
@@ -52,7 +77,8 @@ There are two types of pooling operations:
 In PyTorch, we can use the `nn.MaxPool2d` layer to perform the max pooling operation. Below is an example of a max pooling operation with `kernel_size=2`, `stride=2`.
 
 ```python
-pool = nn.MaxPool2d(kernel_size, stride)
+pool1 = nn.MaxPool2d(kernel_size, stride)
+pool2 = nn.AvgPool2d(kernel_size, stride)
 ```
 
 ![Max Pooling](./nn.assets/maxpool.gif)
@@ -62,10 +88,23 @@ Similarly, we can use the `nn.AvgPool2d` layer to perform the average pooling op
 ## CNN Architectures
 
 The typical CNN architecture consists of:
-1. **Convolutional layers**: Extract local patterns
+1. **First Convolutional layer**: Extract local patterns and reduce spatial dimensions to the proper size if the input image is too large
 2. **Activation functions** (typically ReLU): Add non-linearity
-3. **Pooling layers**: Reduce spatial dimensions
-4. **Fully connected layers**: Final classification/regression
+3. **A Convolutional Block**: May have multiple convolutional layers keeping the spatial dimensions unchanged connected by activation functions
+4. **Pooling layers**: Reduce spatial dimensions typically by half
+5. **Repeat the above steps**: Have multiple convolutional blocks to make the model deeper
+6. **Flatten layer**: Flatten the output of the last convolutional block to a 1D vector
+7. **Fully connected layers**: Final classification/regression
+
+We illustrate the [VGG16 architecture](https://pytorch.org/vision/main/models/vgg.html) with the following diagram:
+
+![VGG](./nn.assets/vgg.png)
+
+
+
+
+
+
 
 ## PyTorch for CNNs
 
@@ -76,7 +115,7 @@ PyTorch provides a convenient API for building CNNs using the `torch.nn` module.
 - `nn.AvgPool2d(kernel_size, stride)`: Average pooling layer
 - `nn.ReLU()`: ReLU activation function
 
-### Simple CNN with Sequential API
+**Simple CNN with Sequential API**
 
 ```python
 import torch
@@ -103,57 +142,82 @@ model = nn.Sequential(
 )
 ```
 
-### Custom CNN using nn.Module
+**Custom CNN using nn.Module**
+
+We will define a TinyVGG model with the following architecture:
+
+![TinyVGG](./nn.assets/tinyvgg.png)
+
+Here is an [interactive website](https://poloclub.github.io/cnn-explainer/) of the TinyVGG model and training.
+
 
 ```python
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-class SimpleCNN(nn.Module):
-    def __init__(self, input_channels, output_size):
+class TinyVGG(nn.Module):
+    def __init__(self, input_channels=3, hidden_units=10, num_classes=10):
         super().__init__()
+        
         # First convolutional block
-        self.conv1 = nn.Conv2d(input_channels, 16, kernel_size=3, padding=1)
-        self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.conv_block_1 = nn.Sequential(
+            nn.Conv2d(in_channels=input_channels, 
+                      out_channels=hidden_units, 
+                      kernel_size=3, 
+                      padding=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=hidden_units, 
+                      out_channels=hidden_units,
+                      kernel_size=3,
+                      padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2,
+                         stride=2)
+        )
         
         # Second convolutional block
-        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, padding=1)
-        self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
+        self.conv_block_2 = nn.Sequential(
+            nn.Conv2d(in_channels=hidden_units, 
+                      out_channels=hidden_units*2, 
+                      kernel_size=3, 
+                      padding=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=hidden_units*2, 
+                      out_channels=hidden_units*2,
+                      kernel_size=3,
+                      padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2,
+                         stride=2)
+        )
         
-        # Fully connected layers
-        self.fc1 = nn.Linear(32 * 7 * 7, 128)
-        self.fc2 = nn.Linear(128, output_size)
-        
+        # Classifier
+        self.classifier = nn.Sequential(
+            nn.Flatten(),
+            # Note: The actual input size will depend on the input image dimensions
+            # For a 32x32 input image, after two 2x2 max pooling layers, the feature map size is 8x8
+            nn.Linear(in_features=hidden_units*2*8*8, 
+                      out_features=num_classes)
+        )
+    
     def forward(self, x):
-        # First block
-        x = self.conv1(x)
-        x = F.relu(x)
-        x = self.pool1(x)
-        
-        # Second block
-        x = self.conv2(x)
-        x = F.relu(x)
-        x = self.pool2(x)
-        
-        # Flatten and fully connected
-        x = torch.flatten(x, 1)  # Flatten all dimensions except batch
-        x = F.relu(self.fc1(x))
-        x = self.fc2(x)
-        
+        x = self.conv_block_1(x)
+        x = self.conv_block_2(x)
+        x = self.classifier(x)
         return x
 
-# Initialize the model
-input_channels, output_size = 1, 10
-model = SimpleCNN(input_channels, output_size)
+# Example usage
+model = TinyVGG(input_channels=3, hidden_units=64, num_classes=10)
+x = torch.randn(32, 3, 32, 32)  # 32 batch size, 3 color channels, 32x32 images
+output = model(x)
+print(output.shape)  # torch.Size([32, 10])
 
-# Print the model
-for name, param in model.named_parameters():
-    if param.requires_grad:
-        print(f"{name}: {param.shape}")
 ```
 
-### More Complex CNN Architecture
+** Deeper CNN Architecture**
+
+You can define a deeper CNN architecture by first define a convolutional block and then repeating the convolutional block and the classifier.
 
 ```python
 import torch
