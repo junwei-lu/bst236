@@ -88,6 +88,7 @@ Similarly, we can use the `nn.AvgPool2d` layer to perform the average pooling op
 ## CNN Architectures
 
 The typical CNN architecture consists of:
+
 1. **First Convolutional layer**: Extract local patterns and reduce spatial dimensions to the proper size if the input image is too large
 2. **Activation functions** (typically ReLU): Add non-linearity
 3. **A Convolutional Block**: May have multiple convolutional layers keeping the spatial dimensions unchanged connected by activation functions
