@@ -147,7 +147,7 @@ model = nn.Sequential(
 
 We will define a TinyVGG model with the following architecture:
 
-![TinyVGG](./nn.assets/tinyvgg.png)
+![TinyVGG](./nn.assets/tinyVGG.png)
 
 Here is an [interactive website](https://poloclub.github.io/cnn-explainer/) of the TinyVGG model and training.
 
