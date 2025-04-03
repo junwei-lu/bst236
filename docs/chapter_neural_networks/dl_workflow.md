@@ -175,6 +175,8 @@ People may use different ways to store the configuration parameters. Some people
 
 [TensorBoard](https://www.tensorflow.org/tensorboard) is a powerful visualization toolkit for TensorFlow that also works seamlessly with PyTorch. It allows you to track and visualize various aspects of your training process, making it easier to understand, debug, and optimize your models.
 
+There are other logging tools including [Weights & Biases](https://wandb.ai) and [Comet](https://www.comet.com) which is commercialized but free for basic usage.
+
 If you're using PyTorch, you'll need the torch.utils.tensorboard module which provides a PyTorch interface to TensorBoard:
 
 ```python
@@ -243,7 +245,7 @@ This is super useful for comparing different configurations and you can use it t
 
 ![tb_hparams](./nn.assets/tb_hparam.png)
 
-There are other logging tools including [Weights & Biases](https://wandb.ai) and [Comet](https://www.comet.com) which is commercialized but free for basic usage.
+
 
 
 

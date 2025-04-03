@@ -66,10 +66,10 @@ The following are tips for training neural networks based on Andrej Karpathy's [
       - If your model can't overfit, you likely have bugs or incorrect assumptions
 - Tips for this stage:
 
-      - Don't be creative initially: Use established architectures first (e.g., ResNet-50 for images)
-      - Use Adam optimizer initially: Learning rate ~ 3e-4; Adam is forgiving compared to SGD
-      - Add complexity carefully: Introduce inputs or complexity gradually
-      - Disable learning rate decay initially: Use a fixed learning rate until very late
+            - Don't be creative initially: Use established architectures first (e.g., ResNet-50 for images)
+            - Use Adam optimizer initially: Learning rate ~ 3e-4; Adam is forgiving compared to SGD
+            - Add complexity carefully: Introduce inputs or complexity gradually
+            - Disable learning rate decay initially: Use a fixed learning rate until very late
 
 ### Step 4: Regularization 
 
