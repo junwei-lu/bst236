@@ -5,12 +5,14 @@ The following are tips for training neural networks based on Andrej Karpathy's [
 ## General Philosophy
 
 - **Neural networks are a leaky abstraction**:
-  - Despite simple APIs suggesting plug-and-play convenience, successful training requires deep understanding
-  - Common libraries hide complexity but don't eliminate the need for foundational knowledge
+
+      - Despite simple APIs suggesting plug-and-play convenience, successful training requires deep understanding
+      - Common libraries hide complexity but don't eliminate the need for foundational knowledge
 
 - **Neural networks fail silently**:
-  - Errors are typically logical rather than syntactical, rarely triggering immediate exceptions
-  - Mistakes often subtly degrade performance, making debugging challenging
+
+      - Errors are typically logical rather than syntactical, rarely triggering immediate exceptions
+      - Mistakes often subtly degrade performance, making debugging challenging
 
 ## Recommended Training Process
 
@@ -25,15 +27,18 @@ The following are tips for training neural networks based on Andrej Karpathy's [
 ### Step 1: Data Exploration
 
 - Spend substantial time manually inspecting data
-- Look for:
+- Look for the following data issues:
   
       - Duplicate or corrupted data
       - Imbalanced distributions
       - Biases and potential patterns
+
 - Think qualitatively:
+
       - Which features seem important?
       - Can you remove noise or irrelevant information?
       - Understand label quality and noise level
+
 - Write simple scripts to filter/sort and visualize data distributions/outliers
 
 ### Step 2: Build Training Code
@@ -54,7 +59,8 @@ The following are tips for training neural networks based on Andrej Karpathy's [
       - Generalize incrementally: Write simple, explicit implementations first; vectorize/generalize later
 
 ### Step 3: Overfitting 
-- Goal:
+
+- Goal of the overfitting first for smaller batch size is to:
 
       - Ensure your model can at least perfectly memorize the training set (overfit)
       - If your model can't overfit, you likely have bugs or incorrect assumptions
@@ -68,7 +74,7 @@ The following are tips for training neural networks based on Andrej Karpathy's [
 ### Step 4: Regularization 
 
 - Once you've achieved overfitting, regularize to improve validation accuracy
-- Recommended methods:
+- Recommended regularization methods:
 
       - Add more real data: Most effective regularizer
       - Data augmentation: Simple augmentation can dramatically help
@@ -87,6 +93,13 @@ The following are tips for training neural networks based on Andrej Karpathy's [
 
 - Use random search, not grid search: Better coverage, especially with many hyperparameters
 - Bayesian optimization tools can help, but practical gains might be limited. Focus on intuition and experimentation
+
+Tune one by one ranking from most important to least important:
+
+- Learning rate
+- Weight decay
+- Dropout rate
+- Batch size
 
 ### Step 6: Squeezing Out Final Performance
 
