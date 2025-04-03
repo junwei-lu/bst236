@@ -362,9 +362,9 @@ if (step + 1) % accum_steps == 0:
 In PyTorch, you can use `torch.amp` to implement AMP. In your training loop, you only need to change two parts.
 
 ```python
-from torch.cuda.amp import autocast, GradScaler
+from torch.amp import autocast, GradScaler
 
-scaler = GradScaler()
+scaler = GradScaler('cuda')
 for data, target in dataloader:
     optimizer.zero_grad()
     data = data.to(device)

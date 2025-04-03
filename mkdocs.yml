@@ -218,9 +218,13 @@ nav:
     - Fine-tuning: chapter_neural_networks/fine_tuning.md
     - Computer Vision: chapter_neural_networks/computer_vision.md
     - Training Workflow: chapter_neural_networks/dl_workflow.md
-    - PyTorchGPU: chapter_neural_networks/dl_gpu.md
+    - PyTorch for GPU: chapter_neural_networks/dl_gpu.md
     - Deep Learning Tips: chapter_neural_networks/dl_tips.md
     - PyTorch Pitfalls: chapter_neural_networks/pitfall.md
+  - Chapter 10. Transformer:
+    - chapter_transformer/index.md
+    - Word Vectors: chapter_transformer/wordvec.md
+    - Attention: chapter_transformer/attention.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
