@@ -15,4 +15,6 @@ Neural networks are a type of machine learning model that are inspired by the st
 * [Fine-tuning](fine_tuning.md)
 * [Computer Vision](computer_vision.md)
 * [Training Workflow](dl_workflow.md)
+* [GPU Training](dl_gpu.md)
+* [Tips for Training Neural Networks](dl_tips.md)
 * [PyTorch Pitfalls](pitfall.md)

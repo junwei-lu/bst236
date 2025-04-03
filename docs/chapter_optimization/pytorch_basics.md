@@ -212,6 +212,6 @@ x.copy_(x_new) # or x[:] = x_new
     If the algorithm has updating rule like $x_{t+1} = g(x_t,\nabla f(x_t))$ for some function $g$, avoid using `x = g(x,x.grad)` in the updating step. You should use in-place operations like `x.copy_(g(x,x.grad))` or `x[:] = g(x,x.grad)` instead. 
 
 
-
+We will introduce more about how to use PyTorch to implement the optimization algorithms with setting up the dataloader, model, and optimizer in the [future lecture](sgd.md#pytorch-optimizer-pipeline).
 
 
