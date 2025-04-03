@@ -218,6 +218,8 @@ nav:
     - Fine-tuning: chapter_neural_networks/fine_tuning.md
     - Computer Vision: chapter_neural_networks/computer_vision.md
     - Training Workflow: chapter_neural_networks/dl_workflow.md
+    - PyTorchGPU: chapter_neural_networks/dl_gpu.md
+    - Deep Learning Tips: chapter_neural_networks/dl_tips.md
     - PyTorch Pitfalls: chapter_neural_networks/pitfall.md
   - Appendix:
     - chapter_appendix/index.md
