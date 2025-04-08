@@ -10,42 +10,40 @@ Let $X \in \mathbb{R}^{n \times d}$ be the input matrix, where $n$ is the sequen
 
 - **Multi-Head Attention**:
 
-   $$
-   \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
-   $$
+$$
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
 
-   For multi-head attention with $h$ heads:
+For multi-head attention with $h$ heads:
 
-   $$
-   \text{MultiHead}(X) = \text{Concat}(\text{head}_1, \text{head}_2, \ldots, \text{head}_h)W^O
-   $$
-   
-   where each head is:
+$$
+\text{MultiHead}(X) = \text{Concat}(\text{head}_1, \text{head}_2, \ldots, \text{head}_h)W^O
+$$
 
-   $$
-   \text{head}_i = \text{Attention}(XW_i^Q, XW_i^K, XW_i^V)
-   $$
+where each head is:
+
+$$
+\text{head}_i = \text{Attention}(XW_i^Q, XW_i^K, XW_i^V)
+$$
 
 - **Residual Connection and Layer Normalization** (Add & Norm):
+$$
+X' = \text{LayerNorm}(X + \text{MultiHead}(X))
+$$
 
-   $$
-   X' = \text{LayerNorm}(X + \text{MultiHead}(X))
-   $$
-   
-   where the layer normalization is similar to the [batch normalization](../chapter_neural_networks/regularization.md#batch-normalization) but instead of computing the mean and variance over the batch, we compute them over the embedding dimension.
+where the layer normalization is similar to the [batch normalization](../chapter_neural_networks/regularization.md#batch-normalization) but instead of computing the mean and variance over the batch, we compute them over the embedding dimension.
 
-   
 - **Feed-Forward Network** (FFN):
 
-   $$
-   \text{FFN}(X') = \text{ReLU}(X'W_1 + b_1)W_2 + b_2
-   $$
+$$
+\text{FFN}(X') = \text{ReLU}(X'W_1 + b_1)W_2 + b_2
+$$
 
 - **Second Residual Connection and Layer Normalization** (Add & Norm):
 
-   $$
-   \text{Output} = \text{LayerNorm}(X' + \text{FFN}(X'))
-   $$
+$$
+\text{Output} = \text{LayerNorm}(X' + \text{FFN}(X'))
+$$
 
 ![Transformer Block](./tf.assets/transformer-block.png)
 
