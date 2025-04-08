@@ -91,6 +91,20 @@ class TransformerBlock(nn.Module):
 
 The Transformer encoder is a stack of multiple Transformer blocks and connect to a final fully connected layer for classification output.
 
+Using the `TransformerBlock` we defined above, we can build the encoder as follows:
+
+```python
+class TransformerEncoder(nn.Module):
+    def __init__(self, embed_dim, num_heads, ff_hidden_dim, num_layers):
+        super(TransformerEncoder, self).__init__()
+        self.blocks = nn.ModuleList([TransformerBlock(embed_dim, num_heads, ff_hidden_dim) for _ in range(num_layers)])
+
+    def forward(self, x, attn_mask=None, key_padding_mask=None):
+        for block in self.blocks:
+            x = block(x, attn_mask, key_padding_mask)
+        return x
+```
+
 | Model | Layers | Hidden Size | Attention Heads | Feedforward Size | Parameters |
 |-------|--------|-------------|-----------------|------------------|------------|
 | [BERT-Base](https://huggingface.co/bert-base-uncased) | 12 | 768 | 12 | 3072 | 110M |
