@@ -406,6 +406,40 @@ for i in range(10):
     print(f"{i + 1}) {gpt2_tokenizer.batch_decode(output)[0]}")
 ```
 
+### Pipeline
+
+Hugging Face 🤗 also provides a `pipeline` function that simplifies the inference of the model. You can refer to the [pipeline documentation](https://huggingface.co/docs/transformers/main/en/main_classes/pipelines) for more details.
+
+```python
+from transformers import pipeline
+
+classifier = pipeline("sentiment-analysis")
+input_text = "I've been waiting for a Hugging Face course my whole life."
+result = classifier(input_text)
+print(result)
+# [{'label': 'POSITIVE', 'score': 0.9998743534088135}]
+
+# You can also specify the model and tokenizer to use
+classifier = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+result = classifier(input_text)
+print(result)
+# [{'label': 'POSITIVE', 'score': 0.9998743534088135}]
+```
+
+You can also use the pipeline for language generation.
+
+```python
+generator = pipeline("text-generation")
+result = generator("Hello, I've been")
+# [{'label': 'POSITIVE', 'score': 0.9982948899269104}]
+
+# You can specify the model and tokenizer to use
+generator = pipeline("text-generation", model="distilgpt2")
+result = generator("Hello, I've been", max_length=50, do_sample=True, top_p=0.9)
+```
+
+
+
 ## Accelerate Package
 
 Hugging Face 🤗 also provides a package called [Accelerate](https://huggingface.co/docs/accelerate/index) that simplifies the distributed training especially for multi-GPU and mixed precision training. So you do not need to worry the details we discussed in the [previous chapter](../chapter_neural_networks/dl_gpu.md#multi-gpu-training). You can refer to the [Accelerate documentation](https://huggingface.co/docs/accelerate/index) for more details.
