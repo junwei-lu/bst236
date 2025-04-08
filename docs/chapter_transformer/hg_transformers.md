@@ -400,6 +400,139 @@ for i in range(10):
     print(f"{i + 1}) {gpt2_tokenizer.batch_decode(output)[0]}")
 ```
 
+## Accelerate Package
+
+Hugging Face 🤗 also provides a package called [Accelerate](https://huggingface.co/docs/accelerate/index) that simplifies the distributed training. You can refer to the [Accelerate documentation](https://huggingface.co/docs/accelerate/index) for more details.
+
+
+
+
+To begin with, you can set up your environment using the accelerate config command. This interactive setup detects your hardware and allows you to specify configurations like distributed setups and mixed precision training.
+
+```bash
+accelerate config
+```
+
+To integrate Accelerate into your existing PyTorch training script, follow these modifications:
+
+- Import and Initialize Accelerator:
+
+```python
+from accelerate import Accelerator
+
+accelerator = Accelerator()
+```
+
+- Handling Batch Sizes: Be mindful of how batch sizes are handled in distributed training. By default, the effective batch size is the per-device batch size multiplied by the number of devices. To maintain the same batch size regardless of the number of devices, initialize the Accelerator with `split_batches=True`:
+
+```python
+accelerator = Accelerator(split_batches=True)
+```
+
+- Prepare Your Objects: Pass your model, optimizer, dataloaders, and any other relevant components to the prepare method. This ensures they are placed on the appropriate devices and are ready for distributed training:
+
+```python
+model, optimizer, train_dataloader, eval_dataloader = accelerator.prepare(model, optimizer, train_dataloader, eval_dataloader)
+```
+
+- Adjust Device Placement: Remove any manual `.to(device)` or `.cuda()` calls, as Accelerate manages device placement automatically. If you need to reference the device, use `accelerator.device`.
+
+- Backward Pass: Replace `loss.backward()` with `accelerator.backward(loss)` to ensure compatibility with different distributed setups:
+
+```python
+loss = model(input_ids, attention_mask, labels).loss
+accelerator.backward(loss)
+```
+
+- Launching Your Script: After modifying your script, run it using the accelerate launch command:
+
+```bash
+accelerate launch --config_file accelerate_config.yaml your_script.py
+```
+
+Here is an example of how to use the accelerate package to train the distilbert model for sequence classification.
+
+```python
+# train.py
+import torch
+from datasets import load_dataset
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, AdamW, get_scheduler
+from torch.utils.data import DataLoader
+from accelerate import Accelerator
+from tqdm import tqdm
+
+def preprocess_function(examples, tokenizer):
+    return tokenizer(examples["text"], truncation=True, padding=True, max_length=512)
+
+def main():
+    accelerator = Accelerator()
+    # Load the IMDb dataset
+    raw_datasets = load_dataset("imdb")
+    # Load the tokenizer
+    tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+    # Preprocess the datasets
+    tokenized_datasets = raw_datasets.map(lambda x: preprocess_function(x, tokenizer), batched=True)
+    # Split datasets
+    train_dataset = tokenized_datasets["train"]
+    eval_dataset = tokenized_datasets["test"]
+    # Create data loaders
+    train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=8)
+    eval_dataloader = DataLoader(eval_dataset, batch_size=8)
+    # Load the model
+    model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=2)
+    # Define the optimizer
+    optimizer = AdamW(model.parameters(), lr=5e-5)
+    # Prepare everything with `accelerator`
+    model, optimizer, train_dataloader, eval_dataloader = accelerator.prepare(
+        model, optimizer, train_dataloader, eval_dataloader
+    )
+    # Learning rate scheduler
+    num_training_steps = 3 * len(train_dataloader)
+    lr_scheduler = get_scheduler(
+        "linear", optimizer=optimizer, num_warmup_steps=0, num_training_steps=num_training_steps
+    )
+    # Training loop
+    model.train()
+    for epoch in range(3):
+        for batch in tqdm(train_dataloader, desc=f"Epoch {epoch+1}"):
+            outputs = model(**batch)
+            loss = outputs.loss
+            accelerator.backward(loss)
+            optimizer.step()
+            lr_scheduler.step()
+            optimizer.zero_grad()
+
+    # Save the fine-tuned model
+    accelerator.wait_for_everyone()
+    unwrapped_model = accelerator.unwrap_model(model)
+    unwrapped_model.save_pretrained("distilbert-imdb-accelerate", save_function=accelerator.save)
+
+if __name__ == "__main__":
+    main()
+```
+
+After saving the script as train.py, execute it using the accelerate launch command:
+
+```bash
+accelerate launch train.py
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
