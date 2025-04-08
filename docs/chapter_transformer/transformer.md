@@ -27,6 +27,7 @@ $$
 $$
 
 - **Residual Connection and Layer Normalization** (Add & Norm):
+
 $$
 X' = \text{LayerNorm}(X + \text{MultiHead}(X))
 $$
