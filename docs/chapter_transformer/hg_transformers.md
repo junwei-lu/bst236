@@ -343,7 +343,7 @@ for param in model.distilbert.parameters():
 
 Fine-tuning a language model has become a complex task due to the large scale of the models nowadays. The code above is just a simple example to only fine-tune the head of the model.
 
-For more complicated fine-tuning, you can read the hugging face [parameter-efficient fine-tuning (PEFT)](https://huggingface.co/docs/peft/index) tutorial for more sophisticated fine-tuning strategies.
+For more complicated fine-tuning, you can read the hugging face [parameter-efficient fine-tuning (PEFT)](https://huggingface.co/docs/peft/index) tutorial for more sophisticated fine-tuning strategies. There are also more wrapped packages like [Axolotl](https://github.com/axolotl-ai/axolotl) for easier LLM fine-tuning.
 
 We also encourage you to read the [blog](https://www.philschmid.de/fine-tune-llms-in-2025) for a guide on how to fine-tune LLMs in 2025.
 
