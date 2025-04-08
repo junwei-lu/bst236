@@ -341,6 +341,12 @@ for param in model.distilbert.parameters():
 # Continue training the model
 ```  
 
+Fine-tuning a language model has become a complex task due to the large scale of the models nowadays. The code above is just a simple example to only fine-tune the head of the model.
+
+For more complicated fine-tuning, you can read the hugging face [parameter-efficient fine-tuning (PEFT)](https://huggingface.co/docs/peft/index) tutorial for more sophisticated fine-tuning strategies.
+
+We also encourage you to read the [blog](https://www.philschmid.de/fine-tune-llms-in-2025) for a guide on how to fine-tune LLMs in 2025.
+
 ### Model Inference
 
 Although pretrained transformers generally share similar architectures, they require task-specific "heads" - additional layers of weights that need training for particular tasks like sequence classification or question answering. Hugging Face simplifies this by providing specialized model classes that automatically configure the appropriate architecture. For example, [DistilBERT](https://huggingface.co/docs/transformers/model_doc/distilbert) has the following models for different tasks:
@@ -402,7 +408,7 @@ for i in range(10):
 
 ## Accelerate Package
 
-Hugging Face 🤗 also provides a package called [Accelerate](https://huggingface.co/docs/accelerate/index) that simplifies the distributed training. You can refer to the [Accelerate documentation](https://huggingface.co/docs/accelerate/index) for more details.
+Hugging Face 🤗 also provides a package called [Accelerate](https://huggingface.co/docs/accelerate/index) that simplifies the distributed training especially for multi-GPU and mixed precision training. So you do not need to worry the details we discussed in the [previous chapter](../chapter_neural_networks/dl_gpu.md#multi-gpu-training). You can refer to the [Accelerate documentation](https://huggingface.co/docs/accelerate/index) for more details.
 
 
 
