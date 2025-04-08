@@ -225,6 +225,8 @@ nav:
     - chapter_transformer/index.md
     - Word Vectors: chapter_transformer/wordvec.md
     - Attention: chapter_transformer/attention.md
+    - Transformer: chapter_transformer/transformer.md
+    - Hugging Face: chapter_transformer/hg_transformers.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md

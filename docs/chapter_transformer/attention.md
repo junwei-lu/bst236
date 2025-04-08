@@ -3,8 +3,6 @@
 
 ## Kernel Regression
 
-## Kernel Weighted Estimator
-
 The Nadaraya-Watson estimator is a fundamental nonparametric regression technique that uses kernel functions to weight observations based on their proximity to the query point. This approach can be viewed as an early form of attention mechanism, where the model "attends" to training examples based on their relevance to the current query.
 
 
@@ -98,11 +96,51 @@ So to summarize the self-attention mechanism with the input $X$, we have the fol
 In summary, we have
 
 $$
-\text{Attention}(X;W) = \text{softmax}\left(\frac{X W_q (X W_k)^\top}{\sqrt{d}}\right) X W_v 
+f(X)  = \text{Attention}(W_qX, W_kX, W_vX) = \text{softmax}\left(\frac{X W_q (X W_k)^\top}{\sqrt{d}}\right) X W_v 
 $$
 
 
-![Attention](./tf.assets/neuron-view-dark.gif)
+![Attention](./tf.assets/self-attention_3.png)
+
+### PyTorch Implementation of Self-Attention
+
+We can implement the self-attention mechanism in PyTorch as follows:
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import math
+
+class SelfAttention(nn.Module):
+    def __init__(self, embed_dim):
+        """    
+        Args:
+            embed_dim (int): Dimensionality of the input embeddings (and output dimensions of the linear transforms).
+        """
+        super(SelfAttention, self).__init__()
+        self.embed_dim = embed_dim 
+        # Linear projection for queries, keys, and values.
+        self.W_q = nn.Linear(embed_dim, embed_dim, bias=False)
+        self.W_k = nn.Linear(embed_dim, embed_dim, bias=False)
+        self.W_v = nn.Linear(embed_dim, embed_dim, bias=False)
+        
+    def forward(self, X):
+        # Compute linear projections (queries, keys, values)
+        Q = self.W_q(X)  # Shape: (batch_size, sequence_length, embed_dim)
+        K = self.W_k(X)  # Shape: (batch_size, sequence_length, embed_dim)
+        V = self.W_v(X)  # Shape: (batch_size, sequence_length, embed_dim)
+        
+        # Compute attention scores 
+        scores = torch.matmul(Q, K.transpose(-2, -1))  # Shape: (batch_size, sequence_length, sequence_length)
+        scores = scores / math.sqrt(self.embed_dim)
+
+        attention_weights = F.softmax(scores, dim=-1)  # Shape: (batch_size, sequence_length, sequence_length)
+        # Multiply the attention weights with the values to get the final output.
+        output = torch.matmul(attention_weights, V)  # Shape: (batch_size, sequence_length, embed_dim)
+        return output
+```
+
 
 
 ## Multi-Head Attention
@@ -110,11 +148,24 @@ $$
 Attention treats each word’s representation as a query to access and
 incorporate information from a set of values. Attention is parallelizable, and solves bottleneck issues.
 
-![Multi-Head Attention](./tf.assets/att2.png)
+Multi-head attention extends the basic attention mechanism by allowing the model to jointly attend to information from different representation subspaces at different positions. Instead of performing a single attention function with $d$-dimensional keys, values, and queries, multi-head attention performs the attention function in parallel $h$ times, with different, learned linear projections to $d_k$, $d_k$, and $d_v$ dimensions. These parallel attention outputs, or "heads," are then concatenated and linearly transformed to produce the final output. This approach enables the model to capture different aspects of the input sequence simultaneously.
 
-Multi-head attention extends the basic attention mechanism by allowing the model to jointly attend to information from different representation subspaces at different positions. Instead of performing a single attention function with $d$-dimensional keys, values, and queries, multi-head attention performs the attention function in parallel $h$ times, with different, learned linear projections to $d_k$, $d_k$, and $d_v$ dimensions. These parallel attention outputs, or "heads," are then concatenated and linearly transformed to produce the final output. This approach enables the model to capture different aspects of the input sequence simultaneously, such as syntactic and semantic relationships, leading to richer representations and improved performance on complex language tasks.
+In specific, for each head $i$, we have the linear weights $W_q^{(i)}, W_k^{(i)}, W_v^{(i)}$ to map the input $X$ to the head
+
+$$
+h_i = \text{Attention}(W_q^{(i)}X, W_k^{(i)}X, W_v^{(i)}X)
+$$
+
+Then we have the multi-head attention by concatenating all the heads together and project them to the output space:
+
+$$
+\text{MultiHead}(X) = \text{Concat}(h_1, h_2, \ldots, h_h) W^O
+$$
+
 
 ![Multi-Head Attention](./tf.assets/multi-head.png)
+
+PyTorch has a built-in function for the multi-head attention mechanism `torch.nn.MultiheadAttention(embed_dim, num_heads)` where `embed_dim` is the dimension of the input embeddings and `num_heads` is the number of heads.
 
 
 
