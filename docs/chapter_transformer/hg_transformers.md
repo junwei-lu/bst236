@@ -287,7 +287,7 @@ for epoch in range(num_epochs):
         # )
 ```
 
-## Hugging Face Trainer
+### Hugging Face Trainer
 
 Hugging Face 🤗 provides a `Trainer` class that simplifies the training loop. You can refer to the [Trainer documentation](https://huggingface.co/docs/transformers/main/en/main_classes/trainer) for more details. With the `Trainer`, we can write the above training loop as follows:
 
