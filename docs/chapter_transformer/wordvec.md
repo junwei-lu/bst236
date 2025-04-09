@@ -1,9 +1,8 @@
 # Word Vectors
 
-Word vectors, also known as word embeddings, are dense vector representations of words in a continuous vector space where semantically similar words are mapped to nearby points. Unlike traditional one-hot encoding where each word is represented as a sparse vector with a single non-zero element, word embeddings capture the semantic relationships between words by encoding their meanings in a lower-dimensional space. This approach allows mathematical operations on words that reflect their semantic relationships - for example, "king" - "man" + "woman" ≈ "queen". Popular word embedding techniques include Word2Vec, GloVe, and FastText, which learn these representations by analyzing word co-occurrence patterns in large text corpora. Word vectors serve as fundamental building blocks for many natural language processing tasks, providing a way to convert text into numerical form that machine learning models can process while preserving semantic meaning.
+Word vectors, also known as word embeddings, are dense vector representations of words. As computer programs can only understand numbers, we need to convert the words into numbers. 
 
-
-Such symbols for words can be represented by **one-hot vectors** (means one 1, the rest 0s):
+The simplest way to represent words as vectors is to use **one-hot vectors** (means one 1, the rest 0s):
 
 $$
 \begin{align*}
@@ -12,16 +11,55 @@ $$
 \end{align*}
 $$
 
-The one-hot vector does not capture the semantic meaning of the words. 
-A word’s meaning is given by the words that frequently appear close-by.
+If there are $N$ words in the vocabulary, the one-hot vector has $N$ dimensions, and each word is represented by a one-hot vector with a single 1.
 
-![Word Vectors](./tf.assets/bank_vec.png)
+However, the one-hot vector does not capture the semantic meaning of the words. 
 
-Using this intuition, we can represent a word by the words that appear close-by.
+We expect word embeddings capture the semantic relationships between words by encoding their meanings in a lower-dimensional space. This approach allows mathematical operations on words that reflect their semantic relationships - for example, "king" - "man" + "woman" ≈ "queen". 
 
 ![Word Vectors](./tf.assets/wordvec.png)
 
-In this course, we will not discuss the method to learn the word embeddings. Please refer to the methods tutorials  for  [GloVe](https://nlp.stanford.edu/projects/glove/) or [Word2Vec](https://code.google.com/archive/p/word2vec/) models.
+There are many methods to learn the word embeddings, such as [GloVe](https://nlp.stanford.edu/projects/glove/) and [Word2Vec](https://code.google.com/archive/p/word2vec/). In this course, we will not discuss in detail  how these methods to learn the word embeddings. The high level idea of these methods is to use the co-occurrence of words to learn the word embeddings. The intuition is that the meaning of a word is given by the words that frequently appear close-by.
+
+
+![Word Vectors](./tf.assets/bank_vec.png)
+
+
+In modern language models, the word embeddings are learned along with the model parameters. We will show a simple example of how to learn the word embeddings using PyTorch below and discuss how embeddings are trained in the language models in the next lecture.
+
+**PyTorch Implementation**
+
+In PyTorch, we can use the `nn.Embedding` layer to learn the word embeddings.
+
+```python
+import torch
+import torch.nn as nn
+
+# The vocabulary size is 10 and the embedding dimension is 3.
+embedding = nn.Embedding(num_embeddings=10, embedding_dim=3)
+```
+
+The trainable parameters are the word embeddings, which have the shape of `[num_embeddings, embedding_dim]`.
+
+The input to the `nn.Embedding` layer is the index of the word in the vocabulary. The output is the word embedding of the word.
+
+```python
+input = torch.tensor([1, 2, 3, 4, 5])
+output = embedding(input)
+print(output) # output shape: [5, 3]
+```
+
+You can then train your embeddings by connecting the `nn.Embedding` layer to the model. For example, we train a linear model of the word embeddings to predict the next word in the sentence.
+
+```python
+model = nn.Sequential(
+    nn.Embedding(num_embeddings=10, embedding_dim=3),
+    nn.Linear(3, 10)
+)
+```
+
+
+
 
 ## Tokenization
 
