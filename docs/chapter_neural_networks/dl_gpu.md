@@ -101,7 +101,7 @@ We summarize the best practices for `.to(device)` above in the following checkli
 
 | Checklist | When to Use |
 |-----------|-------------|
-| `.to(device)` on model and loss | Once after model and loss creation |
+| `.to(device)` on model | Once after model creation |
 | `.to(device)` on data | Inside the training loop, batch-by-batch |
 | `pin_memory=True` in `DataLoader` | When using GPU, to speed up transfer |
 | `non_blocking=True` in `.to()` | Only add to batch data for faster async transfer with pinned memory |
@@ -137,7 +137,7 @@ model = nn.Sequential(
 model.to(device)
 # 5. Optimizer and loss
 optimizer = optim.Adam(model.parameters())
-criterion = nn.CrossEntropyLoss().to(device)
+criterion = nn.CrossEntropyLoss() # Add to(device) if your loss has internal parameters
 # 6. Training loop - move each batch to GPU
 for epoch in range(5):
     model.train()
