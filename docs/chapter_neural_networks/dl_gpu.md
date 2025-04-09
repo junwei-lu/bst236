@@ -166,9 +166,9 @@ In this lecture, we will focus on the PyTorch's method. PyTorch offers two main 
 
 1. `DataParallel`: DataParallel distributes the workload across threads, with each thread managing a GPU and one GPU designated as primary. It works by copying the model to each GPU, splitting the training data into portions for each device, and then having each model copy independently perform forward and backward propagation to calculate gradients, which are then synchronized. 
 
-![DataParallel](./nn.assets/DataParallel.png)
+![DataParallel](./nn.assets/dataparallel.png)
 
-2. `DistributedDataParallel`: This approach assigns each GPU to a separate process. After each process computes gradients independently, they synchronize by aggregating gradients across all GPUs in parallel. Because processes operate with isolated memory spaces, they communicate through Inter-Process Communication (IPC), employing an all-reduce operation to share gradient information. Following this synchronization, each process independently updates its model parameters on its respective GPU. This parallel synchronization mechanism makes `DistributedDataParallel` significantly more efficient and better suited for scaling to multiple GPUs. However, it requires more setup and is more complicated than `DataParallel`.
+1. `DistributedDataParallel`: This approach assigns each GPU to a separate process. After each process computes gradients independently, they synchronize by aggregating gradients across all GPUs in parallel. Because processes operate with isolated memory spaces, they communicate through Inter-Process Communication (IPC), employing an all-reduce operation to share gradient information. Following this synchronization, each process independently updates its model parameters on its respective GPU. This parallel synchronization mechanism makes `DistributedDataParallel` significantly more efficient and better suited for scaling to multiple GPUs. However, it requires more setup and is more complicated than `DataParallel`.
 
 
 
