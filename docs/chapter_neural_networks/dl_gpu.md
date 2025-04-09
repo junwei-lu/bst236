@@ -160,7 +160,7 @@ for epoch in range(5):
 ## Multi-GPU Training
 
 For larger models or datasets, utilizing multiple GPUs can further accelerate training. 
-The multi-GPU training is a complicated topic to beginner data scientists as it involves many concepts related to hardware. There are many packages to help you implement multi-GPU training in an easier way, e.g., Hugging Face's [accelerate](https://huggingface.co/docs/accelerate/index) package which we will introduce in the [next chapter](../chapter_transformer/hg_transformers.md#accelerate-package). 
+The multi-GPU training is a complicated topic to beginner data scientists as it involves many concepts related to hardware. There are many packages to help you implement multi-GPU training in an easier way, e.g., Hugging Face's [accelerate](https://huggingface.co/docs/accelerate/index) package which we will introduce in the [next chapter](../chapter_language_model/hg_transformers.md#accelerate-package). 
 
 In this lecture, we will focus on the PyTorch's method. PyTorch offers two main approaches:​
 

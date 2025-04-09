@@ -221,12 +221,12 @@ nav:
     - PyTorch for GPU: chapter_neural_networks/dl_gpu.md
     - Deep Learning Tips: chapter_neural_networks/dl_tips.md
     - PyTorch Pitfalls: chapter_neural_networks/pitfall.md
-  - Chapter 10. Transformer:
-    - chapter_transformer/index.md
-    - Word Vectors: chapter_transformer/wordvec.md
-    - Attention: chapter_transformer/attention.md
-    - Transformer: chapter_transformer/transformer.md
-    - Hugging Face: chapter_transformer/hg_transformers.md
+  - Chapter 10. Language Models:
+    - chapter_language_model/index.md
+    - Word Vectors: chapter_language_model/wordvec.md
+    - Attention: chapter_language_model/attention.md
+    - Transformer: chapter_language_model/transformer.md
+    - Hugging Face: chapter_language_model/hg_transformers.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
