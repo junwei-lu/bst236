@@ -58,7 +58,7 @@ $$
 
 This leads to the attention mechanism.
 
-## Attention Pooling
+## Attention Mechanism
 
 
 
