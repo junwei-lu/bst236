@@ -32,7 +32,7 @@ $$
 X' = \text{LayerNorm}(X + \text{MultiHead}(X))
 $$
 
-where the layer normalization is similar to the [batch normalization](../chapter_neural_networks/regularization.md#batch-normalization) but instead of computing the mean and variance over the batch, we compute them over the embedding dimension.
+where the layer normalization is similar to the [batch normalization](../chapter_neural_networks/regularization.md#batch-normalization) but instead of computing the mean and variance over the batch, we compute them over the embedding dimension. In PyTorch, you can use `torch.nn.LayerNorm` to implement the layer normalization.
 
 - **Feed-Forward Network** (FFN):
 
