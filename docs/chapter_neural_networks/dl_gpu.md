@@ -101,10 +101,11 @@ We summarize the best practices for `.to(device)` above in the following checkli
 
 | Checklist | When to Use |
 |-----------|-------------|
-| `.to(device)` on model | Once after model creation |
+| `.to(device)` on model and loss | Once after model and loss creation |
 | `.to(device)` on data | Inside the training loop, batch-by-batch |
 | `pin_memory=True` in `DataLoader` | When using GPU, to speed up transfer |
-| `non_blocking=True` in `.to()` | For faster async transfer with pinned memory |
+| `non_blocking=True` in `.to()` | Only add to batch data for faster async transfer with pinned memory |
+| Add `model = nn.DataParallel(model)` | Only add for multi-GPU training |
 
 
 
@@ -131,10 +132,12 @@ model = nn.Sequential(
     nn.ReLU(),
     nn.Linear(128, 10)
 )
+# Add the line below for multi-GPU training
+# model = nn.DataParallel(model)
 model.to(device)
 # 5. Optimizer and loss
 optimizer = optim.Adam(model.parameters())
-criterion = nn.CrossEntropyLoss()
+criterion = nn.CrossEntropyLoss().to(device)
 # 6. Training loop - move each batch to GPU
 for epoch in range(5):
     model.train()
@@ -156,13 +159,43 @@ for epoch in range(5):
 
 ## Multi-GPU Training
 
-For larger models or datasets, utilizing multiple GPUs can further accelerate training. PyTorch offers two main approaches:​
+For larger models or datasets, utilizing multiple GPUs can further accelerate training. 
+The multi-GPU training is a complicated topic to beginner data scientists as it involves many concepts related to hardware. There are many packages to help you implement multi-GPU training in an easier way, e.g., Hugging Face's [accelerate](https://huggingface.co/docs/accelerate/index) package which we will introduce in the [next chapter](../chapter_transformer/hg_transformers.md#accelerate-package). 
 
-1. `DataParallel`: This method first put the data on the main GPU and then split the data across multiple GPUs, which is not efficient. It's straightforward but may not be the most efficient for all scenarios.
-2. `DistributedDataParallel`: DDP is more scalable and efficient for multi-GPU training, especially across multiple nodes. It requires more setup but offers better performance.
+In this lecture, we will focus on the PyTorch's method. PyTorch offers two main approaches:​
+
+1. `DataParallel`: DataParallel distributes the workload across threads, with each thread managing a GPU and one GPU designated as primary. It works by copying the model to each GPU, splitting the training data into portions for each device, and then having each model copy independently perform forward and backward propagation to calculate gradients, which are then synchronized. 
+
+![DataParallel](./nn.assets/DataParallel.png)
+
+2. `DistributedDataParallel`: This approach assigns each GPU to a separate process. After each process computes gradients independently, they synchronize by aggregating gradients across all GPUs in parallel. Because processes operate with isolated memory spaces, they communicate through Inter-Process Communication (IPC), employing an all-reduce operation to share gradient information. Following this synchronization, each process independently updates its model parameters on its respective GPU. This parallel synchronization mechanism makes `DistributedDataParallel` significantly more efficient and better suited for scaling to multiple GPUs. However, it requires more setup and is more complicated than `DataParallel`.
 
 
-Therefore, in this lecture, we will focus on the `DistributedDataParallel` method. To implement multi-GPU training, you need to follow the following steps:
+
+![DistributedDataParallel](./nn.assets/ddp.png)
+
+### `DataParallel` Implementation
+
+The `DataParallel` method is easier to implement. 
+If you already have your code for [single GPU training](./dl_gpu.md#pytorch-with-gpu) with model and data moving to GPU using `to(device)`, you only need to change one line of code:
+
+- wrap your model with `torch.nn.DataParallel` and call `model.to(device)`.
+
+```python
+import torch.nn as nn
+model = nn.DataParallel(model)
+model.to(device)
+```
+
+
+
+
+### `DistributedDataParallel` Implementation
+
+The `DistributedDataParallel` method is more complicated than `DataParallel` and requires more setup. If you are a beginner, we do not recommend you to use this method. You could either use `DataParallel` or directly use the Hugging Face's [accelerate](https://huggingface.co/docs/accelerate/index) package to get started. However, `DistributedDataParallel` can offer you more flexibility to control the training process and have the potential to achieve better performance.
+
+
+ To implement multi-GPU training by `DistributedDataParallel` method, you need to follow the following steps:
 
 - **Spawn a process per GPU**: Each GPU needs its own training process. When training on multiple GPUs, you need to define a `train(rank, world_size)` function which executes on `rank`-th GPU among `world_size` GPUs
   
