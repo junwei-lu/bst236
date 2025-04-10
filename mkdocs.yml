@@ -227,6 +227,10 @@ nav:
     - Attention: chapter_language_model/attention.md
     - Transformer: chapter_language_model/transformer.md
     - Hugging Face: chapter_language_model/hg_transformers.md
+  - Chapter 11. Reinforcement Learning:
+    - chapter_reinforcement_learning/index.md
+    - Markov Decision Process: chapter_reinforcement_learning/mdp.md
+    - Policy Gradient: chapter_reinforcement_learning/policy_grad.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
