@@ -53,6 +53,8 @@ We now can write the pseudo-code for the vanilla policy gradient algorithm:
 
 - Return $\theta$
 
+![humanoid](rl.assets/humanoid.gif)
+
 You can see that the vanilla policy gradient above requires to generate a series of trajectories to estimate the policy gradient. This implies that we need to be able to interact with the environment using the given policy. 
 This is called **on-policy** algorithm. In practice, simulating from the environment is not always feasible, there is another family of reinforcement learning algorithms called **off-policy** algorithm. We will not cover them in this course.
 
