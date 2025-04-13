@@ -39,6 +39,7 @@ L(s,a,\theta_k,\theta) = \min\left(
 g(\epsilon, A^{\pi_{\theta_k}}(s,a))
 \right),
 $$
+
 where
 
 $$
