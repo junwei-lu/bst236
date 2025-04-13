@@ -35,7 +35,7 @@ PPO uses the following objective function:
 
 $$
 L(s,a,\theta_k,\theta) = \min\left(
-\frac{\pi_{\theta}(a|s)}{\pi_{\theta_k}(a|s)}  A^{\pi_{\theta_k}}(s,a), \;\;
+\frac{\pi_{\theta}(a|s)}{\pi_{\theta_k}(a|s)}  A^{\pi_{\theta_k}}(s,a),
 g(\epsilon, A^{\pi_{\theta_k}}(s,a))
 \right),
 $$

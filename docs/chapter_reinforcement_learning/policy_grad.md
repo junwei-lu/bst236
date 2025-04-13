@@ -116,7 +116,7 @@ Here's the complete algorithm with advantage estimation:
 
 !!! abstract "Policy Gradient with Advantage Estimation"
     - Initialize policy parameters $\theta$ randomly
-    - For $k = 1, 2, \cdots $ do:
+    - For $k = 1, 2, ... $ do:
         - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using policy $\pi_{\theta_k}$
         - Calculate reward-to-go $\hat{R}_t$ for each trajectory
         - Compute advantage $A_t$ using chosen method
