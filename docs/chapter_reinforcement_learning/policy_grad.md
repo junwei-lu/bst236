@@ -53,7 +53,7 @@ Here's the step-by-step process for implementing the vanilla policy gradient:
 
 !!! abstract "Vanilla Policy Gradient Algorithm"
     - Start with randomly initialized policy parameters $\theta$
-    - For $k = 1, 2, \cdots $ do:
+    - For $k = 1, 2, \cdots$ do:
         - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using current policy $\pi_{\theta_k}$
         - Calculate returns $R(\tau)$ for each trajectory
         - Estimate policy gradient: $\hat{g}(\theta_k) = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta_k}(a_t |s_t) R(\tau)$
@@ -106,30 +106,11 @@ $$
 
 We can estimate it in several ways:
 
-- Monte Carlo Sampling:
+- Monte Carlo Sampling: $A_t = \hat{R}_t - V(s_t)$
+- Temporal Difference (TD(0)): $A_t = r_t + \gamma V(s_{t+1}) - V(s_t)$
+- k-step Advantage: $A_t = \sum_{l=0}^{k-1} \gamma^l r_{t+l} + \gamma^k V(s_{t+k}) - V(s_t)$
+- Generalized Advantage Estimation (GAE): $A_t = \sum_{l=0}^{\infty} \left(\gamma \lambda\right)^l \delta_{t+l}$ where $\delta_{t+l} = r_{t+l} + \gamma V(s_{t+l+1}) - V(s_{t+l})$ is the TD error.
 
-   $$
-   A_t = \hat{R}_t - V(s_t)
-   $$
-
-- Temporal Difference (TD(0)):
-
-   $$
-   A_t = r_t + \gamma V(s_{t+1}) - V(s_t)
-   $$
-
-- k-step Advantage:
-
-   $$
-   A^{(k)}_t = \sum_{l=0}^{k-1} \gamma^l r_{t+l} + \gamma^k V(s_{t+k}) - V(s_t)
-   $$
-
-- Generalized Advantage Estimation (GAE):
-
-   $$
-   A_t = \sum_{l=0}^{\infty} \left(\gamma \lambda\right)^l \delta_{t+l}
-   $$
-   where $\delta_{t+l} = r_{t+l} + \gamma V(s_{t+l+1}) - V(s_{t+l})$ is the TD error.
 
 Here's the complete algorithm with advantage estimation:
 
@@ -264,7 +245,7 @@ You can use `env.render()` to visualize the current environment.
 
 ![LunarLander-v2](./rl.assets/lunar_lander.gif)
 
-### Policy Gradient Loss in PyTorch
+### Policy Gradient Loss
 
 Recall we can convert the policy gradient into a loss function:
 
