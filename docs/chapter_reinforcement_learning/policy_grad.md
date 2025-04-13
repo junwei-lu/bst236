@@ -53,7 +53,7 @@ Here's the step-by-step process for implementing the vanilla policy gradient:
 
 !!! abstract "Vanilla Policy Gradient Algorithm"
     - Start with randomly initialized policy parameters $\theta$
-    - For $k = 1, 2, \cdots$ do:
+    - For k = 1, 2, ... do:
         - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using current policy $\pi_{\theta_k}$
         - Calculate returns $R(\tau)$ for each trajectory
         - Estimate policy gradient: $\hat{g}(\theta_k) = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta_k}(a_t |s_t) R(\tau)$
@@ -62,7 +62,7 @@ Here's the step-by-step process for implementing the vanilla policy gradient:
 
 This algorithm is **on-policy**, meaning it requires interaction with the environment using the current policy. While this approach works, it can be inefficient in practice. There are alternative **off-policy** methods that we won't cover in this course.
 
-## Reducing Variance in Policy Gradients
+## Variance Reduction
 
 The vanilla policy gradient method often suffers from high variance in its estimates, leading to unstable training. Let's explore ways to reduce this variance while keeping our estimates unbiased.
 
@@ -116,7 +116,7 @@ Here's the complete algorithm with advantage estimation:
 
 !!! abstract "Policy Gradient with Advantage Estimation"
     - Initialize policy parameters $\theta$ randomly
-    - For $k = 1, 2, ... $ do:
+    - For k = 1, 2, ... do:
         - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using policy $\pi_{\theta_k}$
         - Calculate reward-to-go $\hat{R}_t$ for each trajectory
         - Compute advantage $A_t$ using chosen method
