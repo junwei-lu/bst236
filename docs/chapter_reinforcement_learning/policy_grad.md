@@ -262,6 +262,8 @@ def run_episode(env, policy, gamma=0.99, render=False):
 
 You can use `env.render()` to visualize the current environment.
 
+![LunarLander-v2](./rl.assets/lunar_lander.gif)
+
 ### Policy Gradient Loss in PyTorch
 
 Recall we can convert the policy gradient into a loss function:
