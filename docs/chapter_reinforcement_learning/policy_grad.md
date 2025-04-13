@@ -1,18 +1,18 @@
 # Policy Gradient
 
-Recall the objective of RL is to find a policy $\pi_{\theta}$ that maximizes the expected cumulative reward
+In reinforcement learning, our goal is to find a policy $\pi_{\theta}$ that maximizes the expected total reward over time. We can express this mathematically as:
 
 $$
 J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}} \left[R(\tau)\right], \text{ where } R(\tau) = \sum_{t=0}^{\infty} \gamma^t r_t
 $$
 
-We have learned from [optimization](../chapter_optimization/gradient_descent.md) that we could maximize the objective by gradient ascent.
+From our study of [optimization](../chapter_optimization/gradient_descent.md), we know we can maximize this objective using gradient ascent:
 
 $$
 \theta_{k+1} = \theta_k + \alpha \nabla J(\theta_k)
 $$
 
-So the key is to compute $\nabla J(\theta_t)$ which is called the **policy gradient**. We have the following derivation:
+The key challenge is computing $\nabla J(\theta_t)$, known as the **policy gradient**. Here's how we derive it:
 
 $$
 \begin{align*}
@@ -21,110 +21,111 @@ $$
 &= \int_{\tau} \nabla_{\theta} P(\tau|\theta) R(\tau) & \text{Bring gradient under integral} \\
 &= \int_{\tau} P(\tau|\theta) \nabla_{\theta} \log P(\tau|\theta) R(\tau) & \text{Log-derivative trick} \\
 &= \mathbb{E}_{\tau \sim \pi_{\theta}} \left[\nabla_{\theta} \log P(\tau|\theta) R(\tau)\right] & \text{Return to expectation form} \\
-\therefore \nabla_{\theta} J(\pi_{\theta}) &= \mathbb{E}_{\tau \sim \pi_{\theta}} \left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) R(\tau)\right] & \text{Expression for grad-log-prob}
+\therefore \nabla_{\theta} J(\pi_{\theta}) &= \mathbb{E}_{\tau \sim \pi_{\theta}} \left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) R(\tau)\right] & \text{Final expression}
 \end{align*}
 $$
 
-Therefore, we can represent the policy gradient as the expectation. This means that we can apply the [stochastic gradient ascent](../chapter_optimization/sgd.md) to estimate the policy gradient by sampling trajectories from the policy.
-
-Given a dataset $\mathcal{D} = \{\tau_1, \tau_2, \cdots, \tau_n\}$ of trajectories sampled from the policy $\pi_{\theta}$, each trajectory $\tau_i = (s_0^i, a_0^i, s_1^i, a_1^i, \cdots, s_T^i, a_T^i)$ and we will omit the superscript $i$ for simplicity. The gradient of the policy can be estimated by
+This shows we can estimate the policy gradient through sampling. Given a dataset $\mathcal{D} = \{\tau_1, \tau_2, \cdots, \tau_n\}$ of trajectories from policy $\pi_{\theta}$, where each trajectory $\tau_i = (s_0^i, a_0^i, s_1^i, a_1^i, \cdots, s_T^i, a_T^i)$ (we'll drop the superscript $i$ for simplicity), we can estimate the gradient as:
 
 $$
 \hat{g}(\theta) = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) R(\tau),
 $$
 
-We call this method **vanilla policy gradient**:
+This leads to the **vanilla policy gradient** update:
 
 $$
 \theta_{k+1} = \theta_k + \alpha \hat{g}(\theta_k)
 $$
 
-## Vanilla Policy Gradient 
+## Vanilla Policy Gradient Algorithm
 
-We now can write the pseudo-code for the vanilla policy gradient algorithm:
+Here's the step-by-step process for implementing the vanilla policy gradient:
 
-- Initialize policy parameters $\theta$ randomly
-- For $k = 0, 1, 2, \ldots$ do
+!!! abstract "Vanilla Policy Gradient Algorithm"
+    - Start with randomly initialized policy parameters $\theta$
+    - Repeat until convergence:
+        - Generate trajectories $\mathcal{D} = \{\tau_i\}$ using current policy $\pi_{\theta_k}$
+        - Calculate returns $R(\tau)$ for each trajectory
+        - Estimate policy gradient: $\hat{g}(\theta_k) = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta_k}(a_t |s_t) R(\tau)$
+        - Update policy: $\theta_{k+1} = \theta_k + \alpha \hat{g}(\theta_k)$
 
-    - Generate a set of trajectories $\mathcal{D} = \{\tau_i\}$ by executing the current policy $\pi_{\theta_k}$
-    - Compute the returns $R(\tau)$ for each trajectory
-    - Estimate the policy gradient: $\hat{g}(\theta_k) = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta_k}(a_t |s_t) R(\tau)$
-    - Update the policy parameters: $\theta_{k+1} = \theta_k + \alpha \hat{g}(\theta_k)$.
+    - Return final policy parameters $\theta$
 
-- Return $\theta$
+This algorithm is **on-policy**, meaning it requires interaction with the environment using the current policy. While this approach works, it can be inefficient in practice. There are alternative **off-policy** methods that we won't cover in this course.
 
-![humanoid](rl.assets/humanoid.gif)
+## Reducing Variance in Policy Gradients
 
-You can see that the vanilla policy gradient above requires to generate a series of trajectories to estimate the policy gradient. This implies that we need to be able to interact with the environment using the given policy. 
-This is called **on-policy** algorithm. In practice, simulating from the environment is not always feasible, there is another family of reinforcement learning algorithms called **off-policy** algorithm. We will not cover them in this course.
+The vanilla policy gradient method often suffers from high variance in its estimates, leading to unstable training. Let's explore ways to reduce this variance while keeping our estimates unbiased.
 
-## Variance Reduction
-
-Examine our most recent expression for the policy gradient:
+Looking at our policy gradient expression:
 
 $$
 \nabla_{\theta} J(\pi_{\theta}) = \mathbb{E}_{\tau \sim \pi_{\theta}} \left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) R(\tau)\right].
 $$
 
-Taking a step with this gradient pushes up the log-probabilities of each action in proportion to R(\tau), the sum of all rewards ever obtained. But this doesn’t make much sense.
+This formulation has a problem: it assigns credit to all actions based on the total reward $R(\tau)$, even for actions that occurred before the reward was received. This doesn't make sense - actions should only be reinforced based on their future consequences.
 
-Agents should really only reinforce actions on the basis of their consequences. Rewards obtained before taking an action have no bearing on how good that action was: only rewards that come after.
-
-It turns out that this intuition shows up in the math, and we can show that the policy gradient can also be expressed by
+We can improve this by using the "reward-to-go" formulation:
 
 $$
 \nabla_{\theta} J(\pi_{\theta}) = \mathbb{E}_{\tau \sim \pi_{\theta}} \left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) \sum_{t'=t}^T R(s_{t'}, a_{t'})\right].
 $$
 
-We’ll call this form the “reward-to-go policy gradient,” because the sum of rewards after a point in a trajectory,
+Here, $\hat{R}_t = \sum_{t'=t}^T R(s_{t'}, a_{t'})$ represents the future rewards from time $t$ onward.
 
-$$
-\hat{R}_t \doteq \sum_{t'=t}^T R(s_{t'}, a_{t'}),
-$$
-
-is called the **reward-to-go** from that point, and this policy gradient expression depends on the reward-to-go from state-action pairs.
-
-
-In fact, the policy gradient can be written as the general form
+In general, the policy gradient can be written as:
 
 $$
 \nabla_{\theta} J(\pi_{\theta}) = \mathbb{E}_{\tau \sim \pi_{\theta}} \left[\sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta}(a_t |s_t) \Phi_t\right],
 $$
 
-where $\Phi_t$ is some function of the trajectory which could be:
+where $\Phi_t$ can be:
+- Total reward: $\Phi_t = R(\tau)$
+- Reward-to-go: $\Phi_t = \hat{R}_t$
+- Baseline-adjusted: $\Phi_t = \hat{R}_t - b(s_t)$
+- Action-value: $\Phi_t = Q^{\pi_{\theta}}(s_t, a_t)$
+- Advantage: $\Phi_t = A^{\pi_{\theta}}(s_t, a_t) = Q^{\pi_{\theta}}(s_t, a_t) - V^{\pi_{\theta}}(s_t)$
 
-- $\Phi_t = R(\tau)$,
+### Estimating the Advantage Function
 
-- $\Phi_t = \sum_{t'=t}^T R(s_{t'}, a_{t'})$,
+The most common approach uses the **advantage function** $A_t = A^{\pi}(s_t, a_t) = Q^{\pi}(s_t, a_t) - V^{\pi}(s_t)$. We can estimate it in several ways:
 
-- $\Phi_t = \sum_{t'=t}^T R(s_{t'}, a_{t'}, s_{t'+1}) - b(s_t)$ for any function $b(s_t)$.
+1. Monte Carlo Sampling:
+   $$
+   A_t = \hat{R}_t - V(s_t)
+   $$
 
-- On-Policy Action-Value Function: $\Phi_t = Q^{\pi_{\theta}}(s_t, a_t)$
+2. Temporal Difference (TD(0)):
+   $$
+   A_t = r_t + \gamma V(s_{t+1}) - V(s_t)
+   $$
 
-- The Advantage Function: $\Phi_t = A^{\pi_{\theta}}(s_t, a_t) = Q^{\pi_{\theta}}(s_t, a_t) - V^{\pi_{\theta}}(s_t)$
+3. k-step Advantage:
+   $$
+   A^{(k)}_t = \sum_{l=0}^{k-1} \gamma^l r_{t+l} + \gamma^k V(s_{t+k}) - V(s_t)
+   $$
 
-In practice, $V^{\pi}(s_t)$ cannot be computed exactly, so it has to be approximated. This is usually done with a neural network, $V_{\phi}(s_t)$, which is updated concurrently with the policy (so that the value network always approximates the value function of the most recent policy).
+4. Generalized Advantage Estimation (GAE):
+   $$
+   A_t = \sum_{l=0}^{\infty} \left(\gamma \lambda\right)^l \delta_{t+l}
+   $$
+   where $\delta_{t+l} = r_{t+l} + \gamma V(s_{t+l+1}) - V(s_{t+l})$ is the TD error.
 
-The simplest method for learning $V_{\phi}$, used in most implementations of policy optimization algorithms, is to minimize a mean-squared-error objective:
+Here's the complete algorithm with advantage estimation:
 
-$$
-\phi_k = \arg \min_{\phi} \mathbb{E}_{s_t, \hat{R}_t \sim \pi_k} \left( V_{\phi}(s_t) - \hat{R}_t \right)^2,
-$$
+!!! abstract "Policy Gradient with Advantage Estimation"
+    - Initialize policy parameters $\theta$ randomly
+    - Repeat until convergence:
+        - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using policy $\pi_{\theta_k}$
+        - Calculate reward-to-go $\hat{R}_t$ for each trajectory
+        - Compute advantage $A_t$ using chosen method
+        - Estimate gradient: $\hat{g}(\theta_k) = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta_k}(a_t |s_t) A_t$
+        - Update policy: $\theta_{k+1} = \theta_k + \alpha \hat{g}(\theta_k)$
+        - Update value function: $\phi_k = \arg \min_{\phi} \sum_{\tau \in \mathcal{D}_k} \sum_{t=0}^{T} \left( V_{\phi}(s_t) - \hat{R}_t \right)^2$
 
-where $\pi_k$ is the policy at epoch $k$. This is done with one or more steps of gradient descent, starting from the previous value parameters $\phi_{k-1}$.
+### Implementing Policy Gradient in PyTorch
 
-
-
-
-
-
-
-
-
-
-### PyTorch for Vanilla Policy Gradient
-
-Let's implement the vanilla policy gradient algorithm using PyTorch. First, we'll define a simple policy network $\pi_{\theta}(a|s)$ with one hidden layer neural network. Here the action space is discrete with `action_dim` actions.
+Let's implement a simple policy network using PyTorch. We'll use a neural network with one hidden layer for our policy $\pi_{\theta}(a|s)$:
 
 ```python
 import torch.nn as nn
@@ -142,38 +143,35 @@ class PolicyNetwork(nn.Module):
         return self.net(x)
 ```
 
-We can then convert the policy gradient to a loss function:
+We can convert the policy gradient into a loss function:
 
 $$
 \mathcal{L}(\theta) = -\frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T}  \log \pi_{\theta}(a_t |s_t) R(\tau),
 $$
 
-Therefore, we can define the loss function as follows:
+Here's how we implement the key components:
 
 ```python
 from torch.distributions.categorical import Categorical
 
 policy_net = PolicyNetwork(state_dim, hidden_dim, action_dim)
-# make function to compute action distribution
+
 def get_policy(state):
     logits = policy_net(state)
     return Categorical(logits=logits) 
 
-# make action selection function (outputs int actions, sampled from policy)
 def get_action(obs):
     return get_policy(obs).sample().item()
 
-# make function to compute log probability of an action under current policy
 def get_log_prob(obs, action):
     return get_policy(obs).log_prob(action)
 
-# make loss function whose gradient, for the right data, is policy gradient
 def compute_loss(obs, act, weights):
     logp = get_policy(obs).log_prob(act)
     return -(logp * weights).mean()
 ```
 
-`Categorical` is a distribution class in PyTorch that represents a categorical distribution. It has a method `log_prob` that computes the log probability of an action under the distribution.
+The `Categorical` class in PyTorch handles discrete action distributions, with `log_prob` computing the log probability of actions under the current policy.
 
 
 
