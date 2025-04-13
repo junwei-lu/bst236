@@ -119,7 +119,7 @@ Here's the complete algorithm with advantage estimation:
     - For k = 1, 2, ... do:
         - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using policy $\pi_{\theta_k}$
         - Calculate reward-to-go $\hat{R}_t$ for each trajectory
-        - Compute advantage $A_t$ using chosen method
+        - Compute advantage $A_t$ using one of the methods above
         - Estimate gradient: $\hat{g}(\theta_k) = \frac{1}{|\mathcal{D}|} \sum_{\tau \in \mathcal{D}} \sum_{t=0}^{T} \nabla_{\theta} \log \pi_{\theta_k}(a_t |s_t) A_t$
         - Update policy: $\theta_{k+1} = \theta_k + \alpha \hat{g}(\theta_k)$
         - Update value function: $\phi_k = \arg \min_{\phi} \sum_{\tau \in \mathcal{D}_k} \sum_{t=0}^{T} \left( V_{\phi}(s_t) - \hat{R}_t \right)^2$

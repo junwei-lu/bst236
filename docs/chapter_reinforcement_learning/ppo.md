@@ -13,25 +13,30 @@ Unlike vanilla policy gradient methods that maintain proximity between policies 
 Like the [proximal gradient descent](../chapter_optimization/proximal_gradient_descent.md), PPO aims to find a loss function that is an approximation of loss function
 
 $$
-L(\theta) = \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta}} \left[  A^{\pi_{\theta_k}}(s,a)\right] = \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta_k}} \left[  \frac{\pi_{\theta}(a|s)}{\pi_{\theta_k}(a|s)} A^{\pi_{\theta_k}}(s,a)\right] 
+L(\theta) = \mathbb{E}_{s, a \sim \pi_{\theta}} \left[  A^{\pi_{\theta}}(s,a)\right].
 $$
 
+We can approximate the above loss function around the current policy $\pi_{\theta_k}$ by:
 
+$$
+L(\theta) \approx \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta}} \left[  A^{\pi_{\theta_k}}(s,a)\right] = \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta_k}} \left[  \frac{\pi_{\theta}(a|s)}{\pi_{\theta_k}(a|s)} A^{\pi_{\theta_k}}(s,a)\right] 
+$$
 
- at the current policy $\pi_{\theta_k}$ and update it by: 
+update it by: 
 
 $$
 \theta_{k+1} =  \arg \min_{\theta} \mathbb{E}_{s, a \sim \pi_{\theta_k}} \left[ L(s,a,\theta_k,\theta) \right],
 $$
 
-where $L(s,a,\theta_k,\theta)$ is an approximation of $L(\theta)$ at the current policy $\pi_{\theta_k}$.
+where $L(s,a,\theta_k,\theta) = 
+\frac{\pi_{\theta}(a|s)}{\pi_{\theta_k}(a|s)}  A^{\pi_{\theta_k}}(s,a)$ is an approximation of $L(\theta)$ at the current policy $\pi_{\theta_k}$.
 
 
 
-## PPO Objective
+## Proximal Policy Optimization Loss
 
 
-PPO uses the following objective function:
+Proximal Policy Optimization (PPO) further modify the proximal loss above by adding a clipping term to prevent the policy from changing too much:
 
 $$
 L(s,a,\theta_k,\theta) = \min\left(
@@ -72,6 +77,17 @@ $$L(s,a,\theta_k,\theta) = \max\left(
 \right)  A^{\pi_{\theta_k}}(s,a).$$
 
 Because the advantage is negative, the objective will increase if the action becomes less likely—that is, if $\pi_{\theta}(a|s)$ decreases. But the max in this term puts a limit to how much the objective can increase. Once $\pi_{\theta}(a|s) < (1-\epsilon) \pi_{\theta_k}(a|s)$, the max kicks in and this term hits a ceiling of $(1-\epsilon) A^{\pi_{\theta_k}}(s,a)$. Thus, again: the new policy does not benefit by going far away from the old policy.
+
+We summarize the PPO loss as follows:
+
+!!! abstract "Proximal Policy Optimization"
+    - Initialize policy parameters $\theta$ randomly
+    - For k = 1, 2, ... do:
+        - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using policy $\pi_{\theta_k}$
+        - Calculate reward-to-go $\hat{R}_t$ for each trajectory
+        - Compute advantage $A_t$ using [chosen method](./policy_grad.md#estimating-the-advantage-function)
+        - Update policy: $\theta_{k+1} = \arg \min_{\theta} \sum_{\tau \in \mathcal{D}_k}  \sum_{t=0}^{T} \left[ L(s_t,a_t,\theta_k,\theta) \right]$ by some [stochastic gradient descent method](../chapter_optimization/sgd.md)
+        - Update value function: $\phi_k = \arg \min_{\phi} \sum_{\tau \in \mathcal{D}_k} \sum_{t=0}^{T} \left( V_{\phi}(s_t) - \hat{R}_t \right)^2$
 
 ### Stable Baselines3 Implementation
 
