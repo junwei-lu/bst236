@@ -231,6 +231,7 @@ nav:
     - chapter_reinforcement_learning/index.md
     - Markov Decision Process: chapter_reinforcement_learning/mdp.md
     - Policy Gradient: chapter_reinforcement_learning/policy_grad.md
+    - Proximal Policy Optimization: chapter_reinforcement_learning/ppo.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md
