@@ -188,18 +188,21 @@ The encoder-decoder transformer is a variant of the Transformer that uses both e
 We list below the best use cases for each type of transformer architecture.
 
 **Encoder-Only Models**
+
 - **Best for**: Understanding and analyzing input text (classification, entity recognition, sentiment analysis)
 - **Examples**: [BERT](https://huggingface.co/bert-base-uncased), [RoBERTa](https://huggingface.co/roberta-base), [DistilBERT](https://huggingface.co/distilbert-base-uncased)
 - **Characteristics**: Bidirectional attention (can see full context in both directions)
 - **Use when**: Your task requires deep understanding of input text without generating new text
 
 **Decoder-Only Models**
+
 - **Best for**: Text generation tasks (completion, creative writing, chat)
 - **Examples**: [GPT-2](https://huggingface.co/gpt2)
 - **Characteristics**: Autoregressive generation with masked self-attention
 - **Use when**: Your primary goal is to generate coherent, contextually relevant text
 
 **Encoder-Decoder Models**
+
 - **Best for**: Sequence-to-sequence tasks (translation, summarization)
 - **Examples**: [T5](https://huggingface.co/t5-small), [BART](https://huggingface.co/facebook/bart-large-cnn), [Pegasus](https://huggingface.co/google/pegasus-large)
 - **Characteristics**: Encoder processes input, decoder generates output based on encoder representations
