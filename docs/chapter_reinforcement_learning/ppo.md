@@ -19,10 +19,10 @@ $$
 We can approximate the above loss function around the current policy $\pi_{\theta_k}$ by:
 
 $$
-L(\theta) \approx \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta}} \left[  A^{\pi_{\theta_k}}(s,a)\right] = \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta_k}} \left[  \frac{\pi_{\theta}(a|s)}{\pi_{\theta_k}(a|s)} A^{\pi_{\theta_k}}(s,a)\right] 
+L(\theta) \approx \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta}} \left[  A^{\pi_{\theta_k}}(s,a)\right] = \mathbb{E}_{s \sim \pi_{\theta_k}, a \sim \pi_{\theta_k}} \left[  \frac{\pi_{\theta}(a|s)}{\pi_{\theta_k}(a|s)} A^{\pi_{\theta_k}}(s,a)\right].
 $$
 
-update it by: 
+Then in each epoch, we can update the policy $\pi_{\theta_k}$ by: 
 
 $$
 \theta_{k+1} =  \arg \min_{\theta} \mathbb{E}_{s, a \sim \pi_{\theta_k}} \left[ L(s,a,\theta_k,\theta) \right],

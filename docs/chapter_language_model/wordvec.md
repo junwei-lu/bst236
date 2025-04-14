@@ -105,7 +105,7 @@ We can represent each token by a vector in $\mathbb{R}^d$. Then, a text can be r
 
 ### Tokenization in Hugging Face Transformers
 
-Hugging Face [Transformers](https://huggingface.co/docs/transformers/index) provides a unified interface for tokenization, model loading, and training. We will start with how to convert text into tokens using Transformers.
+Hugging Face [Transformers](https://huggingface.co/docs/transformers/index) provides a unified interface for tokenization, model loading, and training. We will start with how to convert text into tokens using Transformers. Please refer to the [lecture on Hugging Face](hg_transformers.md) for more details.
 
 Transformers provides a `AutoTokenizer` class that can be used to convert text into tokens ids using the `tokenize` method. For different models, the tokenizer is different. You can choose the tokenizer method from the `AutoTokenizer.from_pretrained(name)` class, where `name` is the name of the model choosing from the [model hub](https://huggingface.co/models).
 
@@ -174,6 +174,8 @@ $$
 \text{Model Input} = X+P
 $$
 
+
+
 **PyTorch Implementation**
 
 Here's how to implement both sinusoidal and learned position embeddings:
@@ -194,7 +196,22 @@ class PositionalEncoding(nn.Module):
         return X
 ```
 
-We can directly get the position embeddings from the `AutoModel` class.
+In practice, we sometimes even directly take the positional embeddings as learnable parameters and train them together with the model parameters. See the example below.
+
+```python
+class InputEmbeddings(nn.Module):
+    def __init__(self, d_model: int, vocab_size: int):
+        super().__init__()
+        self.tok_emb = nn.Embedding(vocab_size, d_model)
+        self.pos_emb = nn.Parameter(torch.zeros(1, block_size, d_model))
+
+    def forward(self, x):
+        tok_emb = self.tok_emb(x)
+        pos_emb = self.pos_emb(x)
+        return tok_emb + pos_emb
+```
+
+Many language models in Hugging Face use the approach above. We can directly get the position embeddings from the `AutoModel` class.
 
 ```python
 from transformers import AutoTokenizer, AutoModel
