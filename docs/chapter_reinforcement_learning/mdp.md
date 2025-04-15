@@ -10,7 +10,7 @@ An MDP consists of these essential elements:
 - **Transition probability**: The transition probability $P(s'|s,a)$ defines the likelihood of reaching state $s'$ after executing action $a$ in state $s$. For continuous state spaces, this becomes a probability density function.
 - **Reward function**: The reward function $R(s,a)$ specifies the immediate reward value that the agent receives after performing action $a$ in state $s$.
 
-![MDP](./rl.assets/mdp.png)
+![MDP](./rl.assets/mdp_mario.jpg)
 
 
 As the agent interacts with the environment within an MDP framework, we observe a sequence of states and actions $(s_0, a_0, s_1, a_1, \cdots, s_t, a_t)$.
@@ -140,7 +140,9 @@ $$
 J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}} \left[R(\tau)\right], \text{ where } R(\tau) = \sum_{t=0}^{\infty} \gamma^t r_t
 $$
 
-where $\gamma$ represents the discount factor.
+where $\gamma$ represents the discount factor. We usually use neural networks to parameterize the policy $\pi_{\theta}$ which is called a **policy network**.
+
+![policy_network](rl.assets/deep_rl.png)
 
 There are four key functions that are fundamental to reinforcement learning:
 
@@ -186,7 +188,7 @@ For the on-policy value functions, the Bellman equations are:
 
 $$
 \begin{align*}
-V^{\pi}(s) &= \mathbb{E}_{a \sim \pi, s'\sim P}[r(s,a) + \gamma V^{\pi}(s')], \\
+V^{\pi}(s) &= \mathbb{E}_{a' \sim \pi, s'\sim P}[r(s,a') + \gamma V^{\pi}(s')], \\
 Q^{\pi}(s,a) & = \mathbb{E}_{s'\sim P, a'\sim \pi}[r(s,a) + \gamma V^{\pi}(s')] = \mathbb{E}_{s'\sim P, a'\sim \pi}[r(s,a) + \gamma Q^{\pi}(s',a')],
 \end{align*}
 $$

@@ -166,7 +166,7 @@ where
 
 ![Position Embeddings](./tf.assets/SteppedPositionalEncodingPlot.gif)
 
-From the plot above, we can see that the position embeddings use the binary period to encode the absolute position information and the sinusoidal function to encode the relative position information. We skip the rationale why we design the position embeddings in this way. You can refer to the detailed tutorial [here](https://huggingface.co/blog/designing-positional-encoding). Also you can use other types of position embeddings, such as [Rotary Position Embedding (RoPE)](https://arxiv.org/abs/2104.09864).
+From the plot above, we can see that the position embeddings use the binary period to encode the absolute position information and the sinusoidal function to encode the relative position information. We skip the rationale why we design the position embeddings in this way. You can refer to the detailed tutorial [here](https://huggingface.co/blog/designing-positional-encoding). Also you can use other types of position embeddings, such as [Rotary Position Embedding (RoPE)](https://arxiv.org/abs/2104.09864) and [ALiBi (Attention with Linear Biases)](https://arxiv.org/abs/2108.12409).
 
 In the language models, we usually use the input by adding the token embeddings and the position embeddings 
 
