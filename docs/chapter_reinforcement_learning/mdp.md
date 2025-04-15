@@ -9,11 +9,20 @@ An MDP consists of these essential elements:
 - **Action**: An action $a$ represents a choice the agent makes that can be observed. The collection of all possible actions constitutes the action space, denoted as $\mathcal{A}$. This space may be discrete (such as directional movements) or continuous (like velocity vectors in a physical system).
 - **Transition probability**: The transition probability $P(s'|s,a)$ defines the likelihood of reaching state $s'$ after executing action $a$ in state $s$. For continuous state spaces, this becomes a probability density function.
 - **Reward function**: The reward function $R(s,a)$ specifies the immediate reward value that the agent receives after performing action $a$ in state $s$.
+- **Policy**: The policy $\pi(a|s)$ is the probability distribution (or density) over action space $a \in \mathcal{A}$ given states $s \in \mathcal{S}$.
 
-![MDP](./rl.assets/mdp_mario.jpg)
+![MDP](./rl.assets/MDP-model.png)
 
 
-As the agent interacts with the environment within an MDP framework, we observe a sequence of states and actions $(s_0, a_0, s_1, a_1, \cdots, s_t, a_t)$.
+As the agent interacts with the environment within an MDP framework using a policy $\pi$, we observe a sequence of states and actions $\tau = (s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_t, a_t, r_t)$ following the following process:
+
+- At time $t=0$, the agent observes the initial state $s_0$.
+- The agent selects an action $a_0$ according to the policy $\pi$, i.e., $a_0 \sim \pi(\cdot|s_0)$.
+- The agent receives a reward $r_0 = R(s_0, a_0)$.
+- The environment transitions from state $s_0$ to state $s_1$ with probability $P(s_1|s_0, a_0)$, i.e., $s_{1} \sim P(\cdot|s_0, a_0)$.
+- The process repeats for $t=1, 2, \cdots $.
+
+
 
 <!-- 
 ### OpenAI Gym
@@ -142,7 +151,7 @@ $$
 
 where $\gamma$ represents the discount factor. We usually use neural networks to parameterize the policy $\pi_{\theta}$ which is called a **policy network**.
 
-![policy_network](rl.assets/deep_rl.png)
+![policy_network](rl.assets/mario_policy_network.gif)
 
 There are four key functions that are fundamental to reinforcement learning:
 

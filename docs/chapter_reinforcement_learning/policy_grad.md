@@ -143,6 +143,19 @@ class Policy(nn.Module):
         return action_probs
 ```
 
+You can use the `torch.distributions.Categorical` to sample actions from the policy and compute the log probability of the action.
+
+```python
+import torch
+from torch.distributions import Categorical
+policy = Policy(10, 4)
+state_tensor = torch.randn(10)
+action_probs = policy(state_tensor)
+m = Categorical(action_probs)
+action = m.sample() # sample an action from the policy.
+log_prob = m.log_prob(action) # compute the log probability of the action.
+```
+
 ### OpenAI Gym
 
 OpenAI Gym is a toolkit for developing and comparing reinforcement learning algorithms. It provides a standard API for interacting with environments, and a suite of pre-implemented environments for testing and training reinforcement learning algorithms.
