@@ -116,6 +116,7 @@ Here's the complete algorithm with advantage estimation:
 
 !!! abstract "Policy Gradient with Advantage Estimation"
     The algorithm belongs to the family of **Actor-Critic** algorithms with the policy network being the **Actor** and the value network being the **Critic**.
+    
     - Initialize policy parameters $\theta$ randomly
     - For k = 1, 2, ... do:
         - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using policy $\pi_{\theta_k}$
