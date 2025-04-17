@@ -213,6 +213,20 @@ $$
 
 These equations are essentially applications of [dynamic programming](../chapter_algorithms/dynamic_programming.md) principles that we covered earlier.
 
+We only prove the Bellman equation for the on-policy value function $V^{\pi}(s)$. 
+
+$$
+\begin{align*}
+V^{\pi}(s) &= \mathbb{E}_{\tau \sim \pi}[R(\tau)| s_0 = s] \\
+&= \mathbb{E}_{\tau \sim \pi}[r_0 + \gamma r_1 + \gamma^2 r_2 + \cdots | s_0 = s] \\
+&= \mathbb{E}_{\tau \sim \pi}[r_0 + \gamma (r_1 + \gamma r_2 + \cdots) | s_0 = s] \\
+&= \mathbb{E}_{\tau \sim \pi}[r_0 + \gamma \mathbb{E}_{\tau \sim \pi}[R(\tau)| s_1 = s_1] | s_0 = s] \\
+&= \mathbb{E}_{\tau \sim \pi}[r_0 + \gamma V^{\pi}(s_1) | s_0 = s]
+\end{align*}
+$$
+
+The proof for the other three value functions are similar.
+
 ### Temporal Difference
 
 The Bellman equation provides a recursive relationship that allows us to compute value functions iteratively. Given a trajectory $\tau = (s_0, a_0, r_0, s_1, a_1, r_1, \cdots, s_t, a_t, r_t)$, and using the Bellman equation $V^{\pi}(s_t) = \mathbb{E}[r_t + \gamma V^{\pi}(s_{t+1})]$, we define the temporal difference (TD) error as:
