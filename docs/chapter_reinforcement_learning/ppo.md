@@ -25,7 +25,7 @@ $$
 Then in each epoch, we can update the policy $\pi_{\theta_k}$ by: 
 
 $$
-\theta_{k+1} =  \arg \min_{\theta} \mathbb{E}_{s, a \sim \pi_{\theta_k}} \left[ L(s,a,\theta_k,\theta) \right],
+\theta_{k+1} =  \arg \max_{\theta} \mathbb{E}_{s, a \sim \pi_{\theta_k}} \left[ L(s,a,\theta_k,\theta) \right],
 $$
 
 where $L(s,a,\theta_k,\theta) = 
@@ -86,8 +86,26 @@ We summarize the PPO loss as follows:
         - Generate trajectories $\mathcal{D}_k = \{\tau_i\}$ using policy $\pi_{\theta_k}$
         - Calculate reward-to-go $\hat{R}_t$ for each trajectory
         - Compute advantage $A_t$ using [chosen method](./policy_grad.md#estimating-the-advantage-function)
-        - Update policy: $\theta_{k+1} = \arg \min_{\theta} \sum_{\tau \in \mathcal{D}_k}  \sum_{t=0}^{T} \left[ L(s_t,a_t,\theta_k,\theta) \right]$ by some [stochastic gradient descent method](../chapter_optimization/sgd.md)
-        - Update value function: $\phi_k = \arg \min_{\phi} \sum_{\tau \in \mathcal{D}_k} \sum_{t=0}^{T} \left( V_{\phi}(s_t) - \hat{R}_t \right)^2$
+        - **Actor**: Update policy: $\theta_{k+1} = \arg \min_{\theta} \sum_{\tau \in \mathcal{D}_k}  \sum_{t=0}^{T} \left[ L(s_t,a_t,\theta_k,\theta) \right]$ by some [stochastic gradient descent method](../chapter_optimization/sgd.md)
+        - **Critic**: Update value function: $\phi_k = \arg \max_{\phi} \sum_{\tau \in \mathcal{D}_k} \sum_{t=0}^{T} \left( V_{\phi}(s_t) - \hat{R}_t \right)^2$ (Or use the [TD error](mdp.md#value-function-estimation) to update the value function)
+
+### Exploration vs Exploitation
+
+In reinforcement learning, balancing exploration (trying new actions to discover potentially better strategies) and exploitation (using known good actions to maximize immediate rewards) is crucial for optimal learning. Without sufficient exploration, agents may get stuck in suboptimal policies, while too much exploration can waste resources on unproductive actions. 
+
+For PPO, we can add an entropy regularization term to the loss function to encourage exploration.
+
+$$
+\theta_{k+1} =  \arg \max_{\theta} \mathbb{E}_{s, a \sim \pi_{\theta_k}} \left[ L(s,a,\theta_k,\theta) \right] + \beta \mathbb{E}_{s \sim \pi_{\theta}} \left[ H(\pi_{\theta}(s)) \right],
+$$
+
+where $H(\pi_{\theta}(s)) = -\mathbb{E}_{a \sim \pi_{\theta}(s)} [\log \pi_{\theta}(a|s)]$ is the entropy of the policy and $\beta$ is a hyperparameter.
+
+
+A policy with larger entropy corresponds to a more uniform or less certain distribution over actions, encouraging the agent to explore a wider range of possible actions instead of repeatedly selecting the same few actions.
+
+
+
 
 ### Stable Baselines3 Implementation
 
