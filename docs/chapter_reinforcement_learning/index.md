@@ -8,3 +8,4 @@ Lectures:
 
 - [Markov Decision Processes](./mdp.md)
 - [Policy Gradients](./policy_grad.md)
+- [Proximal Policy Optimization](./ppo.md)
