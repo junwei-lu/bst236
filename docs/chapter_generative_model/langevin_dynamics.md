@@ -107,15 +107,20 @@ The net increase of mass flowed in the boundary is:
 
 $$
 \begin{align*}
- &- \left[\left( v_x(x+\Delta x,y)\rho(x+\Delta x,y,t) -v_x(x,y)\rho(x,y,t)  \right)  \Delta y + \left(v_y(x,y+\Delta y)\rho(x,y+\Delta y,t) - v_y(x,y)\rho(x,y,t) \right) \Delta x \right]\Delta t \\
-= &- \left[\frac{\left( v_x(x+\Delta x,y)\rho(x+\Delta x,y,t) -v_x(x,y)\rho(x,y,t)  \right)}{\Delta x} + \frac{\left(v_y(x,y+\Delta y)\rho(x,y+\Delta y,t) - v_y(x,y)\rho(x,y,t) \right)}{\Delta y}\right]\Delta t \Delta x \Delta y
+ &- \left[\left( v_x(x+\Delta x,y)\rho(x+\Delta x,y,t) -v_x(x,y)\rho(x,y,t)  \right)  \Delta y  \right. \\
+ & \qquad \left. + \left(v_y(x,y+\Delta y)\rho(x,y+\Delta y,t) - v_y(x,y)\rho(x,y,t) \right) \Delta x \right]\Delta t \\
+= &- \left[\frac{\left( v_x(x+\Delta x,y)\rho(x+\Delta x,y,t) -v_x(x,y)\rho(x,y,t)  \right)}{\Delta x} \right. \\
+& \qquad \left. + \frac{\left(v_y(x,y+\Delta y)\rho(x,y+\Delta y,t) - v_y(x,y)\rho(x,y,t) \right)}{\Delta y}\right]\Delta t \Delta x \Delta y
 \end{align*}
 $$
 
 Now we combine the two sides of the mass conservation equation together:
 
 $$
-\frac{\rho(x,y,t+\Delta t) - \rho(x,y,t)}{\Delta t} = - \left[\frac{\left( v_x(x+\Delta x,y) \rho(x+\Delta x,y,t) -v_x(x,y) \rho(x,y,t)  \right)}{\Delta x} + \frac{\left(v_y(x,y+\Delta y) \rho(x,y+\Delta y,t) - v_y(x,y) \rho(x,y,t) \right)}{\Delta y}\right]
+\begin{align*}
+\frac{\rho(x,y,t+\Delta t) - \rho(x,y,t)}{\Delta t} = &- \left[\frac{\left( v_x(x+\Delta x,y) \rho(x+\Delta x,y,t) -v_x(x,y) \rho(x,y,t)  \right)}{\Delta x} \right. \\
+& \qquad \left. + \frac{\left(v_y(x,y+\Delta y) \rho(x,y+\Delta y,t) - v_y(x,y) \rho(x,y,t) \right)}{\Delta y}\right]
+\end{align*}
 $$
 
 
@@ -208,11 +213,13 @@ $$
 &= \left\langle \nabla \frac{\delta F}{\delta \rho}, v \right\rangle_{\rho}, \tag{2}
 \end{align*} 
 $$
+
 where we apply the integration by parts in the third line:
 
 $$
 \int f \nabla g \, dx = - \int \nabla f \cdot g \, dx + f g |_{-\infty}^{\infty} = - \int \nabla f \cdot g \, dx
 $$
+
 if $f, g$ vanish at the infinity. (Note that we abuse a lot of notations here. Please see the [paper](https://arxiv.org/pdf/1802.08089) for rigorous derivation.)
 
 Therefore, by comparing (1) and (2), we have:
@@ -246,17 +253,20 @@ Plugging in the gradient $\text{grad}_{\rho}F$ as the vector field $v$ into the 
 
 $$
 \begin{align*}
-\frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot \text{grad}_{\rho}F  ) \\
-&= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)\\
-& = - \nabla \cdot( \rho \nabla f) + \Delta \rho \tag{3}
+\frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot \text{grad}_{\rho}F  ) 
+%&= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)\\
+%& = - \nabla \cdot( \rho \nabla f) + \Delta \rho \tag{3}
 \end{align*}
 $$
+
+
 where the last equation is due to $\nabla \cdot \nabla = \Delta$, where $\Delta$ is the Laplacian operator $\Delta f =  \sum_{i=1}^d \frac{\partial^2 f}{\partial x_i^2}$.
 
 Therefore, we have the following "gradient algorithm" for our loss function $F(\rho)$:
 
 !!! note "Fokker-Planck Equation for Gradient Flow"
     Let $p = e^{-f}$ be the target distribution. The gradient algorithm for $\min_\rho \text{KL}(\rho \| p)$ is equivalent to the Fokker-Planck equation:
+
     $$
     \frac{\partial \rho}{\partial t} = - \nabla \cdot( \rho \nabla f) + \Delta \rho
     $$
@@ -323,7 +333,15 @@ In fact, the solution of the heat equation cannot be unique without the  initial
     \rho(x,t) = \int \rho_0(y) \frac{1}{(4\pi t)^{d/2}} e^{-\frac{|x-y|^2}{4t}} \, dy.
     $$
 
-You can check that the solution of the heat equation by plugging in the solution into the heat equation.
+You can check that the solution of the heat equation by plugging in the solution into the heat equation. We can discretize $X_t = X_0 + \sqrt{2t} \xi$ as an iterative process:
+
+$$
+X_{t+1} = X_t + \sqrt{2\epsilon} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I).
+$$
+
+
+
+
 
 
 Now we have the good intuition on the two terms in the Fokker-Planck equation (3). The first term $- \nabla \cdot( \rho \nabla f)$ gives the gradient descent, and the second term $\Delta \rho$ add the Gaussian noise. Therefore, we can sample from the target distribution $p$ by translating the Fokker-Planck equation to the particle movement:
@@ -335,11 +353,30 @@ Now we have the good intuition on the two terms in the Fokker-Planck equation (3
     \frac{\partial \rho}{\partial t} =  - \nabla \cdot( \rho \nabla f) + \Delta \rho
     $$
 
-    is equivalent to the Langevin dynamics:
+    is equivalent to the **Langevin dynamics**:
 
     $$
     \frac{dX_t}{dt} = - \nabla f(X_t) + \sqrt{2} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I)
     $$
+    which can be discretized as:
+
+    $$
+    X_{t+1} = X_t - \epsilon \nabla f(X_t) + \sqrt{2\epsilon} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I),
+    $$
+
+    where $\epsilon$ is the step size.
+
+
+
+The above theory shows the connection between the sampling and the optimization:
+
+!!! note "Langevin Dynamics"
+    We can sample the target distribution $p = e^{-f}$ by running the Langevin dynamics:
+
+    $$
+    X_{t+1} = X_t - \epsilon \nabla f(X_t) + \sqrt{2\epsilon} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I),
+    $$
+
 
 
 
