@@ -253,9 +253,9 @@ Plugging in the gradient $\text{grad}_{\rho}F$ as the vector field $v$ into the 
 
 $$
 \begin{align*}
-\frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot \text{grad}_{\rho}F  ) 
+\frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot \text{grad}_{\rho}F  ) \\
 &= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)
-%& = - \nabla \cdot( \rho \nabla f) + \Delta \rho \tag{3}
+& = - \nabla \cdot( \rho \nabla f) + \Delta \rho 
 \end{align*}
 $$
 
@@ -335,7 +335,7 @@ In fact, the solution of the heat equation cannot be unique without the  initial
 
 
 ![Heat Equation](./generative.assets/Heat_smiley.gif)
-You can check that the solution of the heat equation by plugging in the solution into the heat equation. We can see how the density changes over time under the heat equation in the animation above.
+You can check that the solution of the heat equation by plugging in the solution into the heat equation. We can see how the density changes over time under the heat equation in the animation above. You can see that the heat equation is called the **diffusion** equation as it smooths out the density over time.
 
 We can discretize $X_t = X_0 + \sqrt{2t} \xi$ as an iterative process:
 
