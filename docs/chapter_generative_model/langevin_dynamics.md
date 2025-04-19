@@ -254,7 +254,7 @@ Plugging in the gradient $\text{grad}_{\rho}F$ as the vector field $v$ into the 
 $$
 \begin{align*}
 \frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot \text{grad}_{\rho}F  ) \\
-&= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)
+&= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)\\
 & = - \nabla \cdot( \rho \nabla f) + \Delta \rho 
 \end{align*}
 $$
@@ -298,7 +298,7 @@ $$
 
 This is exactly the gradient descent algorithm.
 
-However, the Fokker-Planck equation in (3) has two terms on the right hand side:  $- \nabla \cdot( \rho \nabla f)$ which gives the gradient descent, and $\Delta \rho$ which we will discuss now.
+However, the Fokker-Planck equation has two terms on the right hand side:  $- \nabla \cdot( \rho \nabla f)$ which gives the gradient descent, and $\Delta \rho$ which we will discuss now.
 
 As the continuity equation considers the first term, we now consider the equation with only the Laplacian term on the right hand side:
 
@@ -362,7 +362,7 @@ Now we have the good intuition on the two terms in the Fokker-Planck equation (3
     $$
     \frac{dX_t}{dt} = - \nabla f(X_t) + \sqrt{2} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I)
     $$
-    
+
     which can be discretized as:
 
     $$
