@@ -254,7 +254,7 @@ Plugging in the gradient $\text{grad}_{\rho}F$ as the vector field $v$ into the 
 $$
 \begin{align*}
 \frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot \text{grad}_{\rho}F  ) 
-%&= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)\\
+&= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)
 %& = - \nabla \cdot( \rho \nabla f) + \Delta \rho \tag{3}
 \end{align*}
 $$
@@ -333,7 +333,11 @@ In fact, the solution of the heat equation cannot be unique without the  initial
     \rho(x,t) = \int \rho_0(y) \frac{1}{(4\pi t)^{d/2}} e^{-\frac{|x-y|^2}{4t}} \, dy.
     $$
 
-You can check that the solution of the heat equation by plugging in the solution into the heat equation. We can discretize $X_t = X_0 + \sqrt{2t} \xi$ as an iterative process:
+
+![Heat Equation](./generative.assets/Heat_smiley.gif)
+You can check that the solution of the heat equation by plugging in the solution into the heat equation. We can see how the density changes over time under the heat equation in the animation above.
+
+We can discretize $X_t = X_0 + \sqrt{2t} \xi$ as an iterative process:
 
 $$
 X_{t+1} = X_t + \sqrt{2\epsilon} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I).
