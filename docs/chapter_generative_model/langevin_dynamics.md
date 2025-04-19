@@ -143,6 +143,7 @@ This equation is true for all dimensions.
 
 !!! note "Continuity Equation for Vector Field"
     Given a density $\rho$ and a velocity field $v$, we suppose each particle $x$ moves along the velocity field $v(x)$. Let $\rho(x,t)$ be the density of $x(t)$. Then $\rho(x,t)$ evolves following the continuity equation:
+
     $$
     \frac{\partial \rho}{\partial t} = - \nabla \cdot (v \rho)
     $$
@@ -157,7 +158,7 @@ Now we are ready to answer the second question: what is the gradient of $F(\rho)
 
 First, we need to specify what do we mean  by the gradient of $F(\rho)$ denoted as $\text{grad}_{\rho}F$. By the continuity equation, we aim to find the right vector field $v$ to minimize $F(\rho)$. Thus $\text{grad}_{\rho}F$ should be a vector field.
 
-Let us first recall the finite-dimensional case. Given a function $f(x)$, how can we ``rediscover'' the concept of gradient? One way is to consider the time derivative of $f(x(t))$ along the trajectory $x(t)$:
+Let us first recall the finite-dimensional case. Given a function $f(x)$, how can we "rediscover" the concept of gradient? One way is to consider the time derivative of $f(x(t))$ along the trajectory $x(t)$:
 
 $$
 \frac{d}{dt} f(x(t)) = \langle \nabla f, \frac{dx}{dt} \rangle
@@ -298,21 +299,26 @@ $$
 This is the famous **heat equation** which you can check that the Gaussian distribution below is the solution:
 
 $$
-\rho(x,t) = \frac{1}{(4\pi t)^{d/2}} e^{-\frac{|x|^2}{4t}}, \text{ i.e.,} x \sim \mathcal{N}(0,2t)
+\rho(x,t) = \frac{1}{(4\pi t)^{d/2}} e^{-\frac{|x|^2}{4t}}, \text{ i.e., } x \sim \mathcal{N}(0,2t)
 $$
 
 In fact, the solution of the heat equation cannot be unique without the  initial condition at time $t=0$, i.e., $\rho(x,0)$. We have the following heat equation solution:
 
 !!! note "Heat Equation Solution"
     The solution of the heat equation
+
     $$
     \frac{\partial \rho}{\partial t} =  \Delta \rho, \quad \rho(x,0) = \rho_0(x)
     $$
+
     is given by the density of adding $X_0 \sim \rho_0$ with Gaussian noise:
+
     $$
     X_t = X_0 + \sqrt{2t} \xi, \quad \xi \sim \mathcal{N}(0,I).
     $$
+
     Namely, the solution $\rho(x,t)$ as the density of $X_t$ is the convolution of the initial density $\rho_0$ with the Gaussian distribution:
+
     $$
     \rho(x,t) = \int \rho_0(y) \frac{1}{(4\pi t)^{d/2}} e^{-\frac{|x-y|^2}{4t}} \, dy.
     $$
@@ -324,10 +330,13 @@ Now we have the good intuition on the two terms in the Fokker-Planck equation (3
 
 !!! note "Langevin Dynamics"
     The Fokker-Planck equation 
+
     $$
     \frac{\partial \rho}{\partial t} =  - \nabla \cdot( \rho \nabla f) + \Delta \rho
     $$
+
     is equivalent to the Langevin dynamics:
+
     $$
     \frac{dX_t}{dt} = - \nabla f(X_t) + \sqrt{2} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I)
     $$
