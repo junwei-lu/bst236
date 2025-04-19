@@ -362,6 +362,7 @@ Now we have the good intuition on the two terms in the Fokker-Planck equation (3
     $$
     \frac{dX_t}{dt} = - \nabla f(X_t) + \sqrt{2} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I)
     $$
+    
     which can be discretized as:
 
     $$
