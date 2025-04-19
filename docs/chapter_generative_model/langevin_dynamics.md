@@ -374,12 +374,13 @@ Now we have the good intuition on the two terms in the Fokker-Planck equation (3
 
 The above theory shows the connection between the sampling and the optimization:
 
-!!! note "Langevin Dynamics"
+!!! note "Metropolis-adjusted Langevin algorithm"
     We can sample the target distribution $p = e^{-f}$ by running the Langevin dynamics:
 
     $$
     X_{t+1} = X_t - \epsilon \nabla f(X_t) + \sqrt{2\epsilon} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I),
     $$
+    The distribution of $X_t$ converges to the target distribution $p$ as $t \to \infty$.
 
 
 
