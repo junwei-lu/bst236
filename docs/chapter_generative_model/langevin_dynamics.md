@@ -69,7 +69,7 @@ $$
 \frac{dx(t)}{dt} = v(x(t))
 $$
 
-
+![vector field](./generative.assets/vec_field.png)
 
 Now we want to consider the infinite-dimensional case. As $\rho$ is a density of $x$, imagine that each $x$ is a particle moving along the vector field $v(x)$, following the differential equation above. We aim to answer the key question: How the density $\rho(x)$ evolves as $\rho(x,t)$ when every of its sample $x(t)$ is moving along the vector field $v(x)$?
 
