@@ -166,13 +166,13 @@ First, we need to specify what do we mean  by the gradient of $F(\rho)$ denoted 
 Let us first recall the finite-dimensional case. Given a function $f(x)$, how can we "rediscover" the concept of gradient? One way is to consider the time derivative of $f(x(t))$ along the trajectory $x(t)$:
 
 $$
-\frac{d}{dt} f(x(t)) = \langle \nabla f, \frac{dx}{dt} \rangle
+\frac{d}{dt} f(x(t)) = \left\langle \nabla f, \frac{dx}{dt} \right\rangle
 $$
 
 This means if a vector $g$ satisfies 
 
 $$
-\langle g, \frac{dx}{dt} \rangle = \frac{d}{dt} f(x(t))
+\left\langle g, \frac{dx}{dt} \right\rangle = \frac{d}{dt} f(x(t))
 $$
 
 then $g$ is the gradient of $f$.
@@ -201,7 +201,8 @@ $$
 \frac{d}{dt} F(\rho) = \int \frac{\delta F}{\delta \rho} \frac{d\rho}{dt} \, dx
 $$
 
-where $\frac{\delta F}{\delta \rho}$ is the functional derivative of $F$ with respect to $\rho$. Plugging in the continuity equation
+where $\frac{\delta F}{\delta \rho}$ is the functional derivative of $F$ with respect to $\rho$. 
+Plugging in the continuity equation
 $\frac{d\rho}{dt} = - \nabla \cdot (v \rho)
 $ to the above equation, we get:
 
@@ -228,7 +229,7 @@ $$
 \text{grad}_{\rho}F = \nabla \frac{\delta F}{\delta \rho}
 $$
 
-We are going to practice our infinite-dimensional calculus now. Let us start with the simplest case of linear functional, i.e., $L(\rho) = \int f(x) \rho(x) \, dx$. Then 
+We are going to practice our infinite-dimensional calculus now. To compute $\frac{\delta F}{\delta \rho}$, you can pretend that $\rho$ is a "variable" and $F$ is a "function" of $\rho$. When taking the functional derivative, just taking the derivative of the integrand with respect to $\rho$. Let us start with the simplest case of linear functional, i.e., $L(\rho) = \int f(x) \rho(x) \, dx$. Then 
 
 $$
 \frac{\delta L }{\delta \rho} = f \text{ and }\text{grad}_{\rho} L = \nabla \frac{\delta L}{\delta \rho} = \nabla f
@@ -244,7 +245,7 @@ Therefore, the gradient of our functional loss
 $F(\rho) = \int f(x) \rho(x) \, dx - H(\rho)$ is given by:
 
 $$
-\text{grad}_{\rho}F = \nabla \frac{\delta F}{\delta \rho} = \nabla f + \frac{\nabla \rho}{\rho}
+\text{grad}_{\rho}F = \nabla \frac{\delta F}{\delta \rho} = \nabla f - \frac{\nabla \rho}{\rho}
 $$
 
 Thus we have answered the second question on the analog of the gradient  for the infinite-dimensional  loss function $F(\rho)$.
@@ -381,6 +382,7 @@ The above theory shows the connection between the sampling and the optimization:
     $$
     X_{t+1} = X_t - \epsilon \nabla f(X_t) + \sqrt{2\epsilon} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I),
     $$
+
     The distribution of $X_t$ converges to the target distribution $p$ as $t \to \infty$.
 
 
