@@ -2,3 +2,4 @@
 .DS_Store
 Makefile
 .gitattributes
+docs/chapter_generative_model/generative.assets/generative_cover.gif
