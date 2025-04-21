@@ -1,6 +1,6 @@
 # Langevin Dynamics
 
-Our goal is to sample from a target distribution $p(x) = e^{-f(x)}$. When $V$ is complicated, we cannot sample from $p$ directly.
+Our goal is to sample from a target distribution $p(x) = e^{-f(x)}$. When $f$ is complicated, we cannot sample from $p$ directly.
 We are going to heuristically show you that sampling from $p$ is essentially an optimization problem. There will be many gaps in the following derivation. We suggest the reader to read the [paper](https://arxiv.org/pdf/1802.08089) for more details.
 
 ## From Sampling to Optimization
@@ -72,6 +72,8 @@ $$
 ![vector field](./generative.assets/vec_field.png)
 
 Now we want to consider the infinite-dimensional case. As $\rho$ is a density of $x$, imagine that each $x$ is a particle moving along the vector field $v(x)$, following the differential equation above. We aim to answer the key question: How the density $\rho(x)$ evolves as $\rho(x,t)$ when every of its sample $x(t)$ is moving along the vector field $v(x)$?
+
+![vector field](./generative.assets/density_evolve.gif)
 
 ## Continuity Equation
 
@@ -203,8 +205,7 @@ $$
 
 where $\frac{\delta F}{\delta \rho}$ is the functional derivative of $F$ with respect to $\rho$. 
 Plugging in the continuity equation
-$\frac{d\rho}{dt} = - \nabla \cdot (v \rho)
-$ to the above equation, we get:
+$\frac{d\rho}{dt} = - \nabla \cdot (v \rho)$ to the above equation, we get:
 
 $$
 \begin{align*}
@@ -335,7 +336,7 @@ In fact, the solution of the heat equation cannot be unique without the  initial
     $$
 
 
-![Heat Equation](./generative.assets/Heat_smiley.gif)
+![Heat Equation](./generative.assets/Heat_smiley-crop.gif)
 You can check that the solution of the heat equation by plugging in the solution into the heat equation. We can see how the density changes over time under the heat equation in the animation above. You can see that the heat equation is called the **diffusion** equation as it smooths out the density over time.
 
 We can discretize $X_t = X_0 + \sqrt{2t} \xi$ as an iterative process:
