@@ -396,7 +396,7 @@ The above theory shows the connection between the sampling and the optimization:
 
 You can see the convergence of the Langevin dynamics to the target distribution in the animation below:
 
-![Langevin Dynamics](./generative.assets/langevin_1.gif)
+![Langevin Dynamics](./generative.assets/langevin.gif)
 
 Selecting an appropriate step size $\epsilon$ is crucial and presents similar challenges to determining the optimal learning rate in gradient descent. When $\epsilon$ is excessively large, we introduce too much noise per iteration, causing the chain to rapidly converge to a stationary distribution that significantly deviates from our target distribution. Conversely, if $\epsilon$ is too small, the samples will require an impractically long time to evolve from their starting positions, making the sampling process inefficient.
 
