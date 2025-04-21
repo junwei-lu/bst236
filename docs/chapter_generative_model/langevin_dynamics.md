@@ -1,10 +1,17 @@
 # Langevin Dynamics
 
-Our goal is to sample from a target distribution $p(x) = e^{-f(x)}$. When $f$ is complicated, we cannot sample from $p$ directly.
+Our goal is to sample from a target distribution 
+
+$$
+p(x) \propto e^{-f(x)} \leftrightarrow  \log p(x) = -f(x) + \text{const}
+$$
+
+When $f$ is complicated, we cannot sample from $p$ directly. It might even be intractable to compute the partition function $Z = \int e^{-f(x)} \, dx$.
 We are going to heuristically show you that sampling from $p$ is essentially an optimization problem. There will be many gaps in the following derivation. We suggest the reader to read the [paper](https://arxiv.org/pdf/1802.08089) for more details.
 
 ## From Sampling to Optimization
 
+For simplicity, we now consider $p = e^{-f(x)}$. 
 In order to sample from $p$, our idea is to start with an optimization problem with the minimizer as $p$. One natural choice of the optimization problem is:
 
 $$
@@ -377,19 +384,27 @@ Now we have the good intuition on the two terms in the Fokker-Planck equation (3
 
 The above theory shows the connection between the sampling and the optimization:
 
-!!! note "Metropolis-adjusted Langevin algorithm"
+!!! note "Langevin Dynamics Sampling"
     We can sample the target distribution $p = e^{-f}$ by running the Langevin dynamics:
 
     $$
     X_{t+1} = X_t - \epsilon \nabla f(X_t) + \sqrt{2\epsilon} \xi_t, \quad \xi_t \sim \mathcal{N}(0,I),
     $$
 
-    The distribution of $X_t$ converges to the target distribution $p$ as $t \to \infty$.
+    The distribution of $X_t$ converges to the target distribution $p$ as $\epsilon \to 0$ and $t \to \infty$.
 
 
 You can see the convergence of the Langevin dynamics to the target distribution in the animation below:
 
 ![Langevin Dynamics](./generative.assets/langevin_1.gif)
+
+Selecting an appropriate step size $\epsilon$ is crucial and presents similar challenges to determining the optimal learning rate in gradient descent. When $\epsilon$ is excessively large, we introduce too much noise per iteration, causing the chain to rapidly converge to a stationary distribution that significantly deviates from our target distribution. Conversely, if $\epsilon$ is too small, the samples will require an impractically long time to evolve from their starting positions, making the sampling process inefficient.
+
+![bad sampling](./generative.assets/bad_langevin.png)
+
+
+One way to have a robust way to sample using Langevin dynamics insensitive to the choice of step size $\epsilon$ is to use the **Metropolis-adjusted Langevin algorithm** (MALA). We will not go into the details of MALA here. You can refer to the [paper](https://projecteuclid.org/journals/bernoulli/volume-2/issue-4/Exponential-convergence-of-Langevin-distributions-and-their-discrete-approximations/bj/1178291835.full) for more details.
+
 
 
 
