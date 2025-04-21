@@ -387,7 +387,9 @@ The above theory shows the connection between the sampling and the optimization:
     The distribution of $X_t$ converges to the target distribution $p$ as $t \to \infty$.
 
 
+You can see the convergence of the Langevin dynamics to the target distribution in the animation below:
 
+![Langevin Dynamics](./generative.assets/langevin_1.gif)
 
 
 
