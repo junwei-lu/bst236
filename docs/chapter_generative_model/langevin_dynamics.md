@@ -357,7 +357,25 @@ $$
 
 
 
-Now we have the good intuition on the two terms in the Fokker-Planck equation (3). The first term $- \nabla \cdot( \rho \nabla f)$ gives the gradient descent, and the second term $\Delta \rho$ add the Gaussian noise. Therefore, we can sample from the target distribution $p$ by translating the Fokker-Planck equation to the particle movement:
+Now we have the good intuition on the two terms in the Fokker-Planck equation (3). The first term $- \nabla \cdot( \rho \nabla f)$ gives the gradient descent, and the second term $\Delta \rho$ add the Gaussian noise. 
+
+
+Let's summarize the relationship between the Fokker-Planck equation and Langevin dynamics with the following diagram:
+
+$$
+\begin{array}{ccccl}
+\text{Density Evolution} & \xrightarrow{\text{Fokker-Planck}} & \frac{\partial \rho}{\partial t} =& -\nabla \cdot(\rho \nabla f) & + \Delta \rho \\
+\updownarrow \text{vector field}& &  & \updownarrow \text{drift}& \updownarrow \text{diffusion}\\
+\text{Particle Movement} & \xrightarrow{\text{Langevin}} & dX_t =& -\nabla f(X_t) dt & + \sqrt{2} dW_t
+\end{array}
+$$
+
+The top row represents how the probability density $\rho$ evolves over time according to the Fokker-Planck equation, while the bottom row shows how individual particles move according to Langevin dynamics. These two perspectives are equivalent: the Fokker-Planck equation describes the collective behavior of particles following Langevin dynamics.
+
+This duality gives us a powerful insight: we can sample from a complex distribution by simulating the movement of particles, rather than directly manipulating the density function.
+
+
+Therefore, we can sample from the target distribution $p$ by translating the Fokker-Planck equation to the particle movement:
 
 !!! note "Langevin Dynamics"
     The Fokker-Planck equation 
