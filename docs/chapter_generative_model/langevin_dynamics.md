@@ -246,14 +246,14 @@ $$
 Now let us try a more complicated case of  entropy functional, $H(\rho) = - \int \rho \log \rho \, dx$. 
 
 $$
-\frac{\delta H }{\delta \rho} = \log \rho + 1 \text{ and }\text{grad}_{\rho} H = \nabla \frac{\delta H}{\delta \rho} = \nabla (\log \rho + 1) = \frac{\nabla \rho}{\rho}
+\frac{\delta H }{\delta \rho} = -\log \rho - 1 \text{ and }\text{grad}_{\rho} H = \nabla \frac{\delta H}{\delta \rho} = \nabla (-\log \rho - 1) = - \frac{\nabla \rho}{\rho}
 $$
 
 Therefore, the gradient of our functional loss
 $F(\rho) = \int f(x) \rho(x) \, dx - H(\rho)$ is given by:
 
 $$
-\text{grad}_{\rho}F = \nabla \frac{\delta F}{\delta \rho} = \nabla f - \frac{\nabla \rho}{\rho}
+\text{grad}_{\rho}F = \nabla \frac{\delta F}{\delta \rho} = \nabla f + \frac{\nabla \rho}{\rho}
 $$
 
 Thus we have answered the second question on the analog of the gradient  for the infinite-dimensional  loss function $F(\rho)$.
@@ -262,8 +262,8 @@ Plugging in the gradient $\text{grad}_{\rho}F$ as the vector field $v$ into the 
 
 $$
 \begin{align*}
-\frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot \text{grad}_{\rho}F  ) \\
-&= - \nabla \cdot \left( \rho \cdot \left( \nabla f + \frac{\nabla \rho}{\rho} \right) \right)\\
+\frac{\partial \rho}{\partial t} &= - \nabla \cdot (\rho \cdot -\text{grad}_{\rho}F  ) \\
+&= - \nabla \cdot \left( \rho \cdot \left( \nabla f - \frac{\nabla \rho}{\rho} \right) \right)\\
 & = - \nabla \cdot( \rho \nabla f) + \Delta \rho 
 \end{align*}
 $$
