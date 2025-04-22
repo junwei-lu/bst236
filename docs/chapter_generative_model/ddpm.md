@@ -115,6 +115,7 @@ x_{t-1} = \frac{1}{\alpha_t}(x_t - \beta_t \varepsilon_t)
 $$
 
 motivates us to design the reverse model as:
+
 $$
 \mu(x_t) = \frac{1}{\alpha_t}(x_t - \beta_t \varepsilon_\theta(x_t, t))
 $$
