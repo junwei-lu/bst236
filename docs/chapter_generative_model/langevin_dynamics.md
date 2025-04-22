@@ -258,7 +258,7 @@ $$
 
 Thus we have answered the second question on the analog of the gradient  for the infinite-dimensional  loss function $F(\rho)$.
 
-Plugging in the gradient $\text{grad}_{\rho}F$ as the vector field $v$ into the continuity equation, we get the **Fokker-Planck equation**:
+Plugging in the negative gradient $-\text{grad}_{\rho}F$ as the vector field $v$ into the continuity equation, we get the **Fokker-Planck equation**:
 
 $$
 \begin{align*}
