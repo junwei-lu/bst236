@@ -370,6 +370,8 @@ $$
 \end{array}
 $$
 
+Here $dW_t$ is the Wiener process which you can think it as $\epsilon \xi_t$ with $\epsilon \to 0$.
+
 The top row represents how the probability density $\rho$ evolves over time according to the Fokker-Planck equation, while the bottom row shows how individual particles move according to Langevin dynamics. These two perspectives are equivalent: the Fokker-Planck equation describes the collective behavior of particles following Langevin dynamics.
 
 This duality gives us a powerful insight: we can sample from a complex distribution by simulating the movement of particles, rather than directly manipulating the density function.

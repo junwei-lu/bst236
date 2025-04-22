@@ -235,6 +235,7 @@ nav:
   - Chapter 12. Generative Models:
     - chapter_generative_model/index.md
     - Langevin Dynamics: chapter_generative_model/langevin_dynamics.md
+    - Diffusion Models: chapter_generative_model/ddpm.md
   - Appendix:
     - chapter_appendix/index.md
     - Installation: chapter_appendix/installation.md

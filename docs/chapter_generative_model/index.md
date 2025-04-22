@@ -5,3 +5,4 @@ This chapter introduces the concept of generative models. We will discuss the ba
 Lectures:
 
 - [Langevin Dynamics](./langevin_dynamics.md)
+- [Diffusion Models](./ddpm.md)
