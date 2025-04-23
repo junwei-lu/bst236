@@ -209,10 +209,18 @@ $$
 We can see that we need to train the noise predictor $\varepsilon_\theta$ with the time step $t$ as input. In the original [DDPM paper](https://arxiv.org/abs/2006.11239), the time step $t$ is specified by adding the Transformer [sinusoidal position embedding](../chapter_language_model/wordvec.md#position-embeddings)
 into each [residual block](../chapter_neural_networks/resnet.md#skip-connections). The paper also suggests to choose $T=1000$ and $\alpha_t = \sqrt{1 - 0.02t/T}$ to choose smaller steps when closer to the original data distribution.
 
+### Sampling
+
 Once $\varepsilon_\theta$ is trained, DDPM generates samples by starting from $x_T \sim \mathcal{N}(0, I)$ and running:
 
 $$
 x_{t-1} = \frac{1}{\alpha_t}(x_t - \beta_t \varepsilon_\theta(x_t, t))
+$$
+
+You can do the random sampling as follows:
+
+$$
+x_{t-1} = \frac{1}{\alpha_t}(x_t - \beta_t \varepsilon_\theta(x_t, t)) + \beta_t z, z \sim \mathcal{N}(0, I).
 $$
 
 ![ddpm_sample](generative.assets/reverse.gif)
