@@ -21,7 +21,7 @@ To overcome these two problems, Flow matching's idea is to **directly interpolat
 ![DDPM](./generative.assets/perturb_vp.gif)
 ![Flow Matching](./generative.assets/fm_diff.png)
 
-So how do we interpolate between $p_1(x)$ and $p_0(x)$? From the [previous lecture](langevin_dynamics.md#vector-field-of-gradient-flow), we know that a density $p_t(x)$ can be evolved following a vector field $v_t(x)$:
+So how do we interpolate between $p_1(x)$ and $p_0(x)$? From the [previous lecture](langevin_dynamics.md#vector-field-of-gradient-flow), we know that a density $p_t(x)$ can be evolved following a vector field $u_t(x)$:
 
 $$
 \frac{\partial p_t}{\partial t} = - \nabla \cdot (p_t u_t)
@@ -96,7 +96,18 @@ $$
 \mathcal{L}_{\text{CFM}}(\theta) = \mathbb{E}_{t \sim U[0,1], X_t\sim p_t(x), X_1 \sim p_1(x)} \left\| u^{\theta}_t(X_t) - (X_1 - X_0) \right\|^2 
 $$
 
+| Flow Matching | DDPM |
+| --- | --- |
+| ![Flow Matching](./generative.assets/flow_moons_animation.gif) | ![DDPM](./generative.assets/ddpm_moons_animation.gif) |
+
+The above example compares the flow matching and the DDPM on the moons dataset. You can see that the flow matching is more stable and efficient.
+
+### General Case
+
 The linear interpolation of course is the simplest case. Summarizing the above, we have the following general strategy: we first construct an interpolation between $p_0(x)$ and a singleton point $x_1$ and then we find the corresponding conditional vector field $u_t(x|x_1)$. 
+
+
+
 
 Following this, we have the general form of the density $p_t$ interpolated between $N(0, I)$ and $x_1$. Suppose we want conditional vector field which generates a path of Gaussians, i.e.,
 
