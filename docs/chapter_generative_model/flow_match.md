@@ -96,11 +96,64 @@ $$
 \mathcal{L}_{\text{CFM}}(\theta) = \mathbb{E}_{t \sim U[0,1], X_t\sim p_t(x), X_1 \sim p_1(x)} \left\| u^{\theta}_t(X_t) - (X_1 - X_0) \right\|^2 
 $$
 
+### Code Implementation
+
+We can implement the CFM in PyTorch by defining a class with both the noise predictor and sampling.
+
+```python
+import torch 
+from torch import nn, Tensor
+
+class Flow(nn.Module):
+    def __init__(self, dim: int = 2, h: int = 64):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(dim + 1, h), nn.ELU(),
+            nn.Linear(h, h), nn.ELU(),
+            nn.Linear(h, h), nn.ELU(),
+            nn.Linear(h, dim))
+    
+    def forward(self, t: Tensor, x_t: Tensor) -> Tensor:
+        return self.net(torch.cat((t, x_t), -1))
+    
+    def step(self, x_t: Tensor, t_start: Tensor, t_end: Tensor) -> Tensor:
+        t_start = t_start.view(1, 1).expand(x_t.shape[0], 1)
+        
+        return x_t + (t_end - t_start) * self(t=t_start, x_t= x_t)
+```
+
+The we can train the model by minimizing the CFM loss.
+
+```python
+flow = Flow()
+
+optimizer = torch.optim.Adam(flow.parameters(), 1e-2)
+loss_fn = nn.MSELoss()
+
+for _ in range(10000):
+    x_1 = Tensor(make_moons(256, noise=0.05)[0])
+    x_0 = torch.randn_like(x_1)
+    t = torch.rand(len(x_1), 1)
+    
+    x_t = (1 - t) * x_0 + t * x_1
+    dx_t = x_1 - x_0
+    
+    optimizer.zero_grad()
+    loss_fn(flow(t=t, x_t=x_t), dx_t).backward()
+    optimizer.step()
+```
+
+
+
+The animation below compares the flow matching and the DDPM on the moons dataset. You can see that the flow matching is more stable and efficient.
+
+
+
 | Flow Matching | DDPM |
 | --- | --- |
 | ![Flow Matching](./generative.assets/flow_moons_animation.gif) | ![DDPM](./generative.assets/ddpm_moons_animation.gif) |
 
-The above example compares the flow matching and the DDPM on the moons dataset. You can see that the flow matching is more stable and efficient.
+
 
 ### General Case
 

@@ -227,6 +227,85 @@ $$
 
 ![ddpm_sample](generative.assets/car.gif)
 
+### Code Implementation
+
+We can implement the DDPM model in PyTorch by defining a class `DDPM` with both the noise predictor and sampling.
+
+```python
+import torch 
+from torch import nn, Tensor
+
+class DDPM(nn.Module):
+    def __init__(self, dim: int = 2, h: int = 64, n_steps: int = 100):
+        super().__init__()
+        self.n_steps = n_steps
+        # Define beta schedule from small to large values
+        self.betas = torch.linspace(1e-4, 0.02, n_steps)
+        # Calculate alphas: α_t = 1 - β_t
+        self.alphas = 1.0 - self.betas
+        # Calculate cumulative product of alphas: ᾱ_t = ∏_{i=1}^t α_i
+        self.alpha_bars = torch.cumprod(self.alphas, dim=0)
+        
+        # Simple MLP network for noise prediction ε_θ
+        self.net = nn.Sequential(
+            nn.Linear(dim + 1, h), nn.ELU(),
+            nn.Linear(h, h), nn.ELU(),
+            nn.Linear(h, h), nn.ELU(),
+            nn.Linear(h, dim)
+        )
+    
+    def forward(self, t: Tensor, x_t: Tensor) -> Tensor:
+        # Reshape time step and concatenate with noisy input
+        # This implements ε_θ(x_t, t)
+        t = t.view(-1, 1)
+        return self.net(torch.cat((t, x_t), dim=-1))
+    
+    def sample_step(self, x_t: Tensor, t: int) -> Tensor:
+        # Sample Gaussian noise for the stochastic part of sampling
+        noise = torch.randn_like(x_t)
+        # Get α_t and ᾱ_t for current timestep
+        alpha_t = self.alphas[t]
+        alpha_bar_t = self.alpha_bars[t]
+        # Calculate coefficient for the noise prediction
+        coeff = (1 - alpha_t) / torch.sqrt(1 - alpha_bar_t)
+        # Normalize time step to [0,1] range for the model
+        t_tensor = torch.full((x_t.shape[0],), t / self.n_steps, device=x_t.device)
+        # Predict noise using the model: ε_θ(x_t, t)
+        predicted_noise = self(t_tensor, x_t)
+        # Implement the sampling formula: x_{t-1} = (x_t - coeff * ε_θ(x_t, t)) / sqrt(α_t) + noise term
+        x_t = (x_t - coeff * predicted_noise) / torch.sqrt(alpha_t)
+        # Add noise term if not the final step, implementing the stochastic sampling
+        return x_t + torch.sqrt(1 - alpha_t) * noise if t > 0 else x_t
+```
+
+We can train the DDPM model by compute the loss in (3).
+
+```python
+from sklearn.datasets import make_moons
+
+ddpm = DDPM()
+optimizer = torch.optim.Adam(ddpm.parameters(), lr=1e-3)
+loss_fn = nn.MSELoss()
+
+for _ in range(10000):
+    x_0 = Tensor(make_moons(256, noise=0.05)[0])
+    t = torch.randint(0, ddpm.n_steps, (x_0.shape[0],))
+    noise = torch.randn_like(x_0)
+    
+    alpha_bar_t = ddpm.alpha_bars[t].view(-1, 1)
+    x_t = torch.sqrt(alpha_bar_t) * x_0 + torch.sqrt(1 - alpha_bar_t) * noise
+    
+    optimizer.zero_grad()
+    t_normalized = t / ddpm.n_steps
+    predicted_noise = ddpm(t_normalized, x_t)
+    loss = loss_fn(predicted_noise, noise)
+    loss.backward()
+    optimizer.step()
+```
+
+
+
+
 ## Contextual DDPM
 
 We can generalize the DDPM model to generate the conditional distribution $p(x |c)$ where $c$ could be even be a text prompt.
