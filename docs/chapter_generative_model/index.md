@@ -8,3 +8,4 @@ Lectures:
 
 - [Langevin Dynamics](./langevin_dynamics.md)
 - [Diffusion Models](./ddpm.md)
+- [Flow Matching](./flow_match.md)
