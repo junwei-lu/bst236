@@ -17,8 +17,6 @@ However, there are two problems for the DDPM:
 
 To overcome these two problems, Flow matching's idea is to **directly interpolate between the data density $p_1(x)$ and the Gaussian density (or other simple density) $p_0(x)$**.
 
-![Flow Matching](./generative.assets/flow_vec.png)
-![DDPM](./generative.assets/perturb_vp.gif)
 ![Flow Matching](./generative.assets/fm_diff.png)
 
 So how do we interpolate between $p_1(x)$ and $p_0(x)$? From the [previous lecture](langevin_dynamics.md#vector-field-of-gradient-flow), we know that a density $p_t(x)$ can be evolved following a vector field $u_t(x)$:
