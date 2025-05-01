@@ -335,6 +335,7 @@ where $\varepsilon_\theta(x_t, t)$ is an unconditional noise predictor. Usually,
 The training process can be summarized as follows.
 
 **Input**: $p_{uncond}$: probability of unconditional training
+
 **Repeat**:
 
   1. Sample data with conditioning from the dataset: $(x, c) \sim p(x, c)$
