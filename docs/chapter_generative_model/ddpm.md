@@ -334,15 +334,17 @@ where $\varepsilon_\theta(x_t, t)$ is an unconditional noise predictor. Usually,
 
 The training process can be summarized as follows.
 
-- **Input**: $p_{uncond}$: probability of unconditional training
-- **Repeat**:
+**Input**: $p_{uncond}$: probability of unconditional training
+**Repeat**:
+
   1. Sample data with conditioning from the dataset: $(x, c) \sim p(x, c)$
   2. Randomly discard conditioning to train unconditionally: $c \leftarrow \emptyset$ with probability $p_{uncond}$
   3. Sample log SNR value: $\lambda \sim p(\lambda)$
   4. Sample Gaussian noise: $\epsilon \sim \mathcal{N}(0, I)$
   5. Corrupt data to the sampled log SNR value: $z_\lambda = \alpha_\lambda x + \sigma_\lambda \epsilon$
   6. Take gradient step on $\nabla_\theta \|\epsilon_\theta(z_\lambda, c) - \epsilon\|^2$
-- **Until** converged
+
+**Until** converged
 
 
 We will then use $\tilde{\varepsilon}_\theta(x_t, t, c)$ to sample from the model.
