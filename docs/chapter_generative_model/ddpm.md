@@ -322,8 +322,31 @@ More technologies like the [CLIP](https://arxiv.org/abs/2103.00020) can be used 
 
 
 
+### Classifier-Free Guidance
+
+For conditional probabiltiy generation, there is a trade-off between the fidelity and mode-coverage (diversity) of the generated images. In order to tune the trade-off, we can use the **classifier-free guidance** to sample using a linear combination of conditional and unconditional samples:
+
+$$
+\tilde{\varepsilon}_\theta(x_t, t, c) = (1+w) \varepsilon_\theta(x_t, t, c) - w \varepsilon_\theta(x_t, t),
+$$
+
+where $\varepsilon_\theta(x_t, t)$ is an unconditional noise predictor. Usually, we will use the same network for both conditional and unconditional cases. For unconditional case, we will use a null token $\varnothing$ as the context $c$ and fit $\varepsilon_\theta(x_t, t) = \varepsilon_\theta(x_t, t, \varnothing)$.
+
+The training process can be summarized as follows.
+
+- **Input**: $p_{uncond}$: probability of unconditional training
+- **Repeat**:
+  1. Sample data with conditioning from the dataset: $(x, c) \sim p(x, c)$
+  2. Randomly discard conditioning to train unconditionally: $c \leftarrow \emptyset$ with probability $p_{uncond}$
+  3. Sample log SNR value: $\lambda \sim p(\lambda)$
+  4. Sample Gaussian noise: $\epsilon \sim \mathcal{N}(0, I)$
+  5. Corrupt data to the sampled log SNR value: $z_\lambda = \alpha_\lambda x + \sigma_\lambda \epsilon$
+  6. Take gradient step on $\nabla_\theta \|\epsilon_\theta(z_\lambda, c) - \epsilon\|^2$
+- **Until** converged
 
 
+We will then use $\tilde{\varepsilon}_\theta(x_t, t, c)$ to sample from the model.
 
+When $w$ increases from 0 to $\infty$, the generated images will become less fidelity and more diversity.
 
 
