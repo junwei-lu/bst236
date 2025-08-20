@@ -5,20 +5,21 @@
 - [OpenAI](https://chatgpt.com/)
     - GPT o3: Chain of thought for advanced reasoning
     - GPT 4o: General purpose use, can search the web, can add context to the conversation.
+    - GPT 5: Latest model with thinking mode.
 - [Claude](https://www.anthropic.com/): excels in coding, has a smaller ecosystem with fewer third-party integrations and plugins.
-- [Gemini](https://gemini.google.com/): Longer context.
+- [Gemini](https://gemini.google.com/): Longer context, thinking mode.
 - [LLaMA](https://www.llama.com/): Open source LLM developed by Meta.
 - [DeepSeek](https://www.deepseek.com/): The recent DeepSeek R1 + Search is comparable to GPT o1.
-- [Grok](https://grok.com/): xAI's LLM with thinking mode as well.
+- [Grok](https://grok.com/): xAI's LLM with thinking mode as well, can search the internet.
 
 The table below may be out-of-date. Please check the latest models from the official websites.
 
 | **Need**                         | **Recommended Models**                        | **Key Features**                                                                 |
 |-----------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------|
-| High-Quality, Nuanced Output      | o3, DeepSeek R1, Claude 3.7 Sonnet, Grok | Top-tier quality, well-structured responses, ideal for professional applications |
-| Speed-Sensitive Applications      | Gemini 1.5 Flash       | Fastest output speeds, minimal delay, great for real-time tasks                  |
-| Cost-Conscious Deployments        | Mistral 3B, Llama 3.2 1B                      | Highly affordable per million tokens, cost-effective for large-scale use         |
-| Extensive Context Processing      | Gemini 1.5 Pro                  | 2 million token context window, supports deep contextual analysis                |
+| High-Quality, Nuanced Output      | GPT 5, Gemini 2.5 Pro, DeepSeek R1, Claude 4 Sonnet, Grok 4| Top-tier quality, well-structured responses, ideal for professional applications |
+| Speed-Sensitive Applications      | Gemini 2.5 Flash       | Fastest output speeds, minimal delay, great for real-time tasks                  |
+| Cost-Conscious Deployments        | Mistral 3B, Llama 4                      | Highly affordable per million tokens, cost-effective for large-scale use         |
+| Extensive Context Processing      | Gemini 2.5 Pro                  | 2 million token context window, supports deep contextual analysis                |
 | Low-Latency, Fast Response        | Mistral NeMo                      | Minimal response time, excellent for interactive, real-time applications         |
 
 Explore and choose the best language model for your tasks, e.g., creative writing, coding, math, etc.
@@ -37,6 +38,14 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 - [Devin AI](https://devin.ai/): Web based, Operates autonomously, capable of executing entire development tasks without human intervention, effectively acting as an independent software engineer rather than a coding assistant. Operates within a secure, sandboxed environment equipped with common developer tools. $500/month.
 - [Claude](https://www.anthropic.com/): Web based, provides implementation of code after code generation.
 - [Cline](https://github.com/cline/cline): Open sourced tool to code as IDE extension.
+
+### Terminal Coding
+
+There are more agentic coding tools which can run commands in terminal. You can design a todo list and it will generate pipelines of commands using tools to achieve your goals. Compared to the above IDE-based copilot tools, the terminal based coding tools will be more automated and efficient.
+
+- [Claude Code](https://www.anthropic.com/claude-code): One of the best terminal coding tools. Cost $200 per month. You can define ToDo list and use agents for your tasks.
+- [Gemini Code](https://github.com/google-gemini/gemini-cli): Similar to Claude Code, but with free tier: 60 requests/min and 1,000 requests/day with personal Google account.
+- [Qwen Code](https://github.com/QwenLM/qwen-code): Also has free tier using Qwen 2.5 7B.
 
 ## Search tools
 
