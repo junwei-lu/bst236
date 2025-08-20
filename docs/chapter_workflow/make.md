@@ -27,19 +27,24 @@ target: prerequisites
 
 Example:
 ```makefile
-paper.pdf: paper.tex references.bib
+latex: paper.tex references.bib
     pdflatex paper.tex
     bibtex paper
     pdflatex paper.tex
     pdflatex paper.tex
 ```
 
-### Key Concepts
+### Run Makefile commands
 
-1. **Targets**: Files to be created
-2. **Prerequisites**: Files needed to create the target
-3. **Recipes**: Commands to create the target
-4. **Phony Targets**: Targets that don't create files
+Put your `Makefile` in your project root directory. Then you can run the following commands to run the Makefile:
+```bash
+make target
+```
+This will run the target in the Makefile. For example, if your `Makefile` has the `latex` target as the previous example, you can run the following command to compile the LaTeX file:
+```bash
+make latex
+```
+
 
 ## Common Workflows
 

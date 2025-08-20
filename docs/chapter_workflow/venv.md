@@ -19,6 +19,9 @@ Virtual environments solve several critical problems:
 
 ## Virtual Environment Tools
 
+
+We will introduce two types of virtual environments tools for python: the built-in method and the modern tool [`uv`](https://docs.astral.sh/uv/). We first introduce the built-in method to show the concepts. However, we recommend you to use modern `uv` as it is much faster and easier to use. There are other tools for python virtual environment management, such as `conda`, `pyenv`, `pipenv`, `poetry`, etc. You can explore them on your own.
+
 ### venv (Built-in)
 Python's built-in solution, simple and lightweight:
 ```bash
@@ -35,7 +38,7 @@ myenv\Scripts\activate
 deactivate
 ```
 
-There are other tools for python virtual environment management, such as `conda`, `pyenv`, `pipenv`, `poetry`, `uv`, etc. You can choose one of them to manage your dependencies. Here we will focus on `venv` and `requirements.txt`.
+
 
 ## Managing Dependencies
 
@@ -53,62 +56,78 @@ pip install -r requirements.txt
 ```
 
 
-## Recommended Workflow
+## Modern Virtual Environment Tool: uv
 
-1. **Project Setup**:
+We will introduce the modern tool `uv` to manage your virtual environments. It is a modern tool that is much faster and easier to use than the built-in method. We recommend you use this tool for your real implementation of python virtual environments.
+
+### Installation
+
+You can install `uv` using the following command:
 ```bash
-# Create virtual environment
-python -m venv venv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-2. **Development Workflow**:
+### Workflow for uv
+
+uv manages project dependencies and environments, with support for lockfiles, workspaces, and more, similar to the built-in method introduced above.
+
+1. **Initialize a project**: Initialize a virtual environment at your project directory.
 ```bash
-# 1. Activate environment
-source venv/bin/activate
+uv init --python 3.10
+```
+Here you can specify the python version to use for the project.
 
-# 2. Install/update dependencies
-pip install package_name
-pip freeze > requirements.txt
+Notice that `uv init` will create a `pyproject.toml` file in the current directory. This file is used to manage the project dependencies. 
 
-# 3. Code and test
 
-# 4. Deactivate when done
-deactivate
+
+2. **Add a package**: Add the package, e.g., `numpy`, to the project.
+
+```bash
+uv add numpy
 ```
 
-3. **Collaboration Workflow**:
+It is claimed that uv can install packages much faster than the built-in methods so you can use it for your real implementation. Another advantage of uv is that it will not add all dependencies to `requirements.txt` when you run `pip freeze`. It will only add the minimum dependencies in `pyproject.toml` that are actually used in the project.
+
+
+
+
+
+3. **Activate the virtual environment**: 
+
+To run a python script, e.g., `hello.py`, by uv, you do not need to activate the virtual environment. You can just run the following command:
 ```bash
-# 1. Clone repository
-git clone project_url
-
-# 2. Create environment
-make env
-
-# 3. Activate environment
-source venv/bin/activate
-
-# 4. Work on project
-
-# 5. Update dependencies if needed
-make requirements
+uv run hello.py
 ```
 
-4. **Deployment Workflow**:
+The command `uv run` will automatically activate the virtual environment and run the command in the virtual environment.
+
+Of course, you can still activate the virtual environment by the standard built-in methods:
 ```bash
-# 1. Create fresh environment
-python -m venv prod_env
-
-# 2. Install only production dependencies
-pip install -r requirements.txt --no-dev
-
-# 3. Run tests
-pytest
-
-# 4. Deploy
+source .venv/bin/activate
+python hello.py
 ```
+
+4. **Collaboration Workflow**:
+
+You can simply share the `pyproject.toml` file with your collaborators. They can then use the following command to create the virtual environment:
+```bash
+uv sync
+```
+
+
+
+
+
+
+
+
+
 
 
 ## Resources
 
+Please check the following resources for more details:
+
 - [Python venv documentation](https://docs.python.org/3/library/venv.html)
-- [pip-tools documentation](https://pip-tools.readthedocs.io/)
+- [uv tutorial](https://docs.astral.sh/uv/concepts/projects/)
