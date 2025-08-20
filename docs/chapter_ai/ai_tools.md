@@ -51,6 +51,7 @@ There are more agentic coding tools which can run commands in terminal. You can 
 
 - [Perplexity](https://www.perplexity.ai/): delivering real-time, well-referenced information.
 - [ChatGPT Search](https://chatgpt.com/?hints=search): Search within the ChatGPT interface.
+- Deep research: many language models can the deep research tools and they are great for literature review or idea brainstorming. For GPT models, there is [Deep Research](https://openai.com/index/introducing-deep-research/). For Gemini, there is [Deep Research](https://gemini.google/overview/deep-research/). For Grok, there is [DeepSearch](https://x.com/xai/status/1892400134178164775?lang=en).
 
 
 
