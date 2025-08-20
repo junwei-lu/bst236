@@ -71,7 +71,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 uv manages project dependencies and environments, with support for lockfiles, workspaces, and more, similar to the built-in method introduced above.
 
-1. **Initialize a project**: Initialize a virtual environment at your project directory.
+**Initialize a project**: Initialize a virtual environment at your project directory.
 ```bash
 uv init --python 3.10
 ```
@@ -81,7 +81,7 @@ Notice that `uv init` will create a `pyproject.toml` file in the current directo
 
 
 
-2. **Add a package**: Add the package, e.g., `numpy`, to the project.
+**Add a package**: Add the package, e.g., `numpy`, to the project.
 
 ```bash
 uv add numpy
@@ -93,7 +93,7 @@ It is claimed that uv can install packages much faster than the built-in methods
 
 
 
-3. **Activate the virtual environment**: 
+**Activate the virtual environment**: 
 
 To run a python script, e.g., `hello.py`, by uv, you do not need to activate the virtual environment. You can just run the following command:
 ```bash
@@ -108,7 +108,7 @@ source .venv/bin/activate
 python hello.py
 ```
 
-4. **Collaboration Workflow**:
+**Collaboration Workflow**:
 
 You can simply share the `pyproject.toml` file with your collaborators. They can then use the following command to create the virtual environment:
 ```bash
