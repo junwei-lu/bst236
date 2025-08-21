@@ -3,7 +3,6 @@
 ## Language models
 
 - [OpenAI](https://chatgpt.com/)
-    - GPT o3: Chain of thought for advanced reasoning
     - GPT 4o: General purpose use, can search the web, can add context to the conversation.
     - GPT 5: Latest model with thinking mode.
 - [Claude](https://www.anthropic.com/): excels in coding, has a smaller ecosystem with fewer third-party integrations and plugins.
