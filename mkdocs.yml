@@ -15,7 +15,7 @@ copyright: Junwei Lu, Department of Biostatistics, Harvard T.H. Chan School of P
 # Configuration
 theme:
   name: material
-  custom_dir: build/overrides
+  custom_dir: overrides
   language: en
   features:
     - announce.dismiss
