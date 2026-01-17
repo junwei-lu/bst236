@@ -110,7 +110,7 @@ $$
 Comparing this with the strong convexity definition, we can see that strong convexity implies the Hessian $\nabla^2 f(x)$ must be sufficiently large. In fact, strong convexity is equivalent to the following properties:
 
 - If $f$ has second derivatives, strong convexity is equivalent to $\nabla^2 f(x) \succeq \mu \mathbf{I}_d$ for any $x$, which ensures that $f$ has a minimum level of curvature.
-- Strong convexity is also equivalent to $\|\nabla f(x) - \nabla f(y)\|_2 \geq \mu\|x-y\|_2$, meaning the gradient of $f$ changes at least linearly with respect to the distance between $x$ and $y$.
+
 
 For example, the quadratic function $f(x) = \frac{1}{2}x^\top Q x$ is $\mu$-strongly convex if the smallest eigenvalue of $Q$ is at least $\mu$.
 
