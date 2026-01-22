@@ -11,12 +11,12 @@ icon: material/rocket-launch-outline
 ## Instructor: Junwei Lu
 - **Email**: junweilu@hsph.harvard.edu
 - **Office**: Building 2 Room 409, 655 Huntington Ave, Boston MA 02115
-- **Office Hours**: Tuesday 9:30 AM - 10:30 AM
+- **Office Hours**: Thursday 9:30 AM - 10:30 AM
 
-## Teaching Assistant: Phillip Nicol
-- **Email**: phillipnicol@g.harvard.edu 
-- **Office Hours**: Building 2 Room 434, Thursday 2:00 PM - 3:00 PM
-- **Lab**: FXB G10, Friday 8:00 AM - 9:30 AM
+## Teaching Assistant: Ethan Lee
+- **Email**: ethanlee@g.harvard.edu
+- **Office Hours**: TBD
+- **Lab**: TBD
 
 
 ## Syllabus
