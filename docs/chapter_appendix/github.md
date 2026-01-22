@@ -17,8 +17,6 @@ One option to avoid inputting your username and password when pushing to a priva
 
 ## Getting Started with Github Classroom
 
-Please fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSevzi4x0q_jwUyWH6euwSLc-B0qOkIFzZiAh1dVVQCnOO3inQ/viewform?usp=sharing) so that we can add your username to this GitHub classroom. 
-
 Please read the [Homework Submission Instructions](../chapter_syllabus/syllabus.md#homework-submission-guidelines) for the required format of the homework submission.
 
 
