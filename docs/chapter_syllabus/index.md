@@ -15,8 +15,8 @@ icon: material/rocket-launch-outline
 
 ## Teaching Assistant: Ethan Lee
 - **Email**: ethanlee@g.harvard.edu
-- **Office Hours**: TBD
-- **Lab**: TBD
+- **Office Hours**: Monday 10:00-11:00 AM in Room 2-434
+- **Lab**:  Friday 8:00-9:30 AM in FXB 10
 
 
 ## Syllabus
