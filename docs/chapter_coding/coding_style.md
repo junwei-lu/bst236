@@ -21,6 +21,7 @@ Linting is the process of analyzing your code to check for errors and enforce co
 
 Here are some popular linting tools for `Python`:
 
+- [Ruff](https://docs.astral.sh/ruff/): it is a fast Python linter, formatter, and linting tool.
 - [Pylint](https://pypi.org/project/pylint/): it is a static type checker and linting tool for Python.
 - [Black](https://pypi.org/project/black/): it is a code formatter that automatically formats your code to adhere to a consistent style.
 
@@ -39,7 +40,20 @@ The most popular linting tools for `R`:
     Format the following code to adhere to the PEP 8 Style Guide.
     ```
 
-
+Among the tools above, we recommend using Ruff for both formatting and linting. Install Ruff by running:
+```bash
+pip install ruff
+```
+ You can easily fix the errors in your code by running:
+```bash
+ruff check --fix .
+ruff format .
+```
+If you only want to check the errors in your code, you can run:
+```bash
+ruff check .
+ruff format --check .
+```
 
 
 
