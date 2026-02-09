@@ -291,6 +291,12 @@ To build this complex system, we break it down into 3 Agents and 6 Skills.
 
 These are markdown files that contain the "Mission Objectives." They don't know the syntax of every tool, but they know which Skills to call.
 
+| Agent Name   | File                    | Mission                                              |
+|--------------|-------------------------|------------------------------------------------------|
+| Data Pipeline| data-pipeline.agent.md  | Fetch raw data, clean it, and compute statistics.    |
+| Code Quality | code-quality.agent.md   | Review generated scripts for errors and fix them.    |
+| Publisher    | publisher.agent.md      | Create charts, build the website, and ship it.       |
+
 **Skills:**
 
 These are folders containing specific prompt context or scripts that the Agents use to execute tasks.
