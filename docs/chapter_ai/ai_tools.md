@@ -38,13 +38,15 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 - [Claude](https://www.anthropic.com/): Web based, provides implementation of code after code generation.
 - [Cline](https://github.com/cline/cline): Open sourced tool to code as IDE extension.
 
-### Terminal Coding
+### Agentic Coding
 
 There are more agentic coding tools which can run commands in terminal. You can design a todo list and it will generate pipelines of commands using tools to achieve your goals. Compared to the above IDE-based copilot tools, the terminal based coding tools will be more automated and efficient.
 
-- [Claude Code](https://www.anthropic.com/claude-code): One of the best terminal coding tools. Cost $200 per month. You can define ToDo list and use agents for your tasks.
-- [Gemini Code](https://github.com/google-gemini/gemini-cli): Similar to Claude Code, but with free tier: 60 requests/min and 1,000 requests/day with personal Google account.
-- [Qwen Code](https://github.com/QwenLM/qwen-code): Also has free tier using Qwen 2.5 7B.
+- [Claude Code](https://www.anthropic.com/claude-code): One of the best terminal coding tools.
+- [Google Antigravity](https://antigravity.google/): Google’s agentic development platform for agents to plan, execute, and verify complex tasks. 
+- [Codex](https://openai.com/api/codex/): OpenAI’s coding agent/API for generating and editing code, useful for building automated coding workflows.
+- [Gemini CLI](https://github.com/google-gemini/gemini-cli): Similar to Claude Code, but with free tier: 60 requests/min and 1,000 requests/day with personal Google account.
+
 
 ## Search tools
 
@@ -76,6 +78,7 @@ There are more agentic coding tools which can run commands in terminal. You can 
 
 ## Image generation
 
+- [Nano Banana]
 - [Midjourney](https://www.midjourney.com/): Renowned for producing high-quality, artistic images, Midjourney is popular among creators for its unique aesthetic outputs. It operates via a Discord-based interface, facilitating community engagement and prompt sharing.
 - [Dalle-E](https://labs.openai.com/a/dalle-e): generating detailed and realistic images from textual descriptions. It integrates seamlessly with ChatGPT, allowing users to refine prompts for enhanced outputs.
 - [Stable Diffusion](https://huggingface.co/stabilityai): An open-source model by Stability AI, Stable Diffusion allows users to generate images on local machines, offering flexibility and control. Its open-source nature encourages community-driven enhancements and customizations

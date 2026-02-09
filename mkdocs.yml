@@ -156,6 +156,7 @@ nav:
   - Chapter 2. Coding with AI:
     - chapter_ai/index.md
     - AI Copilot: chapter_ai/ai_copilot.md
+    - AI Agent: chapter_ai/agent.md
     - Prompt Engineering: chapter_ai/prompt_engineering.md
     - AI Tools: chapter_ai/ai_tools.md
   - Chapter 3. Computing Workflow:
