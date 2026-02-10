@@ -7,7 +7,7 @@ An **AI agent** is a goal-directed AI system that can do more than chat: it can 
 
 !!! note "Why we need agents?"
 
-If you ask one prompt to handle grammar, layout, math, and code all at once, it won’t excel at any of them—it quickly exceeds context limits and gives lackluster results. By contrast, specialized agents concentrate on a single focus area and deliver much more thorough, high-quality outcomes.
+    If you ask one prompt to handle grammar, layout, math, and code all at once, it won’t excel at any of them—it quickly exceeds context limits and gives lackluster results. By contrast, specialized agents concentrate on a single focus area and deliver much more thorough, high-quality outcomes.
 
 
 ### IDE vs CLI Diagram
