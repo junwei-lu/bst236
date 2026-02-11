@@ -31,6 +31,8 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 
 - [GitHub Copilot](https://github.com/features/copilot): IDE based, copilot based, offers autocompletion, code generation, and code review.
 - [Cursor](https://www.cursor.com/): IDE based, autocompletion, code generation, and agentic features for automating complex workflows.
+- [Google Antigravity](https://antigravity.google/): Google’s agentic development platform for agents to plan, execute, and verify complex tasks. 
+- [Codex](https://openai.com/api/codex/): OpenAI’s coding agent/API for generating and editing code, useful for building automated coding workflows.
 - [Windsurf](https://windsurf.dev/): IDE based, positions itself as an "agentic" IDE, cascade mode for generating entire processes based on prompts.
 - [Tabnine](https://www.tabnine.com/): IDE based
 - [Codeium](https://codeium.com/): Developed by the same team as Windsurf, offers autocompletion, code generation, and code review. It can be extensions to your current IDE like VS Code.
@@ -40,13 +42,19 @@ Check [Chat Arena](https://lmarena.ai/?leaderboard) for the assessment of the la
 
 ### Agentic Coding
 
-There are more agentic coding tools which can run commands in terminal. You can design a todo list and it will generate pipelines of commands using tools to achieve your goals. Compared to the above IDE-based copilot tools, the terminal based coding tools will be more automated and efficient.
+There are more agentic coding tools which can run commands in terminal. You can design a todo list and it will generate pipelines of commands using tools to achieve your goals. There are two types of agentic coding tools now: IDE-based and terminal-based. All the IDE-based tools we listed above have the agentic features as well, especially for Cursor, Codex and Antigravity. Below we list some terminal-based agentic coding tools.
 
 - [Claude Code](https://www.anthropic.com/claude-code): One of the best terminal coding tools.
-- [Google Antigravity](https://antigravity.google/): Google’s agentic development platform for agents to plan, execute, and verify complex tasks. 
-- [Codex](https://openai.com/api/codex/): OpenAI’s coding agent/API for generating and editing code, useful for building automated coding workflows.
 - [Gemini CLI](https://github.com/google-gemini/gemini-cli): Similar to Claude Code, but with free tier: 60 requests/min and 1,000 requests/day with personal Google account.
+- [Qwen Code](https://github.com/QwenLM/qwen-code): Based on the Qwen model.
 
+## Agentic AI
+
+- [OpenClaw](https://openclaw.ai/): OpenClaw is a platform for building and running AI agents to control your entire system instead of a single project.
+
+## Data analysis
+
+[Pardus AI](https://www.pardus.ai/): Prompt-free data analysis tool. Just upload your data and it will generate the analysis report automatically.
 
 ## Search tools
 
@@ -76,16 +84,17 @@ There are more agentic coding tools which can run commands in terminal. You can 
 - [Fireflies](https://fireflies.ai/): helps transcribe, summarize, record, filter, and analyze virtual meetings and conversations. It integrates with platforms like Zoom, Microsoft Teams, Google Meet, and Webex.
 - [tl;dv](https://tldv.io/): distinguishes itself with multi-meeting AI insights and extensive integrations
 
-## Image generation
+## Image/video generation
 
-- [Nano Banana]
+- [Nano Banana](https://gemini.google/overview/image-generation/): Google's image generation tool. You can directly use it in Gemini.
 - [Midjourney](https://www.midjourney.com/): Renowned for producing high-quality, artistic images, Midjourney is popular among creators for its unique aesthetic outputs. It operates via a Discord-based interface, facilitating community engagement and prompt sharing.
-- [Dalle-E](https://labs.openai.com/a/dalle-e): generating detailed and realistic images from textual descriptions. It integrates seamlessly with ChatGPT, allowing users to refine prompts for enhanced outputs.
+<!-- - [Dalle-E](https://labs.openai.com/a/dalle-e): generating detailed and realistic images from textual descriptions. It integrates seamlessly with ChatGPT, allowing users to refine prompts for enhanced outputs. -->
 - [Stable Diffusion](https://huggingface.co/stabilityai): An open-source model by Stability AI, Stable Diffusion allows users to generate images on local machines, offering flexibility and control. Its open-source nature encourages community-driven enhancements and customizations
-- [HeyGen](https://www.heygen.com/): Generate realistic videos with AI.
+- [Jimeng](https://jimeng.jianying.com/): Powered by Seedance series models. Need Chinese phone number or tiktok account to register.
 
 ## Voice and music generation
 
+- [NotebookLM](https://notebooklm.google.com/): Can generate podcast, slides, and more based on your uploaded documents.
 - [Eleven Labs](https://elevenlabs.io/): AI-assisted text-to-speech software capable of producing lifelike speech by synthesizing vocal emotion and intonation. It also provides multilingual speech generation and long-form content creation with contextually-aware voices.
 - [Wondercraft](https://www.wondercraft.ai/): generates scripts and offers a vast library of hyper-realistic AI voices to host your show. 
 - [Descript](https://www.descript.com/): An all-in-one editing tool for both audio and video, Descript uses AI to automate tasks like noise reduction and audio leveling. It also offers features like overdubbing, which allows for voice cloning, and the ability to remove filler words from your audio.
@@ -98,9 +107,9 @@ There are more agentic coding tools which can run commands in terminal. You can 
 - [PromptPerfect](https://promptperfect.jina.ai/): transforms user ideas into precise prompts suitable for various AI models, including GPT-4, Midjourney, and Claude. It supports both text and image models
 - [prompts.chat](https://prompts.chat/): Prompt examples for various tasks.
 - [Copy Coder](https://copycoder.ai/): Upload images of full applications, UI mockups, or custom designs and it will generate prompts to build your apps faster.
-
+<!-- 
 ## AI Agent Builder
 
 - [AutoGen by Microsoft](https://microsoft.github.io/autogen/0.2/): An open-source Python framework that simplifies the creation and management of multi-agent AI systems. AutoGen allows developers to define, configure, and compose AI agents that can collaborate to solve complex tasks with minimal user input
 - [AutoGPT](https://github.com/Significant-Gravitas/AutoGPT): An open-source platform that allows you to create, deploy, and manage continuous AI agents that automate complex workflows.
-- [CrewAI](https://www.crewai.com/): enables AI agents to collaborate effortlessly and execute complicated tasks. 
+- [CrewAI](https://www.crewai.com/): enables AI agents to collaborate effortlessly and execute complicated tasks.  -->

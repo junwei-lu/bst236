@@ -36,6 +36,9 @@ Almost all AI coding tools have agentic features now, for both the IDE-based and
 - [Claude Code](https://www.anthropic.com/claude-code): One of the best terminal coding tools. Need Claude Pro subscription.
 - [Codex](https://openai.com/codex/): OpenAI's AI agent for coding.
 - [Antigravity](https://antigravity.google/): Google's agentic development platform for agents to plan, execute, and verify complex tasks. 
+- [Gemini CLI](https://github.com/google-gemini/gemini-cli): Google's agentic development platform for agents to plan, execute, and verify complex tasks.
+- [Cursor Agent](https://cursor.com/product): Cursor's agentic development platform for agents to plan, execute, and verify complex tasks.
+- [OpenClaw](https://openclaw.ai/): OpenClaw is a platform for building and running AI agents to control your entire system instead of a single project.
 
 
 In our course, we will use a less popular CLI tool [Github Copilot CLI](https://github.com/features/copilot) for terminal coding to be consistent with our previous lectures on AI Copilot (and they are free for students).
