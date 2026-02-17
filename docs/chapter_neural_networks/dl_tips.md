@@ -6,13 +6,13 @@ The following are tips for training neural networks based on Andrej Karpathy's [
 
 - **Neural networks are a leaky abstraction**:
 
-      - Despite simple APIs suggesting plug-and-play convenience, successful training requires deep understanding
-      - Common libraries hide complexity but don't eliminate the need for foundational knowledge
+    - Despite simple APIs suggesting plug-and-play convenience, successful training requires deep understanding
+    - Common libraries hide complexity but don't eliminate the need for foundational knowledge
 
 - **Neural networks fail silently**:
 
-      - Errors are typically logical rather than syntactical, rarely triggering immediate exceptions
-      - Mistakes often subtly degrade performance, making debugging challenging
+    - Errors are typically logical rather than syntactical, rarely triggering immediate exceptions
+    - Mistakes often subtly degrade performance, making debugging challenging
 
 ## Recommended Training Process
 
@@ -28,16 +28,16 @@ The following are tips for training neural networks based on Andrej Karpathy's [
 
 - Spend substantial time manually inspecting data
 - Look for the following data issues:
-  
-      - Duplicate or corrupted data
-      - Imbalanced distributions
-      - Biases and potential patterns
+
+    - Duplicate or corrupted data
+    - Imbalanced distributions
+    - Biases and potential patterns
 
 - Think qualitatively:
 
-      - Which features seem important?
-      - Can you remove noise or irrelevant information?
-      - Understand label quality and noise level
+    - Which features seem important?
+    - Can you remove noise or irrelevant information?
+    - Understand label quality and noise level
 
 - Write simple scripts to filter/sort and visualize data distributions/outliers
 
@@ -46,48 +46,48 @@ The following are tips for training neural networks based on Andrej Karpathy's [
 - Build a basic training/evaluation pipeline using a simple model (linear classifier or small CNN)
 - Best practices at this stage:
 
-      - Fix random seed: Ensures reproducibility
-      - Simplify: Disable data augmentation or other complexity initially
-      - Full test evaluation: Run tests on entire datasets; avoid reliance on smoothing metrics
-      - Verify loss at initialization: Ensure correct loss values at initialization (e.g., -log(1/n_classes))
-      - Proper Initialization: Set final layer biases according to data distribution
-      - Human baseline: Measure human-level accuracy for reference
-      - Input-independent baseline: Check that your model learns something beyond trivial solutions
-      - Overfit a tiny dataset: Confirm your network can achieve near-zero loss on a single batch—essential debugging step
-      - Visualizations: Regularly visualize inputs immediately before entering the model, predictions over training time, and loss dynamics
-      - Check dependencies with gradients: Use backward pass to debug vectorization and broadcasting issues
-      - Generalize incrementally: Write simple, explicit implementations first; vectorize/generalize later
+    - Fix random seed: Ensures reproducibility
+    - Simplify: Disable data augmentation or other complexity initially
+    - Full test evaluation: Run tests on entire datasets; avoid reliance on smoothing metrics
+    - Verify loss at initialization: Ensure correct loss values at initialization (e.g., -log(1/n_classes))
+    - Proper Initialization: Set final layer biases according to data distribution
+    - Human baseline: Measure human-level accuracy for reference
+    - Input-independent baseline: Check that your model learns something beyond trivial solutions
+    - Overfit a tiny dataset: Confirm your network can achieve near-zero loss on a single batch—essential debugging step
+    - Visualizations: Regularly visualize inputs immediately before entering the model, predictions over training time, and loss dynamics
+    - Check dependencies with gradients: Use backward pass to debug vectorization and broadcasting issues
+    - Generalize incrementally: Write simple, explicit implementations first; vectorize/generalize later
 
 ### Step 3: Overfitting 
 
 - Goal of the overfitting first for smaller batch size is to:
 
-      - Ensure your model can at least perfectly memorize the training set (overfit)
-      - If your model can't overfit, you likely have bugs or incorrect assumptions
+    - Ensure your model can at least perfectly memorize the training set (overfit)
+    - If your model can't overfit, you likely have bugs or incorrect assumptions
 - Tips for this stage:
 
-            - Don't be creative initially: Use established architectures first (e.g., ResNet-50 for images)
-            - Use Adam optimizer initially: Learning rate ~ 3e-4; Adam is forgiving compared to SGD
-            - Add complexity carefully: Introduce inputs or complexity gradually
-            - Disable learning rate decay initially: Use a fixed learning rate until very late
+        - Don't be creative initially: Use established architectures first (e.g., ResNet-50 for images)
+        - Use Adam optimizer initially: Learning rate ~ 3e-4; Adam is forgiving compared to SGD
+        - Add complexity carefully: Introduce inputs or complexity gradually
+        - Disable learning rate decay initially: Use a fixed learning rate until very late
 
 ### Step 4: Regularization 
 
 - Once you've achieved overfitting, regularize to improve validation accuracy
 - Recommended regularization methods:
 
-      - Add more real data: Most effective regularizer
-      - Data augmentation: Simple augmentation can dramatically help
-      - Creative augmentation: Domain randomization, synthetic/partially synthetic data, GAN-generated samples
-      - Pretrained models: Almost always beneficial
-      - Avoid overly ambitious unsupervised methods: Stick with supervised learning
-      - Reduce input dimensionality: Eliminate irrelevant or noisy features
-      - Simplify architecture: Remove unnecessary parameters (e.g., average pooling vs. fully connected layers)
-      - Smaller batch size: Stronger regularization effect with batch normalization
-      - Dropout carefully: Use spatial dropout (dropout2d) for CNNs cautiously (interacts badly with batch norm)
-      - Weight decay: Strengthen weight regularization
-      - Early stopping: Halt training based on validation performance
-      - Larger model with early stopping: Larger networks sometimes generalize better when stopped early
+    - Add more real data: Most effective regularizer
+    - Data augmentation: Simple augmentation can dramatically help
+    - Creative augmentation: Domain randomization, synthetic/partially synthetic data, GAN-generated samples
+    - Pretrained models: Almost always beneficial
+    - Avoid overly ambitious unsupervised methods: Stick with supervised learning
+    - Reduce input dimensionality: Eliminate irrelevant or noisy features
+    - Simplify architecture: Remove unnecessary parameters (e.g., average pooling vs. fully connected layers)
+    - Smaller batch size: Stronger regularization effect with batch normalization
+    - Dropout carefully: Use spatial dropout (dropout2d) for CNNs cautiously (interacts badly with batch norm)
+    - Weight decay: Strengthen weight regularization
+    - Early stopping: Halt training based on validation performance
+    - Larger model with early stopping: Larger networks sometimes generalize better when stopped early
 
 ### Step 5: Hyperparameter Tuning
 

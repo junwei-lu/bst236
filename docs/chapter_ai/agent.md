@@ -120,13 +120,13 @@ All components are defined in Markdown files with YAML frontmatter, making them 
 
 Instruction files define project-wide conventions, policies, thresholds, and implementation details for agents and skills.
 
-- **Location:**  
-  - Typically at the root as `copilot-instructions.md`
-  - Specific instructions with the name `<instruction-name>.instructions.md`
-- **YAML Frontmatter:**  
-  - Metadata such as `applyTo` to scope the rules (e.g., by file/glob).
-- **Markdown Body:**  
-  - Project-wide conventions, policies, thresholds, and reproducible implementation details for agents and skills.
+- **Location:**
+    - Typically at the root as `copilot-instructions.md`
+    - Specific instructions with the name `<instruction-name>.instructions.md`
+- **YAML Frontmatter:**
+    - Metadata such as `applyTo` to scope the rules (e.g., by file/glob).
+- **Markdown Body:**
+    - Project-wide conventions, policies, thresholds, and reproducible implementation details for agents and skills.
 
 **Example: `copilot-instructions.md`**
 ```markdown
@@ -163,15 +163,15 @@ applyTo: "docs/**/*.md"
 
 Prompt files define specific, one-click tasks for agents to execute.
 
-- **Location:**  
-  - `.github/prompts/<action>.prompt.md`
-- **YAML Frontmatter:**  
-  - `mode`: `agent` (for workflow triggers) or `manual`
-  - `description`: brief summary of the prompt's purpose
-  - `tools`: which tools to use, e.g., `terminalLastCommand`, `editFiles`, `codebase`
-- **Markdown Body:**  
-  - Bulletproof, step-by-step workflow.
-  - Required input(s), specific commands/script invocations, and validation/checks (exit codes, file presence, minimal sanity checks).
+- **Location:**
+    - `.github/prompts/<action>.prompt.md`
+- **YAML Frontmatter:**
+    - `mode`: `agent` (for workflow triggers) or `manual`
+    - `description`: brief summary of the prompt's purpose
+    - `tools`: which tools to use, e.g., `terminalLastCommand`, `editFiles`, `codebase`
+- **Markdown Body:**
+    - Bulletproof, step-by-step workflow.
+    - Required input(s), specific commands/script invocations, and validation/checks (exit codes, file presence, minimal sanity checks).
 
 
 The header is formatted as YAML frontmatter with the following fields:

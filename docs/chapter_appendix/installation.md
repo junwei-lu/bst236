@@ -74,24 +74,24 @@ We suggest using pyenv to install python for better version management. The inst
 For all operating systems, after installation:
 
 1. Install Python:
-   ```bash
-   pyenv install 3.10.0
-   pyenv global 3.10.0
-   ```
+    ```bash
+    pyenv install 3.10.0
+    pyenv global 3.10.0
+    ```
 
 2. Verify the installation:
-   ```bash
-   python --version  # Should show Python 3.10.0
-   ```
+    ```bash
+    python --version  # Should show Python 3.10.0
+    ```
 
 #### Check pip installation
 
 Pip is Python's package installer. It usually comes with Python, but it's good to verify the installation:
 
 1. Check if pip is installed:
-```bash
-pip --version
-```
+    ```bash
+    pip --version
+    ```
 
 If pip is not installed or you need to upgrade it:
 
@@ -116,19 +116,19 @@ pip --version
 The installation process is the same for all operating systems:
 
 1. Install Jupyter using pip:
-   ```bash
-   pip install notebook
-   ```
+    ```bash
+    pip install notebook
+    ```
 
 2. Verify the installation:
-   ```bash 
-   jupyter notebook --version
-   ```
+    ```bash
+    jupyter notebook --version
+    ```
 
 3. Launch Jupyter Notebook:
-   ```bash
-   jupyter notebook
-   ```
+    ```bash
+    jupyter notebook
+    ```
 
 #### VS Code Python
 
@@ -156,21 +156,21 @@ sudo apt-get install r-base
 For all operating systems:
 
 1. Install radian:
-```bash
-pip install -U radian
-```
+    ```bash
+    pip install -U radian
+    ```
 
 2. Install required R packages from R console:
-```r
-install.packages("languageserver")
-install.packages("httpgd")
-```
+    ```r
+    install.packages("languageserver")
+    install.packages("httpgd")
+    ```
 
-1. Configure VS Code. Please refer to the [VS Code R Tutorial](https://code.visualstudio.com/docs/languages/r) for all the steps. We just list the key steps here:
-      - Install the R extension
-      - Set radian path in VS Code settings:
-             - For Windows: Set `r.rterm.windows` to the path of radian (typically `%USERPROFILE%\AppData\Local\Programs\Python\Python3x\Scripts\radian.exe`)
-             - For macOS/Linux: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian`
+3. Configure VS Code. Please refer to the [VS Code R Tutorial](https://code.visualstudio.com/docs/languages/r) for all the steps. We just list the key steps here:
+    - Install the R extension
+    - Set radian path in VS Code settings:
+        - For Windows: Set `r.rterm.windows` to the path of radian (typically `%USERPROFILE%\AppData\Local\Programs\Python\Python3x\Scripts\radian.exe`)
+        - For macOS/Linux: Set `r.rterm.mac` or `r.rterm.linux` to the output of `which radian`
 
 ## Optional software
 
@@ -198,14 +198,14 @@ bash Miniconda3-latest-Linux-x86_64.sh
 For all operating systems, after installation:
 
 1. Initialize conda:
-```bash
-conda init
-```
+    ```bash
+    conda init
+    ```
 
 2. Verify installation:
-```bash
-conda --version
-```
+    ```bash
+    conda --version
+    ```
 
 3. Run `conda deactivate` to leave the environment.
 

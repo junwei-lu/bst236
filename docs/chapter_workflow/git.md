@@ -40,27 +40,26 @@ git init
 
 
 1. **Check Status**
-```bash
-git status
-```
+    ```bash
+    git status
+    ```
 
 3. **Stage Changes**
-```bash
-git add filename     # Stage specific file
-git add .           # Stage all changes
-```
+    ```bash
+    git add filename     # Stage specific file
+    git add .           # Stage all changes
+    ```
 
 4. **Commit Changes**
-```bash
-
-git commit -m "Descriptive message about changes"
-```
+    ```bash
+    git commit -m "Descriptive message about changes"
+    ```
 
 5. **View History**
-```bash
-git log             # View commit history
-git diff            # View unstaged changes
-```
+    ```bash
+    git log             # View commit history
+    git diff            # View unstaged changes
+    ```
 
 ### Best Practices for Commits
 

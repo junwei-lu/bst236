@@ -46,27 +46,26 @@ Don't repeat yourself (DRY) is a fundamental concept in programming.
 
 
 - **DRY in Workflow:** Learning how to automate and/or simplify repetitive tasks in your workflow because the time savings will be enormous. We will cover some tools to do this in this course, but you first need to be aware of the existence of these tools. 
-    * Best practice: Optimize your workflow from time to time but not too often.
-    * Shell Script: Process files in batches, customize your commands in the system.
-    * GNU Make: Create a `Makefile` to customize the project-specific build process. It is also a "cheat sheet" for common commands.
-    * Transferable Workflows: Find the best practices making your workflow transferable across different platforms and machines.
-    * Keyboard shortcuts: Use your keyboard more and your mouse less. 
+    - Best practice: Optimize your workflow from time to time but not too often.
+    - Shell Script: Process files in batches, customize your commands in the system.
+    - GNU Make: Create a `Makefile` to customize the project-specific build process. It is also a "cheat sheet" for common commands.
+    - Transferable Workflows: Find the best practices making your workflow transferable across different platforms and machines.
+    - Keyboard shortcuts: Use your keyboard more and your mouse less.
 - **DRY in Programming:** What if you need to change 1 thing? Needs to be changed in multiple places. Risk getting a wrong answer because we forgot to change one small thing.
-
-    * Write code __a bit more general__ than your data or specific task.
+    - Write code __a bit more general__ than your data or specific task.
         - Don't assume particular dimensions.
         - Don't forget about missing values (even if *your* data have none).
         - But **don't try to handle every case.** Try to anticipate what you might be asked for, but don't prepare for every possibility.
-    * Use __function arguments__ to handle different cases. 
+    - Use __function arguments__ to handle different cases.
         - Don't assume particular file names.
-        - Don't assume particular tuning parameters. 
+        - Don't assume particular tuning parameters.
         - Don't assume particular regression formulas.
         - No magic numbers.
         ``` r
         get_bootstrap_ci <- function(..., nboot = 1e3)
         def get_bootstrap_ci(..., nboot=1000):
         ```
-    * Use configuration files (`.env`, `.yaml`, `.json`, etc.) to store the hyperparameters.
+    - Use configuration files (`.env`, `.yaml`, `.json`, etc.) to store the hyperparameters.
 
 ### Think and document before you code
 

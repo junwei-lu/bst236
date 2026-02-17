@@ -45,15 +45,15 @@ deactivate
 ### pip Requirements
 
 1. **Generate requirements.txt**:
-```bash
-# Manual: List all installed packages
-pip freeze > requirements.txt
-```
+    ```bash
+    # Manual: List all installed packages
+    pip freeze > requirements.txt
+    ```
 
 2. **Install from requirements.txt**:
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 
 ## Modern Virtual Environment Tool: uv

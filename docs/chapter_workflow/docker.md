@@ -205,52 +205,52 @@ CMD ["python", "-m", "mypackage"]
 ## Recommended Workflow
 
 1. **Initial Setup**:
-```bash
-# Create project structure
-mkdir myproject && cd myproject
+    ```bash
+    # Create project structure
+    mkdir myproject && cd myproject
 
-# Create Dockerfile and .dockerignore
-touch Dockerfile .dockerignore
+    # Create Dockerfile and .dockerignore
+    touch Dockerfile .dockerignore
 
-# Create docker-compose for development
-touch docker-compose.yml
-```
+    # Create docker-compose for development
+    touch docker-compose.yml
+    ```
 
 2. **Development Workflow**:
-```bash
-# Build development container
-docker-compose build
+    ```bash
+    # Build development container
+    docker-compose build
 
-# Start development environment
-docker-compose up -d
+    # Start development environment
+    docker-compose up -d
 
-# Run tests in container
-docker-compose exec app pytest
+    # Run tests in container
+    docker-compose exec app pytest
 
-# Install new dependency
-docker-compose exec app pip install newpackage
-```
+    # Install new dependency
+    docker-compose exec app pip install newpackage
+    ```
 
 3. **Testing Workflow**:
-```bash
-# Build test container
-docker build -f Dockerfile.test -t myproject-test .
+    ```bash
+    # Build test container
+    docker build -f Dockerfile.test -t myproject-test .
 
-# Run tests
-docker run myproject-test
-```
+    # Run tests
+    docker run myproject-test
+    ```
 
 4. **Release Workflow**:
-```bash
-# Build production image
-docker build -t myproject:v1.0.0 .
+    ```bash
+    # Build production image
+    docker build -t myproject:v1.0.0 .
 
-# Test production image
-docker run myproject:v1.0.0
+    # Test production image
+    docker run myproject:v1.0.0
 
-# Push to registry
-docker push myproject:v1.0.0
-```
+    # Push to registry
+    docker push myproject:v1.0.0
+    ```
 
 ### Example docker-compose.yml
 
@@ -272,30 +272,30 @@ services:
 ## Common Issues and Solutions
 
 1. **Large Image Sizes**:
-```dockerfile
-# Use slim base images
-FROM python:3.9-slim
+    ```dockerfile
+    # Use slim base images
+    FROM python:3.9-slim
 
-# Clean up after installations
-RUN pip install --no-cache-dir -r requirements.txt
-```
+    # Clean up after installations
+    RUN pip install --no-cache-dir -r requirements.txt
+    ```
 
 2. **Slow Builds**:
-```dockerfile
-# Cache dependencies layer
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+    ```dockerfile
+    # Cache dependencies layer
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
 
-# Copy source code later
-COPY . .
-```
+    # Copy source code later
+    COPY . .
+    ```
 
 3. **Permission Issues**:
-```dockerfile
-# Create non-root user
-RUN useradd -m myuser
-USER myuser
-```
+    ```dockerfile
+    # Create non-root user
+    RUN useradd -m myuser
+    USER myuser
+    ```
 
 ## Resources
 

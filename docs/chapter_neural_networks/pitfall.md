@@ -152,16 +152,16 @@ In-place operations in PyTorch modify tensors directly rather than creating new 
 Most of the methods end with `_` in PyTorch are in-place operations. Examples of common in-place operations:
 
 
- - `tensor.add_(value)`
- - `tensor.mul_(value)`
- - `tensor.copy_(source)`
- - `tensor.zero_()`
- - `tensor.zero_()`
+- `tensor.add_(value)`
+- `tensor.mul_(value)`
+- `tensor.copy_(source)`
+- `tensor.zero_()`
+- `tensor.zero_()`
 
 In PyTorch, 
 
- - `x += 1` is an in-place operation that modifies the tensor directly, equivalent to calling `x.add_(1)`. The underscore suffix in PyTorch methods indicates in-place operations.
- - `x = x + 1` creates a new tensor with the result and assigns it to the variable `x`. The original tensor is not modified.
+- `x += 1` is an in-place operation that modifies the tensor directly, equivalent to calling `x.add_(1)`. The underscore suffix in PyTorch methods indicates in-place operations.
+- `x = x + 1` creates a new tensor with the result and assigns it to the variable `x`. The original tensor is not modified.
 
 ### Common Pitfalls
 
