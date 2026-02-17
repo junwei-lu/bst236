@@ -73,6 +73,7 @@ renv::init()
 ```
 
 This creates:
+
 - `renv.lock`: Records package versions
 - `.Rprofile`: Activates renv
 - `renv/`: Contains project library

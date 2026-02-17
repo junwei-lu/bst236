@@ -21,6 +21,7 @@ We also strongly recommend you to read the VS Code [tutorial](https://code.visua
 ### Other AI-Copilot resources
 
 We also recommend (though not required) to install the following AI-Copilot tools:
+
 - [Cursor](https://www.cursor.sh/)
 - [Windsurf](https://codeium.com/windsurf)
 
@@ -133,6 +134,7 @@ The installation process is the same for all operating systems:
 #### VS Code Python
 
 Install the following extensions from VS Code marketplace (same for all operating systems):
+
 - Python
 - Jupyter
 - Pylance

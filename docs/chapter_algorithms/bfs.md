@@ -77,5 +77,6 @@ def min_moves_to_climb(n, steps):
 ## Complexity analysis
 
 Let $n$ be the number of all possible states.
+
 - Time complexity is $O(n)$: All nodes are visited once, taking $O(n)$ time.
 - Space complexity is $O(n)$: In the worst case, i.e., a full binary tree, before traversing to the bottom level, the queue can contain at most $O(n)$ nodes simultaneously, occupying space.

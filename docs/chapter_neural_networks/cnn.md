@@ -64,6 +64,7 @@ Here are the tips for choosing the hyperparameters of the convolution operation:
 ## Pooling Operations
 
 Pooling layers reduce the spatial dimensions of the feature maps, providing:
+
 1. Computational efficiency
 2. Some degree of translation invariance
 3. Control over overfitting

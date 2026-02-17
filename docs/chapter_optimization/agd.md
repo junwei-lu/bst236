@@ -6,6 +6,7 @@ Looking at the trajectory of gradient descent, we notice it often follows a zigz
 ![GD vs AGD](opt.assets/gdvsagd1-1.png)
 
 We might consider these strategies to improve upon gradient descent:
+
 - Use the history of the trajectory
 - Add momentum for a smoother path
 

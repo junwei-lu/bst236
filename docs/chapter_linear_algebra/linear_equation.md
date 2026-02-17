@@ -42,6 +42,7 @@ The LU decomposition needs approximately $2n^3/3$ operations, while the Cholesky
 
 However, you do not need to implement the Cholesky decomposition by yourself. The `linalg.solve` function 
 has a built-in `assume_a` parameter:
+
 - `assume_a = 'gen'` - General matrix (default)
 - `assume_a = 'sym'` - Symmetric matrix
 - `assume_a = 'pos'` - Symmetric positive definite

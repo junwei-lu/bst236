@@ -157,7 +157,7 @@ nav:
     - chapter_ai/index.md
     - AI Copilot: chapter_ai/ai_copilot.md
     - Prompt Engineering: chapter_ai/prompt_engineering.md
-    - AI Agent: chapter_ai/agent.md
+    - Agentic Coding: chapter_ai/agent.md
     - AI Tools: chapter_ai/ai_tools.md
   - Chapter 3. Computing Workflow:
     - chapter_workflow/index.md
@@ -167,7 +167,7 @@ nav:
     - Virtual Environment: chapter_workflow/venv.md
     - Reproducible R: chapter_workflow/R.md
     - Docker: chapter_workflow/docker.md
-  - Chapter 4. Complexity analysis:
+  - Chapter 4. Complexity Analysis:
     - chapter_computational_complexity/index.md
     #- Iteration and recursion: chapter_computational_complexity/iteration_and_recursion.md
     - Time complexity: chapter_computational_complexity/time_complexity.md

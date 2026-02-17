@@ -177,6 +177,7 @@ The $\ell_1$-norm is one of the most widely used non-smooth convex functions. Le
 - When $x = 0$, $f$ is non-differentiable and $\partial |x| = [-1,1]$ (all values in this interval are valid subgradients)
 
 For the multi-dimensional $\ell_1$-norm $\|x\|_1$, if $g \in \partial \|x\|_1$, then:
+
 - $g_j = {\rm sign}(x_j)$ for components where $x_j \neq 0$
 - $g_j \in [-1,1]$ for components where $x_j = 0$
 
@@ -209,6 +210,7 @@ The optimality conditions for convex optimization can be summarized as follows:
 | First-order | $0 \in \partial f(x^*)$ | $\nabla f(x^*)^\top(y - x^*) \geq 0$ |
 
 These optimality conditions are powerful tools for:
+
 1. Checking whether a given point is optimal
 2. Deriving algorithms to find optimal solutions
 3. Understanding the geometric properties of optimal solutions 

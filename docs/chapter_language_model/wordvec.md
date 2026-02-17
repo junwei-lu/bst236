@@ -158,6 +158,7 @@ P_{(j, 2i+1)} = \cos\left(\frac{j}{10000^{2i/d}}\right)
 $$
 
 where
+
 - $j$ is the position of the token in the sequence
 - $i$ is the dimension index
 - $d$ is the embedding dimension

@@ -3,6 +3,7 @@
 <u>Dynamic programming</u> is a crucial algorithmic approach that breaks down a problem into smaller subproblems, storing their solutions to prevent redundant calculations, thus greatly enhancing time efficiency.
 
 We have encountered dynamic programming in the [climb stairs problem](climb_stairs.md#method-3-dynamic-programming). In this section, we will delve into the general strategy of dynamic programming by addressing these two questions:
+
 1. How can we identify if a problem is suitable for dynamic programming?
 2. What are the comprehensive steps to solve a dynamic programming problem?
 

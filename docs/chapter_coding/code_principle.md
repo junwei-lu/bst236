@@ -28,6 +28,7 @@ Here are some ways to understand code:
 
 
 Here are some common pitfalls:
+
 - **Beware of the context.** What works in one context may not work in another. Reading other's solution but we need to understand those phrases before we incorporate them into our project. When using AI tools, also make sure you incorporate the enought context (the entire codebase, the API documentation, the method description document,etc.) into your project.
 - **AI hallucination.** AI is not always correct. In fact, it hallucinates a lot. So always try to verify the code.
 
@@ -104,6 +105,7 @@ This document can also be used as the part of prompt engineering to help generat
 
 Before you start coding, you can first "code" in natural language what you want to do.
 You can write in the document on:
+
 - The goal of the package
 - How to decompose the goal into different functions
 - The inputs and outputs of the functions you need.

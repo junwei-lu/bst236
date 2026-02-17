@@ -29,6 +29,7 @@ Here are the tools you could use to implement the principles above:
 ## Project Management
 
 Different projects have different needs:
+
 - Data analysis
 - First author paper
 - Talks, etc.

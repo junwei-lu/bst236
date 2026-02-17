@@ -70,11 +70,13 @@ for value in hmap.values():
 ## Key Performance Insights
 
 Use Lists when:
+
 - Order matters
 - Memory efficiency is important
 - You need integer indexing and slicing
 
 Use Dictionaries when:
+
 - You need fast lookups by key
 - Order doesn't matter 
 - You need to associate data with non-integer keys

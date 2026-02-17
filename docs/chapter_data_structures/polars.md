@@ -63,7 +63,7 @@ results = (
 ### When to Use Polars
 
 - Large datasets that don't fit in memory
-Performance-critical applications
+- Performance-critical applications
 - When you need parallel processing
 - Modern data pipeline development
 

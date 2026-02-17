@@ -78,6 +78,7 @@ print(type(3 == 3))  # <class 'bool'>
 
 ### Lists
 Lists are one of Python's most versatile data structures. Key features:
+
 - Mutable (can be modified)
 - Can contain multiple data types
 - Support indexing and slicing
@@ -99,6 +100,7 @@ foo[1] = 'a'
 
 ### Sets
 Sets are unique collections of elements. Key features:
+
 - Unordered
 - Cannot be indexed or sliced
 - Elements must be unique
@@ -116,6 +118,7 @@ print(list(set(l)))  # [1, 2, 3]
 
 ### Dictionaries
 Dictionaries store key-value pairs. Key features:
+
 - Fast lookup by key
 - Keys must be unique
 - Values can be any data type

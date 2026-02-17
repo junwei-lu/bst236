@@ -137,6 +137,7 @@ such that we have the singular value decomposition (SVD):
 $$A = UDV^T = \sum_{i=1}^r \sigma_i u_i v_i^T$$
 
 We can see that the eigenvalue decomposition is a special SVD. The matrix $A$ as a linear map transforms the two canonical unit vectors (yellow and red vectors) in the top left plot to the top right plot. This map can be decomposed into three steps:
+
 1. $V^T$: rotating yellow and red vectors to $v_1$ and $v_2$
 2. $D$: scaling the disc by $\sigma_1$ horizontally and $\sigma_2$ vertically
 3. $U$: rotating two canonical unit vectors (blue lines) to $u_1$ and $u_2$

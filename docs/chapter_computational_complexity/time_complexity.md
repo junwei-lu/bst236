@@ -30,6 +30,7 @@ $$
 $$
 
 However, this approach has significant limitations. It's impractical to:
+
 - Account for diverse hardware environments
 - Accurately measure individual operation times
 - Compare algorithms across different platforms

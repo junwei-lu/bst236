@@ -187,6 +187,7 @@ result = some_long_function_name(
 
 ### Imports
 Group imports in the following order:
+
 1. Standard library
 2. Third-party
 3. Local application/library specific

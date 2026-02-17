@@ -197,6 +197,7 @@ When you modify `x` in-place, the relationship between `x` and `y` is invalidate
 ## Shape Manipulation
 
 Use `squeeze()` when:
+
 - You specifically want to remove dimensions of size 1
 - You need to normalize tensor shape to remove singleton dimensions
 - You're matching shapes for operations that don't support broadcasting
@@ -210,6 +211,7 @@ squeezed_specific = x.squeeze(1)  # Only removes dim 1: [10, 20, 1]
 ```
 
 Use `flatten()` when:
+
 - You specifically want to flatten consecutive dimensions
 - You want more readable and self-documenting code
 - You want to preserve batch dimensions (using start_dim)
@@ -222,6 +224,7 @@ flattened = x.flatten(start_dim=1)  # [32, 3*224*224] - preserve batch dimension
 ```
 
 Use `reshape()` when:
+
 - You're unsure about contiguity of your tensor
 - Your code needs to work with potentially non-contiguous tensors
 - You want safer code that won't throw contiguity errors
@@ -234,6 +237,7 @@ reshaped = x.reshape(batch_size, num_features)  # Works regardless of contiguity
 ```
 
 Use `view()` when:
+
 - Your tensor is definitely contiguous
 - You need maximum performance (no data copying)
 - You're reshaping in a straightforward way without changing element order

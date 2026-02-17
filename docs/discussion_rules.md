@@ -57,6 +57,7 @@ This is the workflow how you communicate with other programmers in the world. So
 ### Homework Clarifications
 
 For questions like:
+
 - "I need clarifications on the homework"
 - "How will you grade part X of the homework?"
 - "Do I need _____ for part X of the homework?"
