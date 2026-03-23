@@ -1,7 +1,7 @@
 # Rate of Convergence
 
 
-<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter08_optimization.ipynb#scrollTo=ea6f5430c7b4" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/codes/chapter08_optimization.ipynb#scrollTo=ea6f5430c7b4" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
 
 In numerical analysis and optimization, understanding the rate of convergence is crucial for evaluating the efficiency of algorithms. The rate of convergence describes how quickly a sequence approaches its limit. Here, we explore different types of convergence rates: linear, sublinear, superlinear, and quadratic.
 

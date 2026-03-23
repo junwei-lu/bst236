@@ -1,7 +1,7 @@
 # Neural Networks
 
 
-<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter09_neural_networks.ipynb#scrollTo=39ca15a72625" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/codes/chapter09_neural_networks.ipynb#scrollTo=39ca15a72625" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
 
 ## Linear Classifier
 

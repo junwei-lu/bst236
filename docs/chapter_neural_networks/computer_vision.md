@@ -3,7 +3,7 @@
 
 
 
-<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter09_neural_networks.ipynb#scrollTo=01281552a138" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/codes/chapter09_neural_networks.ipynb#scrollTo=01281552a138" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
 
 Computer vision applications such as medical imaging, autonomous vehicles, surveillance systems, and photo filters have become increasingly integrated into our daily lives and will continue to shape our future. Deep learning has revolutionized this field, dramatically improving the capabilities of computer vision systems. Today's cutting-edge computer vision technologies rely almost exclusively on deep learning approaches. This lecture explores the computer vision domain, examining basic pipelines for image classification.
 
