@@ -1,5 +1,7 @@
 # Dynamic Programming
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter05_algorithms.ipynb#scrollTo=f654002b2be2" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 <u>Dynamic programming</u> is a crucial algorithmic approach that breaks down a problem into smaller subproblems, storing their solutions to prevent redundant calculations, thus greatly enhancing time efficiency.
 
 We have encountered dynamic programming in the [climb stairs problem](climb_stairs.md#method-3-dynamic-programming). In this section, we will delve into the general strategy of dynamic programming by addressing these two questions:

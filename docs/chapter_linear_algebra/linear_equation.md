@@ -1,5 +1,7 @@
 # Linear Equation Algorithms
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter06_linear_algebra.ipynb#scrollTo=e683cf42ac75" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 We want to solve the linear equation $Ax = b$ for $x$ given $A \in \mathbb{R}^{n \times n}$ and $b \in \mathbb{R}^n$. As we stated in the previous section, we will not discuss the details of the algorithms but focus on the practical issues when solving linear equations.
 
 ## Basic Facts of Linear Equation Solvers

@@ -1,5 +1,8 @@
 # Mirror Descent
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter08_optimization.ipynb#scrollTo=a49e67cc78c8" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 ## Bregman Divergence
 
 In the previous lecture, we introduced the proximal perspective of gradient descent. To minimize $f(x)$, we approximate the objective function $f(x)$ around $x=x_t$ using a quadratic function:

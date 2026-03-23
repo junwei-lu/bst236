@@ -1,5 +1,7 @@
 # Criteria of Numerical Algorithms
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter06_linear_algebra.ipynb#scrollTo=b7799a834bcc" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 There are two major tasks in numerical linear algebra:
 
 1. Solving linear systems

@@ -1,5 +1,8 @@
 # Introduction to PyTorch
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter08_optimization.ipynb#scrollTo=bfedd3a9e4ff" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 [PyTorch](https://pytorch.org/) is a popular deep learning library that provides tensor computation with GPU acceleration and automatic differentiation capabilities.
 
 ## Basic Operations

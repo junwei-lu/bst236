@@ -2,6 +2,9 @@
 
 
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter09_neural_networks.ipynb#scrollTo=63da4dad97a2" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 As neural networks grew deeper, researchers encountered a counterintuitive problem: adding more layers to a deep network led to higher training error, not just higher testing error. This phenomenon, known as the **degradation problem**, could not be explained by overfitting alone.
 
 The issue wasn't just [vanishing gradients](nn.md#gradient-vanishing) (which can be partially addressed by proper initialization and batch normalization), but rather the difficulty in optimizing very deep networks. Traditional deep networks struggle to learn identity mappings when they would be optimal, leading to degraded performance as depth increases. The following figure shows a training curve (non-bold line) and testing curve (bold line) on the ImageNet dataset with a network of depth 18 and 34. The left plot uses a traditional deep network and you can see that the validation error increases when model becomes deeper. 

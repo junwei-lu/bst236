@@ -1,5 +1,7 @@
 # Mastering Program Flow: Iteration and Recursion
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter03_complexity.ipynb#scrollTo=f6df8450e780" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 When developing algorithms, we frequently need to perform tasks multiple times. Before we dive into analyzing how efficient our code is through complexity analysis, it's crucial to understand two fundamental approaches to handling repetitive tasks: iteration and recursion. These programming patterns form the backbone of algorithmic thinking and directly impact how we measure program efficiency.
 
 ## Understanding Iteration

@@ -1,5 +1,7 @@
 # Eigenvalues and Eigenvectors Algorithms
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter06_linear_algebra.ipynb#scrollTo=a9549d8cc3be" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 We now discuss the numerical algorithms for computing eigenvalues and eigenvectors. We will mainly focus on the symmetric matrices with real eigenvalues and eigenvectors. For the general case, most of the tasks in data science need to conduct the singular value decomposition (SVD). 
 
 Recall the symmetric matrix $A$ has the eigenvalue decomposition $A = U\Lambda U^T$, where $U = (u_1, u_2, \cdots, u_n)$ is an orthogonal matrix with the columns $u_1, u_2, \cdots, u_n$ being the eigenvectors of $A$ and $\Lambda = \text{diag}(\lambda_1, \lambda_2, \cdots, \lambda_n)$ is a diagonal matrix with diagonal entries $\lambda_1\ge \lambda_2\ge \cdots \ge \lambda_n$ being the eigenvalues of $A$.

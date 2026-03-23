@@ -1,5 +1,8 @@
 # Hugging Face and Transformers Package
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter10_language_models.ipynb#scrollTo=4579adb86898" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 In this lecture, we'll explore [Hugging Face's Transformers library](https://huggingface.co/docs/transformers/index)—a powerful Python package for working with state-of-the-art NLP (Natural Language Processing) models. You can refer to the [hugging face course](https://huggingface.co/learn/llm-course) for more details.
 
 ## Hugging Face 🤗 Website

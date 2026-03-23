@@ -1,6 +1,9 @@
 # Convolutional Neural Networks
 
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter09_neural_networks.ipynb#scrollTo=01281552a138" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 Convolutional Neural Networks (CNNs) are a specialized type of neural network designed for processing structured grid data such as images. Unlike fully connected networks where each neuron is connected to all neurons in the previous layer, CNNs use a mathematical operation called convolution that applies localized filters to the input data.
 
 The key intuition behind CNNs is to exploit spatial locality - nearby pixels in images tend to be related. By using convolutional filters that operate on local regions of the input, CNNs can efficiently identify local patterns like edges, textures, and shapes that are important for tasks like image recognition.

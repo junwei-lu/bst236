@@ -1,5 +1,7 @@
 # Climbing Stairs Problem
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter05_algorithms.ipynb#scrollTo=61ca9f55cbdf" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 There are many beautiful ideas in algorithms. We plan to use a classic problem to demonstrate them and show how to optimize the code using different ideas.
 
 !!! question "Climbing stairs"

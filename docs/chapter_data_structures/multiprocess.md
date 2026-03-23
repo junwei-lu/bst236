@@ -1,5 +1,7 @@
 # Multiprocessing
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter04_data_structures.ipynb#scrollTo=2a419f3b9b50" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 Multiprocessing in Python allows you to leverage multiple CPU cores to perform computations simultaneously, significantly improving performance for CPU-bound tasks.
 
 ## Basic Operations

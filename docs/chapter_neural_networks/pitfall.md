@@ -1,5 +1,8 @@
 # PyTorch Pitfalls
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter09_neural_networks.ipynb#scrollTo=9e1a3ce903b8" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 This section serves as a collection of common pitfalls and best practices when using PyTorch. You may not encounter all of them, but it's still useful to know what to look out for.
 
 

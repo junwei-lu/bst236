@@ -6,7 +6,7 @@ RUN pip install mkdocs-material==9.5.5 mkdocs-glightbox
 
 WORKDIR /bst236
 
-COPY overrides ./build/overrides
+COPY overrides ./overrides
 
 COPY docs ./build/docs
 COPY mkdocs.yml mkdocs.yml

@@ -1,5 +1,7 @@
 # GPU for Linear Algebra
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter06_linear_algebra.ipynb#scrollTo=9857624a8180" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 Matrix computations are highly parallelizable operations that can greatly benefit from GPU acceleration. While CPUs are designed to handle sequential tasks with a few powerful cores, GPUs contain thousands of smaller cores optimized for parallel processing. When performing operations like matrix multiplication, where each element in the result can be computed independently, GPUs can distribute these calculations across their many cores to compute multiple elements simultaneously. This parallel processing capability makes GPUs particularly efficient for large-scale linear algebra operations, often achieving speedups of 10-100x compared to CPU implementations. Additionally, modern GPUs have high memory bandwidth, allowing them to quickly access and process large matrices.
 
 

@@ -1,5 +1,7 @@
 # Sparse Matrix
 
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter06_linear_algebra.ipynb#scrollTo=8d4f387aad96" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 Sparse matrices are matrices where most elements are zero. They are common in many applications like:
 
 - Social networks (adjacency matrices)

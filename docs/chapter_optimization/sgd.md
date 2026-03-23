@@ -1,5 +1,8 @@
 # Stochastic Gradient Descent
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter08_optimization.ipynb#scrollTo=c2d746f16fe5" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 Stochastic Gradient Descent (SGD) is a popular optimization algorithm in machine learning and deep learning. 
 
 The SGD problem is to solve:

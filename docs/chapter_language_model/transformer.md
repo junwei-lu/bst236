@@ -1,5 +1,8 @@
 # Transformer
 
+
+<a href="https://colab.research.google.com/github/junwei-lu/bst236/blob/main/bst236/codes/chapter10_language_models.ipynb#scrollTo=67cf467cf846" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%); color: white; border-radius: 6px; text-decoration: none; font-size: 0.85em; font-weight: 600;">▶ Try in Colab</a>
+
 The Transformer is a neural network architecture that is used for natural language processing tasks. It was introduced in the paper [Attention is All You Need](https://arxiv.org/abs/1706.03762) based on the [attention mechanism](./attention.md). We will first introduce the architecture of the Transformer and then the training process.
 
 ## Transformer block
