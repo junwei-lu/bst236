@@ -1,5 +1,22 @@
 # System files
+.claude/
+.vscode/
 .DS_Store
+.png
+.gif
 Makefile
 .gitattributes
 docs/chapter_generative_model/generative.assets/generative_cover.gif
+
+# Python auxiliary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+*.pyzw
+*.pyzwz
+# Virtual environment folders
+venv/
