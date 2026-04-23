@@ -1,0 +1,93 @@
+chapter_optimization/
+checkpoint/
+output/
+.DS_Store
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyTorch
+*.pth
+*.pth.tar
+*.pt
+checkpoint/
+runs/
+logs/
+tensorboard/
+
+# Data
+data/
+datasets/
+*.csv
+*.dat
+*.npy
+*.h5
+*.pkl
+*.pickle
+
+# Logs and temporary files
+*.log
+*.tmp
+.DS_Store
+.coverage
+htmlcov/
+.tox/
+.coverage.*
+coverage.xml
+*.cover
+*.py,cover
+
+# Distribution
+.Python
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# Sphinx documentation
+docs/_build/

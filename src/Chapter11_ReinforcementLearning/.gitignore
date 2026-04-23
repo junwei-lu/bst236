@@ -1,0 +1,9 @@
+.DS_Store
+*.png
+*.gif
+*.mp4
+*.avi
+*.mov
+*.webm
+*.ogg
+logs/
