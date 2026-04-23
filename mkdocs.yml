@@ -228,6 +228,12 @@ nav:
     - Attention: chapter_language_model/attention.md
     - Transformer: chapter_language_model/transformer.md
     - Hugging Face: chapter_language_model/hg_transformers.md
+    - LLM Pretraining: chapter_language_model/ntp.md
+    - Supervised Fine-Tuning: chapter_language_model/sft.md
+    - Reinforcement Learning Fine-Tuning: chapter_language_model/grpo.md
+    - Direct Preference Optimization: chapter_language_model/dpo.md
+    - Parameter Efficient Fine-Tuning: chapter_language_model/peft.md
+
   - Chapter 11. Reinforcement Learning:
     - chapter_reinforcement_learning/index.md
     - Markov Decision Process: chapter_reinforcement_learning/mdp.md
