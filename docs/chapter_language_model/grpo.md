@@ -25,8 +25,7 @@ GRPO was introduced in the [DeepSeekMath paper](https://arxiv.org/abs/2402.03300
 For each training step:
 
 1. **Sample** a prompt $q \sim \mathcal{Q}$ from the training distribution
-2. **Generate** a group of $G$ completions from the current (old) policy:  
-   $\{o_1, o_2, \ldots, o_G\} \sim \pi_{\theta_{\text{old}}}(\cdot \mid q)$
+2. **Generate** a group of $G$ completions from the current (old) policy: $\{o_1, o_2, \ldots, o_G\} \sim \pi_{\theta_{\text{old}}}(\cdot \mid q)$
 3. **Score** each completion with a reward function: $r_i = r(o_i, q)$
 4. **Normalize** rewards within the group to compute advantages
 5. **Update** the policy $\pi_\theta$ to increase the probability of high-advantage completions
@@ -49,8 +48,7 @@ $$
 \mathcal{J}_{\text{GRPO}}(\theta) = \mathbb{E}_{q,\, \{o_i\}_{i=1}^{G} \sim \pi_{\theta_{\text{old}}}} \left[
 \frac{1}{G} \sum_{i=1}^{G} \frac{1}{|o_i|} \sum_{t=1}^{|o_i|}
 \left\{
-\min\!\left( \rho_{i,t}\, \hat{A}_i,\; \text{clip}\!\left(\rho_{i,t}, 1-\epsilon, 1+\epsilon\right) \hat{A}_i \right)
-- \beta\, \mathbb{D}_{\text{KL}}\!\left[\pi_\theta \,\|\, \pi_{\text{ref}}\right]
+\min\!\left( \rho_{i,t}\, \hat{A}_i,\; \text{clip}\!\left(\rho_{i,t}, 1-\epsilon, 1+\epsilon\right) \hat{A}_i \right) - \beta\, \mathbb{D}_{\text{KL}}\!\left[\pi_\theta \,\|\, \pi_{\text{ref}}\right]
 \right\}
 \right]
 $$

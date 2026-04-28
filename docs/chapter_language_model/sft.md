@@ -5,6 +5,7 @@
 This lecture covers the topic on supervised fine-tuning (SFT) through a minimal, reliable workflow to fine-tune an open LLM using Hugging Face tools.
 
 You will learn to:
+
 - Understand the SFT loss function and how it differs from raw pre-training
 - Install the right libraries and pick a manageable model
 - Prepare a beginner-friendly dataset and template
@@ -44,7 +45,8 @@ $$
 }
 $$
 
-**Why mask the prompt?**  
+**Why mask the prompt?**
+
 - Prompt tokens are given as context, not generated—penalizing the model for not predicting them would confuse training
 - Masking focuses capacity on learning the *style* and *content* of the target response
 - It also allows much longer prompts without inflating the loss denominator
@@ -163,6 +165,7 @@ with open("train_dataset.json", "w") as f:
 ```
 
 **Why this template?**
+
 - A consistent structure simplifies tokenization and training
 - The final answer is clear and easy to evaluate later
 
@@ -381,6 +384,7 @@ trainer.save_model()
 ```
 
 **Tips for biomedical data:**
+
 - Keep prompts short and focused: patient note + question; end with "Answer:"
 - If answers are numeric (e.g., mL/min), use a consistent unit and precision
 - Start with a few hundred curated examples, then scale up

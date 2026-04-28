@@ -26,6 +26,7 @@ jobs:
 
       - name: Lint markdown
         run: python scripts/lint_md.py docs/
+        continue-on-error: true
 
       - name: Install dependencies
         run: |

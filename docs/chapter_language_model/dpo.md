@@ -7,6 +7,7 @@ This lecture introduces **Direct Preference Optimization (DPO)**, a stable and e
 The main motivation is practical: in many domains, **pairwise preference is easier to collect than absolute grading**. A clinician may find it hard to assign a precise score to a response on a 1-10 scale, but it is often easy to say **response A is safer than response B**. Likewise, for summarization or bedside advice, comparing two answers is often easier than writing the perfect answer from scratch.
 
 You will learn to:
+
 - Understand the mathematical derivation of DPO
 - Format preference data (chosen vs. rejected responses)
 - Run DPO training using the `trl` library
@@ -14,6 +15,7 @@ You will learn to:
 ## Why DPO?
 
 Standard RLHF involves a complex three-step process:
+
 1.  **SFT**: Supervised fine-tuning on high-quality data.
 2.  **Reward Modeling**: Training a separate model to predict human preference scores.
 3.  **RL**: Using PPO to optimize the policy against the reward model.
@@ -61,6 +63,7 @@ $$
 $$
 
 Intuitively, this loss:
+
 - **Increases** the likelihood of the chosen response $y_w$ relative to the reference model.
 - **Decreases** the likelihood of the rejected response $y_l$ relative to the reference model.
 - The parameter $\beta$ controls how strongly we enforce the KL-divergence constraint (typically $0.1$ to $0.5$).
@@ -68,6 +71,7 @@ Intuitively, this loss:
 ## Preference Dataset
 
 DPO requires a dataset of **triplets**:
+
 1.  **Prompt** ($x$): The user instruction.
 2.  **Chosen** ($y_w$): The better response.
 3.  **Rejected** ($y_l$): The worse response.

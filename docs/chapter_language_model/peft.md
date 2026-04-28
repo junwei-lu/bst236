@@ -220,6 +220,7 @@ model = AutoModelForCausalLM.from_pretrained(
 ```
 
 Tips:
+
 - If you encounter numerical instability on older GPUs, try `torch.float16` compute dtype.
 - For chat-tuned models, ensure the tokenizer has correct special tokens and chat template.
 
@@ -239,6 +240,7 @@ h = \text{dequant}(W_0^{4\text{bit}}) \cdot x + \frac{\alpha}{r} B A x
 $$
 
 Practical tips:
+
 - Use `nf4` quant type and bf16 compute where possible
 - Enable gradient checkpointing to trade compute for memory
 - Consider training embeddings and `lm_head` if you add special tokens/chat templates

@@ -88,11 +88,11 @@ Different tokenization approaches serve different purposes:
   ```
 
 - Special tokens: We sometimes need to add some special tokens to the vocabulary to help the model understand the text.
-  - `[UNK]`: Unknown token
-  - `[PAD]`: Padding token
-  - `[CLS]`: Classification token
-  - `[SEP]`: Separator token
-  - `[MASK]`: Mask token
+    - `[UNK]`: Unknown token
+    - `[PAD]`: Padding token
+    - `[CLS]`: Classification token
+    - `[SEP]`: Separator token
+    - `[MASK]`: Mask token
 
 
 Sometimes, for non-text data, we also need to tokenize the data. 

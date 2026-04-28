@@ -191,8 +191,8 @@ $$
 
 This means:
 
-  - For the **correct token** $v = x_t$: the gradient is $P_\theta - 1$, which is **negative** → the logit is pushed **up**
-  - For all **other tokens**: the gradient is $P_\theta > 0$, which is **positive** → those logits are pushed **down**
+- For the **correct token** $v = x_t$: the gradient is $P_\theta - 1$, which is **negative** → the logit is pushed **up**
+- For all **other tokens**: the gradient is $P_\theta > 0$, which is **positive** → those logits are pushed **down**
 
 The model learns by repeatedly increasing the probability of observed tokens and decreasing the probability of unobserved tokens.
 
